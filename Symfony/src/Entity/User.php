@@ -17,6 +17,9 @@ class User
     #[ORM\Column(length: 30)]
     private ?string $discordTag = null;
 
+    #[ORM\OneToOne(inversedBy: 'userI', cascade: ['persist', 'remove'])]
+    private ?Character $Character = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -30,6 +33,18 @@ class User
     public function setDiscordTag(string $discordTag): self
     {
         $this->discordTag = $discordTag;
+
+        return $this;
+    }
+
+    public function getCharacter(): ?Character
+    {
+        return $this->Character;
+    }
+
+    public function setCharacter(?Character $Character): self
+    {
+        $this->Character = $Character;
 
         return $this;
     }
