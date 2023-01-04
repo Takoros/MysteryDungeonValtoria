@@ -43,6 +43,10 @@ class Character
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Stats $Stats = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Characters')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Species $Species = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -174,6 +178,18 @@ class Character
     public function setStats(?Stats $Stats): self
     {
         $this->Stats = $Stats;
+
+        return $this;
+    }
+
+    public function getSpecies(): ?Species
+    {
+        return $this->Species;
+    }
+
+    public function setSpecies(?Species $Species): self
+    {
+        $this->Species = $Species;
 
         return $this;
     }
