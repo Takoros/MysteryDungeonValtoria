@@ -52,9 +52,13 @@ class Character
     #[ORM\ManyToMany(targetEntity: Attack::class, inversedBy: 'Characters')]
     private Collection $Attacks;
 
+    #[ORM\ManyToMany(targetEntity: CombatLog::class, mappedBy: 'Characters')]
+    private Collection $CombatLogs;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
+        $this->CombatLogs = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -224,6 +228,33 @@ class Character
     public function removeAttack(Attack $attack): self
     {
         $this->Attacks->removeElement($attack);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CombatLog>
+     */
+    public function getCombatLogs(): Collection
+    {
+        return $this->CombatLogs;
+    }
+
+    public function addCombatLog(CombatLog $combatLog): self
+    {
+        if (!$this->CombatLogs->contains($combatLog)) {
+            $this->CombatLogs->add($combatLog);
+            $combatLog->addCharacter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCombatLog(CombatLog $combatLog): self
+    {
+        if ($this->CombatLogs->removeElement($combatLog)) {
+            $combatLog->removeCharacter($this);
+        }
 
         return $this;
     }
