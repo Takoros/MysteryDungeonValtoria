@@ -58,11 +58,15 @@ class Character
     #[ORM\ManyToMany(targetEntity: Guild::class, inversedBy: 'Characters')]
     private Collection $Guild;
 
+    #[ORM\OneToMany(mappedBy: 'Character', targetEntity: MissionHistory::class)]
+    private Collection $MissionHistories;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
         $this->CombatLogs = new ArrayCollection();
         $this->Guild = new ArrayCollection();
+        $this->MissionHistories = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -283,6 +287,36 @@ class Character
     public function removeGuild(Guild $guild): self
     {
         $this->Guild->removeElement($guild);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, MissionHistory>
+     */
+    public function getMissionHistories(): Collection
+    {
+        return $this->MissionHistories;
+    }
+
+    public function addMissionHistory(MissionHistory $missionHistory): self
+    {
+        if (!$this->MissionHistories->contains($missionHistory)) {
+            $this->MissionHistories->add($missionHistory);
+            $missionHistory->setCharacter($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMissionHistory(MissionHistory $missionHistory): self
+    {
+        if ($this->MissionHistories->removeElement($missionHistory)) {
+            // set the owning side to null (unless already changed)
+            if ($missionHistory->getCharacter() === $this) {
+                $missionHistory->setCharacter(null);
+            }
+        }
 
         return $this;
     }
