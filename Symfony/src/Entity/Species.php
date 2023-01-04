@@ -24,6 +24,9 @@ class Species
     #[ORM\OneToMany(mappedBy: 'Species', targetEntity: Character::class)]
     private Collection $Characters;
 
+    #[ORM\ManyToOne(inversedBy: 'Species')]
+    private ?Type $Types = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
@@ -84,6 +87,18 @@ class Species
                 $character->setSpecies(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getTypes(): ?Type
+    {
+        return $this->Types;
+    }
+
+    public function setTypes(?Type $Types): self
+    {
+        $this->Types = $Types;
 
         return $this;
     }
