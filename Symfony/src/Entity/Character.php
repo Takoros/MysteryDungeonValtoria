@@ -40,6 +40,9 @@ class Character
     #[ORM\OneToOne(mappedBy: 'Character', cascade: ['persist', 'remove'])]
     private ?User $userI = null;
 
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Stats $Stats = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -159,6 +162,18 @@ class Character
         }
 
         $this->userI = $userI;
+
+        return $this;
+    }
+
+    public function getStats(): ?Stats
+    {
+        return $this->Stats;
+    }
+
+    public function setStats(?Stats $Stats): self
+    {
+        $this->Stats = $Stats;
 
         return $this;
     }
