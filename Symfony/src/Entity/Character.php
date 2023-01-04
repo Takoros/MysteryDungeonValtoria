@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
@@ -46,6 +48,14 @@ class Character
     #[ORM\ManyToOne(inversedBy: 'Characters')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Species $Species = null;
+
+    #[ORM\ManyToMany(targetEntity: Attack::class, inversedBy: 'Characters')]
+    private Collection $Attacks;
+
+    public function __construct()
+    {
+        $this->Attacks = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -190,6 +200,30 @@ class Character
     public function setSpecies(?Species $Species): self
     {
         $this->Species = $Species;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Attack>
+     */
+    public function getAttacks(): Collection
+    {
+        return $this->Attacks;
+    }
+
+    public function addAttack(Attack $attack): self
+    {
+        if (!$this->Attacks->contains($attack)) {
+            $this->Attacks->add($attack);
+        }
+
+        return $this;
+    }
+
+    public function removeAttack(Attack $attack): self
+    {
+        $this->Attacks->removeElement($attack);
 
         return $this;
     }
