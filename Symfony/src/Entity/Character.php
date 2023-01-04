@@ -55,10 +55,14 @@ class Character
     #[ORM\ManyToMany(targetEntity: CombatLog::class, mappedBy: 'Characters')]
     private Collection $CombatLogs;
 
+    #[ORM\ManyToMany(targetEntity: Guild::class, inversedBy: 'Characters')]
+    private Collection $Guild;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
         $this->CombatLogs = new ArrayCollection();
+        $this->Guild = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -255,6 +259,30 @@ class Character
         if ($this->CombatLogs->removeElement($combatLog)) {
             $combatLog->removeCharacter($this);
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Guild>
+     */
+    public function getGuild(): Collection
+    {
+        return $this->Guild;
+    }
+
+    public function addGuild(Guild $guild): self
+    {
+        if (!$this->Guild->contains($guild)) {
+            $this->Guild->add($guild);
+        }
+
+        return $this;
+    }
+
+    public function removeGuild(Guild $guild): self
+    {
+        $this->Guild->removeElement($guild);
 
         return $this;
     }
