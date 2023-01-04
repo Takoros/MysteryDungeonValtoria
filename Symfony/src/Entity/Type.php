@@ -24,9 +24,13 @@ class Type
     #[ORM\OneToMany(mappedBy: 'Type', targetEntity: Species::class)]
     private Collection $Species;
 
+    #[ORM\OneToMany(mappedBy: 'Type', targetEntity: Attack::class)]
+    private Collection $Attacks;
+
     public function __construct()
     {
         $this->Species = new ArrayCollection();
+        $this->Attacks = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -82,6 +86,36 @@ class Type
             // set the owning side to null (unless already changed)
             if ($species->getType() === $this) {
                 $species->setType(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Attack>
+     */
+    public function getAttacks(): Collection
+    {
+        return $this->Attacks;
+    }
+
+    public function addAttack(Attack $attack): self
+    {
+        if (!$this->Attacks->contains($attack)) {
+            $this->Attacks->add($attack);
+            $attack->setType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAttack(Attack $attack): self
+    {
+        if ($this->Attacks->removeElement($attack)) {
+            // set the owning side to null (unless already changed)
+            if ($attack->getType() === $this) {
+                $attack->setType(null);
             }
         }
 
