@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Species
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -24,17 +23,25 @@ class Species
     #[ORM\OneToMany(mappedBy: 'Species', targetEntity: Character::class)]
     private Collection $Characters;
 
-    #[ORM\ManyToOne(inversedBy: 'Species')]
-    private ?Type $Types = null;
+    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'Species')]
+    private Collection $Type;
 
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
+        $this->Type = new ArrayCollection();
     }
 
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getName(): ?string
@@ -91,15 +98,28 @@ class Species
         return $this;
     }
 
-    public function getTypes(): ?Type
+    /**
+     * @return Collection<int, Type>
+     */
+    public function getType(): Collection
     {
-        return $this->Types;
+        return $this->Type;
     }
 
-    public function setTypes(?Type $Types): self
+    public function addType(Type $type): self
     {
-        $this->Types = $Types;
+        if (!$this->Type->contains($type)) {
+            $this->Type->add($type);
+        }
 
         return $this;
     }
+
+    public function removeType(Type $type): self
+    {
+        $this->Type->removeElement($type);
+
+        return $this;
+    }
+
 }
