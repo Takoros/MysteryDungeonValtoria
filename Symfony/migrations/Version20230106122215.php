@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230104214119 extends AbstractMigration
+final class Version20230106122215 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -30,9 +30,10 @@ final class Version20230104214119 extends AbstractMigration
         $this->addSql('CREATE TABLE dungeon (id INT AUTO_INCREMENT NOT NULL, area_id INT NOT NULL, name VARCHAR(30) NOT NULL, json VARCHAR(50) DEFAULT NULL, INDEX IDX_3FFA1F90BD0F409C (area_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE guild (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(30) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE mission_history (id INT AUTO_INCREMENT NOT NULL, character_id INT NOT NULL, guild_id INT NOT NULL, ss_plus_rank_completed INT NOT NULL, ss_rank_completed INT NOT NULL, s_rank_completed INT NOT NULL, a_rank_completed INT NOT NULL, b_rank_completed INT NOT NULL, c_rank_completed INT NOT NULL, d_rank_completed INT NOT NULL, e_rank_completed INT NOT NULL, INDEX IDX_B686E4061136BE75 (character_id), INDEX IDX_B686E4065F2131EF (guild_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE species (id INT AUTO_INCREMENT NOT NULL, types_id INT DEFAULT NULL, name VARCHAR(30) NOT NULL, is_playable TINYINT(1) NOT NULL, INDEX IDX_A50FF7128EB23357 (types_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE species (id INT NOT NULL, name VARCHAR(30) NOT NULL, is_playable TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE species_type (species_id INT NOT NULL, type_id INT NOT NULL, INDEX IDX_846C25FB2A1D860 (species_id), INDEX IDX_846C25FC54C8C93 (type_id), PRIMARY KEY(species_id, type_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE stats (id INT AUTO_INCREMENT NOT NULL, vitality INT NOT NULL, strength INT NOT NULL, stamina INT NOT NULL, power INT NOT NULL, bravery INT NOT NULL, presence INT NOT NULL, impassiveness INT NOT NULL, agility INT NOT NULL, coordination INT NOT NULL, speed INT NOT NULL, action_point INT NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE type (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(30) NOT NULL, attack_file VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE type (id INT NOT NULL, name VARCHAR(30) NOT NULL, attack_file VARCHAR(255) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE `user` (id INT AUTO_INCREMENT NOT NULL, character_id INT DEFAULT NULL, discord_tag VARCHAR(30) NOT NULL, UNIQUE INDEX UNIQ_8D93D6491136BE75 (character_id), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE attack ADD CONSTRAINT FK_47C02D3BC54C8C93 FOREIGN KEY (type_id) REFERENCES type (id)');
         $this->addSql('ALTER TABLE `character` ADD CONSTRAINT FK_937AB03470AA3482 FOREIGN KEY (stats_id) REFERENCES stats (id)');
@@ -46,7 +47,8 @@ final class Version20230104214119 extends AbstractMigration
         $this->addSql('ALTER TABLE dungeon ADD CONSTRAINT FK_3FFA1F90BD0F409C FOREIGN KEY (area_id) REFERENCES area (id)');
         $this->addSql('ALTER TABLE mission_history ADD CONSTRAINT FK_B686E4061136BE75 FOREIGN KEY (character_id) REFERENCES `character` (id)');
         $this->addSql('ALTER TABLE mission_history ADD CONSTRAINT FK_B686E4065F2131EF FOREIGN KEY (guild_id) REFERENCES guild (id)');
-        $this->addSql('ALTER TABLE species ADD CONSTRAINT FK_A50FF7128EB23357 FOREIGN KEY (types_id) REFERENCES type (id)');
+        $this->addSql('ALTER TABLE species_type ADD CONSTRAINT FK_846C25FB2A1D860 FOREIGN KEY (species_id) REFERENCES species (id) ON DELETE CASCADE');
+        $this->addSql('ALTER TABLE species_type ADD CONSTRAINT FK_846C25FC54C8C93 FOREIGN KEY (type_id) REFERENCES type (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE `user` ADD CONSTRAINT FK_8D93D6491136BE75 FOREIGN KEY (character_id) REFERENCES `character` (id)');
     }
 
@@ -65,7 +67,8 @@ final class Version20230104214119 extends AbstractMigration
         $this->addSql('ALTER TABLE dungeon DROP FOREIGN KEY FK_3FFA1F90BD0F409C');
         $this->addSql('ALTER TABLE mission_history DROP FOREIGN KEY FK_B686E4061136BE75');
         $this->addSql('ALTER TABLE mission_history DROP FOREIGN KEY FK_B686E4065F2131EF');
-        $this->addSql('ALTER TABLE species DROP FOREIGN KEY FK_A50FF7128EB23357');
+        $this->addSql('ALTER TABLE species_type DROP FOREIGN KEY FK_846C25FB2A1D860');
+        $this->addSql('ALTER TABLE species_type DROP FOREIGN KEY FK_846C25FC54C8C93');
         $this->addSql('ALTER TABLE `user` DROP FOREIGN KEY FK_8D93D6491136BE75');
         $this->addSql('DROP TABLE area');
         $this->addSql('DROP TABLE attack');
@@ -78,6 +81,7 @@ final class Version20230104214119 extends AbstractMigration
         $this->addSql('DROP TABLE guild');
         $this->addSql('DROP TABLE mission_history');
         $this->addSql('DROP TABLE species');
+        $this->addSql('DROP TABLE species_type');
         $this->addSql('DROP TABLE stats');
         $this->addSql('DROP TABLE type');
         $this->addSql('DROP TABLE `user`');
