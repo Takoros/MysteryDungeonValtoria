@@ -1,0 +1,78 @@
+{
+    "1" : {
+        "name" : "Aventurier",
+        "attackFile" : null
+    },
+    "2" : {
+        "name" : "Normal",
+        "attackFile" : null
+    },
+    "3" : {
+        "name" : "Feu",
+        "attackFile" : null
+    },
+    "4" : {
+        "name" : "Eau",
+        "attackFile" : null
+    },
+    "5" : {
+        "name" : "Electrik",
+        "attackFile" : null
+    },
+    "6" : {
+        "name" : "Psy",
+        "attackFile" : null
+    },
+    "7" : {
+        "name" : "Ténèbres",
+        "attackFile" : null
+    },
+    "8" : {
+        "name" : "Fée",
+        "attackFile" : null
+    },
+    "9" : {
+        "name" : "Plante",
+        "attackFile" : null
+    },
+    "10" : {
+        "name" : "Combat",
+        "attackFile" : null
+    },
+    "11" : {
+        "name" : "Spectre",
+        "attackFile" : null
+    },
+    "12" : {
+        "name" : "Roche",
+        "attackFile" : null
+    },
+    "13" : {
+        "name" : "Glace",
+        "attackFile" : null
+    },
+    "14" : {
+        "name" : "Dragon",
+        "attackFile" : null
+    },
+    "15" : {
+        "name" : "Acier",
+        "attackFile" : null
+    },
+    "16" : {
+        "name" : "Poison",
+        "attackFile" : null
+    },
+    "17" : {
+        "name" : "Vol",
+        "attackFile" : null
+    },
+    "18" : {
+        "name" : "Sol",
+        "attackFile" : null
+    },
+    "19" : {
+        "name" : "Insecte",
+        "attackFile" : null
+    }
+}
