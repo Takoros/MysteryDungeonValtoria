@@ -1,0 +1,42 @@
+{
+    "418" : {
+        "name" : "Mustébouée",
+        "types" : [4],
+        "isPlayable" : true
+    },
+    "133" : {
+        "name" : "Évoli",
+        "types" : [2],
+        "isPlayable" : true
+    },
+    "37" : {
+        "name" : "Goupix",
+        "types" : [3],
+        "isPlayable" : true
+    },
+    "906" : {
+        "name" : "Poussacha",
+        "types" : [9],
+        "isPlayable" : true
+    },
+    "570" : {
+        "name" : "Zorua",
+        "types" : [7],
+        "isPlayable" : true
+    },
+    "403" : {
+        "name" : "Lixy",
+        "types" : [5],
+        "isPlayable" : true
+    },
+    "610" : {
+        "name" : "Coupenotte",
+        "types" : [14],
+        "isPlayable" : true
+    },
+    "175" : {
+        "name" : "Togepi",
+        "types" : [8],
+        "isPlayable" : true
+    }
+}
