@@ -1,0 +1,10 @@
+site_name: Takerra Wiki
+site_url: https://wiki.takerra.fr
+theme:
+  name: 'material'
+nav:
+  - Home: 'index.md'
+  - 'PMD Valtoria':
+      - 'Accueil': 'pmd-valtoria/index.md'
+      - 'API': 'pmd-valtoria/api.md'
+      - 'Bot': 'pmd-valtoria/bot.md'
