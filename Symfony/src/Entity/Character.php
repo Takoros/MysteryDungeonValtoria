@@ -6,8 +6,10 @@ use App\Repository\CharacterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\Table;
 
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
+#[Table(name: '`character`')]
 class Character
 {
     #[ORM\Id]
@@ -15,28 +17,28 @@ class Character
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(length: 30)]
+    #[ORM\Column(name: '`name`',length: 30)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 10)]
+    #[ORM\Column(name: '`gender`',length: 10)]
     private ?string $gender = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`age`')]
     private ?int $age = null;
 
-    #[ORM\Column(length: 200, nullable: true)]
+    #[ORM\Column(name: '`description`', length: 200, nullable: true)]
     private ?string $description = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`level`')]
     private ?int $level = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`xp`')]
     private ?int $xp = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`stat_points`')]
     private ?int $statPoints = null;
 
-    #[ORM\Column]
+    #[ORM\Column(name: '`rank`')]
     private ?int $rank = null;
 
     #[ORM\OneToOne(mappedBy: 'Character', cascade: ['persist', 'remove'])]
