@@ -165,8 +165,10 @@ class CharacterService
      */
     public function levelUp($character){
         if($character->hasEnoughXP()){
-            $character->setLevel($character->getLevel() + 1);
-            $character->setXp($character->getXp() - $character->getXPCeil());
+            $character->setXp($character->getXp() - $character->getXPCeil())
+                      ->setStatPoints($character->getStatPoints() + 5)
+                      ->setLevel($character->getLevel() + 1)
+                      ->getStats()->increaseBaseStat(1);
 
             $this->entityManager->flush();
             return true;
