@@ -159,4 +159,19 @@ class CharacterService
             'message' => "Character created."
         ];
     }
+
+    /**
+     * Fait monter de niveau le character
+     */
+    public function levelUp($character){
+        if($character->hasEnoughXP()){
+            $character->setLevel($character->getLevel() + 1);
+            $character->setXp($character->getXp() - $character->getXPCeil());
+
+            $this->entityManager->flush();
+            return true;
+        }
+
+        return false;
+    }
 }
