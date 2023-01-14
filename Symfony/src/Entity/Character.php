@@ -322,4 +322,22 @@ class Character
 
         return $this;
     }
+
+    // ///
+    // Services Functions
+    // ///
+
+    public function getXPCeil(): int
+    {
+        return intval(round(10.1 * pow($this->getLevel(), 2.83)));
+    }
+
+    public function hasEnoughXP(): bool
+    {
+        if($this->getXp() >= $this->getXPCeil()){
+            return true;
+        }
+
+        return false;
+    }
 }
