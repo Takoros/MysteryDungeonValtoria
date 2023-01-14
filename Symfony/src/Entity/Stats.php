@@ -182,4 +182,22 @@ class Stats
 
         return $this;
     }
+
+    // ///
+    // Services Functions
+    // ///
+
+    public function increaseBaseStat($value)
+    {
+        $this->setVitality($this->getVitality() + ($value * 5))
+             ->setStrength($this->getStrength() + $value)
+             ->setStamina($this->getStamina() + $value)
+             ->setPower($this->getPower() + $value)
+             ->setBravery($this->getBravery() + $value)
+             ->setPresence($this->getPresence() + $value)
+             ->setImpassiveness($this->getImpassiveness() + $value)
+             ->setAgility($this->getAgility() + $value)
+             ->setCoordination($this->getCoordination() + $value)
+             ->setSpeed($this->getSpeed() + $value);
+    }
 }
