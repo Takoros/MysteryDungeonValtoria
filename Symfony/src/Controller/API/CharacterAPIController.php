@@ -2,6 +2,9 @@
 
 namespace App\Controller\API;
 
+use App\Formatter\CharacterFormatter;
+use App\Repository\CharacterRepository;
+use App\Repository\UserRepository;
 use App\Service\APIService;
 use App\Service\CharacterService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,11 +16,13 @@ class CharacterAPIController extends AbstractController
 {
     private $apiService;
     private $characterService;
+    private $characterFormatter;
 
-    public function __construct(APIService $apiService, CharacterService $characterService)
+    public function __construct(APIService $apiService, CharacterService $characterService, CharacterFormatter $characterFormatter)
     {
         $this->apiService = $apiService;
         $this->characterService = $characterService;
+        $this->characterFormatter = $characterFormatter;
     }
 
     /**
@@ -47,4 +52,37 @@ class CharacterAPIController extends AbstractController
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
+
+    /**
+     * Responds a resume of the character of a user
+     */
+    #[Route('/api/character/resume', name: 'api_character_resume',  methods:["POST"])]
+    public function resume(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $awaitedData = ["discordUserId" => null];
+        $post = json_decode($request->getContent());
+
+        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
+            return new JsonResponse(['message' => 'Unauthorized'], 401);
+        }
+
+        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
+            return new JsonResponse(['message' => 'Bad Request'], 400);
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist']);
+        }
+        
+        $character = $user->getCharacter();
+
+        if($character === null){
+            return new JsonResponse(['message' => 'User does not have Character']);
+        }
+
+        return new JsonResponse($this->characterFormatter->formatCharacter($character));
+    }
+
 }
