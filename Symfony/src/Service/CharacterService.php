@@ -199,4 +199,33 @@ class CharacterService
             'message' => "Description is modified."
         ];
     }
+
+    public function spendStatPoint($character, $statToModify){
+        $statModifyable = ['vitality', 'strength', 'stamina', 'power', 'bravery', 'presence', 'impassiveness', 'agility', 'coordination', 'speed'];
+
+        if($character->getStatPoints() > 0){
+            if($statToModify && in_array($statToModify, $statModifyable)){
+                $character->getStats()->increaseStat($statToModify);
+                $character->setStatPoints($character->getStatPoints() - 1);
+                $this->entityManager->flush();
+
+                return [
+                    'statusCode' => 200,
+                    'message' => "Stat increased."
+                ];
+            }           
+            else {
+                return [
+                    'statusCode' => 400,
+                    'message' => "Stat to increase is incorrect"
+                ];
+            } 
+        }
+        else {
+            return [
+                'statusCode' => 400,
+                'message' => "Character does not have any statPoints"
+            ];
+        }
+    }
 }
