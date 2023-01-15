@@ -176,4 +176,27 @@ class CharacterService
 
         return false;
     }
+    
+    public function modifyDescription($newDescription, $character){
+
+        /**
+         * Verifies if the description is correct and not empty
+         */
+        if($newDescription && strlen($newDescription) <= 200){
+            $character->setDescription($newDescription);
+        }
+        else {
+            return [
+                'statusCode' => 400,
+                'message' => "New description is incorrect"
+            ];
+        }
+
+        $this->entityManager->flush();
+
+        return [
+            'statusCode' => 201,
+            'message' => "Description is modified."
+        ];
+    }
 }
