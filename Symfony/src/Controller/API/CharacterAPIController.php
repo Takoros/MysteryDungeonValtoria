@@ -117,4 +117,37 @@ class CharacterAPIController extends AbstractController
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
+
+    /**
+     * Spend statPoints to increase stat
+     */
+    #[Route('/api/character/spend/statPoint', name: 'api_character_spend_statPoint',  methods:["POST"])]
+    public function spendStatPoint(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $awaitedData = [
+            "discordUserId" => null,
+            "statToIncrease" => null
+        ];
+        $post = json_decode($request->getContent());
+
+        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
+            return new JsonResponse(['message' => 'Unauthorized'], 401);
+        }
+
+        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
+            return new JsonResponse(['message' => 'Bad Request'], 400);
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist'], 400);
+        }
+        
+        $character = $user->getCharacter();
+
+        $results = $this->characterService->spendStatPoint($character, $post->data->statToIncrease);
+
+        return new JsonResponse(['message' => $results['message']], $results['statusCode']);
+    }
 }
