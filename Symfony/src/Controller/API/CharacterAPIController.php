@@ -85,4 +85,36 @@ class CharacterAPIController extends AbstractController
         return new JsonResponse($this->characterFormatter->formatCharacter($character));
     }
 
+    /**
+     * Modifies Character's description
+     */
+    #[Route('/api/character/modify/description', name: 'api_character_modify_description',  methods:["POST"])]
+    public function modifyDescription(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $awaitedData = [
+            "discordUserId" => null,
+            "description" => null
+        ];
+        $post = json_decode($request->getContent());
+
+        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
+            return new JsonResponse(['message' => 'Unauthorized'], 401);
+        }
+
+        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
+            return new JsonResponse(['message' => 'Bad Request'], 400);
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist']);
+        }
+        
+        $character = $user->getCharacter();
+
+        $results = $this->characterService->modifyDescription($post->data->description, $character);
+
+        return new JsonResponse(['message' => $results['message']], $results['statusCode']);
+    }
 }
