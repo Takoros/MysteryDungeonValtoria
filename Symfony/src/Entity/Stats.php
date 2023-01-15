@@ -199,5 +199,41 @@ class Stats
              ->setAgility($this->getAgility() + $value)
              ->setCoordination($this->getCoordination() + $value)
              ->setSpeed($this->getSpeed() + $value);
+
+    }
+    
+    public function increaseStat($statToModify){
+        switch ($statToModify) {
+            case 'vitality':
+                $this->setVitality($this->getVitality() + 5);
+                break;
+            case 'strength':
+                $this->setStrength($this->getStrength() + 1);
+                break;
+            case 'stamina':
+                $this->setStamina($this->getStamina() + 1);
+                break;
+            case 'power':
+                $this->setPower($this->getPower() + 1);
+                break;
+            case 'bravery':
+                $this->setBravery($this->getBravery() + 1);
+                break;
+            case 'presence':
+                $this->setPresence($this->getPresence() + 1);
+                break;
+            case 'impassiveness':
+                $this->setImpassiveness($this->getImpassiveness() + 1);
+                break;
+            case 'agility':
+                $this->setAgility($this->getAgility() + 1);
+                break;
+            case 'coordination':
+                $this->setCoordination($this->getCoordination() + 1);
+                break;    
+            case 'speed':
+                $this->setSpeed($this->getSpeed() + 1);
+                break;
+        }
     }
 }
