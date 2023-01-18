@@ -26,7 +26,7 @@ class APIService
 
         if(is_object($receivedData)){
             $receivedData = (array) $receivedData;
-            foreach(array_keys($awaitedData) as $awaitedKey){
+            foreach($awaitedData as $awaitedKey){
                 if(!array_key_exists($awaitedKey, $receivedData)){
                     $hasCorrectData = false;
                 }
