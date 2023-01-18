@@ -3,28 +3,36 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, GatewayIntentBits, REST, Routes } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
-let token;
-let client_id;
 
+// Loading env vars
+client.env = new Collection();
 switch(process.env.STATUS) {
     case "production":
-        token = process.env.PROD_TOKEN;
-        client_id = process.env.PROD_CLIENT_ID;
+        client.env.set("token", process.env.PROD_TOKEN);
+        client.env.set("client_id", process.env.PROD_CLIENT_ID);
+        client.env.set("api_host", process.env.PROD_API_HOST);
+        client.env.set("api_token", process.env.DISCORDBOT_TOKEN);
         console.log('Connecting with PROD');
         break;
     case "dev-tako":
-        token = process.env.DEV_TAKO_TOKEN;
-        client_id = process.env.DEV_TAKO_CLIENT_ID;
+        client.env.set("token", process.env.DEV_TAKO_TOKEN);
+        client.env.set("client_id", process.env.DEV_TAKO_CLIENT_ID);
+        client.env.set("api_host", process.env.DEV_API_HOST);
+        client.env.set("api_token", process.env.DISCORDBOT_TOKEN);
         console.log('Connecting with DEV_TAKO');
         break;
     case "dev-zaos":
-        token = process.env.DEV_ZAOS_TOKEN;
-        client_id = process.env.DEV_ZAOS_CLIENT_ID;
+        client.env.set("token", process.env.DEV_ZAOS_TOKEN);
+        client.env.set("client_id", process.env.DEV_ZAOS_CLIENT_ID);
+        client.env.set("api_host", process.env.DEV_API_HOST);
+        client.env.set("api_token", process.env.DISCORDBOT_TOKEN);
         console.log('Connecting with DEV_ZAOS');
         break;
     default:
-        token = process.env.DEV_TOKEN;
-        client_id = process.env.DEV_CLIENT_ID;
+        client.env.set("token", process.env.DEV_TOKEN);
+        client.env.set("client_id", process.env.DEV_CLIENT_ID);
+        client.env.set("api_host", process.env.DEV_API_HOST);
+        client.env.set("api_token", process.env.DISCORDBOT_TOKEN);
         console.log('Connecting with DEV/DEFAULT');
 }
 
@@ -58,4 +66,4 @@ for (const file of eventFiles) {
 	}
 }
 
-client.login(token); 
+client.login(client.env.get("token")); 
