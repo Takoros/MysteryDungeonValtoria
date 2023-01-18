@@ -7,12 +7,11 @@ use App\Repository\CharacterRepository;
 use App\Repository\UserRepository;
 use App\Service\APIService;
 use App\Service\CharacterService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class CharacterAPIController extends AbstractController
+class CharacterAPIController extends AbstractAPIController
 {
     private $apiService;
     private $characterService;
@@ -31,21 +30,11 @@ class CharacterAPIController extends AbstractController
     #[Route('/api/character/create', name: 'api_character_create',  methods:["POST"])]
     public function create(Request $request): JsonResponse
     {
-        $awaitedData = [
-            "discordUserId" => null,
-            "characterName" => null,
-            "characterGender" => null,
-            "characterAge" => null,
-            "characterSpeciesId" => null
-        ];
         $post = json_decode($request->getContent());
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId","characterName","characterGender","characterAge","characterSpeciesId"], $this->apiService);
 
-        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
-            return new JsonResponse(['message' => 'Unauthorized'], 401);
-        }
-
-        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
-            return new JsonResponse(['message' => 'Bad Request'], 400);
+        if(!is_bool($isValid)){
+            return $isValid;
         }
 
         $results = $this->characterService->persistNewCharacter($post->data);
@@ -59,15 +48,12 @@ class CharacterAPIController extends AbstractController
     #[Route('/api/character/resume', name: 'api_character_resume',  methods:["POST"])]
     public function resume(Request $request, UserRepository $userRepository): JsonResponse
     {
-        $awaitedData = ["discordUserId" => null];
         $post = json_decode($request->getContent());
 
-        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
-            return new JsonResponse(['message' => 'Unauthorized'], 401);
-        }
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
 
-        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
-            return new JsonResponse(['message' => 'Bad Request'], 400);
+        if(!is_bool($isValid)){
+            return $isValid;
         }
 
         $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
@@ -91,18 +77,12 @@ class CharacterAPIController extends AbstractController
     #[Route('/api/character/modify/description', name: 'api_character_modify_description',  methods:["POST"])]
     public function modifyDescription(Request $request, UserRepository $userRepository): JsonResponse
     {
-        $awaitedData = [
-            "discordUserId" => null,
-            "description" => null
-        ];
         $post = json_decode($request->getContent());
 
-        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
-            return new JsonResponse(['message' => 'Unauthorized'], 401);
-        }
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "description"], $this->apiService);
 
-        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
-            return new JsonResponse(['message' => 'Bad Request'], 400);
+        if(!is_bool($isValid)){
+            return $isValid;
         }
 
         $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
@@ -124,18 +104,12 @@ class CharacterAPIController extends AbstractController
     #[Route('/api/character/spend/statPoint', name: 'api_character_spend_statPoint',  methods:["POST"])]
     public function spendStatPoint(Request $request, UserRepository $userRepository): JsonResponse
     {
-        $awaitedData = [
-            "discordUserId" => null,
-            "statToIncrease" => null
-        ];
         $post = json_decode($request->getContent());
 
-        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
-            return new JsonResponse(['message' => 'Unauthorized'], 401);
-        }
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "statToIncrease"], $this->apiService);
 
-        if(empty($post->data) || !$this->apiService->hasCorrectData($awaitedData, $post->data)){
-            return new JsonResponse(['message' => 'Bad Request'], 400);
+        if(!is_bool($isValid)){
+            return $isValid;
         }
 
         $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
