@@ -3,12 +3,11 @@
 namespace App\Controller\API;
 
 use App\Service\APIService;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
-class MainAPIController extends AbstractController
+class MainAPIController extends AbstractAPIController
 {   
     private $apiService;
 
@@ -24,10 +23,7 @@ class MainAPIController extends AbstractController
     public function ping(Request $request): JsonResponse
     {
         $post = json_decode($request->getContent());
-
-        if(empty($post->token) || !$this->apiService->isCorrectToken($post->token)){
-            return new JsonResponse(['message' => 'Unauthorized'], 401);
-        }
+        $isValid = $this->verifyTokenAndData($post, [], $this->apiService);
 
         return new JsonResponse(['message' => 'pong !'], 200);
     }
