@@ -26,10 +26,14 @@ class Type
     #[ORM\ManyToMany(targetEntity: Species::class, mappedBy: 'Type')]
     private Collection $Species;
 
+    #[ORM\ManyToMany(targetEntity: Character::class, mappedBy: 'Types')]
+    private Collection $characters;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
         $this->Species = new ArrayCollection();
+        $this->characters = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -120,6 +124,33 @@ class Type
     {
         if ($this->Species->removeElement($species)) {
             $species->removeType($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Character>
+     */
+    public function getCharacters(): Collection
+    {
+        return $this->characters;
+    }
+
+    public function addCharacter(Character $character): self
+    {
+        if (!$this->characters->contains($character)) {
+            $this->characters->add($character);
+            $character->addType($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCharacter(Character $character): self
+    {
+        if ($this->characters->removeElement($character)) {
+            $character->removeType($this);
         }
 
         return $this;

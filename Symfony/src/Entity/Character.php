@@ -63,12 +63,16 @@ class Character
     #[ORM\OneToMany(mappedBy: 'Character', targetEntity: MissionHistory::class)]
     private Collection $MissionHistories;
 
+    #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'characters')]
+    private Collection $Types;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
         $this->CombatLogs = new ArrayCollection();
         $this->Guild = new ArrayCollection();
         $this->MissionHistories = new ArrayCollection();
+        $this->Types = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -339,5 +343,29 @@ class Character
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection<int, Type>
+     */
+    public function getTypes(): Collection
+    {
+        return $this->Types;
+    }
+
+    public function addType(Type $type): self
+    {
+        if (!$this->Types->contains($type)) {
+            $this->Types->add($type);
+        }
+
+        return $this;
+    }
+
+    public function removeType(Type $type): self
+    {
+        $this->Types->removeElement($type);
+
+        return $this;
     }
 }
