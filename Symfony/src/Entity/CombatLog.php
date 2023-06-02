@@ -16,13 +16,13 @@ class CombatLog
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $logs = null;
+    #[ORM\Column(type: Types::JSON, nullable: true)]
+    private ?array $logs = null;
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private array $teamOne = [];
 
-    #[ORM\Column(type: Types::ARRAY, nullable: true)]
+    #[ORM\Column(type: Types::JSON, nullable: true)]
     private array $teamTwo = [];
 
     #[ORM\Column(nullable: true)]

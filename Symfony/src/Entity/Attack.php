@@ -11,7 +11,6 @@ use Doctrine\ORM\Mapping as ORM;
 class Attack
 {
     #[ORM\Id]
-    #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
@@ -37,9 +36,19 @@ class Attack
     #[ORM\ManyToMany(targetEntity: Character::class, mappedBy: 'Attacks')]
     private Collection $Characters;
 
+    #[ORM\Column(length: 255)]
+    private ?string $scope = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getId(): ?int
@@ -142,6 +151,18 @@ class Attack
         if ($this->Characters->removeElement($character)) {
             $character->removeAttack($this);
         }
+
+        return $this;
+    }
+
+    public function getScope(): ?string
+    {
+        return $this->scope;
+    }
+
+    public function setScope(string $scope): self
+    {
+        $this->scope = $scope;
 
         return $this;
     }

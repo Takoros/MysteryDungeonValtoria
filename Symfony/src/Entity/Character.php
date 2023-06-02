@@ -66,6 +66,9 @@ class Character
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'characters')]
     private Collection $Types;
 
+    #[ORM\OneToMany(mappedBy: 'Character', targetEntity: Rotation::class)]
+    private Collection $Rotation;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
@@ -73,6 +76,7 @@ class Character
         $this->Guild = new ArrayCollection();
         $this->MissionHistories = new ArrayCollection();
         $this->Types = new ArrayCollection();
+        $this->Rotation = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -346,11 +350,14 @@ class Character
     }
 
     /**
-     * @return Collection<int, Type>
+     * @return array
      */
-    public function getTypes(): Collection
+    public function getTypes(): array
     {
-        return $this->Types;
+        $speciesTypes = $this->getSpecies()->getType();
+        $characterType = $this->Types;
+
+        return array_merge($speciesTypes->toArray(), $characterType->toArray());
     }
 
     public function addType(Type $type): self
@@ -367,5 +374,33 @@ class Character
         $this->Types->removeElement($type);
 
         return $this;
+    }
+
+    /**
+     * @return Rotation|null
+     */
+    public function getRotation(): ?Rotation
+    {
+        foreach ($this->Rotation as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_ROTATION){
+                return $rotation;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return Rotation|null
+     */
+    public function getOpenerRotation(): ?Rotation
+    {
+        foreach ($this->Rotation as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_OPENER){
+                return $rotation;
+            }
+        }
+
+        return null;
     }
 }

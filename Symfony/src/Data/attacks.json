@@ -1,0 +1,38 @@
+{
+    "1" : {
+        "name" : "Lutte",
+        "type" : "Aventurier",
+        "description" : "Inflige des dégâts mixte à la cible.",
+        "power" : 2.5,
+        "critical_power" : 50,
+        "action_point_cost" : 0,
+        "scope" : "enemy_team_member"
+    },
+    "2" : {
+        "name" : "Tranche",
+        "type" : "Normal",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 6,
+        "critical_power" : 90,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "3" : {
+        "name" : "Reflet",
+        "type" : "Normal",
+        "description" : "Augmente l'agilité du lanceur (puissance : 5) pendant 2 tours.",
+        "power" : 0,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "4" : {
+        "name" : "Pansement",
+        "type" : "Normal",
+        "description" : "Soigne l'allié avec le moins de vitalité (puissance : 7).",
+        "power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "ally_team_member_lowest_vitality"
+    }
+}
