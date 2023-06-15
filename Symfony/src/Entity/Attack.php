@@ -29,6 +29,9 @@ class Attack
     #[ORM\Column]
     private ?int $actionPointCost = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $scope = null;
+
     #[ORM\ManyToOne(inversedBy: 'Attacks')]
     #[ORM\JoinColumn(nullable: false)]
     private ?Type $Type = null;
@@ -148,6 +151,18 @@ class Attack
         if ($this->Characters->removeElement($character)) {
             $character->removeAttack($this);
         }
+
+        return $this;
+    }
+
+    public function getScope(): ?string
+    {
+        return $this->scope;
+    }
+
+    public function setScope(string $scope): self
+    {
+        $this->scope = $scope;
 
         return $this;
     }
