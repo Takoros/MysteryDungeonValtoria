@@ -63,12 +63,16 @@ class Character
     #[ORM\OneToMany(mappedBy: 'Character', targetEntity: MissionHistory::class)]
     private Collection $MissionHistories;
 
+    #[ORM\OneToMany(mappedBy: 'Character', targetEntity: Rotation::class)]
+    private Collection $rotations;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
         $this->CombatLogs = new ArrayCollection();
         $this->Guild = new ArrayCollection();
         $this->MissionHistories = new ArrayCollection();
+        $this->rotations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -339,5 +343,41 @@ class Character
         }
 
         return false;
+    }
+
+    /**
+     * @return Collection<int, Rotation>
+     */
+    public function getRotations(): Collection
+    {
+        return $this->rotations;
+    }
+
+    /**
+     * @return Rotation|null
+     */
+    public function getRotation(): ?Rotation
+    {
+        foreach ($this->rotations as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_ROTATION){
+                return $rotation;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * @return Rotation|null
+     */
+    public function getOpenerRotation(): ?Rotation
+    {
+        foreach ($this->rotations as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_OPENER){
+                return $rotation;
+            }
+        }
+
+        return null;
     }
 }
