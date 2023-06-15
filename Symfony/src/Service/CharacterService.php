@@ -3,8 +3,10 @@
 namespace App\Service;
 
 use App\Entity\Character;
+use App\Entity\Rotation;
 use App\Entity\Stats;
 use App\Entity\User;
+use App\Repository\AttackRepository;
 use App\Repository\SpeciesRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -13,12 +15,14 @@ class CharacterService
 {
     private $userRepository;
     private $speciesRepository;
+    private $attackRepository;
     private $entityManager;
 
-    public function __construct(UserRepository $userRepository, SpeciesRepository $speciesRepository, ManagerRegistry $doctrine)
+    public function __construct(UserRepository $userRepository, SpeciesRepository $speciesRepository, AttackRepository $attackRepository, ManagerRegistry $doctrine)
     {
         $this->userRepository = $userRepository;
         $this->speciesRepository = $speciesRepository;
+        $this->attackRepository = $attackRepository;
         $this->entityManager = $doctrine->getManager();
     }
 
@@ -127,6 +131,32 @@ class CharacterService
                 'message' => "characterSpeciesId is not defined or incorrect."
             ];
         }
+
+        /**
+         * Add the Rotations
+         */
+        $lutte = $this->attackRepository->find("ATTACK_EXPLORER_BASE");
+
+        $openerRotation = new Rotation();
+        $openerRotation->setCharacter($newCharacter)
+                       ->setType(Rotation::TYPE_OPENER)
+                       ->setAttackOne($lutte)
+                       ->setAttackTwo($lutte)
+                       ->setAttackThree($lutte)
+                       ->setAttackFour($lutte)
+                       ->setAttackFive($lutte);
+
+        $rotation = new Rotation();
+        $rotation->setCharacter($newCharacter)
+        ->setType(Rotation::TYPE_ROTATION)
+        ->setAttackOne($lutte)
+        ->setAttackTwo($lutte)
+        ->setAttackThree($lutte)
+        ->setAttackFour($lutte)
+        ->setAttackFive($lutte);
+
+        $this->entityManager->persist($openerRotation);
+        $this->entityManager->persist($rotation);
 
         // Generates base stats
         $newStats = new Stats();
