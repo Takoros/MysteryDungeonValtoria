@@ -23,6 +23,9 @@ class Attack
     #[ORM\Column]
     private ?float $power = null;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $statusPower = null;
+
     #[ORM\Column]
     private ?int $criticalPower = null;
 
@@ -88,6 +91,18 @@ class Attack
     public function setPower(float $power): self
     {
         $this->power = $power;
+
+        return $this;
+    }
+
+    public function getStatusPower(): ?float
+    {
+        return $this->statusPower;
+    }
+
+    public function setStatusPower(?float $statusPower): self
+    {
+        $this->statusPower = $statusPower;
 
         return $this;
     }
