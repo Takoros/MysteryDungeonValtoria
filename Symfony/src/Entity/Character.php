@@ -181,6 +181,11 @@ class Character
         return $this->userI;
     }
 
+    public function getTypes(): array
+    {
+        return (array) $this->Species->getType();
+    }
+
     public function setUserI(?User $userI): self
     {
         // unset the owning side of the relation if necessary
