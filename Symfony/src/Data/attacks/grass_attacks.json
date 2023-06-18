@@ -1,0 +1,42 @@
+{
+    "ATTACK_GRASS_ONE" : {
+        "name" : "Feuillage",
+        "type" : "Plante",
+        "description" : "Inflige des dégâts spéciaux et réduit la coordination de la cible pendant 2 tours",
+        "power" : 4,
+        "status_power" : 1,
+        "critical_power" : 50,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GRASS_TWO" : {
+        "name" : "Fouet Liane",
+        "type" : "Plante",
+        "description" : "Inflige des dégâts physique à la cible, avec 15% de chance de la rendre confuse.",
+        "power" : 6,
+        "status_power" : 0,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GRASS_THREE" : {
+        "name" : "Vole-vie",
+        "type" : "Plante",
+        "description" : "Inflige des dégâts mixtes à la cible, récupérant 25% des dégâts infligés.",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 10,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GRASS_FOUR" : {
+        "name" : "Para-Spore",
+        "type" : "Plante",
+        "description" : "Inflige Paralysie à la cible.",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    }
+}
