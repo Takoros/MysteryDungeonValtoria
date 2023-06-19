@@ -54,13 +54,13 @@ trait GrassAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawSpecialDamage = $this->calculateSpecialDamage($this->ATTACK_GRASS_ONE->getPower(), $caster->getPower());
-        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doStab, $doCritical, $this->ATTACK_GRASS_ONE->getCriticalPower());
+        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doCritical, $doStab, $this->ATTACK_GRASS_ONE->getCriticalPower());
 
         $target->receiveDamage(0, $totalRawSpecialDamage);
 
         /* - Calcul du nerf & Application - */
         $rawNerfAmount = $this->calculateRawNerfStatusValue($this->ATTACK_GRASS_ONE->getStatusPower(), $caster->getPresence());
-        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doStab, $doCritical, $this->ATTACK_GRASS_ONE->getCriticalPower());
+        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doCritical, $doStab, $this->ATTACK_GRASS_ONE->getCriticalPower());
 
         $nerfStatus = new StatisticModifierStatus(2, 'coordination', $totalRawNerfAmount, StatusInterface::TYPE_NERF, $this::$combatLog);
 
@@ -89,7 +89,7 @@ trait GrassAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_GRASS_TWO->getPower(), $caster->getStrength());
-        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doStab, $doCritical, $this->ATTACK_GRASS_TWO->getCriticalPower());
+        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_GRASS_TWO->getCriticalPower());
 
         $target->receiveDamage($totalRawPhysicalDamage, 0);
 
@@ -125,8 +125,8 @@ trait GrassAttacks
         $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_GRASS_THREE->getPower(), $caster->getStrength());
         $rawSpecialDamage = $this->calculateSpecialDamage($this->ATTACK_GRASS_THREE->getPower(), $caster->getPower());
         
-        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doStab, $doCritical, $this->ATTACK_GRASS_THREE->getCriticalPower());
-        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doStab, $doCritical, $this->ATTACK_GRASS_THREE->getCriticalPower());
+        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_GRASS_THREE->getCriticalPower());
+        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doCritical, $doStab, $this->ATTACK_GRASS_THREE->getCriticalPower());
 
         $damageReceived = $target->receiveDamage($totalRawPhysicalDamage, $totalRawSpecialDamage);
 

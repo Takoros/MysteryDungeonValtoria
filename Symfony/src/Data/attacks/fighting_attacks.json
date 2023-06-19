@@ -1,0 +1,42 @@
+{
+    "ATTACK_FIGHTING_ONE" : {
+        "name" : "Harmonie",
+        "type" : "Combat",
+        "description" : "Augmente la Présence et l'Impassibilité du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 2.5,
+        "critical_power" : 0,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_FIGHTING_TWO" : {
+        "name" : "Poing Karaté",
+        "type" : "Combat",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 6,
+        "status_power" : 0,
+        "critical_power" : 90,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FIGHTING_THREE" : {
+        "name" : "Aurasphère",
+        "type" : "Combat",
+        "description" : "Inflige des dégâts spéciaux à la cible.",
+        "power" : 5,
+        "status_power" : 0,
+        "critical_power" : 110,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FIGHTING_FOUR" : {
+        "name" : "Échauffement",
+        "type" : "Combat",
+        "description" : "Inflige des dégâts physique à la cible et augmente la force ainsi que le pouvoir du lanceur pendant 3 tours.",
+        "power" : 2.5,
+        "status_power" : 2.5,
+        "critical_power" : 15,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    }
+}

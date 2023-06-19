@@ -43,7 +43,7 @@ trait ElectricAttacks
 
         $this::$combatLog->addUseAttackLog($caster, $this->ATTACK_ELECTRIC_ONE, $doCritical);
 
-        /* - Calcul du buff & Application - */
+        /* - Calcul des buff & Application - */
         $rawBuffAmount = $this->calculateBuffStatusValue($this->ATTACK_ELECTRIC_ONE->getStatusPower(), $caster->getPresence());
         $totalBuffAmount = $this->calculateValueAfterStabAndCritical($rawBuffAmount, $doCritical, $doStab, $this->ATTACK_ELECTRIC_ONE->getCriticalPower());
 
@@ -76,7 +76,7 @@ trait ElectricAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawSpecialDamage = $this->calculateSpecialDamage($this->ATTACK_ELECTRIC_TWO->getPower(), $caster->getPower());
-        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doStab, $doCritical, $this->ATTACK_ELECTRIC_TWO->getCriticalPower());
+        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doCritical, $doStab, $this->ATTACK_ELECTRIC_TWO->getCriticalPower());
 
         $target->receiveDamage(0, $totalRawSpecialDamage);
 
@@ -110,13 +110,13 @@ trait ElectricAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_ELECTRIC_THREE->getPower(), $caster->getStrength());
-        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doStab, $doCritical, $this->ATTACK_ELECTRIC_THREE->getCriticalPower());
+        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_ELECTRIC_THREE->getCriticalPower());
 
         $target->receiveDamage($totalRawPhysicalDamage, 0);
 
         /* - Calcul du nerf & Application - */
         $rawNerfAmount = $this->calculateRawNerfStatusValue($this->ATTACK_ELECTRIC_THREE->getStatusPower(), $caster->getPresence());
-        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doStab, $doCritical, $this->ATTACK_ELECTRIC_THREE->getCriticalPower());
+        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doCritical, $doStab, $this->ATTACK_ELECTRIC_THREE->getCriticalPower());
 
         $nerfStatus = new StatisticModifierStatus(2, 'stamina', $totalRawNerfAmount, StatusInterface::TYPE_NERF, $this::$combatLog);
 
@@ -145,13 +145,13 @@ trait ElectricAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawSpecialDamage = $this->calculateSpecialDamage($this->ATTACK_ELECTRIC_FOUR->getPower(), $caster->getPower());
-        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doStab, $doCritical, $this->ATTACK_ELECTRIC_FOUR->getCriticalPower());
+        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doCritical, $doStab, $this->ATTACK_ELECTRIC_FOUR->getCriticalPower());
 
         $target->receiveDamage(0, $totalRawSpecialDamage);
 
         /* - Calcul du nerf & Application - */
         $rawNerfAmount = $this->calculateRawNerfStatusValue($this->ATTACK_ELECTRIC_FOUR->getStatusPower(), $caster->getPresence());
-        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doStab, $doCritical, $this->ATTACK_ELECTRIC_FOUR->getCriticalPower());
+        $totalRawNerfAmount = $this->calculateValueAfterStabAndCritical($rawNerfAmount, $doCritical, $doStab, $this->ATTACK_ELECTRIC_FOUR->getCriticalPower());
 
         $nerfSpeedStatus = new StatisticModifierStatus(3, 'speed', $totalRawNerfAmount, StatusInterface::TYPE_NERF, $this::$combatLog);
         $nerfAgilityStatus = new StatisticModifierStatus(3, 'agility', $totalRawNerfAmount, StatusInterface::TYPE_NERF, $this::$combatLog);

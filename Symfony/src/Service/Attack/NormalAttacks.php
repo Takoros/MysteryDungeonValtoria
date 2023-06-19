@@ -78,7 +78,7 @@ trait NormalAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_NORMAL_TWO->getPower(), $caster->getStrength());
-        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doStab, $doCritical, $this->ATTACK_NORMAL_TWO->getCriticalPower());
+        $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_NORMAL_TWO->getCriticalPower());
 
         $target->receiveDamage($totalRawPhysicalDamage, 0);
     }
@@ -105,7 +105,7 @@ trait NormalAttacks
 
         /* - Calcul des dégâts & Application - */
         $rawSpecialDamage = $this->calculateSpecialDamage($this->ATTACK_NORMAL_THREE->getPower(), $caster->getPower());
-        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doStab, $doCritical, $this->ATTACK_NORMAL_THREE->getCriticalPower());
+        $totalRawSpecialDamage = $this->calculateValueAfterStabAndCritical($rawSpecialDamage, $doCritical, $doStab, $this->ATTACK_NORMAL_THREE->getCriticalPower());
 
         $target->receiveDamage(0, $totalRawSpecialDamage);
 
