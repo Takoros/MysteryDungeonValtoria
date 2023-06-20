@@ -1,0 +1,42 @@
+{
+    "ATTACK_WATER_ONE" : {
+        "name" : "Absorb'O",
+        "type" : "Eau",
+        "description" : "Soigne le lanceur.",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_WATER_TWO" : {
+        "name" : "Pistolet à O",
+        "type" : "Eau",
+        "description" : "Inflige des dégâts spéciaux à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_WATER_THREE" : {
+        "name" : "Aqua-Jet",
+        "type" : "Eau",
+        "description" : "Inflige des dégâts physique à la cible, avec 30% de chance de la rendre confuse.",
+        "power" : 6,
+        "status_power" : 0,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_WATER_FOUR" : {
+        "name" : "Repli",
+        "type" : "Eau",
+        "description" : "Augmente l'Endurance du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 8,
+        "critical_power" : 25,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    }
+}
