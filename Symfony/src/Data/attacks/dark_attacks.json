@@ -1,0 +1,42 @@
+{
+    "ATTACK_DARK_ONE" : {
+        "name" : "Fumée Protectrice",
+        "type" : "Ténèbres",
+        "description" : "Augmente l'Endurance, le Courage et la Vitalité du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 3,
+        "critical_power" : 15,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    },
+    "ATTACK_DARK_TWO" : {
+        "name" : "Morsure",
+        "type" : "Ténèbres",
+        "description" : "Inflige des dégâts physique à la cible, 30% de chance d'infliger Pétrification.",
+        "power" : 5,
+        "status_power" : 0,
+        "critical_power" : 30,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_DARK_THREE" : {
+        "name" : "Aboiement",
+        "type" : "Ténèbres",
+        "description" : "Inflige des dégâts spéciaux à tout les ennemis, réduisant leur Pouvoir pendant 2 tours.",
+        "power" : 3,
+        "status_power" : 2,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team"
+    },
+    "ATTACK_DARK_FOUR" : {
+        "name" : "Feinte",
+        "type" : "Ténèbres",
+        "description" : "Inflige des dégâts mixtes à la cible. Ne peut pas être esquivé.",
+        "power" : 3.5,
+        "status_power" : 0,
+        "critical_power" : 25,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    }
+}
