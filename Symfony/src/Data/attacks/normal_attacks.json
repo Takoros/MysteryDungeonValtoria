@@ -36,7 +36,7 @@
         "power" : 0,
         "status_power" : 20,
         "critical_power" : 25,
-        "action_point_cost" : 3,
+        "action_point_cost" : 2,
         "scope" : "self"
     }
 }

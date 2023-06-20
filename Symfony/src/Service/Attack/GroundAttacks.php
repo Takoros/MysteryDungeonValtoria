@@ -140,7 +140,7 @@ trait GroundAttacks
             $caster->setNextMultipleStepAttack(['Attack' => $this->ATTACK_GROUND_FOUR, 'step' => 2]);
         }
         else if($caster->getNextMultipleStepAttack()['step'] === 2){
-             /* - Second passage - */
+            /* - Second passage - */
             $this::$combatLog->addStringLog("{$caster->getName()} surgit du sol et frappe {$target->getName()}");
             $doCritical = $this->doCritical($caster->getCoordination(), $target->getLevel(), null);
 
@@ -154,8 +154,8 @@ trait GroundAttacks
             }
 
             /* - Calcul des dégâts & Application - */
-            $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_GROUND_TWO->getPower(), $caster->getStrength());
-            $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_GROUND_TWO->getCriticalPower());
+            $rawPhysicalDamage = $this->calculatePhysicalDamage($this->ATTACK_GROUND_FOUR->getPower(), $caster->getStrength());
+            $totalRawPhysicalDamage = $this->calculateValueAfterStabAndCritical($rawPhysicalDamage, $doCritical, $doStab, $this->ATTACK_GROUND_FOUR->getCriticalPower());
 
             $target->receiveDamage($totalRawPhysicalDamage, 0);
 
