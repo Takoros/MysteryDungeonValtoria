@@ -1,0 +1,42 @@
+{
+    "ATTACK_FAIRY_ONE" : {
+        "name" : "Doux Baiser",
+        "type" : "Fée",
+        "description" : "Inflige Confusion à la cible.",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FAIRY_TWO" : {
+        "name" : "Voix Enjôleuse",
+        "type" : "Fée",
+        "description" : "Inflige des dégâts spéciaux à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FAIRY_THREE" : {
+        "name" : "Vigilance",
+        "type" : "Fée",
+        "description" : "Augmente l'impassibilité du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_FAIRY_FOUR" : {
+        "name" : "Câlinerie",
+        "type" : "Fée",
+        "description" : "Inflige des dégâts physique à la cible et réduit sa force pendant 2 tours.",
+        "power" : 10,
+        "status_power" : 1.5,
+        "critical_power" : 25,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}
