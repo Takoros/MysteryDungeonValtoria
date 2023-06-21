@@ -1,0 +1,42 @@
+{
+    "ATTACK_PSY_ONE" : {
+        "name" : "Hypnose",
+        "type" : "Psy",
+        "description" : "Inflige Sommeil à la cible",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_PSY_TWO" : {
+        "name" : "Choc Mental",
+        "type" : "Psy",
+        "description" : "Inflige des dégâts spéciaux à la cible et possède 10% de chance d'infliger Confusion à celle-ci.",
+        "power" : 6,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_PSY_THREE" : {
+        "name" : "Psykoud'Boul",
+        "type" : "Psy",
+        "description" : "Inflige des dégâts physique à la cible",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 65,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_PSY_FOUR" : {
+        "name" : "Vibra Soin",
+        "type" : "Psy",
+        "description" : "Soigne tout les alliés du groupe",
+        "power" : 6,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 3,
+        "scope" : "ally_team"
+    }
+}

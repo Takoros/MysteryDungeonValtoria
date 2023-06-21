@@ -1,0 +1,42 @@
+{
+    "ATTACK_FLYING_ONE" : {
+        "name" : "Danse Plume",
+        "type" : "Vol",
+        "description" : "Augmente la Force et le Pouvoir du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 6,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    },
+    "ATTACK_FLYING_TWO" : {
+        "name" : "Cru-Ailes",
+        "type" : "Vol",
+        "description" : "Inflige des dégâts physique à la cible, et augmente la Force du lanceur pendant 3 tours.",
+        "power" : 7,
+        "status_power" : 1.5,
+        "critical_power" : 10,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FLYING_THREE" : {
+        "name" : "Tornade",
+        "type" : "Vol",
+        "description" : "Inflige des dégâts spéciaux à la cible, et augmente le Pouvoir pendant 3 tours.",
+        "power" : 6,
+        "status_power" : 1.5,
+        "critical_power" : 0,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FLYING_FOUR" : {
+        "name" : "Vol",
+        "type" : "Vol",
+        "description" : "Attaque en deux tours. Lors du premier tour, augmente son Endurance et son Courage pendant 2 tours. Lors du second tour, inflige des dégâts mixtes à la cible.",
+        "power" : 3.5,
+        "status_power" : 12,
+        "critical_power" : 10,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}

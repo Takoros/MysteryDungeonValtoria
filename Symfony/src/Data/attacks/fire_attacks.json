@@ -1,0 +1,42 @@
+{
+    "ATTACK_FIRE_ONE" : {
+        "name" : "Enhardir",
+        "type" : "Feu",
+        "description" : "Augmente la Force du lanceur.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_FIRE_TWO" : {
+        "name" : "Flammèche",
+        "type" : "Feu",
+        "description" : "Inflige des dégâts spéciaux à la cible avec 20% de chance de Brûler celle-ci.",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FIRE_THREE" : {
+        "name" : "Poing Feu",
+        "type" : "Feu",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_FIRE_FOUR" : {
+        "name" : "Danse du Feu",
+        "type" : "Feu",
+        "description" : "Inflige des dégâts mixtes à la cible.",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 75,
+        "action_point_cost" : 4,
+        "scope" : "enemy_team_member"
+    }
+}

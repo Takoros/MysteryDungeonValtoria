@@ -1,0 +1,42 @@
+{
+    "ATTACK_DRAGON_ONE" : {
+        "name" : "Danse Draco",
+        "type" : "Dragon",
+        "description" : "Augmente la Vitesse et la Force du lanceur",
+        "power" : 0,
+        "status_power" : 4,
+        "critical_power" : 10,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    },
+    "ATTACK_DRAGON_TWO" : {
+        "name" : "Ouragan",
+        "type" : "Dragon",
+        "description" : "Inflige des dégâts spéciaux à tout les ennemis.",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team"
+    },
+    "ATTACK_DRAGON_THREE" : {
+        "name" : "Abattage",
+        "type" : "Dragon",
+        "description" : "Inflige des dégâts physiques à tout les ennemis et réduit leur Pouvoir pendant 2 tours.",
+        "power" : 3,
+        "status_power" : 1.5,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team"
+    },
+    "ATTACK_DRAGON_FOUR" : {
+        "name" : "Dracacophonie",
+        "type" : "Dragon",
+        "description" : "S'auto inflige des dégâts mixtes, mais augmente sa Force, son Pouvoir, sa Vitesse et sa Coordination pendant 3 tours.",
+        "power" : 5,
+        "status_power" : 7,
+        "critical_power" : 0,
+        "action_point_cost" : 3,
+        "scope" : "self"
+    }
+}
