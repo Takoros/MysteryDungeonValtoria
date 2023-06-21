@@ -10,6 +10,9 @@ class Rotation
 {
     const TYPE_OPENER = 'Opener';
     const TYPE_ROTATION = 'Rotation';
+
+    /** Maximum of action per rotation */
+    const MAX_ACTION_PER_ROTATION = 5;
     
     #[ORM\Id]
     #[ORM\GeneratedValue]
