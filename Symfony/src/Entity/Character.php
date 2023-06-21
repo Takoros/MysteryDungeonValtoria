@@ -176,6 +176,13 @@ class Character
         return $this;
     }
 
+    public function getTypes(): array
+    {
+        $speciesType = $this->getSpecies()->getType();
+
+        return $speciesType->toArray();
+    }
+
     public function getUserI(): ?User
     {
         return $this->userI;
