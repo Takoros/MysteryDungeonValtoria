@@ -1,0 +1,92 @@
+{
+    "ATTACK_EXPLORER_BASE" : {
+        "name" : "Lutte",
+        "type" : "Aventurier",
+        "description" : "Inflige des dégâts mixtes à la cible.",
+        "power" : 2.5,
+        "status_power" : null,
+        "critical_power" : 50,
+        "action_point_cost" : 0,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_EXPLORER_ONE" : {
+        "name" : "Tranche",
+        "type" : "Normal",
+        "description" : "Inflige des dégâts physiques à la cible.",
+        "power" : 6,
+        "status_power" : null,
+        "critical_power" : 90,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_EXPLORER_TWO" : {
+        "name" : "Reflet",
+        "type" : "Normal",
+        "description" : "Augmente l'Agilité du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_EXPLORER_THREE" : {
+        "name" : "Regard Touchant",
+        "type" : "Fée",
+        "description" : "Réduit la Force et le Pouvoir de la cible pendant 2 tours.",
+        "power" : 0,
+        "status_power" : 2.5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_EXPLORER_FOUR" : {
+        "name" : "Encouragement",
+        "type" : "Normal",
+        "description" : "Augmente la Vitesse de l'équipe alliée (y compris soi-même) pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 2,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "ally_team"
+    },
+    "ATTACK_EXPLORER_FIVE" : {
+        "name" : "Léchouille",
+        "type" : "Spectre",
+        "description" : "Inflige des dégâts physique à la cible, avec 30% de chance de Paralyser la cible.",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_EXPLORER_SIX" : {
+        "name" : "Équilibre",
+        "type" : "Normal",
+        "description" : "Soigne de 1 à 3 status négatifs (1 : 45%, 2 : 35%, 3 : 20%).",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    },
+    "ATTACK_EXPLORER_SEVEN" : {
+        "name" : "Coup Double",
+        "type" : "Normal",
+        "description" : "Inflige des dégâts physique à la cible, deux fois",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_EXPLORER_EIGHT" : {
+        "name" : "Pansement",
+        "type" : "Normal",
+        "description" : "Soigne l'allié avec le moins de Vitalité",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "ally_team_member_lowest_vitality"
+    }
+}

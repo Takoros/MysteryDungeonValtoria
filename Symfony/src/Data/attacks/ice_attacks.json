@@ -1,0 +1,42 @@
+{
+    "ATTACK_ICE_ONE" : {
+        "name" : "Buée Noire",
+        "type" : "Glace",
+        "description" : "Retire 1 à 3 bonus sur la cible (1 : 45%, 2 : 35%, 3 : 20%).",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_ICE_TWO" : {
+        "name" : "Poudreuse",
+        "type" : "Glace",
+        "description" : "Inflige des dégâts spéciaux à la cible, et réduit son Endurance pendant 2 tours.",
+        "power" : 6,
+        "status_power" : 2,
+        "critical_power" : 70,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_ICE_THREE" : {
+        "name" : "Éclats Glace",
+        "type" : "Glace",
+        "description" : "Inflige des dégâts physique à la cible, et augmente la Vitesse du lanceur pendant 3 tours.",
+        "power" : 7,
+        "status_power" : 1.25,
+        "critical_power" : 15,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_ICE_FOUR" : {
+        "name" : "Onde Boréale",
+        "type" : "Glace",
+        "description" : "Inflige des dégâts spéciaux à la cible, et réduit sa Vitesse pendant 2 tours.",
+        "power" : 9,
+        "status_power" : 2,
+        "critical_power" : 50,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}

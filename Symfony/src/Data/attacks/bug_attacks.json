@@ -1,0 +1,42 @@
+{
+    "ATTACK_BUG_ONE" : {
+        "name" : "Sécrétion",
+        "type" : "Insecte",
+        "description" : "Réduit la Vitesse de la cible.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 0,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_BUG_TWO" : {
+        "name" : "Piqûre",
+        "type" : "Insecte",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_BUG_THREE" : {
+        "name" : "Survinsecte",
+        "type" : "Insecte",
+        "description" : "Inflige des dégâts spéciaux à tout les ennemis, diminie le Pouvoir de ceux-ci.",
+        "power" : 3,
+        "status_power" : 2,
+        "critical_power" : 35,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team"
+    },
+    "ATTACK_BUG_FOUR" : {
+        "name" : "Papillodanse",
+        "type" : "Insecte",
+        "description" : "Augmente le Pouvoir, le Courage et la Vitesse du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 15,
+        "action_point_cost" : 3,
+        "scope" : "self"
+    }
+}

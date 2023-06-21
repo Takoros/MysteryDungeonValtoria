@@ -1,0 +1,42 @@
+{
+    "ATTACK_POISON_ONE" : {
+        "name" : "Toxik",
+        "type" : "Poison",
+        "description" : "Inflige Poison Grave à la cible.",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_POISON_TWO" : {
+        "name" : "Dard-Venin",
+        "type" : "Poison",
+        "description" : "Inflige des dégâts physique à la cible, a 30% de chance d'infliger Poison.",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 20,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_POISON_THREE" : {
+        "name" : "Acide",
+        "type" : "Poison",
+        "description" : "Inflige des dégâts spéciaux à tout les ennemis, de plus, possède 10% de chance de réduire la Force de celle-ci pendant 2 tours.",
+        "power" : 3,
+        "status_power" : 2.5,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team"
+    },
+    "ATTACK_POISON_FOUR" : {
+        "name" : "Choc Venin",
+        "type" : "Poison",
+        "description" : "Inflige des dégâts spéciaux à la cible, si celle-ci est empoisonnée, infligé également des dégâts physique de puissance 2 en utilisant la Présence comme statistique.",
+        "power" : 9,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}

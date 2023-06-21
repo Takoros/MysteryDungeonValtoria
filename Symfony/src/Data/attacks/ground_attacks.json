@@ -1,0 +1,42 @@
+{
+    "ATTACK_GROUND_ONE" : {
+        "name" : "Jet de sable",
+        "type" : "Sol",
+        "description" : "Réduit la Coordination de la cible pendant 2 tours.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GROUND_TWO" : {
+        "name" : "Tourbi-Sable",
+        "type" : "Sol",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GROUND_THREE" : {
+        "name" : "Tir de boue",
+        "type" : "Sol",
+        "description" : "Inflige des dégâts spéciaux à la cible et réduit sa Vitesse pendant 2 tours.",
+        "power" : 6,
+        "status_power" : 2,
+        "critical_power" : 30,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GROUND_FOUR" : {
+        "name" : "Tunnel",
+        "type" : "Sol",
+        "description" : "Attaque en deux tours. Lors du premier tour, augmente son Endurance et son Courage pendant 2 tours. Lors du second tour, inflige des dégâts physique à la cible.",
+        "power" : 5,
+        "status_power" : 12,
+        "critical_power" : 30,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "ATTACK_NORMAL_ONE" : {
+        "name" : "Flair",
+        "type" : "Normal",
+        "description" : "Purge les bonus d'Agilité de la cible, et augmente la Coordination du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 4,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_NORMAL_TWO" : {
+        "name" : "Charge",
+        "type" : "Normal",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 70,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_NORMAL_THREE" : {
+        "name" : "Météores",
+        "type" : "Normal",
+        "description" : "Inflige des dégâts spéciaux à la cible, et augmente le Pouvoir du lanceur pendant 3 tours.",
+        "power" : 6,
+        "status_power" : 1.25,
+        "critical_power" : 35,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_NORMAL_FOUR" : {
+        "name" : "Abri",
+        "type" : "Normal",
+        "description" : "Augmente l'Endurance et le Courage du lanceur pendant 2 tours.",
+        "power" : 0,
+        "status_power" : 20,
+        "critical_power" : 25,
+        "action_point_cost" : 2,
+        "scope" : "self"
+    }
+}
