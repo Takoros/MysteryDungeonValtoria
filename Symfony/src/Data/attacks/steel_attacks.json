@@ -1,0 +1,42 @@
+{
+    "ATTACK_STEEL_ONE" : {
+        "name" : "Analyse",
+        "type" : "Acier",
+        "description" : "Augmente la Coordination de l'équipe alliée (y compris soi-même) pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 2,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "ally_team"
+    },
+    "ATTACK_STEEL_TWO" : {
+        "name" : "Lancécrou",
+        "type" : "Acier",
+        "description" : "Inflige des dégâts spéciaux à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_STEEL_THREE" : {
+        "name" : "Griffes Acier",
+        "type" : "Acier",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_STEEL_FOUR" : {
+        "name" : "Bombe Aimant",
+        "type" : "Acier",
+        "description" : "Inflige des dégâts physique à tout les adversaires.",
+        "power" : 4,
+        "status_power" : 0,
+        "critical_power" : 75,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team"
+    }
+}

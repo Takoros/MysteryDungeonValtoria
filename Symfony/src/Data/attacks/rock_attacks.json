@@ -1,0 +1,42 @@
+{
+    "ATTACK_ROCK_ONE" : {
+        "name" : "Renforcement",
+        "type" : "Roche",
+        "description" : "Augmente l'Endurance du lanceur pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 5,
+        "critical_power" : 25,
+        "action_point_cost" : 1,
+        "scope" : "self"
+    },
+    "ATTACK_ROCK_TWO" : {
+        "name" : "Jet Pierre",
+        "type" : "Roche",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 9,
+        "status_power" : 0,
+        "critical_power" : 30,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_ROCK_THREE" : {
+        "name" : "Assourdir",
+        "type" : "Roche",
+        "description" : "Inflige des dégâts spéciaux à la cible, avec 15% de chance de la rendre Confuse.",
+        "power" : 5,
+        "status_power" : 0,
+        "critical_power" : 40,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_ROCK_FOUR" : {
+        "name" : "Lourdeur",
+        "type" : "Roche",
+        "description" : "Inflige des dégâts physique et réduit la Force ainsi que la Coordination de la cible pendant 2 tours.",
+        "power" : 2,
+        "status_power" : 5.5,
+        "critical_power" : 25,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    }
+}
