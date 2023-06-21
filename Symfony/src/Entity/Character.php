@@ -352,7 +352,7 @@ class Character
         return false;
     }
 
-    /**
+ /**
      * @return Collection<int, Rotation>
      */
     public function getRotations(): Collection
@@ -360,25 +360,31 @@ class Character
         return $this->rotations;
     }
 
-    public function addRotation(Rotation $rotation): self
+    /**
+     * @return Rotation|null
+     */
+    public function getRotation(): ?Rotation
     {
-        if (!$this->rotations->contains($rotation)) {
-            $this->rotations->add($rotation);
-            $rotation->setCharacter($this);
-        }
-
-        return $this;
-    }
-
-    public function removeRotation(Rotation $rotation): self
-    {
-        if ($this->rotations->removeElement($rotation)) {
-            // set the owning side to null (unless already changed)
-            if ($rotation->getCharacter() === $this) {
-                $rotation->setCharacter(null);
+        foreach ($this->rotations as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_ROTATION){
+                return $rotation;
             }
         }
 
-        return $this;
+        return null;
+    }
+
+    /**
+     * @return Rotation|null
+     */
+    public function getOpenerRotation(): ?Rotation
+    {
+        foreach ($this->rotations as $rotation) {
+            if($rotation->getType() === Rotation::TYPE_OPENER){
+                return $rotation;
+            }
+        }
+
+        return null;
     }
 }
