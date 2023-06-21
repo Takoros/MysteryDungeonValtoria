@@ -86,7 +86,7 @@ class CharacterService
         /**
          * Verify and Add Gender
          */
-        if($characterData->characterGender && ($characterData->characterGender === "Mâle" || $characterData->characterGender === "Femelle")){
+        if($characterData->characterGender && ($characterData->characterGender === Character::GENDER_MALE || $characterData->characterGender === Character::GENDER_FEMALE)){
             $newCharacter->setGender($characterData->characterGender);
         }
         else {
