@@ -12,6 +12,9 @@ use Doctrine\ORM\Mapping\Table;
 #[Table(name: '`character`')]
 class Character
 {
+    const GENDER_MALE = 'Mâle';
+    const GENDER_FEMALE = 'Femelle';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
