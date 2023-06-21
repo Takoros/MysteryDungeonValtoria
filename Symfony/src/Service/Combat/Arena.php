@@ -172,14 +172,14 @@ class Arena
                     'key' => $key,
                     'team' => $fighter->getTeam(),
                     'fighterId' => $fighter->getId(),
-                    'fighterSpeed' => $fighter->getSpeed(),
+                    'fighterSpeed' => $fighter->getBaseSpeed(),
                     'fighter' => &$fighter
                 ];    
             }
         }
 
         usort($turnOrder, function($a, $b){
-            return $a['fighterSpeed'] <=> $b['fighterSpeed'];
+            return $b['fighterSpeed'] <=> $a['fighterSpeed'];
         });
 
         $this->turnOrder = $turnOrder;
