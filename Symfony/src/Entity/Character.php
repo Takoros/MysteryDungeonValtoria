@@ -183,7 +183,9 @@ class Character
 
     public function getTypes(): array
     {
-        return (array) $this->Species->getType();
+        $speciesType = $this->getSpecies()->getType();
+        
+        return $speciesType->toArray();
     }
 
     public function setUserI(?User $userI): self
