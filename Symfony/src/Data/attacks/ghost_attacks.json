@@ -1,0 +1,42 @@
+{
+    "ATTACK_GHOST_ONE" : {
+        "name" : "Onde Folie",
+        "type" : "Spectre",
+        "description" : "Inflige Confusion à la cible.",
+        "power" : 0,
+        "status_power" : 0,
+        "critical_power" : 0,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GHOST_TWO" : {
+        "name" : "Étonnement",
+        "type" : "Spectre",
+        "description" : "Inflige des dégâts spéciaux à la cible, 30% de chance d'infliger Pétrification.",
+        "power" : 5,
+        "status_power" : 0,
+        "critical_power" : 30,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GHOST_THREE" : {
+        "name" : "Ball'Ombre",
+        "type" : "Spectre",
+        "description" : "Inflige des dégâts physique à la cible.",
+        "power" : 8,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 2,
+        "scope" : "enemy_team_member"
+    },
+    "ATTACK_GHOST_FOUR" : {
+        "name" : "Châtiment",
+        "type" : "Spectre",
+        "description" : "Inflige des dégâts spéciaux à la cible, augmente la puissance de l'attaque à 10, si la cible est affectée par un status de contrôle.",
+        "power" : 7,
+        "status_power" : 0,
+        "critical_power" : 50,
+        "action_point_cost" : 3,
+        "scope" : "enemy_team_member"
+    }
+}
