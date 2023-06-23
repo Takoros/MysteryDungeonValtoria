@@ -1,0 +1,165 @@
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+.combatLogTable {
+    font-family: 'Rajdhani', sans-serif;
+    width: 80%;
+    margin: auto;
+    border: 1px solid black;
+    table-layout: unset;
+
+    background-color: rgb(255, 235, 205);
+}
+
+.combatLogTable tr {
+    height: 25px !important;
+    padding: 0;
+    margin: 0;
+}
+
+.combatLogTable td {
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.combatLogTableTdIcon {
+    width: 25px;
+    border: 1px solid #333;
+}
+
+.combatLogTableTdText {
+    border: 1px solid #333;
+    padding-left: 5px !important;
+}
+
+.combatLogTableTdRound {
+    background-color: rgb(224, 196, 152);
+    border: 1px solid #333;
+    padding-left: 5px !important;
+}
+
+.combatLogTableTdIcon .winner {
+    display: block;
+    background-image: url("/icons/trophy.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .sword-crossed {
+    display: block;
+    background-image: url("/icons/dual-swords.svg");
+    background-position: -0.5px;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .dodge {
+    display: block;
+    background-image: url("/icons/player-dodge.svg");
+    background-position: -0.5px;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .damageTakenByAttack {
+    display: block;
+    background-image: url("/icons/damage-kinetic.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .healingTakenByAttack {
+    display: block;
+    background-image: url("/icons/health.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .ko {
+    display: block;
+    background-image: url("/icons/death.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .remainingHealth {
+    display: block;
+    background-image: url("/icons/heart-rate.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .buff {
+    display: block;
+    background-image: url("/icons/buff.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .nerf {
+    display: block;
+    background-image: url("/icons/debuff.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .modifierStatusLoss {
+    display: block;
+    background-image: url("/icons/balance.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .damagingReceived {
+    display: block;
+    background-image: url("/icons/blood.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .statusReceived {
+    display: block;
+    background-image: url("/icons/confus.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .statusLoss {
+    display: block;
+    background-image: url("/icons/potion.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .attackNoEffect {
+    display: block;
+    background-image: url("/icons/effacer.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.physicalDamage {
+    color: red;
+}
+
+.specialDamage {
+    color: blue;
+}
+
+.statusDamage {
+    color:rgb(195, 0, 195);
+}
