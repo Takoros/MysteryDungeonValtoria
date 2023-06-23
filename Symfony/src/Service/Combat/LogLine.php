@@ -30,6 +30,7 @@ class LogLine
     const TYPE_CONTROL_STATUS_RECEIVED = 'type_control_status_received';
     const TYPE_CONTROL_STATUS_ACTIVATE = 'type_control_status_activate';
     const TYPE_STATISTIC_MODIFIER_LOSS = 'type_statistic_modifier_loss';
+    const TYPE_CONTROL_STATUS_NO_EFFECT = 'type_control_status_no_effect';
     const TYPE_DAMAGING_STATUS_RECEIVED = 'type_damaging_status_received';
     const TYPE_STATISTIC_MODIFIER_RECEIVED = 'type_statistic_modifier_received';
 
@@ -326,6 +327,23 @@ class LogLine
     public function initTypeControlStatusActivate(Fighter $fighter, string $controlStatusType): self
     {
         if(!$this->isType(self::TYPE_CONTROL_STATUS_ACTIVATE)){
+            throw new Exception('Wrong type of LogLine used.');
+        }
+
+        $this->data = (object) [
+            'fighterName' => $fighter->getName(),
+            'controlType' => $controlStatusType
+        ];
+
+        return $this;
+    }
+
+    /**
+     * Initiates a ControlStatus No Effect LogLine
+     */
+    public function initTypeControlStatusNoEffect(Fighter $fighter, string $controlStatusType): self
+    {
+        if(!$this->isType(self::TYPE_CONTROL_STATUS_NO_EFFECT)){
             throw new Exception('Wrong type of LogLine used.');
         }
 

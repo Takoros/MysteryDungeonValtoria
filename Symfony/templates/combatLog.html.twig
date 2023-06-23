@@ -101,6 +101,11 @@
                             <td class='combatLogTableTdText'>{{LogLine.data.controlType | controlActivate(LogLine.data.fighterName) }}</td>
                         {% endif %}
 
+                        {% if LogLine.type is same as('type_control_status_no_effect') %}
+                            <td class='combatLogTableTdIcon'><div class='attackNoEffect'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} ne peut pas recevoir le status {{ LogLine.data.controlType | control }}, iel en est déjà affecté.</td>
+                        {% endif %}
+
                         {% if LogLine.type is same as('type_attack_no_effect') %}
                             <td class='combatLogTableTdIcon'><div class='attackNoEffect'></div></td>
                             <td class='combatLogTableTdText'>L'attaque n'a eu aucun effet.</td>
