@@ -865,7 +865,7 @@ class Fighter extends FighterAttacks
         ){
             
             if($this->isAffectedByStatus($status->getStatusType())){
-                // TODO : addStringLog("{$this->getName()} est déjà affecté par ce status, il ne peut pas en recevoir un autre.");
+                $this::$combatLog->addControlStatusNoEffect($this, $status->getStatusType());
                 return;
             }
             
