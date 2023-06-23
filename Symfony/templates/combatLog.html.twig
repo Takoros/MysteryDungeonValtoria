@@ -1,0 +1,114 @@
+{% extends "base.html.twig" %}
+
+{% block title %}PDM : Valtoria | Rapport de Bataille {% endblock %}
+
+{% block body %}
+    <table class='combatLogTable'>
+        <thead>
+            <tr>
+                <th colspan="2">Rapport du Combat du {{ combatLog.dateCreation | date('d/m/Y H:i', "Europe/Paris")}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for roundLog in displayableLogs %}
+                <tr>
+                    <td class='combatLogTableTdRound' colspan="2">Round {{ roundLog[0].roundNumber }}</td>
+                </tr>
+                {% for LogLine in roundLog %}
+                    <tr>
+                        {% if LogLine.type is same as('type_winner') %}
+                            <td class='combatLogTableTdIcon'><div class='winner'></div></td>
+                            <td class='combatLogTableTdText'>Fin du combat ! {% if LogLine.data.winner == 0 %}Égalité !{% else %}Victoire de l'équipe {{LogLine.data.winner}} !{% endif %}</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_attack') %}
+                            <td class='combatLogTableTdIcon'><div class='sword-crossed'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} lance {{ LogLine.data.attackName }} ! {% if LogLine.data.isCrit %} Critique !{% endif %}</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_dodge') %}
+                            <td class='combatLogTableTdIcon'><div class='dodge'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} a esquivé l'attaque !</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_damage_taken_by_attack') %}
+                            <td class='combatLogTableTdIcon'><div class='damageTakenByAttack'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} subit {{LogLine.data.physicalDamage + LogLine.data.specialDamage}} (<span class="physicalDamage">{{LogLine.data.physicalDamage}}</span>|<span class="specialDamage">{{LogLine.data.specialDamage}}</span>) points de dégâts.</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_damage_taken_by_status') %}
+                            <td class='combatLogTableTdIcon'><div class='damagingReceived'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} subit <span class="statusDamage">{{ LogLine.data.damageTaken }}</span> points de dégâts de son/sa {{LogLine.data.statusType | damaging}}</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_healing_taken_by_attack') %}
+                            <td class='combatLogTableTdIcon'><div class='healingTakenByAttack'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} est soigné de {{ LogLine.data.healAmount}} points de vitalité.</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_ko') %}
+                            <td class='combatLogTableTdIcon'><div class='ko'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} est tombé K.O.</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_remaining_vitality') %}
+                            <td class='combatLogTableTdIcon'><div class='remainingHealth'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} a ({{LogLine.data.remainingVitality}}/{{LogLine.data.vitality}}) points de vitalité restants !</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_statistic_modifier_received') %}
+                            {% if LogLine.data.modifierType  == 'buff' %}
+                                <td class='combatLogTableTdIcon'><div class='buff'></div></td>
+                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} voit {{ LogLine.data.statistic | statistic }} augmentée de {{ LogLine.data.modifier }} !</td>
+                            {% elseif LogLine.data.modifierType  == 'nerf' %}
+                                <td class='combatLogTableTdIcon'><div class='nerf'></div></td>
+                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} voit {{ LogLine.data.statistic | statistic }} baissée de {{ LogLine.data.modifier }} !</td>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_statistic_modifier_loss') %}
+                            {% if LogLine.data.modifierType  == 'buff' %}
+                                <td class='combatLogTableTdIcon'><div class='modifierStatusLoss'></div></td>
+                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd son bonus de {{ LogLine.data.modifier }} sur {{ LogLine.data.statistic | statistic }}!</td>
+                            {% elseif LogLine.data.modifierType  == 'nerf' %}
+                                <td class='combatLogTableTdIcon'><div class='modifierStatusLoss'></div></td>
+                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd son malus de  {{ LogLine.data.modifier }} sur {{ LogLine.data.statistic | statistic }}!</td>
+                            {% endif %}
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_damaging_status_received') %}
+                            <td class='combatLogTableTdIcon'><div class='damagingReceived'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} reçoit le status {{ LogLine.data.damagingType | damaging }} </td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_damaging_status_loss') %}
+                            <td class='combatLogTableTdIcon'><div class='statusLoss'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd le status {{ LogLine.data.damagingType | damaging }} </td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_control_status_received') %}
+                            <td class='combatLogTableTdIcon'><div class='statusReceived'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} reçoit le status {{ LogLine.data.controlType | control }} </td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_control_status_loss') %}
+                            <td class='combatLogTableTdIcon'><div class='statusLoss'></div></td>
+                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd le status {{ LogLine.data.controlType | control }} </td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_control_status_activate') %}
+                            <td class='combatLogTableTdIcon'><div class='statusReceived'></div></td>
+                            <td class='combatLogTableTdText'>{{LogLine.data.controlType | controlActivate(LogLine.data.fighterName) }}</td>
+                        {% endif %}
+
+                        {% if LogLine.type is same as('type_attack_no_effect') %}
+                            <td class='combatLogTableTdIcon'><div class='attackNoEffect'></div></td>
+                            <td class='combatLogTableTdText'>L'attaque n'a eu aucun effet.</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>   
+{% endblock %}
+
