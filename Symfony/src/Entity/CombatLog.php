@@ -424,6 +424,17 @@ class CombatLog
     }
 
     /**
+     * Creates a log for a control status no effect
+     */
+    public function addControlStatusNoEffect(Fighter $fighter, string $statusType): void
+    {
+        $logLine = new LogLine(LogLine::TYPE_CONTROL_STATUS_NO_EFFECT, $this->arena->currentRound);
+        $logLine->initTypeControlStatusNoEffect($fighter, $statusType);
+
+        $this->addLogLine($logLine);
+    }
+
+    /**
      * Creates a log for a attack no effect
      */
     public function addAttackNoEffectLog(): void
