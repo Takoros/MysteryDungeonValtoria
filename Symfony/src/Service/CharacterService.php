@@ -191,7 +191,7 @@ class CharacterService
     }
 
     /**
-     * Fait monter de niveau le character
+     * Makes a Character gain a level
      */
     public function levelUp($character){
         if($character->hasEnoughXP()){
@@ -207,6 +207,9 @@ class CharacterService
         return false;
     }
     
+    /**
+     * Modifies a Character's description
+     */
     public function modifyDescription($newDescription, $character){
 
         /**
@@ -230,6 +233,9 @@ class CharacterService
         ];
     }
 
+    /**
+     * Makes a Character spend Stat Points
+     */
     public function spendStatPoint($character, $statToModify){
         $statModifyable = ['vitality', 'strength', 'stamina', 'power', 'bravery', 'presence', 'impassiveness', 'agility', 'coordination', 'speed'];
 
