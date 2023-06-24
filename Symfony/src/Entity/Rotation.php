@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\RotationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Routing\Exception\InvalidParameterException;
 
 #[ORM\Entity(repositoryClass: RotationRepository::class)]
 class Rotation
@@ -61,6 +62,16 @@ class Rotation
         $this->type = $type;
 
         return $this;
+    }
+
+    public function getAllAttacks(): array
+    {
+        return [$this->getAttackOne(),
+                $this->getAttackTwo(),
+                $this->getAttackThree(),
+                $this->getAttackFour(),
+                $this->getAttackFive(),
+        ];
     }
 
     public function getAttackOne(): ?Attack
@@ -133,5 +144,84 @@ class Rotation
         $this->Character = $Character;
 
         return $this;
+    }
+
+    public function getSlotAttack(int $slot): Attack
+    {
+        if($slot === 1){
+            return $this->getAttackOne();
+        }
+        else if($slot === 2){
+            return $this->getAttackTwo();
+        }
+        else if($slot === 3){
+            return $this->getAttackThree();
+        }
+        else if($slot === 4){
+            return $this->getAttackFour();
+        }
+        else if($slot === 5){
+            return $this->getAttackFive();
+        }
+        else {
+            throw new InvalidParameterException();
+        }
+    }
+
+    public function setSlotAttack(int $slot, Attack $newAttack): self
+    {
+        if($slot === 1){
+            $this->attackOne = $newAttack;
+        }
+        else if($slot === 2){
+            $this->attackTwo = $newAttack;
+        }
+        else if($slot === 3){
+            $this->attackThree = $newAttack;
+        }
+        else if($slot === 4){
+            $this->attackFour = $newAttack;
+        }
+        else if($slot === 5){
+            $this->attackFive = $newAttack;
+        }
+        else {
+            throw new InvalidParameterException();
+        }
+
+        return $this;
+    }
+
+    /**
+     * Returns true if an attack can fit into the slot (with ActionPoint costs)
+     */
+    public function canFitAttackIntoSlot(Attack $Attack, int $maximumOfActionPoint, int $slot): bool
+    {
+        $actionPointUsed = $this->getActionPointUsed();
+        $slotAttack = $this->getSlotAttack($slot);
+
+        $actionPointUsedWithoutSlotAttack = $actionPointUsed - $slotAttack->getActionPointCost();
+        $actionPointUsedWithNewAttack = $actionPointUsedWithoutSlotAttack + $Attack->getActionPointCost();
+
+        if($actionPointUsedWithNewAttack > $maximumOfActionPoint){
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+    /**
+     * Returns the number of action point used by the Rotation
+     */
+    public function getActionPointUsed(): int
+    {
+        $actionPointUsed = 0;
+
+        foreach ($this->getAllAttacks() as $Attack) {
+            $actionPointUsed += $Attack->getActionPointCost();
+        }
+
+        return $actionPointUsed;
     }
 }
