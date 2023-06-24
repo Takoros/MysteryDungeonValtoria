@@ -264,4 +264,47 @@ class CharacterService
             ];
         }
     }
+
+    /**
+     * Changes a Rotation|Opener's Character Attack
+     */
+    public function modifyRotationAttack(Character $character, string $rotationType, int $attackSlot, string $newAttackID): array
+    {
+        if($rotationType === Rotation::TYPE_OPENER){
+            $rotation = $character->getOpenerRotation();
+        }
+        else if ($rotationType === Rotation::TYPE_ROTATION){
+            $rotation = $character->getRotation();
+        }
+        else {
+            return [
+                'statusCode' => 400,
+                'message' => 'Wrong Rotation Type'
+            ];
+        }
+
+        $Attack = $this->attackRepository->find($newAttackID);
+
+        if($Attack === null){
+            return [
+                'statusCode' => 400,
+                'message' => 'AttackId does not relate to any Attack'
+            ];
+        }
+
+        if($rotation->canFitAttackIntoSlot($Attack, $character->getStats()->getActionPoint(), $attackSlot) ){
+            $rotation->setSlotAttack($attackSlot, $Attack);
+            $this->entityManager->flush();
+            return [
+                'statusCode' => 200,
+                'message' => 'Attack modified'
+            ];
+        }
+        else {
+            return [
+                'statusCode' => 400,
+                'message' => 'This Rotation does not have enough Action Point left to change this slot with this attack'
+            ];
+        }
+    }
 }
