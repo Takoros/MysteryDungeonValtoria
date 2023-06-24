@@ -36,7 +36,7 @@ class CharacterService
         /**
          * Verify that user does not already have a character, add the user if it doesnt exist
          */
-        if($characterData->discordUserId && is_int($characterData->discordUserId)){
+        if($characterData->discordUserId && is_string($characterData->discordUserId)){
             $users = $this->userRepository->findAll();
             $userExist = false;
 
