@@ -124,4 +124,60 @@ class CharacterAPIController extends AbstractAPIController
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
+
+    /**
+     * Modify an attack slot
+     */
+    #[Route('/api/character/modify/attack', name: 'api_character_modify_attack',  methods:["POST"])]
+    public function modifyRotationAttack(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType", "attackSlot","attackID"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist'], 400);
+        }
+
+        $character = $user->getCharacter();
+
+        $results = $this->characterService->modifyRotationAttack($character, $post->data->rotationType, $post->data->attackSlot, $post->data->attackID);
+
+        return new JsonResponse(['message' => $results['message']], $results['statusCode']);
+    }
+
+    /**
+     * Responds a resume of a Rotation|Opener
+     */
+    #[Route('/api/character/resume/rotation', name: 'api_character_resume_rotation',  methods:["POST"])]
+    public function resumeRotation(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist']);
+        }
+        
+        $character = $user->getCharacter();
+
+        if($character === null){
+            return new JsonResponse(['message' => 'User does not have Character']);
+        }
+
+        return new JsonResponse($this->characterFormatter->formatRotation($character, $post->data->rotationType));
+    }
 }
