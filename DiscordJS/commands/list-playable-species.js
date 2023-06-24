@@ -17,7 +17,7 @@ module.exports = {
 		await api_call.connectToAPI()
         if (api_call.getAPIResponseCode() !== 200) {
 			console.log(`Code ${api_call.getAPIResponseCode()} : Error while performing request`);
-            await interaction.reply('Erreur, veuillez réessayer plus tard');
+            await interaction.reply('Erreur, veuillez réessayer plus tard.');
         }
         else {
 			const pawIcon = new AttachmentBuilder('./assets/paw.png');
