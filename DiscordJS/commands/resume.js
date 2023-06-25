@@ -1,5 +1,6 @@
 const { AttachmentBuilder, EmbedBuilder, SlashCommandBuilder, bold, italic } = require('discord.js');
 const { CallingAPI } = require("../functions/CallingAPI.js");
+const buttonPages = require("../functions/pagination");
 
 module.exports = {
 	data: new SlashCommandBuilder()
@@ -11,7 +12,8 @@ module.exports = {
                 .setRequired(true)
                 .addChoices(
                     { name: 'Personnage', value: 'character' },
-                    { name: 'Rotations', value: 'rotations' }
+                    { name: 'Rotations', value: 'rotations' },
+                    { name: 'Attaques Disponibles', value: 'available-attacks' }
                 )
         ),
 	async execute(interaction) {
@@ -105,6 +107,57 @@ module.exports = {
             else {
                 console.log(api_call.getAPIResponseData());
                 interaction.reply('Erreur, veuillez réessayer plus tard.');
+            }
+        }
+        else if(resumeType === 'available-attacks'){
+            var api_data = new Object();
+            api_data.discordUserId = interaction.user.id;
+
+            var api_call = new CallingAPI(
+                interaction.client.env.get("api_host"),
+                interaction.client.env.get("api_token"),
+                "api/character/resume/available-attacks",
+                api_data
+            )
+            await api_call.connectToAPI()
+            
+            if(api_call.getAPIResponseCode() === 200){
+                data = api_call.getAPIResponseData();
+
+                let allAttacksFieldsArray = [];
+
+                data.forEach(attack => {
+                    let attackInfo = bold(`PA : ${attack.actionPointCost} \n Type : ${typeToIcon(attack.type)}`);
+                    let attackStat = bold(`[Puissance : ${attack.power}] [P.Status : ${attack.statusPower}] [P.Critique : ${attack.criticalPower}]`);
+                    let middleSeparator = '-------------------------------------------------------------------'
+
+                    let fieldOne = {name: `---------\u200B\n`+bold(`Lvl : ${attack.levelRequired}`), value: attackInfo, inline: true};
+                    let fieldTwo = {name: `${middleSeparator}\n${attack.name}`, value: `${attack.description} \n ${attackStat}`, inline: true};
+                    let fieldThree = {name: `\u200B\n\u200B`, value: `\u200B`, inline: true};
+
+                    allAttacksFieldsArray.push([fieldOne, fieldTwo, fieldThree]);
+                });
+
+                embedArray = [];
+                while (allAttacksFieldsArray.length > 0) {
+                    const embed = new EmbedBuilder().setAuthor({ name: `Attaques disponibles de votre Personnage`});
+                    
+                    for (let time = 1; time <= 5; time++) {
+                        if(!allAttacksFieldsArray.length < 1){
+                            allAttacksFieldsArray[0].forEach(field => {
+                                embed.addFields(field);
+                            });
+        
+                            allAttacksFieldsArray.shift();
+                        }
+                    }
+
+                    embedArray.push(embed);
+                }
+    
+                const pages = embedArray;
+                // button pagination
+                buttonPages(interaction, pages);
             }
         }
 	},
