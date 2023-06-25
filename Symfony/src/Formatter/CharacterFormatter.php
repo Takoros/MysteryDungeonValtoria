@@ -77,7 +77,8 @@ class CharacterFormatter
             'criticalPower' => $attack->getCriticalPower(),
             'actionPointCost' => $attack->getActionPointCost(),
             'scope' => $attack->getScope(),
-            'type' => $attack->getType()->getName()
+            'type' => $attack->getType()->getName(),
+            'levelRequired' => $attack->getLevelRequired()
         ];
     }
 }
