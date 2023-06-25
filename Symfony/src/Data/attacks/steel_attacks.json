@@ -7,7 +7,8 @@
         "status_power" : 2,
         "critical_power" : 25,
         "action_point_cost" : 1,
-        "scope" : "ally_team"
+        "scope" : "ally_team",
+        "level_required" : 1
     },
     "ATTACK_STEEL_TWO" : {
         "name" : "Lancécrou",
@@ -17,7 +18,8 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 1
     },
     "ATTACK_STEEL_THREE" : {
         "name" : "Griffes Acier",
@@ -27,7 +29,8 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 5
     },
     "ATTACK_STEEL_FOUR" : {
         "name" : "Bombe Aimant",
@@ -37,6 +40,7 @@
         "status_power" : 0,
         "critical_power" : 75,
         "action_point_cost" : 3,
-        "scope" : "enemy_team"
+        "scope" : "enemy_team",
+        "level_required" : 10
     }
 }
