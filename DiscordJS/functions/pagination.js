@@ -5,7 +5,7 @@ const {
     ComponentType,
 } = require("discord.js");
 
-async function buttonPages(interaction, pages, time = 60000) {
+async function buttonPages(interaction, pages, time = 60000, files = []) {
     // errors
     if (!interaction) throw new Error("Please provide an interaction argument");
     if (!pages) throw new Error("Please provide a page argument");
@@ -23,6 +23,7 @@ async function buttonPages(interaction, pages, time = 60000) {
         const page = await interaction.editReply({
             embeds: pages,
             components: [],
+            files: files,
             fetchReply: true,
         });
 
@@ -53,6 +54,7 @@ async function buttonPages(interaction, pages, time = 60000) {
     const currentPage = await interaction.editReply({
         embeds: [pages[index]],
         components: [buttonRow],
+        files: files,
         fetchReply: true,
     });
 
