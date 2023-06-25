@@ -8,7 +8,8 @@
         "critical_power" : 25,
         "action_point_cost" : 1,
         "scope" : "self",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Electrik"
     },
     "ATTACK_ELECTRIC_TWO" : {
         "name" : "Éclair",
@@ -19,7 +20,8 @@
         "critical_power" : 40,
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Electrik"
     },
     "ATTACK_ELECTRIC_THREE" : {
         "name" : "Crocs Éclair",
@@ -30,7 +32,8 @@
         "critical_power" : 50,
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
-        "level_required" : 5
+        "level_required" : 5,
+        "attackTree" : "Electrik"
     },
     "ATTACK_ELECTRIC_FOUR" : {
         "name" : "Parabochaines",
@@ -41,6 +44,7 @@
         "critical_power" : 15,
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
-        "level_required" : 10
+        "level_required" : 10,
+        "attackTree" : "Electrik"
     }
 }

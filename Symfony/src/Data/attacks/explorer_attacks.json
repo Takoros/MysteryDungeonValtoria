@@ -8,7 +8,8 @@
         "critical_power" : 50,
         "action_point_cost" : 0,
         "scope" : "enemy_team_member",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_ONE" : {
         "name" : "Tranche",
@@ -19,7 +20,8 @@
         "critical_power" : 90,
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_TWO" : {
         "name" : "Reflet",
@@ -30,7 +32,8 @@
         "critical_power" : 25,
         "action_point_cost" : 1,
         "scope" : "self",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_THREE" : {
         "name" : "Regard Touchant",
@@ -41,7 +44,8 @@
         "critical_power" : 25,
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_FOUR" : {
         "name" : "Encouragement",
@@ -52,7 +56,8 @@
         "critical_power" : 25,
         "action_point_cost" : 1,
         "scope" : "ally_team",
-        "level_required" : 1
+        "level_required" : 1,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_FIVE" : {
         "name" : "Léchouille",
@@ -63,7 +68,8 @@
         "critical_power" : 50,
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
-        "level_required" : 5
+        "level_required" : 5,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_SIX" : {
         "name" : "Équilibre",
@@ -74,7 +80,8 @@
         "critical_power" : 0,
         "action_point_cost" : 2,
         "scope" : "self",
-        "level_required" : 5
+        "level_required" : 5,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_SEVEN" : {
         "name" : "Coup Double",
@@ -85,7 +92,8 @@
         "critical_power" : 50,
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
-        "level_required" : 10
+        "level_required" : 10,
+        "attackTree" : "Aventurier"
     },
     "ATTACK_EXPLORER_EIGHT" : {
         "name" : "Pansement",
@@ -96,6 +104,7 @@
         "critical_power" : 50,
         "action_point_cost" : 2,
         "scope" : "ally_team_member_lowest_vitality",
-        "level_required" : 10
+        "level_required" : 10,
+        "attackTree" : "Aventurier"
     }
 }
