@@ -159,11 +159,19 @@ class CreateAttacksCommand extends Command
                         // Corrects the level required
                         $attackDatabase->setLevelRequired($attackJson->level_required);
                     }
+
+                    $attackJsonTypeEntity = $this->typeRepository->findOneBy(['name' => $attackJson->attackTree]);
+
+                    if($attackJsonTypeEntity !== $attackDatabase->getAttackTree()){
+                        // Corrects the level required
+                        $attackDatabase->setAttackTree($attackJsonTypeEntity);
+                    }
                 }
             }
 
             if(!$doExist){
                 $attackJsonTypeEntity = $this->typeRepository->findOneBy(['name' => $attackJson->type]);
+                $attackJsonTreeEntity = $this->typeRepository->findOneBy(['name' => $attackJson->attackTree]);
 
                 $newAttack = new Attack();
                 $newAttack->setId($attackJsonId)
@@ -175,7 +183,8 @@ class CreateAttacksCommand extends Command
                           ->setCriticalPower($attackJson->critical_power)
                           ->setActionPointCost($attackJson->action_point_cost)
                           ->setScope($attackJson->scope)
-                          ->setLevelRequired($attackJson->level_required);
+                          ->setLevelRequired($attackJson->level_required)
+                          ->setAttackTree($attackJsonTreeEntity);
 
                 $this->entityManager->persist($newAttack);
             }
