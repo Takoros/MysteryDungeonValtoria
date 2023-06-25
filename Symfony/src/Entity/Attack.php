@@ -45,6 +45,10 @@ class Attack
     #[ORM\Column]
     private ?int $levelRequired = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Type $attackTree = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
@@ -193,6 +197,18 @@ class Attack
     public function setLevelRequired(int $levelRequired): self
     {
         $this->levelRequired = $levelRequired;
+
+        return $this;
+    }
+
+    public function getAttackTree(): ?Type
+    {
+        return $this->attackTree;
+    }
+
+    public function setAttackTree(?Type $attackTree): self
+    {
+        $this->attackTree = $attackTree;
 
         return $this;
     }
