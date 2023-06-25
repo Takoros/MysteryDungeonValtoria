@@ -239,31 +239,32 @@ class CharacterService
     /**
      * Makes a Character spend Stat Points
      */
-    public function spendStatPoint($character, $statToModify){
+    public function spendStatPoint(Character $character, string $statToModify, int $amount){
         $statModifyable = ['vitality', 'strength', 'stamina', 'power', 'bravery', 'presence', 'impassiveness', 'agility', 'coordination', 'speed'];
 
-        if($character->getStatPoints() > 0){
-            if($statToModify && in_array($statToModify, $statModifyable)){
+        if(!in_array($statToModify, $statModifyable)){
+            return [
+                'statusCode' => 400,
+                'message' => "Stat to increase is incorrect"
+            ];
+        }
+
+        if($character->getStatPoints() >= $amount ){
+            for ($i=0; $i < $amount; $i++) { 
                 $character->getStats()->increaseStat($statToModify);
                 $character->setStatPoints($character->getStatPoints() - 1);
-                $this->entityManager->flush();
+            }
 
-                return [
-                    'statusCode' => 200,
-                    'message' => "Stat increased."
-                ];
-            }           
-            else {
-                return [
-                    'statusCode' => 400,
-                    'message' => "Stat to increase is incorrect"
-                ];
-            } 
+            $this->entityManager->flush();
+            return [
+                'statusCode' => 200,
+                'message' => "Stat increased."
+            ];
         }
         else {
             return [
                 'statusCode' => 400,
-                'message' => "Character does not have any statPoints"
+                'message' => "Character does not have enough statPoints"
             ];
         }
     }
@@ -271,7 +272,7 @@ class CharacterService
     /**
      * Changes a Rotation|Opener's Character Attack
      */
-    public function modifyRotationAttack(Character $character, string $rotationType, int $attackSlot, string $newAttackID): array
+    public function modifyRotationAttack(Character $character, string $rotationType, int $attackSlot, string $newAttackName): array
     {
         if($rotationType === Rotation::TYPE_OPENER){
             $rotation = $character->getOpenerRotation();
@@ -286,12 +287,19 @@ class CharacterService
             ];
         }
 
-        $Attack = $this->attackRepository->find($newAttackID);
+        $Attack = $this->attackRepository->findOneBy(['name' => $newAttackName]);
+        $AvailableAttacks = $this->getAvailableAttacks($character);
 
         if($Attack === null){
             return [
                 'statusCode' => 400,
                 'message' => 'AttackId does not relate to any Attack'
+            ];
+        }
+        else if(!in_array($Attack, $AvailableAttacks)){
+            return [
+                'statusCode' => 400,
+                'message' => 'This Attack is not available for this character'
             ];
         }
 
