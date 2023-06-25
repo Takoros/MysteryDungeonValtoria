@@ -21,7 +21,8 @@ class SpeciesFormatter
                 "id" => $species->getId(),
                 "name" => $species->getName(),
                 "isPlayable" => $species->isIsPlayable(),
-                "types" => $typeList
+                "types" => $typeList,
+                "description" => $species->getDescription()
             ];
         }
 

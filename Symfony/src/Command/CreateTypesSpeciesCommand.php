@@ -130,6 +130,11 @@ class CreateTypesSpeciesCommand extends Command
                             }
                         }
                     }
+
+                    if($speciesJson->description !== $speciesDatabase->getDescription()){
+                        // Corrects the Description
+                        $speciesDatabase->setDescription($speciesJson->description);
+                    }
                 }
             }
 
@@ -137,7 +142,8 @@ class CreateTypesSpeciesCommand extends Command
                 $newSpecies = new Species();
                 $newSpecies->setId($speciesJsonId)
                            ->setName($speciesJson->name)
-                           ->setIsPlayable($speciesJson->isPlayable);
+                           ->setIsPlayable($speciesJson->isPlayable)
+                           ->setDescription($speciesJson->description);
 
                 foreach ($speciesJson->types as $typeId) {
                     $type = $this->typeRepository->find($typeId);
