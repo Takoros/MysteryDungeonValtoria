@@ -7,7 +7,8 @@
         "status_power" : 4,
         "critical_power" : 10,
         "action_point_cost" : 2,
-        "scope" : "self"
+        "scope" : "self",
+        "level_required" : 1
     },
     "ATTACK_DRAGON_TWO" : {
         "name" : "Ouragan",
@@ -17,7 +18,8 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 2,
-        "scope" : "enemy_team"
+        "scope" : "enemy_team",
+        "level_required" : 1
     },
     "ATTACK_DRAGON_THREE" : {
         "name" : "Abattage",
@@ -27,7 +29,8 @@
         "status_power" : 1.5,
         "critical_power" : 40,
         "action_point_cost" : 2,
-        "scope" : "enemy_team"
+        "scope" : "enemy_team",
+        "level_required" : 5
     },
     "ATTACK_DRAGON_FOUR" : {
         "name" : "Dracacophonie",
@@ -37,6 +40,7 @@
         "status_power" : 7,
         "critical_power" : 0,
         "action_point_cost" : 3,
-        "scope" : "self"
+        "scope" : "self",
+        "level_required" : 10
     }
 }

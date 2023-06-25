@@ -154,6 +154,11 @@ class CreateAttacksCommand extends Command
                         // Corrects the scope
                         $attackDatabase->setScope($attackJson->scope);
                     }
+
+                    if($attackJson->level_required !== $attackDatabase->getLevelRequired()){
+                        // Corrects the level required
+                        $attackDatabase->setLevelRequired($attackJson->level_required);
+                    }
                 }
             }
 
@@ -169,7 +174,8 @@ class CreateAttacksCommand extends Command
                           ->setStatusPower($attackJson->status_power)
                           ->setCriticalPower($attackJson->critical_power)
                           ->setActionPointCost($attackJson->action_point_cost)
-                          ->setScope($attackJson->scope);
+                          ->setScope($attackJson->scope)
+                          ->setLevelRequired($attackJson->level_required);
 
                 $this->entityManager->persist($newAttack);
             }
