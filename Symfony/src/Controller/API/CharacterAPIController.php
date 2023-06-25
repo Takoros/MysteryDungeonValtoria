@@ -180,4 +180,40 @@ class CharacterAPIController extends AbstractAPIController
 
         return new JsonResponse($this->characterFormatter->formatRotation($character, $post->data->rotationType));
     }
+
+    /**
+     * Responds a resume of all the attacks available for a character
+     */
+    #[Route('/api/character/resume/available-attacks', name: 'api_character_resume_available-attacks',  methods:["POST"])]
+    public function resumeAvailableAttacks(Request $request, UserRepository $userRepository): JsonResponse
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist']);
+        }
+        
+        $character = $user->getCharacter();
+
+        if($character === null){
+            return new JsonResponse(['message' => 'User does not have Character']);
+        }
+
+        $attackList = $this->characterService->getAvailableAttacks($character);
+        $formattedAttackList = [];
+
+        foreach ($attackList as $attack) {
+            $formattedAttackList[] = $this->characterFormatter->formatAttack($attack);
+        }
+
+        return new JsonResponse($formattedAttackList);
+    }
 }

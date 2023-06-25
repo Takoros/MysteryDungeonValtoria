@@ -8,6 +8,7 @@ use App\Entity\Stats;
 use App\Entity\User;
 use App\Repository\AttackRepository;
 use App\Repository\SpeciesRepository;
+use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -16,13 +17,15 @@ class CharacterService
     private $userRepository;
     private $speciesRepository;
     private $attackRepository;
+    private $typeRepository;
     private $entityManager;
 
-    public function __construct(UserRepository $userRepository, SpeciesRepository $speciesRepository, AttackRepository $attackRepository, ManagerRegistry $doctrine)
+    public function __construct(UserRepository $userRepository, SpeciesRepository $speciesRepository, AttackRepository $attackRepository, TypeRepository $typeRepository, ManagerRegistry $doctrine)
     {
         $this->userRepository = $userRepository;
         $this->speciesRepository = $speciesRepository;
         $this->attackRepository = $attackRepository;
+        $this->typeRepository = $typeRepository;
         $this->entityManager = $doctrine->getManager();
     }
 
@@ -306,5 +309,28 @@ class CharacterService
                 'message' => 'This Rotation does not have enough Action Point left to change this slot with this attack'
             ];
         }
+    }
+
+    /**
+     * Returns in a array all the Attacks available for a character
+     */
+    public function getAvailableAttacks(Character $character): array
+    {
+        $adventurerType = $this->typeRepository->findOneBy(['name' => 'Aventurier']);
+
+        $allCharacterAttackTypes = [$adventurerType];
+
+        foreach ($character->getTypes() as $type) {
+            $allCharacterAttackTypes[] = $type;
+        }
+
+        $attackList = [];
+        foreach ($allCharacterAttackTypes as $type) {
+            foreach ($this->attackRepository->findAvailableAttacksForLevelAndType($character->getLevel(), $type) as $attack) {
+                $attackList[] = $attack;
+            }
+        }
+        
+        return $attackList;
     }
 }
