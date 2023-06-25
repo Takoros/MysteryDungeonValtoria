@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Exception\InvalidParameterException;
 
 class CharacterFormatter
 {
-    public function formatCharacter($character){
+    public function formatCharacter(Character $character){
         $characterStats = $character->getStats();
         $characterStatsArray = [
             "vitality" => $characterStats->getVitality(),
@@ -29,10 +29,12 @@ class CharacterFormatter
             "id" => $character->getId(),
             "name" => $character->getName(),
             "gender" => $character->getGender(),
+            "species" => $character->getSpecies()->getName(),
             "age" => $character->getAge(),
             "description" => $character->getDescription(),
             "level" => $character->getLevel(),
             "xp" => $character->getXp(),
+            "nextLevelXP" => $character->getXPCeil(),
             "rank" => $character->getRank(),
             "statPoints" => $character->getStatPoints(),
             "discordUserId" => $character->getUserI()->getDiscordTag(),
