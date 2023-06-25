@@ -26,6 +26,9 @@ class Species
     #[ORM\ManyToMany(targetEntity: Type::class, inversedBy: 'Species')]
     private Collection $Type;
 
+    #[ORM\Column(length: 500, nullable: true)]
+    private ?string $description = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
@@ -118,6 +121,18 @@ class Species
     public function removeType(Type $type): self
     {
         $this->Type->removeElement($type);
+
+        return $this;
+    }
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(?string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }

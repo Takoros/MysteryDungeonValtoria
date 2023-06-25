@@ -2,41 +2,49 @@
     "418" : {
         "name" : "Mustébouée",
         "types" : [4],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Mustébouée est basé sur une loutre avec une bouée jaune qui entoure son cou. Il a un pelage brun pâle et beige. Il a deux queues et deux sortes de nageoires bleues sur ses bras."
     },
     "133" : {
         "name" : "Évoli",
         "types" : [2],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Évoli est un Pokémon mammalien quadrupède, entre canin et félin, avec une fourrure principalement brune. Le bout de sa queue broussailleuse et son gros col de fourrure sont de couleur crème."
     },
     "37" : {
         "name" : "Goupix",
         "types" : [3],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Goupix est un petit Pokémon quadrupède à l'allure vulpine. Son pelage est rouge tomette avec un ventre de couleur crème. Il a de grands yeux noisette, des oreilles pointues à l'intérieur brun et un petit museau brun."
     },
     "906" : {
         "name" : "Poussacha",
         "types" : [9],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Poussacha est un Pokémon quadrupède à l'apparence animale, qui ressemble à un chaton. Son corps possède majoritairement des traits fins, que l'on retrouve chez ses quatre pattes filiformes et sans griffe. Hormis quelques endroits spécifiques, l'entièreté du pelage recouvrant l'organisme de Poussacha est vert clair."
     },
     "570" : {
         "name" : "Zorua",
         "types" : [7],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Zorua est un Pokémon qui ressemble à un renard gris ardoise avec des accents noirs et rouges. Ses oreilles sont triangulaires et sont plus foncées à l'intérieur, et il a une large touffe de fourrure grise et rouge sur le haut de la tête."
     },
     "403" : {
         "name" : "Lixy",
         "types" : [5],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Lixy est un petit félin bleu clair. Ses pattes arrière et le tour de son cou sont noirs. Il a une petite houppette bleue sur la tête ainsi que deux moustaches. Il a de grandes oreilles dont l'intérieur jaune forme une étoile."
     },
     "610" : {
         "name" : "Coupenotte",
         "types" : [14],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Coupenotte est un Pokémon bipède vert grisâtre avec des défenses droites plus pâles qui se trouvent des deux côtés de sa bouche. Ces défenses peuvent se régénérer si elles sont cassées, et repoussent si elles tombent."
     },
     "175" : {
         "name" : "Togepi",
         "types" : [8],
-        "isPlayable" : true
+        "isPlayable" : true,
+        "description" : "Togepi est une petite créature, couleur crème, avec un Œuf recouvrant son corps. Sur sa coquille blanche, on peut voir des triangles creux rouges et bleus. Sa tête avec des épis en couronne affiche toujours une expression de joie."
     }
 }
