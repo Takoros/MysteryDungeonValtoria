@@ -189,7 +189,7 @@ class Stats
 
     public function increaseBaseStat($value)
     {
-        $this->setVitality($this->getVitality() + ($value * 5))
+        $this->setVitality($this->getVitality() + ($value * 3))
              ->setStrength($this->getStrength() + $value)
              ->setStamina($this->getStamina() + $value)
              ->setPower($this->getPower() + $value)
@@ -205,7 +205,7 @@ class Stats
     public function increaseStat($statToModify){
         switch ($statToModify) {
             case 'vitality':
-                $this->setVitality($this->getVitality() + 5);
+                $this->setVitality($this->getVitality() + 3);
                 break;
             case 'strength':
                 $this->setStrength($this->getStrength() + 1);

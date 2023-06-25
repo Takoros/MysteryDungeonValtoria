@@ -106,7 +106,7 @@ class CharacterAPIController extends AbstractAPIController
     {
         $post = json_decode($request->getContent());
 
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "statToIncrease"], $this->apiService);
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "statToIncrease", "amountOfPointsSpent"], $this->apiService);
 
         if(!is_bool($isValid)){
             return $isValid;
@@ -120,7 +120,7 @@ class CharacterAPIController extends AbstractAPIController
         
         $character = $user->getCharacter();
 
-        $results = $this->characterService->spendStatPoint($character, $post->data->statToIncrease);
+        $results = $this->characterService->spendStatPoint($character, $post->data->statToIncrease, $post->data->amountOfPointsSpent);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
@@ -133,7 +133,7 @@ class CharacterAPIController extends AbstractAPIController
     {
         $post = json_decode($request->getContent());
 
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType", "attackSlot","attackID"], $this->apiService);
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType", "attackSlot","attackName"], $this->apiService);
 
         if(!is_bool($isValid)){
             return $isValid;
@@ -147,7 +147,7 @@ class CharacterAPIController extends AbstractAPIController
 
         $character = $user->getCharacter();
 
-        $results = $this->characterService->modifyRotationAttack($character, $post->data->rotationType, $post->data->attackSlot, $post->data->attackID);
+        $results = $this->characterService->modifyRotationAttack($character, $post->data->rotationType, $post->data->attackSlot, $post->data->attackName);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
