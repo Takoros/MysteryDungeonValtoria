@@ -42,6 +42,9 @@ class Attack
     #[ORM\ManyToMany(targetEntity: Character::class, mappedBy: 'Attacks')]
     private Collection $Characters;
 
+    #[ORM\Column]
+    private ?int $levelRequired = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
@@ -178,6 +181,18 @@ class Attack
     public function setScope(string $scope): self
     {
         $this->scope = $scope;
+
+        return $this;
+    }
+
+    public function getLevelRequired(): ?int
+    {
+        return $this->levelRequired;
+    }
+
+    public function setLevelRequired(int $levelRequired): self
+    {
+        $this->levelRequired = $levelRequired;
 
         return $this;
     }
