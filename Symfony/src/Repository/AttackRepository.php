@@ -39,28 +39,24 @@ class AttackRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return Attack[] Returns an array of Attack objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('a.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return Attack[] Returns an array of Attack objects
+    */
+    public function findAvailableAttacksForLevelAndType($level, $type): array
+    {
+        $entityManager = $this->getEntityManager();
 
-//    public function findOneBySomeField($value): ?Attack
-//    {
-//        return $this->createQueryBuilder('a')
-//            ->andWhere('a.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+        $query = $entityManager->createQuery(
+            'SELECT a
+            FROM App\Entity\Attack a
+            WHERE a.levelRequired <= :level
+            AND a.Type = :type'
+        )->setParameters([
+            'level' => $level,
+            'type' => $type
+        ]);
+
+        // returns an array of Attacks
+        return $query->getResult();
+    }
 }
