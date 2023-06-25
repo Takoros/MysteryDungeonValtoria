@@ -7,7 +7,8 @@
         "status_power" : 0,
         "critical_power" : 0,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 1
     },
     "ATTACK_GHOST_TWO" : {
         "name" : "Étonnement",
@@ -17,7 +18,8 @@
         "status_power" : 0,
         "critical_power" : 30,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 1
     },
     "ATTACK_GHOST_THREE" : {
         "name" : "Ball'Ombre",
@@ -27,7 +29,8 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 5
     },
     "ATTACK_GHOST_FOUR" : {
         "name" : "Châtiment",
@@ -37,6 +40,7 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 3,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 10
     }
 }

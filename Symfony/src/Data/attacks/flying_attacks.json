@@ -7,7 +7,8 @@
         "status_power" : 6,
         "critical_power" : 0,
         "action_point_cost" : 2,
-        "scope" : "self"
+        "scope" : "self",
+        "level_required" : 1
     },
     "ATTACK_FLYING_TWO" : {
         "name" : "Cru-Ailes",
@@ -17,7 +18,8 @@
         "status_power" : 1.5,
         "critical_power" : 10,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 1
     },
     "ATTACK_FLYING_THREE" : {
         "name" : "Tornade",
@@ -27,7 +29,8 @@
         "status_power" : 1.5,
         "critical_power" : 0,
         "action_point_cost" : 1,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 5
     },
     "ATTACK_FLYING_FOUR" : {
         "name" : "Vol",
@@ -37,6 +40,7 @@
         "status_power" : 12,
         "critical_power" : 10,
         "action_point_cost" : 3,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 10
     }
 }

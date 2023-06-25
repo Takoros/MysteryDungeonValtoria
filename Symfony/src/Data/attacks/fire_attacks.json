@@ -7,7 +7,8 @@
         "status_power" : 5,
         "critical_power" : 25,
         "action_point_cost" : 1,
-        "scope" : "self"
+        "scope" : "self",
+        "level_required" : 1
     },
     "ATTACK_FIRE_TWO" : {
         "name" : "Flammèche",
@@ -17,7 +18,8 @@
         "status_power" : 0,
         "critical_power" : 40,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 1
     },
     "ATTACK_FIRE_THREE" : {
         "name" : "Poing Feu",
@@ -27,7 +29,8 @@
         "status_power" : 0,
         "critical_power" : 50,
         "action_point_cost" : 2,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 5
     },
     "ATTACK_FIRE_FOUR" : {
         "name" : "Danse du Feu",
@@ -37,6 +40,7 @@
         "status_power" : 0,
         "critical_power" : 75,
         "action_point_cost" : 4,
-        "scope" : "enemy_team_member"
+        "scope" : "enemy_team_member",
+        "level_required" : 10
     }
 }
