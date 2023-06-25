@@ -50,7 +50,7 @@ class AttackRepository extends ServiceEntityRepository
             'SELECT a
             FROM App\Entity\Attack a
             WHERE a.levelRequired <= :level
-            AND a.Type = :type'
+            AND a.attackTree = :type'
         )->setParameters([
             'level' => $level,
             'type' => $type
