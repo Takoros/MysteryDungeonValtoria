@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Insecte"
+        "attackTree" : "Insecte",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_BUG_TWO" : {
         "name" : "Piqûre",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Insecte"
+        "attackTree" : "Insecte",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_BUG_THREE" : {
         "name" : "Survinsecte",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team",
         "level_required" : 5,
-        "attackTree" : "Insecte"
+        "attackTree" : "Insecte",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_BUG_FOUR" : {
         "name" : "Papillodanse",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "self",
         "level_required" : 10,
-        "attackTree" : "Insecte"
+        "attackTree" : "Insecte",
+        "actionType" : "action-type-utility"
     }
 }

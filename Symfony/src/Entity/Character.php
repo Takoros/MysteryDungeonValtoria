@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\CharacterRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
 
@@ -68,6 +70,13 @@ class Character
 
     #[ORM\OneToMany(mappedBy: 'Character', targetEntity: Rotation::class)]
     private Collection $rotations;
+
+    #[ORM\ManyToOne(inversedBy: 'Explorers')]
+    private ?DungeonInstance $currentExplorationDungeonInstance = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Timers $Timers = null;
 
     public function __construct()
     {
@@ -336,10 +345,47 @@ class Character
 
         return $this;
     }
+    
+    public function getCurrentExplorationDungeonInstance(): ?DungeonInstance
+    {
+        return $this->currentExplorationDungeonInstance;
+    }
+
+    public function setCurrentExplorationDungeonInstance(?DungeonInstance $currentExplorationDungeonInstance): self
+    {
+        $this->currentExplorationDungeonInstance = $currentExplorationDungeonInstance;
+
+        return $this;
+    }
+
+    public function getTimers(): ?Timers
+    {
+        return $this->Timers;
+    }
+
+    public function setTimers(Timers $Timers): self
+    {
+        $this->Timers = $Timers;
+
+        return $this;
+    }
 
     // ///
     // Services Functions
     // ///
+
+    public function gainXp($xpAmount): void
+    {
+        $this->xp += $xpAmount;
+
+        if($this->hasEnoughXP()){
+            $this->setXp($this->getXp() - $this->getXPCeil())
+            ->setStatPoints($this->getStatPoints() + 5)
+            ->setLevel($this->getLevel() + 1)
+            ->getStats()->increaseBaseStat(1);
+
+        }
+    }
 
     public function getXPCeil(): int
     {

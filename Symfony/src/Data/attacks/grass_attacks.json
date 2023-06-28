@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Plante"
+        "attackTree" : "Plante",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GRASS_TWO" : {
         "name" : "Fouet Liane",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Plante"
+        "attackTree" : "Plante",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GRASS_THREE" : {
         "name" : "Vole-vie",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Plante"
+        "attackTree" : "Plante",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GRASS_FOUR" : {
         "name" : "Para-Spore",
@@ -45,6 +48,7 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Plante"
+        "attackTree" : "Plante",
+        "actionType" : "action-type-utility"
     }
 }

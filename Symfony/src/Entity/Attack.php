@@ -10,6 +10,11 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: AttackRepository::class)]
 class Attack
 {
+    const ACTION_TYPE_OFFENSIVE = 'action-type-offensive';
+    const ACTION_TYPE_DEFENSIVE = 'action-type-defensive';
+    const ACTION_TYPE_UTILITY = 'action-type-utility';
+    const ACTION_TYPE_SUPPORTIVE = 'action-type-supportive';
+
     #[ORM\Id]
     #[ORM\Column(length: 50)]
     private ?string $id = null;
@@ -48,6 +53,9 @@ class Attack
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?Type $attackTree = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $actionType = null;
 
     public function __construct()
     {
@@ -209,6 +217,18 @@ class Attack
     public function setAttackTree(?Type $attackTree): self
     {
         $this->attackTree = $attackTree;
+
+        return $this;
+    }
+
+    public function getActionType(): ?string
+    {
+        return $this->actionType;
+    }
+
+    public function setActionType(string $actionType): self
+    {
+        $this->actionType = $actionType;
 
         return $this;
     }

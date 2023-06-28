@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Dragon"
+        "attackTree" : "Dragon",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_DRAGON_TWO" : {
         "name" : "Ouragan",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team",
         "level_required" : 1,
-        "attackTree" : "Dragon"
+        "attackTree" : "Dragon",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_DRAGON_THREE" : {
         "name" : "Abattage",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team",
         "level_required" : 5,
-        "attackTree" : "Dragon"
+        "attackTree" : "Dragon",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_DRAGON_FOUR" : {
         "name" : "Dracacophonie",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "self",
         "level_required" : 10,
-        "attackTree" : "Dragon"
+        "attackTree" : "Dragon",
+        "actionType" : "action-type-utility"
     }
 }

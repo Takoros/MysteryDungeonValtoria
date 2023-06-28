@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Vol"
+        "attackTree" : "Vol",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_FLYING_TWO" : {
         "name" : "Cru-Ailes",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Vol"
+        "attackTree" : "Vol",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FLYING_THREE" : {
         "name" : "Tornade",
@@ -33,7 +35,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Vol"
+        "attackTree" : "Vol",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FLYING_FOUR" : {
         "name" : "Vol",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Vol"
+        "attackTree" : "Vol",
+        "actionType" : "action-type-offensive"
     }
 }

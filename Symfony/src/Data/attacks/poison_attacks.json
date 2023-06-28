@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Poison"
+        "attackTree" : "Poison",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_POISON_TWO" : {
         "name" : "Dard-Venin",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Poison"
+        "attackTree" : "Poison",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_POISON_THREE" : {
         "name" : "Acide",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team",
         "level_required" : 5,
-        "attackTree" : "Poison"
+        "attackTree" : "Poison",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_POISON_FOUR" : {
         "name" : "Choc Venin",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Poison"
+        "attackTree" : "Poison",
+        "actionType" : "action-type-offensive"
     }
 }

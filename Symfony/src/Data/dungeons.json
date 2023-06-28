@@ -1,0 +1,75 @@
+{
+    "DUNGEON_ONE" : {
+        "name" : "Égouts de Fort-Écorce",
+        "area" : "Fort-Écorce",
+        "maxMonsterLevel" : 5,
+        "minMonsterLevel" : 1,
+        "size" : "small",
+        "monsterLivingList" : {
+            "0" : {
+                "species" : "Ratata",
+                "rate" : 8
+            },
+            "1" : {
+                "species" : "Ratatac",
+                "rate" : 1
+            },
+            "2" : {
+                "species" : "Bulbizarre",
+                "rate" : 3
+            },
+            "3" : {
+                "species" : "Abo",
+                "rate" : 4
+            },
+            "4" : {
+                "species" : "Nosferapti",
+                "rate" : 4
+            },
+            "5" : {
+                "species" : "Mimitoss",
+                "rate" : 2
+            },
+            "6" : {
+                "species" : "Smogo",
+                "rate" : 2
+            },
+            "7" : {
+                "species" : "Kabuto",
+                "rate" : 1
+            },
+            "8" : {
+                "species" : "Mimigal",
+                "rate" : 1
+            },
+            "9" : {
+                "species" : "Farfuret",
+                "rate" : 1
+            },
+            "10" : {
+                "species" : "Skelénox",
+                "rate" : 1
+            },
+            "11" : {
+                "species" : "Baudrive",
+                "rate" : 1
+            },
+            "12" : {
+                "species" : "Ratentif",
+                "rate" : 1
+            },
+            "13" : {
+                "species" : "Trompignon",
+                "rate" : 1
+            },
+            "14" : {
+                "species" : "Sonistrelle",
+                "rate" : 1
+            },
+            "15" : {
+                "species" : "Nostenfer",
+                "rate" : 1
+            }
+        }
+    }
+}

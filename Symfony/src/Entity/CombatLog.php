@@ -9,6 +9,7 @@ use App\Service\Combat\Status\ControlStatus;
 use App\Service\Combat\Status\DamagingStatus;
 use App\Service\Combat\Status\StatisticModifierStatus;
 use App\Service\Combat\Status\StatusInterface;
+use App\Service\Dungeon\MonsterCharacter;
 use DateTime;
 use DateTimeZone;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -89,7 +90,18 @@ class CombatLog
 
     public function setTeamOne(?array $teamOne): self
     {
-        $this->teamOne = $teamOne;
+        $teamOneFormatted = [];
+
+        foreach ($teamOne as $character) {
+            if(str_contains(get_class($character),Character::class)){
+                $teamOneFormatted[] = $this->formatCharacter($character);
+            }
+            else {
+                $teamOneFormatted[] = $this->formatMonster($character);
+            }
+        }
+
+        $this->teamOne = $teamOneFormatted;
 
         return $this;
     }
@@ -101,6 +113,17 @@ class CombatLog
 
     public function setTeamTwo(?array $teamTwo): self
     {
+        $teamTwoFormatted = [];
+
+        foreach ($teamTwo as $character) {
+            if(str_contains(get_class($character),Character::class)){
+                $teamTwoFormatted[] = $this->formatCharacter($character);
+            }
+            else {
+                $teamTwoFormatted[] = $this->formatMonster($character);
+            }
+        }
+
         $this->teamTwo = $teamTwo;
 
         return $this;
@@ -242,6 +265,73 @@ class CombatLog
         return $displayableLogs;
     }
     
+    /* -------------------------------------------------------------------------- */
+    /*                               TEAM FORMATTERS                              */
+    /* -------------------------------------------------------------------------- */
+
+    public function formatCharacter(Character $character){
+        return [
+            'class' => 'Character',
+            'id' => $character->getId(),
+            'name' => $character->getName(),
+            'gender' => $character->getGender(),
+            'age' => $character->getAge(),
+            'description' => $character->getDescription(),
+            'level' => $character->getLevel(),
+            'rank' => $character->getRank(),
+            'userI' => $character->getUserI(),
+            'Stats' => [
+                'vitality' => $character->getStats()->getVitality(),
+                'strength' => $character->getStats()->getStrength(),
+                'stamina' => $character->getStats()->getStamina(),
+                'power' => $character->getStats()->getPower(),
+                'bravery' => $character->getStats()->getBravery(),
+                'presence' => $character->getStats()->getPresence(),
+                'impassiveness' => $character->getStats()->getImpassiveness(),
+                'agility' => $character->getStats()->getAgility(),
+                'coordination' => $character->getStats()->getCoordination(),
+                'speed' => $character->getStats()->getSpeed(),
+                'actionPoint' => $character->getStats()->getActionPoint()
+            ],
+            'Species' => [
+                'id' => $character->getSpecies()->getId(),
+                'name' => $character->getSpecies()->getName()
+            ],
+            'Guild' => $character->getGuild()
+        ];
+    }
+
+    public function formatMonster(MonsterCharacter $monsterCharacter){
+        return [
+            'class' => 'Character',
+            'id' => $monsterCharacter->getId(),
+            'name' => $monsterCharacter->getName(),
+            'gender' => $monsterCharacter->getGender(),
+            'age' => $monsterCharacter->getAge(),
+            'description' => $monsterCharacter->getDescription(),
+            'level' => $monsterCharacter->getLevel(),
+            'rank' => $monsterCharacter->getRank(),
+            'userI' => null,
+            'Stats' => [
+                'vitality' => $monsterCharacter->getStats()->getVitality(),
+                'strength' => $monsterCharacter->getStats()->getStrength(),
+                'stamina' => $monsterCharacter->getStats()->getStamina(),
+                'power' => $monsterCharacter->getStats()->getPower(),
+                'bravery' => $monsterCharacter->getStats()->getBravery(),
+                'presence' => $monsterCharacter->getStats()->getPresence(),
+                'impassiveness' => $monsterCharacter->getStats()->getImpassiveness(),
+                'agility' => $monsterCharacter->getStats()->getAgility(),
+                'coordination' => $monsterCharacter->getStats()->getCoordination(),
+                'speed' => $monsterCharacter->getStats()->getSpeed(),
+                'actionPoint' => $monsterCharacter->getStats()->getActionPoint()
+            ],
+            'Species' => [
+                'id' => $monsterCharacter->getSpecies()->getId(),
+                'name' => $monsterCharacter->getSpecies()->getName()
+            ]
+        ];
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                                  IN COMBAT                                 */
     /* -------------------------------------------------------------------------- */
