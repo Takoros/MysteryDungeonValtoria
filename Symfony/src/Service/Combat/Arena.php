@@ -54,10 +54,10 @@ class Arena
         $this->teamTwoCharacters = $teamTwoCharacters;
         $this->combatLog = new CombatLog();
         $this->combatLog->arena = $this;
+    
         $this->type = $type;
         $this->attackRepository = $attackRepository;
         
-
         $this->prepareFighters();
     }
 
@@ -66,18 +66,19 @@ class Arena
      */
     private function prepareFighters(): void
     {
-        if($this->type === self::TYPE_PVP){
-            foreach ($this->teamOneCharacters as $character) {
-                $fighter = new Fighter($character, 1, $this, $this->combatLog);
+        $this->combatLog->setTeamOne($this->teamOneCharacters);
+        $this->combatLog->setTeamTwo($this->teamTwoCharacters);
 
-                $this->teamOneFighters[] = $fighter;
-            }
+        foreach ($this->teamOneCharacters as $character) {
+            $fighter = new Fighter($character, 1, $this, $this->combatLog);
 
-            foreach ($this->teamTwoCharacters as $character) {
-                $fighter = new Fighter($character, 2, $this, $this->combatLog);
+            $this->teamOneFighters[] = $fighter;
+        }
 
-                $this->teamTwoFighters[] = $fighter;
-            }
+        foreach ($this->teamTwoCharacters as $character) {
+            $fighter = new Fighter($character, 2, $this, $this->combatLog);
+
+            $this->teamTwoFighters[] = $fighter;
         }
     }
 

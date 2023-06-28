@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Sol"
+        "attackTree" : "Sol",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_GROUND_TWO" : {
         "name" : "Tourbi-Sable",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Sol"
+        "attackTree" : "Sol",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GROUND_THREE" : {
         "name" : "Tir de boue",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Sol"
+        "attackTree" : "Sol",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GROUND_FOUR" : {
         "name" : "Tunnel",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Sol"
+        "attackTree" : "Sol",
+        "actionType" : "action-type-offensive"
     }
 }

@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Feu"
+        "attackTree" : "Feu",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_FIRE_TWO" : {
         "name" : "Flammèche",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Feu"
+        "attackTree" : "Feu",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FIRE_THREE" : {
         "name" : "Poing Feu",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Feu"
+        "attackTree" : "Feu",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FIRE_FOUR" : {
         "name" : "Danse du Feu",
@@ -45,6 +48,7 @@
         "action_point_cost" : 4,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Feu"
+        "attackTree" : "Feu",
+        "actionType" : "action-type-offensive"
     }
 }

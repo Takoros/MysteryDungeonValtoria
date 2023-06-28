@@ -3,6 +3,7 @@
 namespace App\Twig;
 
 use App\Service\Combat\Status\StatusInterface;
+use App\Service\Dungeon\DungeonGenerationService;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -14,7 +15,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('statistic', [$this, 'displayStatistic']),
             new TwigFilter('control', [$this, 'displayControl']),
             new TwigFilter('controlActivate', [$this, 'displayControlActivate']),
-            new TwigFilter('damaging', [$this, 'displayDamaging'])
+            new TwigFilter('damaging', [$this, 'displayDamaging']),
+            new TwigFilter('dungeonTile', [$this, 'giveCssClassDungeonTile'])
         ];
     }
 
@@ -136,5 +138,36 @@ class AppExtension extends AbstractExtension
         if($damaging === StatusInterface::TYPE_DAMAGING_BAD_POISON){
             return 'empoisonnement grave';
         }
+    }
+
+    public function giveCssClassDungeonTile($data, $currentExplorersPosition, $tilePosition): string
+    {
+        $data = (array) $data;
+        $classList = 'tile';
+
+        if($tilePosition === $currentExplorersPosition){
+            $classList .= ' tile-current-explorers-position';
+        }
+
+        if ($data['box'] === DungeonGenerationService::DUNGEON_BOX_EMPTY){
+            $classList .= ' tile-empty';
+        }
+        else if($data['isExplorated'] === DungeonGenerationService::DUNGEON_TILE_UNKNOWN){
+            $classList .= ' tile-unknown';
+        }
+        else if($data['box'] === DungeonGenerationService::DUNGEON_BOX_ENTRANCE){
+            $classList .= ' tile-entrance';
+        }
+        else if ($data['box'] === DungeonGenerationService::DUNGEON_BOX_EXIT){
+            $classList .= ' tile-exit';
+        }
+        else if (array_key_exists('monsters', $data) && $data['monsters'] !== null){
+            $classList .= ' tile-monsters-' . count($data['monsters']);
+        }
+        else if($data['box'] === DungeonGenerationService::DUNGEON_BOX_FULL){
+            $classList .= ' tile-full';
+        }
+
+        return $classList;
     }
 }

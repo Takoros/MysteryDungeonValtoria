@@ -1,15 +1,27 @@
 {
-    "418" : {
-        "name" : "Mustébouée",
-        "types" : [4],
-        "isPlayable" : true,
-        "description" : "Mustébouée est basé sur une loutre avec une bouée jaune qui entoure son cou. Il a un pelage brun pâle et beige. Il a deux queues et deux sortes de nageoires bleues sur ses bras."
+    "1" : {
+        "name" : "Bulbizarre",
+        "types" : [9],
+        "isPlayable" : false,
+        "description" : "Bulbizarre est un petit quadrupède vert avec une tête large. Il porte un bulbe sur son dos. Ce dernier lui sert également d'organe de stockage."
     },
-    "133" : {
-        "name" : "Évoli",
+    "19" : {
+        "name" : "Ratata",
         "types" : [2],
-        "isPlayable" : true,
-        "description" : "Évoli est un Pokémon mammalien quadrupède, entre canin et félin, avec une fourrure principalement brune. Le bout de sa queue broussailleuse et son gros col de fourrure sont de couleur crème."
+        "isPlayable" : false,
+        "description" : "Rattata est un Pokémon ressemblant à un rat au corps violet et blanc pâle. C'est donc un quadrupède, avec trois griffes à chaque patte."
+    },
+    "20" : {
+        "name" : "Ratatac",
+        "types" : [2],
+        "isPlayable" : false,
+        "description" : "Rattatac ressemble à un gros rat et possède de petits bras, un corps marron et beige et des pieds palmés. Il a les yeux noirs. Il possède aussi une longue queue marron."
+    },
+    "23" : {
+        "name" : "Abo",
+        "types" : [16],
+        "isPlayable" : false,
+        "description" : "Abo est un Pokémon serpent au corps violet. Son ventre est complètement jaune, tout comme l'anneau qu'il possède autour du cou."
     },
     "37" : {
         "name" : "Goupix",
@@ -17,17 +29,65 @@
         "isPlayable" : true,
         "description" : "Goupix est un petit Pokémon quadrupède à l'allure vulpine. Son pelage est rouge tomette avec un ventre de couleur crème. Il a de grands yeux noisette, des oreilles pointues à l'intérieur brun et un petit museau brun."
     },
-    "906" : {
-        "name" : "Poussacha",
-        "types" : [9],
-        "isPlayable" : true,
-        "description" : "Poussacha est un Pokémon quadrupède à l'apparence animale, qui ressemble à un chaton. Son corps possède majoritairement des traits fins, que l'on retrouve chez ses quatre pattes filiformes et sans griffe. Hormis quelques endroits spécifiques, l'entièreté du pelage recouvrant l'organisme de Poussacha est vert clair."
+    "41" : {
+        "name" : "Nosferapti",
+        "types" : [16, 17],
+        "isPlayable" : false,
+        "description" : "Nosferapti est une petite chauve-souris bleu foncé. La membrane de ses ailes est violette, tout comme le creux de ses grandes oreilles."
     },
-    "570" : {
-        "name" : "Zorua",
-        "types" : [7],
+    "48" : {
+        "name" : "Mimitoss",
+        "types" : [16, 19],
+        "isPlayable" : false,
+        "description" : "Mimitoss ressemble à une boule de poils violette avec des antennes. Il a de petites dents et des yeux rouges. Ces derniers sont identiques aux yeux d'une mouche."
+    },
+    "109" : {
+        "name" : "Smogo",
+        "types" : [16],
+        "isPlayable" : false,
+        "description" : "Smogo est un Pokémon sphérique rempli de gaz toxiques. Il a un regard absent et une large bouche avec, habituellement, deux dents pointues sur la mâchoire supérieure."
+    },
+    "133" : {
+        "name" : "Évoli",
+        "types" : [2],
         "isPlayable" : true,
-        "description" : "Zorua est un Pokémon qui ressemble à un renard gris ardoise avec des accents noirs et rouges. Ses oreilles sont triangulaires et sont plus foncées à l'intérieur, et il a une large touffe de fourrure grise et rouge sur le haut de la tête."
+        "description" : "Évoli est un Pokémon mammalien quadrupède, entre canin et félin, avec une fourrure principalement brune. Le bout de sa queue broussailleuse et son gros col de fourrure sont de couleur crème."
+    },
+    "140" : {
+        "name" : "Kabuto",
+        "types" : [12, 4],
+        "isPlayable" : false,
+        "description" : "Kabuto fait penser à une limule, un Triops ou un trilobite. Son dos est recouvert d'une carapace ronde et marron, laissant apparaître une première paire d'yeux, petits et noirs."
+    },
+    "167" : {
+        "name" : "Mimigal",
+        "types" : [19, 16],
+        "isPlayable" : false,
+        "description" : "Mimigal est une sorte de petite mygale verte. Comme chez les épeires diadèmes, il a un motif sur l'abdomen, sauf que ce motif ressemblant à des yeux et une bouche mécontents."
+    },
+    "169" : {
+        "name" : "Nostenfer",
+        "types" : [16, 17],
+        "isPlayable" : false,
+        "description" : "Nostenfer est un Pokémon ressemblant à une chauve-souris dotée d'yeux avec des pupilles rouges et des sclères jaunes, de deux paires d'ailes donnant l'illusion de former une croix ainsi que de pattes atrophiées."
+    },
+    "175" : {
+        "name" : "Togepi",
+        "types" : [8],
+        "isPlayable" : true,
+        "description" : "Togepi est une petite créature, couleur crème, avec un Œuf recouvrant son corps. Sur sa coquille blanche, on peut voir des triangles creux rouges et bleus. Sa tête avec des épis en couronne affiche toujours une expression de joie."
+    },
+    "215" : {
+        "name" : "Farfuret",
+        "types" : [7,13],
+        "isPlayable" : false,
+        "description" : "Farfuret a un corps bleu foncé avec un joyau sur le front et un autre sur le torse. Il a une queue composée de trois plumes rouges tirant sur le rose et une quatrième est reliée à son oreille gauche."
+    },
+    "355" : {
+        "name" : "Skelénox",
+        "types" : [11],
+        "isPlayable" : false,
+        "description" : "Skelénox est une personnification stylisée de la Faucheuse. Son corps est une robe noires avec deux os sur le dos. Il a un masque qui ressemble à un crâne et un œil unique rouge qui flotte entre ses deux orbites."
     },
     "403" : {
         "name" : "Lixy",
@@ -35,16 +95,52 @@
         "isPlayable" : true,
         "description" : "Lixy est un petit félin bleu clair. Ses pattes arrière et le tour de son cou sont noirs. Il a une petite houppette bleue sur la tête ainsi que deux moustaches. Il a de grandes oreilles dont l'intérieur jaune forme une étoile."
     },
+    "418" : {
+        "name" : "Mustébouée",
+        "types" : [4],
+        "isPlayable" : true,
+        "description" : "Mustébouée est basé sur une loutre avec une bouée jaune qui entoure son cou. Il a un pelage brun pâle et beige. Il a deux queues et deux sortes de nageoires bleues sur ses bras."
+    },
+    "425" : {
+        "name" : "Baudrive",
+        "types" : [11, 17],
+        "isPlayable" : false,
+        "description" : "Baudrive est une sorte de ballon de baudruche violet. Son corps est composé d'une partie ronde avec une espèce de nœud sous son buste."
+    },
+    "504" : {
+        "name" : "Ratentif",
+        "types" : [2],
+        "isPlayable" : false,
+        "description" : "Ratentif est un petit Pokémon à l'allure de rongeur. Son pelage est principalement brun, à l'exception du bas de sa tête et de son ventre qui sont beiges."
+    },
+    "570" : {
+        "name" : "Zorua",
+        "types" : [7],
+        "isPlayable" : true,
+        "description" : "Zorua est un Pokémon qui ressemble à un renard gris ardoise avec des accents noirs et rouges. Ses oreilles sont triangulaires et sont plus foncées à l'intérieur, et il a une large touffe de fourrure grise et rouge sur le haut de la tête."
+    },
+    "590" : {
+        "name" : "Trompignon",
+        "types" : [9, 16],
+        "isPlayable" : false,
+        "description" : "Trompignon ressemble à un champignon avec une Poké Ball imprimée sur la tête. Sa tige épaisse est blanche et il possède deux bras de la même couleur."
+    },
     "610" : {
         "name" : "Coupenotte",
         "types" : [14],
         "isPlayable" : true,
         "description" : "Coupenotte est un Pokémon bipède vert grisâtre avec des défenses droites plus pâles qui se trouvent des deux côtés de sa bouche. Ces défenses peuvent se régénérer si elles sont cassées, et repoussent si elles tombent."
     },
-    "175" : {
-        "name" : "Togepi",
-        "types" : [8],
+    "714" : {
+        "name" : "Sonistrelle",
+        "types" : [17, 14],
+        "isPlayable" : false,
+        "description" : "Sonistrelle est un Pokémon couleur lavande, qui ressemble à une chauve-souris. Il a deux doigts avec des griffes à chaque aile et deux longs orteils à chaque pied."
+    },
+    "906" : {
+        "name" : "Poussacha",
+        "types" : [9],
         "isPlayable" : true,
-        "description" : "Togepi est une petite créature, couleur crème, avec un Œuf recouvrant son corps. Sur sa coquille blanche, on peut voir des triangles creux rouges et bleus. Sa tête avec des épis en couronne affiche toujours une expression de joie."
+        "description" : "Poussacha est un Pokémon quadrupède à l'apparence animale, qui ressemble à un chaton. Son corps possède majoritairement des traits fins, que l'on retrouve chez ses quatre pattes filiformes et sans griffe. Hormis quelques endroits spécifiques, l'entièreté du pelage recouvrant l'organisme de Poussacha est vert clair."
     }
 }

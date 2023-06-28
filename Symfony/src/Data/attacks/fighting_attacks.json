@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Combat"
+        "attackTree" : "Combat",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_FIGHTING_TWO" : {
         "name" : "Poing Karaté",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Combat"
+        "attackTree" : "Combat",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FIGHTING_THREE" : {
         "name" : "Aurasphère",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Combat"
+        "attackTree" : "Combat",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FIGHTING_FOUR" : {
         "name" : "Échauffement",
@@ -45,6 +48,7 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Combat"
+        "attackTree" : "Combat",
+        "actionType" : "action-type-offensive"
     }
 }

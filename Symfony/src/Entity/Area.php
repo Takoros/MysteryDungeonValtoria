@@ -21,6 +21,9 @@ class Area
     #[ORM\OneToMany(mappedBy: 'Area', targetEntity: Dungeon::class)]
     private Collection $Dungeons;
 
+    #[ORM\Column]
+    private ?bool $isExplorable = null;
+
     public function __construct()
     {
         $this->Dungeons = new ArrayCollection();
@@ -69,6 +72,18 @@ class Area
                 $dungeon->setArea(null);
             }
         }
+
+        return $this;
+    }
+
+    public function isIsExplorable(): ?bool
+    {
+        return $this->isExplorable;
+    }
+
+    public function setIsExplorable(bool $isExplorable): self
+    {
+        $this->isExplorable = $isExplorable;
 
         return $this;
     }

@@ -11,6 +11,7 @@ use App\Service\Combat\Attack\FighterAttacks;
 use App\Service\Combat\Status\ControlStatus;
 use App\Service\Combat\Status\DamagingStatus;
 use App\Service\Combat\Status\StatusInterface;
+use App\Service\Dungeon\MonsterCharacter;
 
 /**
  * Class used in Arena as fighters for the combat
@@ -23,7 +24,7 @@ class Fighter extends FighterAttacks
     /**
      * Base Fighter Properties
      */
-    private int $id;
+    private int|string $id;
     private string $name;
     private string $gender;
     private int $level;
@@ -74,7 +75,7 @@ class Fighter extends FighterAttacks
     public static Arena $arena;
     public static CombatLog $combatLog;
 
-    public function __construct(Character $character, int $team, Arena &$arena, CombatLog &$combatLog)
+    public function __construct(Character|MonsterCharacter $character, int $team, Arena &$arena, CombatLog &$combatLog)
     {
         // Base Fighter Properties
         $this->id = $character->getId();
@@ -122,7 +123,7 @@ class Fighter extends FighterAttacks
      * Base Fighter Getters
      */
 
-    public function getId(): int
+    public function getId(): int|string
     {
         return $this->id;
     }

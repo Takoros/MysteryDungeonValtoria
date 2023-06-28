@@ -5,11 +5,13 @@ namespace App\Service;
 use App\Entity\Character;
 use App\Entity\Rotation;
 use App\Entity\Stats;
+use App\Entity\Timers;
 use App\Entity\User;
 use App\Repository\AttackRepository;
 use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
+use App\Service\Dungeon\MonsterCharacter;
 use Doctrine\Persistence\ManagerRegistry;
 
 class CharacterService
@@ -176,13 +178,18 @@ class CharacterService
                  ->setActionPoint(6);
         $this->entityManager->persist($newStats);
 
+        // Timers
+        $timers = new Timers();
+        $this->entityManager->persist($timers);
+
         $newCharacter->setLevel(1)
                      ->setXP(0)
                      ->setStatPoints(0)
                      ->setDescription('')
                      ->setRank(0)
                      ->setUserI($User)
-                     ->setStats($newStats);
+                     ->setStats($newStats)
+                     ->setTimers($timers);
 
         $this->entityManager->persist($newCharacter);
         $this->entityManager->flush();
@@ -322,7 +329,7 @@ class CharacterService
     /**
      * Returns in a array all the Attacks available for a character
      */
-    public function getAvailableAttacks(Character $character): array
+    public function getAvailableAttacks(Character|MonsterCharacter $character): array
     {
         $adventurerType = $this->typeRepository->findOneBy(['name' => 'Aventurier']);
 

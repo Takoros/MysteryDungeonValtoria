@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Fée"
+        "attackTree" : "Fée",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_FAIRY_TWO" : {
         "name" : "Voix Enjôleuse",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Fée"
+        "attackTree" : "Fée",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_FAIRY_THREE" : {
         "name" : "Vigilance",
@@ -33,7 +35,8 @@
         "action_point_cost" : 1,
         "scope" : "self",
         "level_required" : 5,
-        "attackTree" : "Fée"
+        "attackTree" : "Fée",
+        "actionType" : "action-type-defensive"
     },
     "ATTACK_FAIRY_FOUR" : {
         "name" : "Câlinerie",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Fée"
+        "attackTree" : "Fée",
+        "actionType" : "action-type-offensive"
     }
 }
