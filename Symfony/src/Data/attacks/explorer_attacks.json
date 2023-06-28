@@ -9,7 +9,8 @@
         "action_point_cost" : 0,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_EXPLORER_ONE" : {
         "name" : "Tranche",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_EXPLORER_TWO" : {
         "name" : "Reflet",
@@ -33,7 +35,8 @@
         "action_point_cost" : 1,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-defensive"
     },
     "ATTACK_EXPLORER_THREE" : {
         "name" : "Regard Touchant",
@@ -45,7 +48,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_EXPLORER_FOUR" : {
         "name" : "Encouragement",
@@ -57,7 +61,8 @@
         "action_point_cost" : 1,
         "scope" : "ally_team",
         "level_required" : 1,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-supportive"
     },
     "ATTACK_EXPLORER_FIVE" : {
         "name" : "Léchouille",
@@ -69,7 +74,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_EXPLORER_SIX" : {
         "name" : "Équilibre",
@@ -81,7 +87,8 @@
         "action_point_cost" : 2,
         "scope" : "self",
         "level_required" : 5,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_EXPLORER_SEVEN" : {
         "name" : "Coup Double",
@@ -93,7 +100,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_EXPLORER_EIGHT" : {
         "name" : "Pansement",
@@ -105,6 +113,7 @@
         "action_point_cost" : 2,
         "scope" : "ally_team_member_lowest_vitality",
         "level_required" : 10,
-        "attackTree" : "Aventurier"
+        "attackTree" : "Aventurier",
+        "actionType" : "action-type-supportive"
     }
 }

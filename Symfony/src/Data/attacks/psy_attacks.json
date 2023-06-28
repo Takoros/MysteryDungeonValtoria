@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Psy"
+        "attackTree" : "Psy",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_PSY_TWO" : {
         "name" : "Choc Mental",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Psy"
+        "attackTree" : "Psy",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_PSY_THREE" : {
         "name" : "Psykoud'Boul",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Psy"
+        "attackTree" : "Psy",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_PSY_FOUR" : {
         "name" : "Vibra Soin",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "ally_team",
         "level_required" : 10,
-        "attackTree" : "Psy"
+        "attackTree" : "Psy",
+        "actionType" : "action-type-supportive"
     }
 }

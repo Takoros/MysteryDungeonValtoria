@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}PDM : Valtoria | Dungeon Preview {% endblock %}
+
+{% block body %}
+    {% for y in data.maxY .. data.minY %}
+        <div class="dungeon-row">
+            {% for x in data.minX .. data.maxX %}
+                {% set tilePos = y ~ ',' ~ x %}
+                    <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+{% endblock %}

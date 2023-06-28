@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Glace"
+        "attackTree" : "Glace",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_ICE_TWO" : {
         "name" : "Poudreuse",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Glace"
+        "attackTree" : "Glace",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_ICE_THREE" : {
         "name" : "Éclats Glace",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Glace"
+        "attackTree" : "Glace",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_ICE_FOUR" : {
         "name" : "Onde Boréale",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Glace"
+        "attackTree" : "Glace",
+        "actionType" : "action-type-offensive"
     }
 }

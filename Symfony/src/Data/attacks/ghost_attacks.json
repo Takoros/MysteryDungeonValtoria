@@ -9,7 +9,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Spectre"
+        "attackTree" : "Spectre",
+        "actionType" : "action-type-utility"
     },
     "ATTACK_GHOST_TWO" : {
         "name" : "Étonnement",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Spectre"
+        "attackTree" : "Spectre",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GHOST_THREE" : {
         "name" : "Ball'Ombre",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Spectre"
+        "attackTree" : "Spectre",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_GHOST_FOUR" : {
         "name" : "Châtiment",
@@ -45,6 +48,7 @@
         "action_point_cost" : 3,
         "scope" : "enemy_team_member",
         "level_required" : 10,
-        "attackTree" : "Spectre"
+        "attackTree" : "Spectre",
+        "actionType" : "action-type-offensive"
     }
 }

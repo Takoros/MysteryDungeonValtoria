@@ -146,7 +146,7 @@ class Rotation
         return $this;
     }
 
-    public function getSlotAttack(int $slot): Attack
+    public function getSlotAttack(int $slot): Attack|null
     {
         if($slot === 1){
             return $this->getAttackOne();

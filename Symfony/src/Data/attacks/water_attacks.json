@@ -9,7 +9,8 @@
         "action_point_cost" : 1,
         "scope" : "self",
         "level_required" : 1,
-        "attackTree" : "Eau"
+        "attackTree" : "Eau",
+        "actionType" : "action-type-defensive"
     },
     "ATTACK_WATER_TWO" : {
         "name" : "Pistolet à O",
@@ -21,7 +22,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 1,
-        "attackTree" : "Eau"
+        "attackTree" : "Eau",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_WATER_THREE" : {
         "name" : "Aqua-Jet",
@@ -33,7 +35,8 @@
         "action_point_cost" : 2,
         "scope" : "enemy_team_member",
         "level_required" : 5,
-        "attackTree" : "Eau"
+        "attackTree" : "Eau",
+        "actionType" : "action-type-offensive"
     },
     "ATTACK_WATER_FOUR" : {
         "name" : "Repli",
@@ -45,6 +48,7 @@
         "action_point_cost" : 2,
         "scope" : "self",
         "level_required" : 10,
-        "attackTree" : "Eau"
+        "attackTree" : "Eau",
+        "actionType" : "action-type-defensive"
     }
 }

@@ -163,3 +163,73 @@
 .statusDamage {
     color:rgb(195, 0, 195);
 }
+
+.dungeon-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.tile {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    border: 1px solid rgb(50, 50, 50);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.tile-unknown::before {
+    content: '?';
+}
+
+.tile-unknown {
+    background: rgb(99, 99, 99);
+}
+
+.tile-entrance {
+    background: rgb(0, 96, 144);
+}
+
+.tile-exit {
+    background: green;
+}
+
+.tile-full {
+    background-color: blanchedalmond;
+}
+
+.tile-empty {
+    background: rgb(0, 0, 0);
+}
+
+.tile-monsters-1::before {
+    content: '1';
+}
+
+.tile-monsters-1 {
+    background: rgb(186, 34, 34);
+}
+
+.tile-monsters-2::before {
+    content: '2';
+}
+
+.tile-monsters-2 {
+    background: rgb(148, 20, 20);
+}
+
+.tile-monsters-3::before {
+    content : '3';
+}
+
+.tile-monsters-3 {
+    background: rgb(111, 10, 10);
+}
+
+.tile-current-explorers-position {
+    background-image: url("/icons/eevee.png");
+    background-size: 18px 18px;
+    background-repeat: no-repeat;
+    background-position: center;
+}

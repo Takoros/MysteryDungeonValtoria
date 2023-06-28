@@ -166,6 +166,11 @@ class CreateAttacksCommand extends Command
                         // Corrects the level required
                         $attackDatabase->setAttackTree($attackJsonTypeEntity);
                     }
+
+                    if($attackJson->actionType !== $attackDatabase->getActionType()){
+                        // Corrects the action type
+                        $attackDatabase->setActionType($attackJson->actionType);
+                    }
                 }
             }
 
@@ -184,7 +189,8 @@ class CreateAttacksCommand extends Command
                           ->setActionPointCost($attackJson->action_point_cost)
                           ->setScope($attackJson->scope)
                           ->setLevelRequired($attackJson->level_required)
-                          ->setAttackTree($attackJsonTreeEntity);
+                          ->setAttackTree($attackJsonTreeEntity)
+                          ->setActionType($attackJson->actionType);
 
                 $this->entityManager->persist($newAttack);
             }
