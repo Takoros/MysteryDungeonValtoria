@@ -5,11 +5,21 @@
         <title>{% block title %}PMD : Valtoria{% endblock %}</title>
         <link rel="icon" href="">
 
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        {% for flash in app.flashes('danger') %}
+            <div class="flash flash-danger">{{ flash }}</div>
+        {% endfor %}
+        
+        {% for flash in app.flashes('success') %}
+            <div class="flash flash-success">{{ flash }}</div>
+        {% endfor %}
+
+        <div class="content">
+            {% block body %}{% endblock %}
+        </div>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

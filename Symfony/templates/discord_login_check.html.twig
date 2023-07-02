@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}PMD : Valtoria | Connection..{% endblock %}</title>
+        <link rel="icon" href="">
+    </head>
+    <body>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const urlSearchParams = new URLSearchParams(window.location.hash);
+
+                const accessToken = urlSearchParams.get('access_token');
+
+                if(accessToken){
+                    window.location.href = 'login?access_token='+accessToken;
+                }
+            })
+        </script>
+    </body>
+</html>

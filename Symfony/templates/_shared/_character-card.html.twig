@@ -1,0 +1,47 @@
+<div class="combatLog-character-card">
+    <div class="combatLog-character-card-1st">
+        <div class="combatLog-character-card-infobox">
+            <img class="combatLog-character-card-species-icon" src="{{ asset(character.Species.name|speciesIcon) }}" alt="">
+            <div class="combatLog-character-card-infos">
+                <div>Nom : {{ character.name }}</div>
+                <div>Age : {{ character.age }}</div>
+                <div>Niveau : {{ character.level }}</div>
+                <div>Espèce : {{ character.Species.name }}</div>
+            </div>
+        </div>
+        {% if character.gender == 'Mâle' %}
+            <img class="genderIcon" src="{{ asset('icons/male.png') }}"  width='25px' height="25px" style="margin-right: 5px">
+        {% else %}
+            <img class="genderIcon" src="{{ asset('icons/female.png') }}" width='32px' height="30px">
+        {% endif %}
+    </div>
+    <div class="combatLog-character-card-separator"></div>
+    <div class="combatLog-character-card-2nd">
+        <table class="combatLog-character-card-statTable">
+            <tbody>
+                <tr>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/vitality.png') }}">Vitalité : {{ character.Stats.vitality }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/strength.png') }}">Force : {{ character.Stats.strength }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/power.png') }}">Pouvoir : {{ character.Stats.power }}</td>
+                </tr>
+                <tr>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/speed.png') }}">Vitesse : {{ character.Stats.speed }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/stamina.png') }}">Endurance : {{ character.Stats.stamina }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/bravery.png') }}">Courage : {{ character.Stats.bravery }}</td>
+                    
+                </tr>
+                <tr>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}">Agility : {{ character.Stats.agility }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}">Présence : {{ character.Stats.presence }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}">Points d'Action : {{ character.Stats.actionPoint }}</td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/coordination.png') }}">Coordination : {{ character.Stats.coordination }}</td>
+                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/impassiveness.png') }}">Impassibilité : {{ character.Stats.impassiveness }}</td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
