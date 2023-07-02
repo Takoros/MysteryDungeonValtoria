@@ -21,6 +21,10 @@ use Symfony\Component\HttpKernel\KernelInterface;
 #[ORM\Entity(repositoryClass: DungeonInstanceRepository::class)]
 class DungeonInstance
 {
+    const DUNGEON_STATUS_PREPARATION = 'dungeon_status_preparation';
+    const DUNGEON_STATUS_EXPLORATION = 'dungeon_status_exploration';
+    const DUNGEON_STATUS_TERMINATION = 'dungeon_status_termination';
+
     const MOVE_DIRECTION_UP = 'up';
     const MOVE_DIRECTION_DOWN = 'down';
     const MOVE_DIRECTION_LEFT = 'left';
@@ -52,9 +56,16 @@ class DungeonInstance
     #[ORM\Column(length: 20, nullable: true)]
     private ?string $currentExplorersPosition = null;
 
+    #[ORM\Column(length: 255)]
+    private ?string $status = null;
+
+    #[ORM\OneToMany(mappedBy: 'dungeonInstance', targetEntity: CombatLog::class)]
+    private Collection $fights;
+
     public function __construct()
     {
         $this->Explorers = new ArrayCollection();
+        $this->fights = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -166,9 +177,13 @@ class DungeonInstance
     /*                            EXPLORATION FUNCTIONS                           */
     /* -------------------------------------------------------------------------- */
 
-    public function moveExplorers(string $direction, EntityManagerInterface $em): self|bool
+    public function moveExplorers(string $direction, EntityManagerInterface $em): bool
     {
         $dungeonGenerationService = new DungeonGenerationService();
+
+        if(!$this->getStatus() === self::DUNGEON_STATUS_EXPLORATION){
+            return false;
+        }
         
         if($dungeonGenerationService->willHitEdgeWallsOfMap($direction, $this->currentExplorersPosition, $this->content['dungeon']) || $this->tilehasMonsters($this->currentExplorersPosition)){
             return false;
@@ -180,7 +195,7 @@ class DungeonInstance
         
         $em->flush();
 
-        return $this;
+        return true;
     }
 
     public function fightCurrentPositionMonsters(SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository, EntityManager $em)
@@ -195,6 +210,12 @@ class DungeonInstance
         $arena = new Arena($this->getExplorers(), $monsters, Arena::TYPE_PVP, $attackRepository);
         $arena->launchBattle();
         $arena->combatLog->setLocation($this->getDungeon()->getName());
+        $arena->combatLog->setDungeonInstance($this);
+
+        foreach ($this->getExplorers() as $explorer) {
+            $arena->combatLog->addCharacter($explorer);
+        }
+
         $arena->combatLog->saveCombatLog($em);
 
         if($arena->combatLog->getWinner() === 1){
@@ -212,32 +233,34 @@ class DungeonInstance
 
             $this->modifyDungeonTile($this->currentExplorersPosition, 'monsters', null);
 
+            $arena->combatLog->setDungeonCombatMessage($xpWonAmount);
+            
             $em->flush();
 
             return [
                 'victory' => true,
-                'message' => "Votre équipe à vaincu les pokémons sauvages qui s'étaient mis sur votre chemin."
+                'combatLogId' => $arena->combatLog->getId(),
+                'flavourText' => "Votre équipe à vaincu les pokémons sauvages qui s'étaient mis sur votre chemin."
             ];
         }
         else {
             $xpWonAmount = ceil((($this->Dungeon->getMinMonsterLevel() + $this->Dungeon->getMaxMonsterLevel()) / 2) * 5);
 
             foreach ($this->getExplorers() as $explorer) {
-                $explorer->setCurrentExplorationDungeonInstance(null);
                 $explorer->gainXp($xpWonAmount);
                 $explorer->getTimers()->setLastDungeon(new DateTime());
             }
 
-            $this->Dungeon = null;
-            $this->leader = null;
+            $this->setStatus(self::DUNGEON_STATUS_TERMINATION);
 
-            $em->remove($this);
+            $arena->combatLog->setDungeonCombatMessage($xpWonAmount);
 
             $em->flush();
 
             return [
                 'victory' => false,
-                'message' => "Les pokémons sauvages ont vaincu votre équipe, vous vous êtes enfui en courant du donjon."
+                'combatLogId' => $arena->combatLog->getId(),
+                'flavourText' => "Les pokémons sauvages ont vaincu votre équipe, vous vous êtes enfui en courant du donjon."
             ];
         }
     }
@@ -263,6 +286,18 @@ class DungeonInstance
     }
 
     /**
+     * Returns true if the position tile is the exit
+     */
+    public function tilehasExit($position): bool
+    {
+        if($this->getContent()['dungeon'][$position]['box'] === DungeonGenerationService::DUNGEON_BOX_EXIT){
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Returns the monsters of a tile
      */
     private function getTileMonsters($position): array
@@ -272,5 +307,47 @@ class DungeonInstance
         }
 
         return [];
+    }
+
+    public function getStatus(): ?string
+    {
+        return $this->status;
+    }
+
+    public function setStatus(string $status): self
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, CombatLog>
+     */
+    public function getFights(): Collection
+    {
+        return $this->fights;
+    }
+
+    public function addFight(CombatLog $fight): self
+    {
+        if (!$this->fights->contains($fight)) {
+            $this->fights->add($fight);
+            $fight->setDungeonInstance($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFight(CombatLog $fight): self
+    {
+        if ($this->fights->removeElement($fight)) {
+            // set the owning side to null (unless already changed)
+            if ($fight->getDungeonInstance() === $this) {
+                $fight->setDungeonInstance(null);
+            }
+        }
+
+        return $this;
     }
 }

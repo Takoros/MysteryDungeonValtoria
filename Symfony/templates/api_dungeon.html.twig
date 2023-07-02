@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>PMD : Valtoria</title>
+        <link rel="icon" href="">
+
+        <link rel="stylesheet" href="{{ asset('style.css') }}">
+    </head>
+    <body style="background-color: white;">
+        {% for y in data.maxY .. data.minY %}
+            <div class="dungeon-row">
+                {% for x in data.minX .. data.maxX %}
+                    {% set tilePos = y ~ ',' ~ x %}
+                        <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </body>
+</html>

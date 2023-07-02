@@ -61,6 +61,7 @@ class TestController extends AbstractController
 
         $generatedDungeon = $dungeonGenerationService->generateDungeon($dungeonOne, DungeonGenerationService::DUNGEON_SIZE_SMALL);
         $tako = $characterRepository->find(1);
+        $pomme = $characterRepository->find(2);
 
         $dungeonInstance = new DungeonInstance();
         $dungeonInstance->setContent($generatedDungeon['content'])
@@ -68,16 +69,14 @@ class TestController extends AbstractController
                         ->setDungeon($dungeonOne)
                         ->setCurrentExplorersPosition($generatedDungeon['currentExplorersPosition'])
                         ->setLeader($tako)
-                        ->addExplorer($tako);
+                        ->addExplorer($tako)
+                        ->addExplorer($pomme)
+                        ->setStatus(DungeonInstance::DUNGEON_STATUS_PREPARATION);
                         
         $em->persist($dungeonInstance);
         $em->flush();
 
-        return $this->render('dungeon.html.twig', [
-            'dungeon' => $dungeonInstance->getContent()['dungeon'],
-            'data' => $dungeonInstance->getContent()['data'],
-            'currentExplorersPosition' => $dungeonInstance->getCurrentExplorersPosition()
-        ]);
+        dd('toto');
     }
 
     #[Route('/test4', name: 'app_test4')]
