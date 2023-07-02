@@ -3,6 +3,24 @@
 {% block title %}PDM : Valtoria | Rapport de Bataille {% endblock %}
 
 {% block body %}
+    <h1>Rapport de Combat</h1>
+
+    <div class="combatLog-team-display">
+        <div class="combatLog-team">
+            <div class="combatLog-team-name">Équipe 1</div>
+            {% for character in combatLog.teamOne %}
+                {% include '_shared/_character-card.html.twig' %}
+            {% endfor %}
+        </div>
+        <div class="combatLog-vs"><img class="combatLog-vs-image" src="{{ asset('icons/versus.png')}}"></div>
+        <div class="combatLog-team">
+            <div class="combatLog-team-name">Équipe 2</div>
+            {% for character in combatLog.teamTwo %}
+                {% include '_shared/_character-card.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+
     <table class='combatLogTable'>
         <thead>
             <tr>
@@ -114,6 +132,8 @@
                 {% endfor %}
             {% endfor %}
         </tbody>
-    </table>   
+    </table>
+
+    <div class='no-footer'></div>
 {% endblock %}
 

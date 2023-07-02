@@ -1,13 +1,204 @@
 @import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
 
+body {
+    background-color: darkgreen;
+    font-family: 'Rajdhani', sans-serif;
+}
+
+h1 {
+    text-align: center;
+}
+
+.no-footer {
+    height: 20px;
+}
+
+.content {
+    width: 95%;
+    margin: auto;
+    background-color: rgb(232, 215, 188);
+    border-radius: 15px;
+    padding-top: 5px;
+
+    min-height: 100vh;
+}
+
+.physicalDamage {
+    color: red;
+}
+
+.specialDamage {
+    color: blue;
+}
+
+.statusDamage {
+    color:rgb(195, 0, 195);
+}
+
+.flash {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+
+    align-items: center;
+    left:0;
+    right:0;
+
+    margin: auto;
+    width: 400px;
+    height: 65px;
+    top: 35px;
+    background-color: white;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 10px;
+}
+
+.flash-success {
+    border: 5px solid green;
+}
+
+.flash-danger {
+    border: 5px solid red;
+}
+
+/* -- Home -- */
+
+.home-title {
+    display:flex;
+    justify-content:center;
+    margin-top:25px;
+    margin-bottom:50px;
+    font-size: 28px;
+}
+
+.home-container {
+    display:flex;
+    justify-content:center;
+}
+
+/* -- Login -- */
+
+.LoginButton {
+    width:300px;
+    height:100px;
+    font-size: 22px;
+    background-color: rgb(115, 138, 219);
+    margin-top: 150px;
+}
+
+.LoginButton {
+    cursor: pointer;
+}
+
+/* -- Combat Log -- */
+.combatLog-character-card {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 17px;
+
+    border: 1px black solid;
+    border-radius: 5px;
+    width: 500px;
+    height: 225px;
+    background-color: rgb(255, 235, 205);
+    margin-top: 10px;
+}
+
+.combatLog-character-card-1st {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    margin-top: 5px;
+    justify-content: space-between;
+}
+
+.combatLog-character-card-infobox {
+    display: flex;
+    flex-direction: row;
+}
+
+.combatLog-character-card-species-icon {
+    width: 100px;
+    height: 100px;
+    border: black 2px solid;
+}
+
+.combatLog-character-card-infos {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.genderIcon {
+    display: flex;
+    justify-content: end;
+}
+
+.combatLog-character-card-separator {
+    width: 375px;
+    height: 1px;
+    background-color: black;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.combatLog-character-card-statTable {
+    margin: auto;
+    width: 95%;
+}
+
+.combatLog-character-card-statTable tbody {
+    margin: auto;
+}
+
+.combatLog-character-card-stat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    vertical-align: middle;
+}
+
+.combatLog-team-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.combatLog-team {
+    display: flex;
+    flex-direction: column;
+}
+
+.combatLog-team-name {
+    font-family: 'Rajdhani', sans-serif;
+    align-self: center;
+    font-size: 45px;
+}
+
+.combatLog-vs {
+    display: flex;
+    align-items: center;
+}
+
+.combatLog-vs-image {
+    width: 125px;
+    height: 125px;
+}
+
+/* Log */
+
 .combatLogTable {
     font-family: 'Rajdhani', sans-serif;
-    width: 80%;
+    font-size: 18px;
+    width: 95%;
     margin: auto;
     border: 1px solid black;
     table-layout: unset;
 
     background-color: rgb(255, 235, 205);
+    border-radius: 15px;
 }
 
 .combatLogTable tr {
@@ -152,27 +343,95 @@
     height: 25px;
 }
 
-.physicalDamage {
-    color: red;
+/* Dungeon Display */
+
+.dungeonTitles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
-.specialDamage {
-    color: blue;
+.dungeonTitles h1 {
+    text-align:unset;
 }
 
-.statusDamage {
-    color:rgb(195, 0, 195);
+.dungeonGame {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dungeonTips {
+    width: 33%;
+}
+
+.dungeonTipsRow {
+    display: flex;
+    justify-content: start;
+    justify-self: center;
+    margin-bottom: 5px;
+    margin-left: 25px;
+}
+
+.tile-tip {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(50, 50, 50);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.tile-tip-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+.dungeonTipsRow {
+    display: flex;
+}
+
+.dungeonTipsSeparator {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 85%;
+    margin: auto;
+}
+
+.dungeonTipsNotes {
+    margin-top: 5px;
+    list-style-type: circle;
+    font-size: 18px;
+}
+
+.dungeonTipsNotesTitle {
+    font-size: 30px;
+    text-align: center;
+}
+
+.dungeonExplorersList {
+    position: absolute;
+    
+}
+
+.dungeon {
+    width: 550px;
+    margin: auto;
 }
 
 .dungeon-row {
     display: flex;
     flex-direction: row;
+    justify-content: center;
 }
 
 .tile {
     display: flex;
-    width: 25px;
-    height: 25px;
+    width: 60px;
+    height: 60px;
     border: 1px solid rgb(50, 50, 50);
     justify-content: center;
     align-items: center;
@@ -181,6 +440,7 @@
 
 .tile-unknown::before {
     content: '?';
+    font-size: 28px;
 }
 
 .tile-unknown {
@@ -205,31 +465,220 @@
 
 .tile-monsters-1::before {
     content: '1';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
 }
 
 .tile-monsters-1 {
     background: rgb(186, 34, 34);
+    justify-content: end !important;
+    align-items: start !important;
 }
 
 .tile-monsters-2::before {
     content: '2';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
 }
 
 .tile-monsters-2 {
     background: rgb(148, 20, 20);
+    justify-content: end !important;
+    align-items: start !important;
 }
 
 .tile-monsters-3::before {
     content : '3';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
 }
 
 .tile-monsters-3 {
     background: rgb(111, 10, 10);
+    justify-content: end !important;
+    align-items: start !important;
 }
 
 .tile-current-explorers-position {
     background-image: url("/icons/eevee.png");
-    background-size: 18px 18px;
+    background-size: 35px 35px;
     background-repeat: no-repeat;
     background-position: center;
 }
+
+.dungeonButtons {
+    margin-top: 2px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.dungeonDirectionButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.dungeonEndingButton {
+    display: flex;
+    justify-content: center;
+}
+
+.dungeonDirectionButtons button {
+    background-color: rgb(0, 166, 255);
+}
+
+.dungeonInteractionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.ButtonFight {
+    background-color: rgb(186, 42, 42);
+    width: 248px !important;
+}
+
+.ButtonLeave {
+    background-color: rgb(235, 19, 19);
+    width: 500px !important;
+}
+
+.ButtonInteract {
+    background-color: rgb(52, 202, 80);
+    width: 248px !important;
+}
+
+.dungeonButton {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 122px;
+    height: 50px;
+}
+
+.dungeonButton:hover {
+    cursor: pointer;
+}
+
+.dungeonErrorMessages {
+    width: 496px;
+    height: 50px;
+    margin: 1rem auto 0px;
+
+    display: flex;
+    justify-content: center;
+    vertical-align:middle;
+    text-align: center;
+    line-height: 50px;
+    
+    color: red;
+    border: solid 2px black;
+    background-color: white;
+    font-size: 19px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.dungeonFightsLogs {
+    width: 550px;
+    height: 550px;
+    background-color: rgb(255, 235, 205);
+    border: 2px solid black;
+}
+
+.dungeonFightsLogsSeparator {
+    width: 500px;
+    height: 1px;
+    margin: auto;
+    background-color: black;
+}
+
+.dungeonFightsLogsTitle {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.dungeonFightsLogsList {
+    height: 500px;
+    overflow-y: scroll;    
+}
+
+.dungeonFightsLogsList ul {
+    list-style: square;
+    padding: 0;
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dungeonFightsLogsList li {
+    font-size: 23px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+}
+
+.dungeonFightsLogsListLiVictory::before {
+    display: inline-block;
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-image: url('icons/laurel-wreath.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-self: center;
+}
+
+.dungeonFightsLogsListLiDefeat::before {
+    display: inline-block;
+    content: '';
+    width: 25px;
+    height: 25px;
+    background-image: url('icons/game-over.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    align-self: center;
+}
+
+.dungeonFightsLogsList li a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+
+.dungeonFightsLogsList::-webkit-scrollbar {
+    display: none; 
+}
+
+.dungeon-preparation-character-container {
+    margin: 20px auto;
+    width: 1025px;
+    height:500px;
+    display:grid;
+    grid-template-columns: 500px 225px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}
+
+.buttonEnterDungeon {
+    background-color: rgb(0, 182, 12);
+    width: 248px !important;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 20px;
+    border-radius: 15px;
+}
+
+/*h1 {
+    color:rgb(2, 188, 2)
+}<img width="25" src="{{ asset('icons/laurel-wreath.png') }}" style="margin-right:5px;">
+<img width="25" src="{{ asset('icons/laurel-wreath.png') }}" style="margin-right:5px;"> 
+    width: 500px;
+    height: 225px;

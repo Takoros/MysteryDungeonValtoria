@@ -2,6 +2,7 @@
 
 namespace App\Twig;
 
+use App\Entity\DungeonInstance;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\DungeonGenerationService;
 use Twig\Extension\AbstractExtension;
@@ -16,7 +17,9 @@ class AppExtension extends AbstractExtension
             new TwigFilter('control', [$this, 'displayControl']),
             new TwigFilter('controlActivate', [$this, 'displayControlActivate']),
             new TwigFilter('damaging', [$this, 'displayDamaging']),
-            new TwigFilter('dungeonTile', [$this, 'giveCssClassDungeonTile'])
+            new TwigFilter('dungeonTile', [$this, 'giveCssClassDungeonTile']),
+            new TwigFilter('speciesIcon', [$this, 'getSpeciesIconFileName']),
+            new TwigFilter('DungeonInstanceStatus', [$this, 'getDungeonInstanceStatusName'])
         ];
     }
 
@@ -169,5 +172,27 @@ class AppExtension extends AbstractExtension
         }
 
         return $classList;
+    }
+
+    public function getSpeciesIconFileName($speciesName)
+    {
+        $speciesName = strtolower($speciesName);
+        $speciesName = str_replace("É","e", $speciesName);
+        $speciesName = str_replace("é","e", $speciesName);
+
+        return 'pokemon-icons/'. $speciesName .'.png';
+    }
+
+    public function getDungeonInstanceStatusName($dungeonInstanceStatus): string
+    {
+        if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_PREPARATION){
+            return 'Préparation';
+        }
+        else if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_EXPLORATION){
+            return 'Exploration';
+        }
+        else if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_TERMINATION){
+            return 'Terminaison';
+        }
     }
 }

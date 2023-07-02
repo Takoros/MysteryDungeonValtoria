@@ -46,7 +46,7 @@ class CombatLog
     #[ORM\Column(nullable: true)]
     private ?int $winner = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateCreation = null;
 
     #[ORM\Column(length: 50, nullable: true)]
@@ -173,6 +173,13 @@ class CombatLog
     public function setMessage(?string $message): self
     {
         $this->message = $message;
+
+        return $this;
+    }
+
+    public function setDungeonCombatMessage($xpWonAmount): self
+    {
+        $this->message = "+{$xpWonAmount} XP";
 
         return $this;
     }
@@ -337,6 +344,9 @@ class CombatLog
     /* -------------------------------------------------------------------------- */
 
     public $arena = null;
+
+    #[ORM\ManyToOne(inversedBy: 'fights')]
+    private ?DungeonInstance $dungeonInstance = null;
 
     /**
      * Creates a log for the winner announcement
@@ -533,5 +543,17 @@ class CombatLog
         $logLine->initTypeAttackNoEffect();
 
         $this->addLogLine($logLine);
+    }
+
+    public function getDungeonInstance(): ?DungeonInstance
+    {
+        return $this->dungeonInstance;
+    }
+
+    public function setDungeonInstance(?DungeonInstance $dungeonInstance): self
+    {
+        $this->dungeonInstance = $dungeonInstance;
+
+        return $this;
     }
 }

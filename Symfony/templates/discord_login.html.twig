@@ -1,0 +1,12 @@
+{% extends "base.html.twig" %}
+
+{% block title %}PDM : Valtoria | Rapport de Bataille {% endblock %}
+
+{% block body %}
+    <div style='display:flex; justify-content:center; margin-top:25px; margin-bottom:50px;'>
+        <form action="{{ path('app_discord_connect') }}" method='post'>
+            <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
+            <button class="LoginButton">Connection avec Discord</button>
+        </form>
+    </div>
+{% endblock %}
