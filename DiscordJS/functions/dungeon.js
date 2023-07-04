@@ -90,8 +90,8 @@ async function displayPreparationDungeon(interaction, file, dungeonImageData, ti
                 collector.resetTimer();
                 return;
             }
-            collector.stop();
             displayExplorationDungeon(interaction, file, dungeonImageData, time, response);
+            collector.stop();
         }
         else if (i.customId === "leaveDungeon"){
             leaveResponse = await leaveDungeon(i, interaction);
@@ -202,7 +202,6 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
                 ephemeral: true,
             });
         }
-        await i.deferUpdate();
 
         if (i.customId === "leave") {
             leaveResponse = await leaveDungeon(i, interaction);
@@ -222,10 +221,10 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
                         components: [buttonRow, moreButtonsRow],
                     });
                 }
-    
+                 await i.update({fetchreply:false});
                 return;
             }
-
+            await i.editReply('');
             await response.edit({
                 content: 'Vous avez bien quitté le donjon.',
                 files: [],
@@ -252,9 +251,37 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
                         components: [buttonRow, moreButtonsRow],
                     });
                 }
-    
+                await i.update({fetchreply:false});
                 return;
             }
+
+            if(fightResponse.victory === false){
+                i.reply({
+                    content: 'Les pokémons sauvages ont vaincu votre équipe, vous vous êtes enfui en courant du donjon.\nRapport de combat : '+fightResponse.combatLogUrl,
+                    ephemeral: true
+                })
+                displayTerminationDungeon(interaction, file, dungeonImageData, time, response);
+                collector.stop();
+
+                return;
+            }
+
+            i.reply({
+                content: "Votre équipe à vaincu les pokémons sauvages qui s'étaient mis sur votre chemin.\nRapport de combat : "+fightResponse.combatLogUrl,
+                ephemeral: true
+            });
+
+            dungeonImageData = await generateDungeonImage(i);
+            file = dungeonImageData['image'];
+            
+            await response.edit({
+                content: '',
+                files: [file],
+                components: [buttonRow, moreButtonsRow],
+            });
+
+            collector.resetTimer();
+            return;
         }
         else if(i.customId === "up" || i.customId === "down" || i.customId === "right" || i.customId === "left"){
             moveResponse = await moveExplorers(i, interaction);
@@ -274,7 +301,7 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
                         components: [buttonRow, moreButtonsRow],
                     });
                 }
-                console.log(moveResponse);
+                await i.update({fetchReply:false});
                 return;
             }
         }
@@ -296,25 +323,27 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
                         components: [buttonRow, moreButtonsRow],
                     });
                 }
-    
+                await i.update({fetchReply:false});
                 return;
             }
 
-            collector.stop();
             displayTerminationDungeon(interaction, file, dungeonImageData, time, response);
+            collector.stop();
             
             return;
         }
 
+        await i.deferUpdate();
         dungeonImageData = await generateDungeonImage(i);
         file = dungeonImageData['image'];
-
+        
         await response.edit({
             content: '',
             files: [file],
             components: [buttonRow, moreButtonsRow],
         });
-
+        
+        await i.editReply({fetchReply: false});
         collector.resetTimer();
     });
 
@@ -461,6 +490,8 @@ async function fightMonsters(i, interaction){
         return {
             'code' : api_call.getAPIResponseCode(),
             'message' : data.get('message'),
+            'victory' : data.get('victory'),
+            'combatLogUrl' : data.get('combatLogUrl')
         };
     } catch (error) {
         console.log(error);
