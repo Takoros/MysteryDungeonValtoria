@@ -51,7 +51,6 @@ module.exports = {
                 interaction.reply(`Vous n'avez pas assez de points de statistiques !`);
             }
 			else {
-                console.log(api_call.getAPIResponseData().get('message'))
                 interaction.reply('Erreur, veuillez réessayer plus tard.');
 			}
 		} catch (error) {
