@@ -47,18 +47,64 @@ class DungeonAPIController extends AbstractAPIController
         $this->attackRepository = $attackRepository;
     }
 
-    #[Route('/api/dungeon/instance/show/{id}', name: 'api_dungeon_instance_showid')]
-    public function showIdDungeonInstance(Request $request)
+    #[Route('/api/dungeon/check/enter-validity', name: 'api_dungeon_check_enter-validity')]
+    public function isAbleToEnterDungeon(Request $request): JsonResponse
     {
-        $user = $this->getUser();
-        $character = $user->getCharacter();
-        $dungeonInstance = $character->getCurrentExplorationDungeonInstance();
+        $post = json_decode($request->getContent());
 
-        return $this->render('api_dungeon.html.twig',[
-            'dungeon' => $dungeonInstance->getContent()['dungeon'],
-            'data' => $dungeonInstance->getContent()['data'],
-            'currentExplorersPosition' => $dungeonInstance->getCurrentExplorersPosition()
-        ]);
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $isValid = $this->verifiesUserAndCharacter($post);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        if($this->character->getCurrentExplorationDungeonInstance() !== null){
+            return new JsonResponse(['result' => false], 200);
+        }
+
+        return new JsonResponse(['result' => $this->character->getTimers()->canEnterDungeon()], 200);
+    }
+
+    #[Route('/api/dungeon/instance/join', name: 'api_dungeon_instance_join')]
+    public function joinDungeonInstance(Request $request): JsonResponse
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "leaderDiscordUserId"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $isValid = $this->verifiesUserAndCharacter($post);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $leaderUser = $this->userRepository->findOneBy(['discordTag' => $post->data->leaderDiscordUserId]);
+
+        if($leaderUser === null || $leaderUser->getCharacter() === null){
+            return new JsonResponse(['message' => 'ID de leader incorrect.'], 400);
+        }
+
+        $dungeonInstance = $leaderUser->getCharacter()->getCurrentExplorationDungeonInstance();
+
+        if($this->character->getTimers()->canEnterDungeon() && $this->character->getCurrentExplorationDungeonInstance() === null){
+            $dungeonInstance->addExplorer($this->character);
+            $this->em->flush();
+
+            return new JsonResponse(['message' => 'Le personnage à bien rejoint le groupe.'], 200);
+        }
+        else {
+            return new JsonResponse(['message' => 'Le personnage ne peut pas entrer dans le groupe.'], 400);
+        }
     }
 
     #[Route('/api/dungeon/instance/show', name: 'api_dungeon_instance_show')]
@@ -84,16 +130,69 @@ class DungeonAPIController extends AbstractAPIController
 
         $dungeonInstance = $this->character->getCurrentExplorationDungeonInstance();
 
-        if($dungeonInstance->getStatus() === DungeonInstance::DUNGEON_STATUS_PREPARATION){
-            return new JsonResponse([
-                'message' => "DungeonInstance is still in preparation phase."
-            ], 400);
-        }
-
-        return $this->render('api_dungeon.html.twig',[
+        $response = $this->render('api_dungeon.html.twig',[
             'dungeon' => $dungeonInstance->getContent()['dungeon'],
             'data' => $dungeonInstance->getContent()['data'],
             'currentExplorersPosition' => $dungeonInstance->getCurrentExplorersPosition()
+        ]);
+
+        return new JsonResponse([
+            'webLink' => $this->generateUrl('app_dungeon', ['id' => $dungeonInstance->getId()], UrlGeneratorInterface::ABSOLUTE_URL),
+            'htmlContent' => $response->getContent(),
+            'instanceStatus' => $dungeonInstance->getStatus(),
+        ], 200);
+    }
+
+    #[Route('/api/dungeon/instance/members', name: 'api_dungeon_instance_members')]
+    public function getDungeonInstanceMembers(Request $request)
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $isValid = $this->verifiesUserAndCharacter($post);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+        
+        if($this->character->getCurrentExplorationDungeonInstance() === null){
+            return new JsonResponse(['message' => 'Character is not in a dungeon.'], 400);
+        }
+
+        $dungeonInstance = $this->character->getCurrentExplorationDungeonInstance();
+        $explorersList = [];
+
+        foreach ($dungeonInstance->getExplorers() as $explorer) {
+            $typeList = [];
+
+            foreach ($explorer->getTypes() as $type) {
+                $typeList[] = $type->getName();
+            }
+
+            $isLeader = false;
+
+            if($explorer === $dungeonInstance->getLeader()){
+                $isLeader = true;
+            }
+
+            $explorersList[] = [
+                'userId' => $explorer->getUserI()->getDiscordTag(),
+                'name' => $explorer->getName(),
+                'gender' => $explorer->getGender(),
+                'species' => $explorer->getSpecies()->getName(),
+                'type' => $typeList,
+                'level' => $explorer->getLevel(),
+                'isLeader' => $isLeader
+            ];
+        }
+
+        return new JsonResponse([
+            'explorerList' => $explorersList
         ]);
     }
 
@@ -121,7 +220,11 @@ class DungeonAPIController extends AbstractAPIController
         }
 
         if($this->character->getCurrentExplorationDungeonInstance() !== null){
-            return new JsonResponse(['message' => 'Character is already in a dungeon.'], 400);
+            return new JsonResponse(['message' => 'Vous êtes déjà dans un donjon.'], 400);
+        }
+
+        if(!$this->character->getTimers()->canEnterDungeon()){
+            return new JsonResponse(['message' => 'Vous avez besoin de vous reposer, attendez avant de retourner explorer les donjons.'], 400);
         }
 
         $generatedDungeon = $this->dungeonGenerationService->generateDungeon($dungeon, $dungeon->getSize());

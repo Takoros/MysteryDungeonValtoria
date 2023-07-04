@@ -1,6 +1,8 @@
 {
   "dependencies": {
     "discord.js": "^14.11.0",
-    "dotenv": "^16.0.3"
+    "dotenv": "^16.0.3",
+    "node-html-to-image": "^3.3.0",
+    "pageres": "^7.1.0"
   }
 }
