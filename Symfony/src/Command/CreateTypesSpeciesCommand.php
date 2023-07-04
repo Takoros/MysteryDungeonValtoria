@@ -61,11 +61,6 @@ class CreateTypesSpeciesCommand extends Command
                     if( $typeJson->name !== $typeDatabase->getName()){
                         // Corrects the name
                         $typeDatabase->setName($typeJson->name);
-                    }        
-
-                    if($typeJson->attackFile !== $typeDatabase->getAttackFile()){
-                        // Corrects the attackFile
-                        $typeDatabase->setAttackFile($typeJson->attackFile);
                     }
                 }
             }
@@ -74,8 +69,7 @@ class CreateTypesSpeciesCommand extends Command
             if(!$doExist){
                 $newType = new Type();
                 $newType->setId($typeJsonId)
-                        ->setName($typeJson->name)
-                        ->setAttackFile($typeJson->attackFile);
+                        ->setName($typeJson->name);
 
                 $this->entityManager->persist($newType);
             }

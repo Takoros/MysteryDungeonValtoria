@@ -17,9 +17,6 @@ class Type
     #[ORM\Column(length: 30)]
     private ?string $name = null;
 
-    #[ORM\Column(length: 255, nullable: true)]
-    private ?string $attackFile = null;
-
     #[ORM\OneToMany(mappedBy: 'Type', targetEntity: Attack::class)]
     private Collection $Attacks;
 
@@ -52,18 +49,6 @@ class Type
     public function setName(string $name): self
     {
         $this->name = $name;
-
-        return $this;
-    }
-
-    public function getAttackFile(): ?string
-    {
-        return $this->attackFile;
-    }
-
-    public function setAttackFile(?string $attackFile): self
-    {
-        $this->attackFile = $attackFile;
 
         return $this;
     }
