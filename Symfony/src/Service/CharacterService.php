@@ -184,7 +184,7 @@ class CharacterService
 
         $newCharacter->setLevel(1)
                      ->setXP(0)
-                     ->setStatPoints(0)
+                     ->setStatPoints(5)
                      ->setDescription('')
                      ->setRank(0)
                      ->setUserI($User)
