@@ -63,7 +63,9 @@ async function prepareCommand(){
                                                    .setRequired(true);
 
     specieList.forEach(pokemon => {
-        speciesOption.addChoices({name: pokemon.name, value: pokemon.id})
+        if(pokemon.isPlayable){
+            speciesOption.addChoices({name: pokemon.name, value: pokemon.id})
+        }
     });
 
     slashCommand.addIntegerOption(speciesOption);
