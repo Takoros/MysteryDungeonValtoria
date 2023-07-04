@@ -5,16 +5,105 @@
         <title>PMD : Valtoria</title>
         <link rel="icon" href="">
 
-        <link rel="stylesheet" href="{{ asset('style.css') }}">
+        <style>
+            .dungeon-row {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .tile {
+                display: flex;
+                width: 60px;
+                height: 60px;
+                border: 1px solid rgb(50, 50, 50);
+                justify-content: center;
+                align-items: center;
+                color: white;
+            }
+
+            .tile-unknown::before {
+                content: '?';
+                font-size: 28px;
+            }
+
+            .tile-unknown {
+                background: rgb(99, 99, 99);
+            }
+
+            .tile-entrance {
+                background: rgb(0, 96, 144);
+            }
+
+            .tile-exit {
+                background: green;
+            }
+
+            .tile-full {
+                background-color: blanchedalmond;
+            }
+
+            .tile-empty {
+                background: rgb(0, 0, 0);
+            }
+
+            .tile-monsters-1::before {
+                content: '1';
+                font-size: 25px;
+                margin-right: 2px;
+                margin-top: -2px;
+            }
+
+            .tile-monsters-1 {
+                background: rgb(186, 34, 34);
+                justify-content: end !important;
+                align-items: start !important;
+            }
+
+            .tile-monsters-2::before {
+                content: '2';
+                font-size: 25px;
+                margin-right: 2px;
+                margin-top: -2px;
+            }
+
+            .tile-monsters-2 {
+                background: rgb(148, 20, 20);
+                justify-content: end !important;
+                align-items: start !important;
+            }
+
+            .tile-monsters-3::before {
+                content : '3';
+                font-size: 25px;
+                margin-right: 2px;
+                margin-top: -2px;
+            }
+
+            .tile-monsters-3 {
+                background: rgb(111, 10, 10);
+                justify-content: end !important;
+                align-items: start !important;
+            }
+
+            .tile-current-explorers-position {
+                background-image: url("https://i.ibb.co/h7yd09m/eevee.png");
+                background-size: 35px 35px;
+                background-repeat: no-repeat;
+                background-position: center;
+            }
+        </style>
     </head>
-    <body style="background-color: white;">
-        {% for y in data.maxY .. data.minY %}
-            <div class="dungeon-row">
-                {% for x in data.minX .. data.maxX %}
-                    {% set tilePos = y ~ ',' ~ x %}
-                        <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
-                {% endfor %}
-            </div>
-        {% endfor %}
+    <body style="background-color: white;display:flex; justify-content:start;">
+        <div id="DungeonScreenshot">
+            {% for y in data.maxY .. data.minY %}
+                <div class="dungeon-row">
+                    {% for x in data.minX .. data.maxX %}
+                        {% set tilePos = y ~ ',' ~ x %}
+                            <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
     </body>
 </html>
