@@ -338,7 +338,8 @@ class DungeonAPIController extends AbstractAPIController
 
         return new JsonResponse([
             'combatLogUrl' => $this->generateUrl('app_combat', ['id' => $data['combatLogId']], UrlGeneratorInterface::ABSOLUTE_URL),
-            'message' => 'Fight done.'
+            'message' => 'Fight done.',
+            'victory' => $data['victory']
         ], 200);
     }
 
