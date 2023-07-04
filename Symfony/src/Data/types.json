@@ -1,78 +1,59 @@
 {
     "1" : {
-        "name" : "Aventurier",
-        "attackFile" : null
+        "name" : "Aventurier"
     },
     "2" : {
-        "name" : "Normal",
-        "attackFile" : null
+        "name" : "Normal"
     },
     "3" : {
-        "name" : "Feu",
-        "attackFile" : null
+        "name" : "Feu"
     },
     "4" : {
-        "name" : "Eau",
-        "attackFile" : null
+        "name" : "Eau"
     },
     "5" : {
-        "name" : "Electrik",
-        "attackFile" : null
+        "name" : "Electrik"
     },
     "6" : {
-        "name" : "Psy",
-        "attackFile" : null
+        "name" : "Psy"
     },
     "7" : {
-        "name" : "Ténèbres",
-        "attackFile" : null
+        "name" : "Ténèbres"
     },
     "8" : {
-        "name" : "Fée",
-        "attackFile" : null
+        "name" : "Fée"
     },
     "9" : {
-        "name" : "Plante",
-        "attackFile" : null
+        "name" : "Plante"
     },
     "10" : {
-        "name" : "Combat",
-        "attackFile" : null
+        "name" : "Combat"
     },
     "11" : {
-        "name" : "Spectre",
-        "attackFile" : null
+        "name" : "Spectre"
     },
     "12" : {
-        "name" : "Roche",
-        "attackFile" : null
+        "name" : "Roche"
     },
     "13" : {
-        "name" : "Glace",
-        "attackFile" : null
+        "name" : "Glace"
     },
     "14" : {
-        "name" : "Dragon",
-        "attackFile" : null
+        "name" : "Dragon"
     },
     "15" : {
-        "name" : "Acier",
-        "attackFile" : null
+        "name" : "Acier"
     },
     "16" : {
-        "name" : "Poison",
-        "attackFile" : null
+        "name" : "Poison"
     },
     "17" : {
-        "name" : "Vol",
-        "attackFile" : null
+        "name" : "Vol"
     },
     "18" : {
-        "name" : "Sol",
-        "attackFile" : null
+        "name" : "Sol"
     },
     "19" : {
-        "name" : "Insecte",
-        "attackFile" : null
+        "name" : "Insecte"
     }
 }
