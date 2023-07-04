@@ -28,11 +28,13 @@ module.exports = {
 			let allSpeciesFieldsArray = [];
 
 			data.forEach(species => {
-				let fieldOne = {name:`#${species.id}`,value:`\u200B`,inline: true};
-				let fieldTwo = {name:`${species.name} ${preparePokemonTypeDisplay(species.types)}`,value: italic(`${species.description}`),inline: true};
-				let fieldThree = {name:`\u200B`,value:`\u200B`,inline: true};
-
-				allSpeciesFieldsArray.push([fieldOne, fieldTwo, fieldThree]);
+                if(species.isPlayable){
+                    let fieldOne = {name:`#${species.id}`,value:`\u200B`,inline: true};
+                    let fieldTwo = {name:`${species.name} ${preparePokemonTypeDisplay(species.types)}`,value: italic(`${species.description}`),inline: true};
+                    let fieldThree = {name:`\u200B`,value:`\u200B`,inline: true};
+    
+                    allSpeciesFieldsArray.push([fieldOne, fieldTwo, fieldThree]);
+                }
 			});
 
 			embedArray = [];
