@@ -11,6 +11,10 @@ class APIService
         $this->discordBotToken = $discordBotToken;
     }
 
+    public function getApiToken(){
+        return $this->discordBotToken;
+    }
+
     /**
      * Verifies if the token is valid
      */
