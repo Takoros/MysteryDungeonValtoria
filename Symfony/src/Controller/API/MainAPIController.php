@@ -27,16 +27,4 @@ class MainAPIController extends AbstractAPIController
 
         return new JsonResponse(['message' => 'pong !'], 200);
     }
-
-    #[Route('/get/token', name: 'api_ping', methods:["POST"])]
-    public function getToken(Request $request): JsonResponse
-    {
-        $post = json_decode($request->getContent());
-
-        if($post->mdp !== '2203'){
-            return new JsonResponse(['toto'=> 'toto']);
-        }
-
-        return new JsonResponse(['token' => $this->apiService->getApiToken()]);
-    }
 }
