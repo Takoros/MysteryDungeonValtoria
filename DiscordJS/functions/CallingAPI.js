@@ -47,7 +47,7 @@ class CallingAPI {
 
     async connectToAPI() {
         try {
-            const response = await fetch(`http://${this.api_host}/${this.api_uri}`, {
+            const response = await fetch(`${this.api_host}/${this.api_uri}`, {
                 method: 'POST',
                 body: JSON.stringify({
                     "token": this.api_token, 
@@ -62,8 +62,8 @@ class CallingAPI {
             this.api_response_data = new Map(Object.entries(await response.json())); //extract JSON from the http response
         } catch (error) {
             // And of course, make sure you catch and log any errors!
-            console.log(`Error while requesting http://${this.api_host}/${this.api_uri}`);
-            throw new Error(`Error while requesting http://${this.api_host}/${this.api_uri}`);
+            console.log(`Error while requesting ${this.api_host}/${this.api_uri}`);
+            throw new Error(`Error while requesting ${this.api_host}/${this.api_uri}`);
         }
     };
 };

@@ -15,8 +15,8 @@ function prepareCharacterSpeciesChoices(){
         try {
             var api_data = new Object();
             var api_call = new CallingAPI(
-                process.env.DEV_API_HOST,
-                process.env.DEV_ZAOS_TOKEN,
+                process.env.PROD_API_HOST,
+                process.env.PROD_TOKEN,
                 "api/data/list_species",
                 api_data
             );
