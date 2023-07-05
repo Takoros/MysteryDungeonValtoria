@@ -1,5 +1,6 @@
 const { AttachmentBuilder } = require('discord.js');
 const { CallingAPI } = require("../functions/CallingAPI.js");
+const chromium = require('chromium');
 const nodeHtmlToImage = require('node-html-to-image');
 
 async function generateDungeonImage(interaction){
@@ -25,6 +26,7 @@ async function generateDungeonImage(interaction){
                 selector: '#DungeonScreenshot',
                 puppeteerArgs: {
                     args: ['--no-sandbox'],
+                    executablePath: chromium.path
                 },
                 encoding: 'buffer',
             })
