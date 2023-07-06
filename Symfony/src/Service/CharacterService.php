@@ -204,7 +204,15 @@ class CharacterService
      * Makes a Character gain a level
      */
     public function levelUp($character){
+        
         if($character->hasEnoughXP()){
+            if($character->getLevel() >= Character::MAX_LEVEL){
+                $character->setXp($character->getXPCeil());
+
+                $this->entityManager->flush();
+                return true;
+            }
+
             $character->setXp($character->getXp() - $character->getXPCeil())
                       ->setStatPoints($character->getStatPoints() + 5)
                       ->setLevel($character->getLevel() + 1)
