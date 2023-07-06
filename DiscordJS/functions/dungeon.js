@@ -124,7 +124,9 @@ async function displayPreparationDungeon(interaction, file, dungeonImageData, ti
     });
 
     collector.on("end", async (i) => {
-        await response.delete();
+        response.fetch().then(function() {
+            response.delete();
+        });
     });
 
     return ; 
@@ -349,7 +351,9 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
 
     // ending the collector
     collector.on("end", async (i) => {
-        await response.delete();
+        response.fetch().then(function() {
+            response.delete();
+        });
     });
 }
 
@@ -439,7 +443,9 @@ async function displayTerminationDungeon(interaction, file, dungeonImageData, ti
 
     // ending the collector
     collector.on("end", async (i) => {
-        await response.delete();
+        response.fetch().then(function() {
+            response.delete();
+        });
     });
 }
 
