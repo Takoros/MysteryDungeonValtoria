@@ -23,6 +23,24 @@
         "isPlayable" : false,
         "description" : "Abo est un Pokémon serpent au corps violet. Son ventre est complètement jaune, tout comme l'anneau qu'il possède autour du cou."
     },
+    "27" : {
+        "name" : "Sabelette",
+        "types" : [18],
+        "isPlayable" : true,
+        "description" : "Sabelette est un Pokémon ressemblant à un pangolin au corps cuirassé jaune. Son ventre est complètement beige pâle en plus de son menton."
+    },
+    "29" : {
+        "name" : "Nidoran ♀",
+        "types" : [16],
+        "isPlayable" : true,
+        "description" : "Nidoran♀ est un Pokémon femelle au corps bleu tirant vers le blanc. Elle possède des taches violettes de chaque côté de son corps."
+    },
+    "32" : {
+        "name" : "Nidoran ♂",
+        "types" : [16],
+        "isPlayable" : true,
+        "description" : "Nidoran♂ est un Pokémon mâle de couleur mauve. Son dos est muni de trois rangées de piquants. Ses grandes oreilles, dont l'intérieur est bleu canard, sont cornées."
+    },
     "37" : {
         "name" : "Goupix",
         "types" : [3],
@@ -40,6 +58,24 @@
         "types" : [16, 19],
         "isPlayable" : false,
         "description" : "Mimitoss ressemble à une boule de poils violette avec des antennes. Il a de petites dents et des yeux rouges. Ces derniers sont identiques aux yeux d'une mouche."
+    },
+    "63" : {
+        "name" : "Abra",
+        "types" : [6],
+        "isPlayable" : true,
+        "description" : "Abra est une petite créature bipède principalement jaune. Sa tête est dotée de traits évoquant ceux d'un félin, d'un rongeur ou d'un renard."
+    },
+    "77" : {
+        "name" : "Ponyta",
+        "types" : [3],
+        "isPlayable" : true,
+        "description" : "Ponyta est un Pokémon équin avec des flammes jaune et rouge orangé qui forment sa crinière et sa queue. Sa crinière et sa queue se développent une heure après l'éclosion."
+    },
+    "104" : {
+        "name" : "Osselait",
+        "types" : [18],
+        "isPlayable" : true,
+        "description" : "Osselait est un Pokémon bipède, brun, au visage caché par un crâne sans lequel il n'est jamais vu."
     },
     "109" : {
         "name" : "Smogo",
@@ -59,6 +95,30 @@
         "isPlayable" : false,
         "description" : "Kabuto fait penser à une limule, un Triops ou un trilobite. Son dos est recouvert d'une carapace ronde et marron, laissant apparaître une première paire d'yeux, petits et noirs."
     },
+    "147" : {
+        "name" : "Minidraco",
+        "types" : [14],
+        "isPlayable" : true,
+        "description" : "Minidraco est un Pokémon serpentin avec un corps bleu et un ventre blanc. Il a un aileron blanc à trois volets sur chaque côté de sa tête et une perle blanche sur le front. Il a un gros nez rond et blanc et de grands yeux violets."
+    },
+    "152" : {
+        "name" : "Germignon",
+        "types" : [9],
+        "isPlayable" : true,
+        "description" : "Germignon est un petit Pokémon vert pâle avec un collier plus foncé constitué de bourgeons. Il a une grosse tête comparée au reste de son corps, avec de gros yeux aux iris rouges qui ne semblent pas avoir de pupilles."
+    },
+    "155" : {
+        "name" : "Héricendre",
+        "types" : [3],
+        "isPlayable" : true,
+        "description" : "Héricendre est un petit Pokémon bipède avec une fourrure bleutée sur le haut de son corps, et une fourrure d'une couleur plus laiteuse sur le bas de son corps."
+    },
+    "158" : {
+        "name" : "Kaiminus",
+        "types" : [4],
+        "isPlayable" : true,
+        "description" : "Kaiminus ressemble à un bébé crocodile bipède bleu avec des écailles rouges sur le dos et de petites dents dans son énorme bouche."
+    },
     "167" : {
         "name" : "Mimigal",
         "types" : [19, 16],
@@ -71,11 +131,29 @@
         "isPlayable" : false,
         "description" : "Nostenfer est un Pokémon ressemblant à une chauve-souris dotée d'yeux avec des pupilles rouges et des sclères jaunes, de deux paires d'ailes donnant l'illusion de former une croix ainsi que de pattes atrophiées."
     },
+    "173" : {
+        "name" : "Mélo",
+        "types" : [8],
+        "isPlayable" : true,
+        "description" : "Mélo ressemble à une miniature de Mélofée et est en forme d'étoile. Ses joues sont rouges et sa peau est rose. Il a aussi une petite mèche."
+    },
     "175" : {
         "name" : "Togepi",
         "types" : [8],
         "isPlayable" : true,
         "description" : "Togepi est une petite créature, couleur crème, avec un Œuf recouvrant son corps. Sur sa coquille blanche, on peut voir des triangles creux rouges et bleus. Sa tête avec des épis en couronne affiche toujours une expression de joie."
+    },
+    "179" : {
+        "name" : "Wattouat",
+        "types" : [5],
+        "isPlayable" : true,
+        "description" : "Wattouat est un Pokémon qui ressemble à un mouton avec une épaisse toison couleur crème recouvrant presque l'entièreté de son corps ainsi que son front. Sa tête est bleue avec des yeux noirs."
+    },
+    "209" : {
+        "name" : "Snubbull",
+        "types" : [8],
+        "isPlayable" : true,
+        "description" : "Snubbull ressemble à un petit bouledogue. Il a deux crocs sortant de sa mâchoire inférieure et un petit museau."
     },
     "215" : {
         "name" : "Farfuret",
@@ -83,11 +161,65 @@
         "isPlayable" : false,
         "description" : "Farfuret a un corps bleu foncé avec un joyau sur le front et un autre sur le torse. Il a une queue composée de trois plumes rouges tirant sur le rose et une quatrième est reliée à son oreille gauche."
     },
+    "261" : {
+        "name" : "Medhyèna",
+        "types" : [7],
+        "isPlayable" : true,
+        "description" : "Medhyèna a l'apparence d'un petit louveteau. Il est principalement gris, mais son visage, son cou, le bas de son ventre et ses pattes sont noirs, ses yeux sont rouges et jaunes."
+    },
+    "263" : {
+        "name" : "Zigzaton",
+        "types" : [2],
+        "isPlayable" : true,
+        "description" : "Zigzaton ressemble à deux animaux : le raton laveur et le Tanuki. Il possède deux teintes de marron. Des rayures marron foncé et d'autres beiges se situent de part et d'autre de son corps."
+    },
+    "325" : {
+        "name" : "Spoink",
+        "types" : [6],
+        "isPlayable" : true,
+        "description" : "Spoink est un petit Pokémon au corps rond et gris ressemblant à une tête de cochon. Il possède deux bras courts, un groin gris, pas de membre postérieur et un ressort en guise de pied, sur lequel il rebondit pour se déplacer."
+    },
+    "328" : {
+        "name" : "Kraknoix",
+        "types" : [18],
+        "isPlayable" : true,
+        "description" : "Kraknoix est un petit Pokémon orange inspiré des larves de fourmilion, sans pour autant y ressembler. Tout comme elles, il se cache dans des puits de sable et attend sa proie au fond."
+    },
     "355" : {
         "name" : "Skelénox",
         "types" : [11],
-        "isPlayable" : false,
+        "isPlayable" : true,
         "description" : "Skelénox est une personnification stylisée de la Faucheuse. Son corps est une robe noires avec deux os sur le dos. Il a un masque qui ressemble à un crâne et un œil unique rouge qui flotte entre ses deux orbites."
+    },
+    "360" : {
+        "name" : "Okéoké",
+        "types" : [6],
+        "isPlayable" : true,
+        "description" : "Situés au niveau de sa tête, les bras d'Okéoké ressemblent à deux longues oreilles. Il possède de plus une excroissance frontale assimilable à une « banane » de rockeur."
+    },
+    "361" : {
+        "name" : "Stalgamin",
+        "types" : [13],
+        "isPlayable" : true,
+        "description" : "Stalgamin est un petit Pokémon noir avec un corps conique. Il a des petits yeux circulaires et bleu clair, de larges dents et des mains et pieds ronds sans doigts ni orteils."
+    },
+    "371" : {
+        "name" : "Draby",
+        "types" : [14],
+        "isPlayable" : true,
+        "description" : "Draby est un petit dragon bipède de couleur bleue. Le bas de sa gueule est jaune, tout comme ses ouïes et son bas-ventre."
+    },
+    "399" : {
+        "name" : "Keunotor",
+        "types" : [2],
+        "isPlayable" : true,
+        "description" : "Keunotor est un Pokémon au pelage brun qui ressemble à un rongeur. Il a un museau brun foncé et un petit nez rouge. Certains imbéciles croient qu'il s'agit d'une divinité."
+    },
+    "401" : {
+        "name" : "Crikzik",
+        "types" : [19],
+        "isPlayable" : true,
+        "description" : "Crikzik est un petit criquet roux de forme ovale. Son front est orné d'une boule brune d'où partent ses deux antennes noires et bouclées. Il possède deux yeux noirs et son gros nez est brun."
     },
     "403" : {
         "name" : "Lixy",
@@ -107,11 +239,47 @@
         "isPlayable" : false,
         "description" : "Baudrive est une sorte de ballon de baudruche violet. Son corps est composé d'une partie ronde avec une espèce de nœud sous son buste."
     },
+    "427" : {
+        "name" : "Laporeille",
+        "types" : [2],
+        "isPlayable" : true,
+        "description" : "Laporeille ressemble à un lapin. Sa fourrure est de couleur marron et il possède une fourrure épaisse semblable à du coton sur ses oreilles et sur le bas de son corps beige. Ses pattes arrière sont également de couleur beige."
+    },
+    "431" : {
+        "name" : "Chaglam",
+        "types" : [2],
+        "isPlayable" : true,
+        "description" : "Chaglam est un Pokémon gris et félin avec une apparence svelte. Il a une tête en forme de croissant avec deux oreilles dont le bout est blanc."
+    },
+    "447" : {
+        "name" : "Riolu",
+        "types" : [10],
+        "isPlayable" : true,
+        "description" : "Riolu ressemble à un louveteau bipède et digitigrade, au pelage principalement bleu. L'extrémité de son museau et ses yeux rouges sont bordés d'une sorte de masque noir."
+    },
+    "495" : {
+        "name" : "Vipélierre",
+        "types" : [9],
+        "isPlayable" : true,
+        "description" : "Vipélierre est un Pokémon reptilien bipède à l'allure svelte. Son corps est principalement vert avec un ventre couleur crème."
+    },
+    "501" : {
+        "name" : "Moustillon",
+        "types" : [4],
+        "isPlayable" : true,
+        "description" : "Moustillon est un Pokémon marin bipède aux allures de loutre. Il a une tête sphérique et blanche avec des petites oreilles triangulaires bleu foncé."
+    },
     "504" : {
         "name" : "Ratentif",
         "types" : [2],
         "isPlayable" : false,
         "description" : "Ratentif est un petit Pokémon à l'allure de rongeur. Son pelage est principalement brun, à l'exception du bas de sa tête et de son ventre qui sont beiges."
+    },
+    "524" : {
+        "name" : "Nodulithe",
+        "types" : [12],
+        "isPlayable" : true,
+        "description" : "Le corps de Nodulithe est composé d'une roche bleue globalement ronde. En son centre se trouve son noyau hexagonal jaune qui fait office d'oreille."
     },
     "570" : {
         "name" : "Zorua",
@@ -119,11 +287,23 @@
         "isPlayable" : true,
         "description" : "Zorua est un Pokémon qui ressemble à un renard gris ardoise avec des accents noirs et rouges. Ses oreilles sont triangulaires et sont plus foncées à l'intérieur, et il a une large touffe de fourrure grise et rouge sur le haut de la tête."
     },
+    "582" : {
+        "name" : "Sorbébé",
+        "types" : [13],
+        "isPlayable" : true,
+        "description" : "Sorbébé ressemble à une crème glacée : son corps s'apparente à un petit pot fait de glace, avec deux excroissances servant de bras."
+    },
     "590" : {
         "name" : "Trompignon",
         "types" : [9, 16],
         "isPlayable" : false,
         "description" : "Trompignon ressemble à un champignon avec une Poké Ball imprimée sur la tête. Sa tige épaisse est blanche et il possède deux bras de la même couleur."
+    },
+    "599" : {
+        "name" : "Tic",
+        "types" : [15],
+        "isPlayable" : true,
+        "description" : "Tic ressemble à deux engrenages emboîtés l'un dans l'autre. Le centre des deux corps est noir et sert de visage : on peut y voir des yeux dont un est une petite croix blanche."
     },
     "610" : {
         "name" : "Coupenotte",
@@ -131,16 +311,142 @@
         "isPlayable" : true,
         "description" : "Coupenotte est un Pokémon bipède vert grisâtre avec des défenses droites plus pâles qui se trouvent des deux côtés de sa bouche. Ces défenses peuvent se régénérer si elles sont cassées, et repoussent si elles tombent."
     },
+    "613" : {
+        "name" : "Polarhume",
+        "types" : [13],
+        "isPlayable" : true,
+        "description" : "Polarhume est un Pokémon bipède à l'allure ursine. Sa tête bleue est légèrement pointue avec de grandes oreilles rondes, des petits yeux ovales noirs et brillants et un museau d'un bleu plus foncé."
+    },
+    "619" : {
+        "name" : "Kungfouine",
+        "types" : [10],
+        "isPlayable" : true,
+        "description" : "Kungfouine ressemble à une fouine (d'où il tient son nom) rouge et jaune, prenant des positions de combat martial. Kungfouine est inspiré du furet et des moines bouddhistes."
+    },
+    "653" : {
+        "name" : "Feunnec",
+        "types" : [3],
+        "isPlayable" : true,
+        "description" : "Feunnec est un petit Pokémon qui ressemble à un fennec. Il est principalement recouvert de fourrure jaune qui est plus longue sur ses hanches."
+    },
+    "672" : {
+        "name" : "Cabriolaine",
+        "types" : [9],
+        "isPlayable" : true,
+        "description" : "Cabriolaine est un Pokémon quadrupède à l'allure caprine, au corps principalement recouvert d'une épaisse fourrure brune. Il a une tête blanche parcourue d'une bande verticale brune avec un nez rond noir."
+    },
+    "677" : {
+        "name" : "Psystigri",
+        "types" : [6],
+        "isPlayable" : true,
+        "description" : "Psystigri est un Pokémon bipède à l'allure féline. Sa fourrure est principalement grise, à l'exception des extrémités de ses oreilles et de ses pattes qui sont blanches."
+    },
+    "674" : {
+        "name" : "Pandespiègle",
+        "types" : [10],
+        "isPlayable" : true,
+        "description" : "Pandespiègle est un Pokémon bipède à l'allure ursine. Sa tête et sa petite queue sont blanches. Son petit nez triangulaire, ses oreilles rondes et les marquages circulaires autour de ses yeux sont noirs."
+    },
+    "704" : {
+        "name" : "Mucuscule",
+        "types" : [14],
+        "isPlayable" : true,
+        "description" : "Mucuscule est un Pokémon qui ressemble à une limace avec de petits yeux noirs. La partie inférieure de son corps est violet clair tandis que la partie supérieure est d'un violet plus pâle."
+    },
     "714" : {
         "name" : "Sonistrelle",
         "types" : [17, 14],
         "isPlayable" : false,
         "description" : "Sonistrelle est un Pokémon couleur lavande, qui ressemble à une chauve-souris. Il a deux doigts avec des griffes à chaque aile et deux longs orteils à chaque pied."
     },
+    "728" : {
+        "name" : "Otaquin",
+        "types" : [4],
+        "isPlayable" : true,
+        "description" : "Otaquin est un Pokémon pinnipède au corps principalement bleu. Il a de grands yeux, un long museau blanc avec des moustaches noires et un nez rond et rose."
+    },
+    "744" : {
+        "name" : "Rocabot",
+        "types" : [12],
+        "isPlayable" : true,
+        "description" : "Rocabot est un Pokémon canin à quatre pattes. Son corps est principalement marron clair à l'exception de son museau, de ses pattes et du bout de ses oreilles qui sont plus foncés. Il a de grands yeux, des oreilles recourbées, un museau court avec un nez rose triangulaire et une petite touffe de fourrure sur chaque joue."
+    },
+    "782" : {
+        "name" : "Bébécaille",
+        "types" : [14],
+        "isPlayable" : true,
+        "description" : "Bébécaille est un petit Pokémon quadrupède qui ressemble à un dinosaure. La partie inférieure de son corps est noire tandis que la partie supérieure est gris clair."
+    },
+    "821" : {
+        "name" : "Minisange",
+        "types" : [17],
+        "isPlayable" : true,
+        "description" : "Minisange est un petit Pokémon qui ressemble à un oiseau au plumage principalement bleu, comme on peut le voir sur ses ailes, sa queue, son dos et une partie de sa tête."
+    },
+    "827" : {
+        "name" : "Goupilou",
+        "types" : [7],
+        "isPlayable" : true,
+        "description" : "Goupilou est un Pokémon qui ressemble à un renard au pelage principalement orange tirant vers le marron avec un corps fin surmonté d'une tête relativement grosse. Il a de grandes oreilles noires, des marquages blancs au-dessus et en-dessous de ses yeux jaunes qui ressemblent à des sourcils et des larmes."
+    },
+    "831" : {
+        "name" : "Moumouton",
+        "types" : [2],
+        "isPlayable" : true,
+        "description" : "Moumouton est un Pokémon qui ressemble à un mouton avec un épais manteau de laine blanche qui lui donne une forme sphérique. Sa petite tête noire ainsi que deux petites cornes sortent de la laine à l'avant de son corps."
+    },
+    "835" : {
+        "name" : "Voltoutou",
+        "types" : [5],
+        "isPlayable" : true,
+        "description" : "Voltoutou est un Pokémon quadrupède à l'allure canine. Il a un corps de couleur brune avec un gros col de fourrure jaune ainsi que des marquages jaunes autour des yeux."
+    },
+    "852" : {
+        "name" : "Poulpaf",
+        "types" : [10],
+        "isPlayable" : true,
+        "description" : "Poulpaf est un petit Pokémon de couleur crème qui ressemble à un céphalopode avec des petits yeux bleus avec des pupilles horizontales et un marquage orange en forme de masque sur le visage."
+    },
+    "870" : {
+        "name" : "Hexadron",
+        "types" : [10],
+        "isPlayable" : true,
+        "description" : "Chaque membre d'Hexadron possède un corps sphérique noir avec deux petites jambes trapues cylindriques. Il a des yeux bleus ovulaires qui brillent d'une lumière blanche."
+    },
+    "878" : {
+        "name" : "Charibari",
+        "types" : [15],
+        "isPlayable" : true,
+        "description" : "Charibari est un Pokémon sphérique à l'allure éléphantine. L'extrémité de sa trompe est en forme de cuillère ou de pelle, qu'il utilise pour creuser dans le sol."
+    },
     "906" : {
         "name" : "Poussacha",
         "types" : [9],
         "isPlayable" : true,
         "description" : "Poussacha est un Pokémon quadrupède à l'apparence animale, qui ressemble à un chaton. Son corps possède majoritairement des traits fins, que l'on retrouve chez ses quatre pattes filiformes et sans griffe. Hormis quelques endroits spécifiques, l'entièreté du pelage recouvrant l'organisme de Poussacha est vert clair."
+    },
+    "917" : {
+        "name" : "Tissenboule",
+        "types" : [19],
+        "isPlayable" : true,
+        "description" : "Tissenboule ressemble à une araignée. Son corps vert clair est recouvert d'une sorte de pelote de laine faite de fil. En haut de la pelote sort un petit fil en tire-bouchon."
+    },
+    "921" : {
+        "name" : "Pohm",
+        "types" : [5],
+        "isPlayable" : true,
+        "description" : "Pohm est un Pokémon quadrupède ressemblant à un petit rongeur. La quasi totalité de son corps plutôt large est recouvert d'un épais pelage orange."
+    },
+    "926" : {
+        "name" : "Pâtachiot",
+        "types" : [8],
+        "isPlayable" : true,
+        "description" : "Pâtachiot ressemble à un chiot, de couleur blanc crème, accompagnée de taches jaunes. Ses oreilles, sa collerette et l'extrémité de sa queue sont en forme de pâtisseries, à mi-chemin entre le beignet et le chou à la crème."
+    },
+    "971" : {
+        "name" : "Toutombe",
+        "types" : [11],
+        "isPlayable" : true,
+        "description" : "Toutombe est un Pokémon quadrupède et canin. Il a de longs poils gris et blancs, des oreilles tombantes qui cachent ses yeux ainsi qu'une excroissance sur la tête ressemblant à une bougie."
     }
 }
