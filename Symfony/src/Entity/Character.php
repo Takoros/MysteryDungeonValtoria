@@ -14,6 +14,7 @@ use Doctrine\ORM\Mapping\Table;
 #[Table(name: '`character`')]
 class Character
 {
+    const MAX_LEVEL = 10;
     const GENDER_MALE = 'Mâle';
     const GENDER_FEMALE = 'Femelle';
 
