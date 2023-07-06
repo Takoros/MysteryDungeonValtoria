@@ -1,34 +1,6 @@
 const { SlashCommandBuilder, SlashCommandIntegerOption } = require('discord.js');
 const { CallingAPI } = require("../functions/CallingAPI.js");
 
-/*
-Création d'un personnage :
-"discordUserId" : String,
-"characterName" : String max 30char
-"characterGender" : String (Male | Female)
-"characterAge" : INT
-"characterSpeciesId" : INT
-*/
-
-function prepareCharacterSpeciesChoices(){
-    return (async () => {
-        try {
-            var api_data = new Object();
-            var api_call = new CallingAPI(
-                process.env.PROD_API_HOST,
-                process.env.PROD_TOKEN,
-                "api/data/list_species",
-                api_data
-            );
-            await api_call.connectToAPI();
-        
-            return api_call.getAPIResponseData();
-        } catch (error) {
-            return [];
-        }
-    })();
-}
-
 async function prepareCommand(){
     slashCommand = new SlashCommandBuilder()
     .setName('create-character')
@@ -54,21 +26,12 @@ async function prepareCommand(){
             .setRequired(true)
             .setMinValue(18)
             .setMaxValue(44)        
+    )
+    .addStringOption(option =>
+        option.setName('espèce')
+            .setDescription('Espèce du personnage')
+            .setRequired(true)
     );
-    
-    specieList = await prepareCharacterSpeciesChoices().then(function(results){return results})
-
-    speciesOption = new SlashCommandIntegerOption().setName('espèce')
-                                                   .setDescription('Espèce du personnage')
-                                                   .setRequired(true);
-
-    specieList.forEach(pokemon => {
-        if(pokemon.isPlayable){
-            speciesOption.addChoices({name: pokemon.name, value: pokemon.id})
-        }
-    });
-
-    slashCommand.addIntegerOption(speciesOption);
 
     return slashCommand;
 }
@@ -81,7 +44,7 @@ module.exports = {
         api_data.characterName = interaction.options.getString('nom')
         api_data.characterGender = interaction.options.getString('genre')
         api_data.characterAge = interaction.options.getInteger('age')
-        api_data.characterSpeciesId = interaction.options.getInteger('espèce')
+        api_data.characterSpeciesName = interaction.options.getString('espèce')
 
         var api_call = new CallingAPI(
             interaction.client.env.get("api_host"),
@@ -89,13 +52,16 @@ module.exports = {
             "api/character/create",
             api_data
         )
-        await api_call.connectToAPI()
+        await api_call.connectToAPI();
 
         if(api_call.getAPIResponseCode() === 201){
             interaction.reply('Personnage Créé !');
         }
         else if(api_call.getAPIResponseCode() === 400 && api_call.getAPIResponseData().get("message") === 'User already have a character.'){
             interaction.reply('Vous possédez déjà un personnage.');
+        }
+        else if(api_call.getAPIResponseCode() === 400 && api_call.getAPIResponseData().get("message") === 'characterSpeciesName is not defined or incorrect.'){
+            interaction.reply("Nom de l'espèce incorrect.");
         }
         else {
             interaction.reply('Erreur, veuillez réessayer plus tard.');

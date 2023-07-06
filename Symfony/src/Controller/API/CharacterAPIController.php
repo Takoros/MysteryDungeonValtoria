@@ -31,7 +31,7 @@ class CharacterAPIController extends AbstractAPIController
     public function create(Request $request): JsonResponse
     {
         $post = json_decode($request->getContent());
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId","characterName","characterGender","characterAge","characterSpeciesId"], $this->apiService);
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId","characterName","characterGender","characterAge","characterSpeciesName"], $this->apiService);
 
         if(!is_bool($isValid)){
             return $isValid;
