@@ -236,6 +236,8 @@ function getSpeciesFileName(species){
 
     // French characters replacement
     species = species.replaceAll('é', 'e');
+    species = species.replaceAll('â', 'e');
+    species = species.replaceAll('è', 'e');
 
     return species;
 }

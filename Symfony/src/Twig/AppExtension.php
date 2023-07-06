@@ -179,6 +179,10 @@ class AppExtension extends AbstractExtension
         $speciesName = strtolower($speciesName);
         $speciesName = str_replace("É","e", $speciesName);
         $speciesName = str_replace("é","e", $speciesName);
+        $speciesName = str_replace("È","e", $speciesName);
+        $speciesName = str_replace("è","e", $speciesName);
+        $speciesName = str_replace("Â","a", $speciesName);
+        $speciesName = str_replace("â","a", $speciesName);
 
         return 'pokemon-icons/'. $speciesName .'.png';
     }
