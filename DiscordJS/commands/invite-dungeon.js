@@ -35,7 +35,7 @@ module.exports = {
 				fetchReply: true
 			});
 
-			time = 20000;
+			time = 80000;
 			const collector = await response.createMessageComponentCollector({
 				componentType: ComponentType.Button,
 				time,
@@ -62,7 +62,7 @@ module.exports = {
 							});
 	
 							interaction.user.send({
-								content: `<@${interaction.user.id}> a rejoint votre groupe d'exploration de donjon.`
+								content: `<@${newMember.id}> a rejoint votre groupe d'exploration de donjon.`
 							});
 	
 							collector.stop();
