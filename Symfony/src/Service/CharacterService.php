@@ -117,8 +117,8 @@ class CharacterService
         /**
          * Verify and Add Species
          */
-        if($characterData->characterSpeciesId){
-            $species = $this->speciesRepository->find($characterData->characterSpeciesId);
+        if($characterData->characterSpeciesName){
+            $species = $this->speciesRepository->findOneBy(['name' => $characterData->characterSpeciesName]);
 
             if($species !== null && $species->isIsPlayable()){
                 $newCharacter->setSpecies($species);
@@ -126,14 +126,14 @@ class CharacterService
             else {
                 return [
                     'statusCode' => 400,
-                    'message' => "characterSpeciesId is not defined or incorrect."
+                    'message' => "characterSpeciesName is not defined or incorrect."
                 ];
             }
         }
         else {
             return [
                 'statusCode' => 400,
-                'message' => "characterSpeciesId is not defined or incorrect."
+                'message' => "characterSpeciesName is not defined or incorrect."
             ];
         }
 
