@@ -618,11 +618,16 @@ h1 {
 }
 
 .dungeonFightsLogsList li {
-    font-size: 23px;
+    margin-top: 8px;
+    font-size: 20px;
     list-style: none;
     display: flex;
     flex-direction: row;
     gap: 15px;
+}
+
+.dungeonFightsLogsList li:hover {
+    background-color: rgb(220, 202, 175);
 }
 
 .dungeonFightsLogsListLiVictory::before {
@@ -652,6 +657,15 @@ h1 {
     text-decoration: none !important;
 }
 
+.dungeonFightsLogsList li a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+
+.dungeonFightsLogsList li a img:hover {
+    cursor: pointer;
+}
 
 .dungeonFightsLogsList::-webkit-scrollbar {
     display: none; 
