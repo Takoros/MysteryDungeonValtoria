@@ -287,6 +287,7 @@ class CombatLog
             'level' => $character->getLevel(),
             'rank' => $character->getRank(),
             'userI' => $character->getUserI(),
+            'isShiny' => $character->isShiny(),
             'Stats' => [
                 'vitality' => $character->getStats()->getVitality(),
                 'strength' => $character->getStats()->getStrength(),
@@ -319,6 +320,7 @@ class CombatLog
             'level' => $monsterCharacter->getLevel(),
             'rank' => $monsterCharacter->getRank(),
             'userI' => null,
+            'isShiny' => $monsterCharacter->isShiny(),
             'Stats' => [
                 'vitality' => $monsterCharacter->getStats()->getVitality(),
                 'strength' => $monsterCharacter->getStats()->getStrength(),

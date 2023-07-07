@@ -5,6 +5,7 @@ namespace App\Twig;
 use App\Entity\DungeonInstance;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\DungeonGenerationService;
+use Exception;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
@@ -174,8 +175,15 @@ class AppExtension extends AbstractExtension
         return $classList;
     }
 
-    public function getSpeciesIconFileName($speciesName)
+    public function getSpeciesIconFileName($character)
     {
+        if(gettype($character) === 'array'){
+            $speciesName = $character['Species']['name'];
+        }
+        else {
+            $speciesName = $character->getSpecies()->getName();
+        }
+
         $speciesName = strtolower($speciesName);
         $speciesName = str_replace("É","e", $speciesName);
         $speciesName = str_replace("é","e", $speciesName);
@@ -183,6 +191,19 @@ class AppExtension extends AbstractExtension
         $speciesName = str_replace("è","e", $speciesName);
         $speciesName = str_replace("Â","a", $speciesName);
         $speciesName = str_replace("â","a", $speciesName);
+
+        if(gettype($character) === 'array'){
+            if(array_key_exists('isShiny', $character)){
+                if($character['isShiny'] === true){
+                    $speciesName .= '_shiny';
+                }
+            }
+        }
+        else {
+            if(method_exists($character::class, 'isShiny') &&  $character->isShiny()){
+                $speciesName .= '_shiny';
+            }
+        }
 
         return 'pokemon-icons/'. $speciesName .'.png';
     }

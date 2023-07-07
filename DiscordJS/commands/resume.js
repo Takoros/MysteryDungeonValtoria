@@ -33,13 +33,14 @@ module.exports = {
             data = api_call.getAPIResponseData();
 
             if(api_call.getAPIResponseCode() === 200){
-                const speciesIcon = new AttachmentBuilder('./assets/pokemon-icons/'+getSpeciesFileName(data.get('species'))+'.png');
+                let speciesFileName = getSpeciesFileName(data.get('species'), data.get('isShiny'))+'.png';
+                const speciesIcon = new AttachmentBuilder('./assets/pokemon-icons/'+speciesFileName);
                 const resumeEmbed = new EmbedBuilder().setAuthor({ name: `Fiche de ${data.get('name')} (${data.get('species')}, ${data.get('gender')}, ${data.get('age')} ans)`})
                                                       .setDescription(bold(`:star: Niveau :`)+` ${data.get('level')} (EXP: ${data.get('xp')} / ${data.get('nextLevelXP')}) \n`
                                                                       + bold(`:beginner: Rang :`)+ ' Cuivre \n'
                                                                       + `${bold('Description :')} ${displayDescription(data.get('description'))}`
                                                                     )
-                                                      .setThumbnail('attachment://'+getSpeciesFileName(data.get('species'))+'.png');
+                                                      .setThumbnail('attachment://'+speciesFileName);
 
                 resumeEmbed.addFields(
                     {name: `\u200B`, value: '---------------------', inline: true},
@@ -231,13 +232,17 @@ function displayDescription(description){
     return description;
 }
 
-function getSpeciesFileName(species){
+function getSpeciesFileName(species, isShiny){
     species = species.toLowerCase();
 
     // French characters replacement
     species = species.replaceAll('é', 'e');
     species = species.replaceAll('â', 'e');
     species = species.replaceAll('è', 'e');
+
+    if(isShiny === true){
+        species += '_shiny';
+    }
 
     return species;
 }
