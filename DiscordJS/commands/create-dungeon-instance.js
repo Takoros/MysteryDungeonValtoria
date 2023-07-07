@@ -36,7 +36,7 @@ module.exports = {
 			}
 			else {
                 interaction.reply({
-                    content: api_call.getAPIResponseData().get('message'),
+                    content: api_call.getAPIResponseData().get('message')+'‎',
                     ephemeral: true
                 });
 			}
