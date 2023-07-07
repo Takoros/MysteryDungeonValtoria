@@ -2,43 +2,32 @@
 
 namespace App\Controller\API;
 
-use App\Formatter\CharacterFormatter;
-use App\Repository\CharacterRepository;
-use App\Repository\UserRepository;
-use App\Service\APIService;
-use App\Service\CharacterService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CharacterAPIController extends AbstractAPIController
 {
-    private $apiService;
-    private $characterService;
-    private $characterFormatter;
-
-    public function __construct(APIService $apiService, CharacterService $characterService, CharacterFormatter $characterFormatter)
-    {
-        $this->apiService = $apiService;
-        $this->characterService = $characterService;
-        $this->characterFormatter = $characterFormatter;
-    }
+    public array $API_CHARACTER_CREATE_ARGS = ["discordUserId", "characterName", "characterGender", "characterAge", "characterSpeciesName"];
+    public array $API_CHARACTER_RESUME_ARGS = ["discordUserId"];
+    public array $API_CHARACTER_MODIFY_DESCRIPTION_ARGS = ["discordUserId", "description"];
+    public array $API_CHARACTER_SPEND_STATPOINT_ARGS = ["discordUserId", "statToIncrease", "amountOfPointsSpent"];
+    public array $API_CHARACTER_MODIFY_ATTACK_ARGS = ["discordUserId", "rotationType", "attackSlot", "attackName"];
+    public array $API_CHARACTER_RESUME_ROTATION_ARGS = ["discordUserId", "rotationType"];
+    public array $API_CHARACTER_RESUME_AVAILABLE_ATTACKS_ARGS = ["discordUserId"];
+    public array $API_CHARACTER_TOGGLE_SHINY_ARGS = ["discordUserId"];
 
     /**
      * Creates a new character on API request
      */
     #[Route('/api/character/create', name: 'api_character_create',  methods:["POST"])]
-    public function create(Request $request): JsonResponse
+    public function create(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId","characterName","characterGender","characterAge","characterSpeciesName"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $results = $this->characterService->persistNewCharacter($post->data);
+        $results = $this->characterService->persistNewCharacter($this->post->data);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
@@ -47,26 +36,22 @@ class CharacterAPIController extends AbstractAPIController
      * Responds a resume of the character of a user
      */
     #[Route('/api/character/resume', name: 'api_character_resume',  methods:["POST"])]
-    public function resume(Request $request, UserRepository $userRepository): JsonResponse
+    public function resume(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist']);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
         }
-        
-        $character = $user->getCharacter();
 
-        if($character === null){
-            return new JsonResponse(['message' => 'User does not have Character']);
+        $character = $this->apiGetCharacterByUser($user);
+
+        if(get_class($character) === JsonResponse::class){
+            return $character;
         }
 
         return new JsonResponse($this->characterFormatter->formatCharacter($character));
@@ -76,25 +61,25 @@ class CharacterAPIController extends AbstractAPIController
      * Modifies Character's description
      */
     #[Route('/api/character/modify/description', name: 'api_character_modify_description',  methods:["POST"])]
-    public function modifyDescription(Request $request, UserRepository $userRepository): JsonResponse
+    public function modifyDescription(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "description"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist']);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
         }
         
-        $character = $user->getCharacter();
+        $character = $this->apiGetCharacterByUser($user);
 
-        $results = $this->characterService->modifyDescription($post->data->description, $character);
+        if(get_class($character) === JsonResponse::class){
+            return $character;
+        }
+
+        $results = $this->characterService->modifyDescription($this->post->data->description, $character);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
@@ -103,25 +88,25 @@ class CharacterAPIController extends AbstractAPIController
      * Spend statPoints to increase stat
      */
     #[Route('/api/character/spend/statPoint', name: 'api_character_spend_statPoint',  methods:["POST"])]
-    public function spendStatPoint(Request $request, UserRepository $userRepository): JsonResponse
+    public function spendStatPoint(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "statToIncrease", "amountOfPointsSpent"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist'], 400);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
         }
         
-        $character = $user->getCharacter();
+        $character = $this->apiGetCharacterByUser($user);
 
-        $results = $this->characterService->spendStatPoint($character, $post->data->statToIncrease, $post->data->amountOfPointsSpent);
+        if(get_class($character) === JsonResponse::class){
+            return $character;
+        }
+
+        $results = $this->characterService->spendStatPoint($character, $this->post->data->statToIncrease, $this->post->data->amountOfPointsSpent);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
@@ -130,25 +115,25 @@ class CharacterAPIController extends AbstractAPIController
      * Modify an attack slot
      */
     #[Route('/api/character/modify/attack', name: 'api_character_modify_attack',  methods:["POST"])]
-    public function modifyRotationAttack(Request $request, UserRepository $userRepository): JsonResponse
+    public function modifyRotationAttack( ): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType", "attackSlot","attackName"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist'], 400);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
+        }
+        
+        $character = $this->apiGetCharacterByUser($user);
+
+        if(get_class($character) === JsonResponse::class){
+            return $character;
         }
 
-        $character = $user->getCharacter();
-
-        $results = $this->characterService->modifyRotationAttack($character, $post->data->rotationType, $post->data->attackSlot, $post->data->attackName);
+        $results = $this->characterService->modifyRotationAttack($character, $this->post->data->rotationType, $this->post->data->attackSlot, $this->post->data->attackName);
 
         return new JsonResponse(['message' => $results['message']], $results['statusCode']);
     }
@@ -157,55 +142,47 @@ class CharacterAPIController extends AbstractAPIController
      * Responds a resume of a Rotation|Opener
      */
     #[Route('/api/character/resume/rotation', name: 'api_character_resume_rotation',  methods:["POST"])]
-    public function resumeRotation(Request $request, UserRepository $userRepository): JsonResponse
+    public function resumeRotation(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId", "rotationType"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist']);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
         }
         
-        $character = $user->getCharacter();
+        $character = $this->apiGetCharacterByUser($user);
 
-        if($character === null){
-            return new JsonResponse(['message' => 'User does not have Character']);
+        if(get_class($character) === JsonResponse::class){
+            return $character;
         }
 
-        return new JsonResponse($this->characterFormatter->formatRotation($character, $post->data->rotationType));
+        return new JsonResponse($this->characterFormatter->formatRotation($character, $this->post->data->rotationType));
     }
 
     /**
      * Responds a resume of all the attacks available for a character
      */
-    #[Route('/api/character/resume/available-attacks', name: 'api_character_resume_available-attacks',  methods:["POST"])]
-    public function resumeAvailableAttacks(Request $request, UserRepository $userRepository): JsonResponse
+    #[Route('/api/character/resume/available-att-acks', name: 'api_character_resume_available_attacks',  methods:["POST"])]
+    public function resumeAvailableAttacks(): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist']);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
         }
         
-        $character = $user->getCharacter();
+        $character = $this->apiGetCharacterByUser($user);
 
-        if($character === null){
-            return new JsonResponse(['message' => 'User does not have Character']);
+        if(get_class($character) === JsonResponse::class){
+            return $character;
         }
 
         $attackList = $this->characterService->getAvailableAttacks($character);
@@ -221,24 +198,25 @@ class CharacterAPIController extends AbstractAPIController
     /**
      * Modify an attack slot
      */
-    #[Route('/api/character/toggle-shiny', name: 'api_character_toggle-shiny',  methods:["POST"])]
-    public function toggleShiny(Request $request, UserRepository $userRepository, EntityManagerInterface $em): JsonResponse
+    #[Route('/api/character/toggle-shiny', name: 'api_character_toggle_shiny',  methods:["POST"])]
+    public function toggleShiny(EntityManagerInterface $em): JsonResponse
     {
-        $post = json_decode($request->getContent());
-
-        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
-
-        if(!is_bool($isValid)){
-            return $isValid;
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
         }
 
-        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
 
-        if($user === null){
-            return new JsonResponse(['message' => 'User does not exist'], 400);
+        if(get_class($user) === JsonResponse::class){
+            return $user;
+        }
+        
+        $character = $this->apiGetCharacterByUser($user);
+
+        if(get_class($character) === JsonResponse::class){
+            return $character;
         }
 
-        $character = $user->getCharacter();
         $character->setIsShiny(!$character->isShiny());
         $em->flush();
 

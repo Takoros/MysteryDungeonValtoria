@@ -69,7 +69,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => "discordUserId is not defined or incorrect."
+                'message' => "Le discordUserId est incorrect."
             ];
         }
 
@@ -84,7 +84,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => "characterName is not defined or incorrect."
+                'message' => "Le nom du personnage est non-valide."
             ];
         }
 
@@ -97,7 +97,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => "characterGender is not defined or incorrect."
+                'message' => "Le genre du personnage est incorrect."
             ];
         }
 
@@ -110,7 +110,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => "characterAge is not defined or incorrect."
+                'message' => "L'âge du personnage est incorrect."
             ];
         }
 
@@ -126,14 +126,14 @@ class CharacterService
             else {
                 return [
                     'statusCode' => 400,
-                    'message' => "characterSpeciesName is not defined or incorrect."
+                    'message' => "Le nom de l'espèce est incorrect."
                 ];
             }
         }
         else {
             return [
                 'statusCode' => 400,
-                'message' => "characterSpeciesName is not defined or incorrect."
+                'message' => "Le nom de l'espèce est incorrect."
             ];
         }
 
@@ -189,14 +189,15 @@ class CharacterService
                      ->setRank(0)
                      ->setUserI($User)
                      ->setStats($newStats)
-                     ->setTimers($timers);
+                     ->setTimers($timers)
+                     ->setIsShiny(false);
 
         $this->entityManager->persist($newCharacter);
         $this->entityManager->flush();
 
         return [
-            'statusCode' => 201,
-            'message' => "Character created."
+            'statusCode' => 200,
+            'message' => "Personnage créé avec succès."
         ];
     }
 
@@ -239,7 +240,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => "New description is incorrect"
+                'message' => "La nouvelle description est incorrecte"
             ];
         }
 
@@ -247,7 +248,7 @@ class CharacterService
 
         return [
             'statusCode' => 201,
-            'message' => "Description is modified."
+            'message' => "Description modifiée."
         ];
     }
 
@@ -260,7 +261,7 @@ class CharacterService
         if(!in_array($statToModify, $statModifyable)){
             return [
                 'statusCode' => 400,
-                'message' => "Stat to increase is incorrect"
+                'message' => "La statistique à augmenter est incorrecte."
             ];
         }
 
@@ -273,13 +274,13 @@ class CharacterService
             $this->entityManager->flush();
             return [
                 'statusCode' => 200,
-                'message' => "Stat increased."
+                'message' => "Statistique augmentée."
             ];
         }
         else {
             return [
                 'statusCode' => 400,
-                'message' => "Character does not have enough statPoints"
+                'message' => "Vous n'avez pas assez de point de statistique."
             ];
         }
     }
@@ -298,7 +299,7 @@ class CharacterService
         else {
             return [
                 'statusCode' => 400,
-                'message' => 'Wrong Rotation Type'
+                'message' => 'Mauvais type de rotation'
             ];
         }
 
@@ -308,13 +309,13 @@ class CharacterService
         if($Attack === null){
             return [
                 'statusCode' => 400,
-                'message' => 'AttackId does not relate to any Attack'
+                'message' => 'Attaque introuvable.'
             ];
         }
         else if(!in_array($Attack, $AvailableAttacks)){
             return [
                 'statusCode' => 400,
-                'message' => 'This Attack is not available for this character'
+                'message' => "Attaque non disponible pour ce personnage."
             ];
         }
 
@@ -323,13 +324,13 @@ class CharacterService
             $this->entityManager->flush();
             return [
                 'statusCode' => 200,
-                'message' => 'Attack modified'
+                'message' => 'Attaque modifiée.'
             ];
         }
         else {
             return [
                 'statusCode' => 400,
-                'message' => 'This Rotation does not have enough Action Point left to change this slot with this attack'
+                'message' => "Vous n'avez pas assez de PA restant pour ajouter cette attaque sur cet emplacement."
             ];
         }
     }
