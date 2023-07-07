@@ -11,19 +11,14 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DataAPIController extends AbstractAPIController
 {
-    private $apiService;
-
-    public function __construct(APIService $apiService)
-    {
-        $this->apiService = $apiService;
-    }
-
+    public array $API_DATA_LIST_SPECIES_ARGS = [];
 
     #[Route('/api/data/list_species', name: 'api_data_list_species')]
-    public function listSpecies(Request $request, SpeciesRepository $speciesRepository, SpeciesFormatter $speciesFormatter): JsonResponse
+    public function listSpecies(SpeciesRepository $speciesRepository, SpeciesFormatter $speciesFormatter): JsonResponse
     {
-        $post = json_decode($request->getContent());
-        $isValid = $this->verifyTokenAndData($post, [], $this->apiService);
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
+        }
 
         $species = $speciesRepository->findAll();
         return new JsonResponse($speciesFormatter->listSpeciesFormat($species));
