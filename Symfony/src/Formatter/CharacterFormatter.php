@@ -38,7 +38,8 @@ class CharacterFormatter
             "rank" => $character->getRank(),
             "statPoints" => $character->getStatPoints(),
             "discordUserId" => $character->getUserI()->getDiscordTag(),
-            "stats" => $characterStatsArray
+            "isShiny" => $character->isShiny(),
+            "stats" => $characterStatsArray,
         ];
     }
 
