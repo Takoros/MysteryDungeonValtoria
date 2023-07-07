@@ -7,6 +7,7 @@ use App\Repository\CharacterRepository;
 use App\Repository\UserRepository;
 use App\Service\APIService;
 use App\Service\CharacterService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -215,5 +216,39 @@ class CharacterAPIController extends AbstractAPIController
         }
 
         return new JsonResponse($formattedAttackList);
+    }
+
+    /**
+     * Modify an attack slot
+     */
+    #[Route('/api/character/toggle-shiny', name: 'api_character_toggle-shiny',  methods:["POST"])]
+    public function toggleShiny(Request $request, UserRepository $userRepository, EntityManagerInterface $em): JsonResponse
+    {
+        $post = json_decode($request->getContent());
+
+        $isValid = $this->verifyTokenAndData($post, ["discordUserId"], $this->apiService);
+
+        if(!is_bool($isValid)){
+            return $isValid;
+        }
+
+        $user = $userRepository->findOneBy(['discordTag' => $post->data->discordUserId]);
+
+        if($user === null){
+            return new JsonResponse(['message' => 'User does not exist'], 400);
+        }
+
+        $character = $user->getCharacter();
+        $character->setIsShiny(!$character->isShiny());
+        $em->flush();
+
+        if($character->isShiny() === true){
+            $message = 'Mode Shiny Activé';
+        }
+        else {
+            $message = 'Mode Shiny désactivé';
+        }
+
+        return new JsonResponse(['message' => $message], 200);
     }
 }

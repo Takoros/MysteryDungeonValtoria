@@ -79,6 +79,9 @@ class Character
     #[ORM\JoinColumn(nullable: false)]
     private ?Timers $Timers = null;
 
+    #[ORM\Column]
+    private ?bool $isShiny = null;
+
     public function __construct()
     {
         $this->Attacks = new ArrayCollection();
@@ -436,5 +439,17 @@ class Character
         }
 
         return null;
+    }
+
+    public function isShiny(): ?bool
+    {
+        return $this->isShiny;
+    }
+
+    public function setIsShiny(bool $isShiny): self
+    {
+        $this->isShiny = $isShiny;
+
+        return $this;
     }
 }

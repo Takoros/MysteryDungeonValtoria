@@ -90,6 +90,7 @@ async function displayPreparationDungeon(interaction, file, dungeonImageData, ti
                 collector.resetTimer();
                 return;
             }
+
             displayExplorationDungeon(interaction, file, dungeonImageData, time, response);
             collector.stop();
         }
@@ -126,6 +127,8 @@ async function displayPreparationDungeon(interaction, file, dungeonImageData, ti
     collector.on("end", async (i) => {
         response.fetch().then(function() {
             response.delete();
+        }).catch(error => {
+            console.log(error);
         });
     });
 
@@ -353,6 +356,8 @@ async function displayExplorationDungeon(interaction, file, dungeonImageData, ti
     collector.on("end", async (i) => {
         response.fetch().then(function() {
             response.delete();
+        }).catch(error => {
+            console.log(error);
         });
     });
 }
@@ -445,6 +450,8 @@ async function displayTerminationDungeon(interaction, file, dungeonImageData, ti
     collector.on("end", async (i) => {
         response.fetch().then(function() {
             response.delete();
+        }).catch(error => {
+            console.log(error);
         });
     });
 }

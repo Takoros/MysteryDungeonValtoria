@@ -27,6 +27,7 @@ class MonsterCharacter
     private ?Stats $Stats = null;
     private ?Species $Species = null;
     private array $rotations;
+    private ?bool $isShiny = null;
 
     public function __construct($minLevel, $maxLevel)
     {
@@ -41,6 +42,15 @@ class MonsterCharacter
         $this->level = rand($minLevel, $maxLevel);
         $this->age = rand(18, 44);
         $this->rotations = [];
+
+        $diceRoll = rand(1,100);
+        
+        if($diceRoll === 1){
+            $this->isShiny = true;
+        }
+        else {
+            $this->isShiny = false;
+        }
     }
 
     public function getId(): ?string
@@ -185,6 +195,18 @@ class MonsterCharacter
     public function setRotations(array $rotations): self
     {
         $this->rotations = $rotations;
+
+        return $this;
+    }
+
+    public function isShiny(): ?bool
+    {
+        return $this->isShiny;
+    }
+
+    public function setIsShiny(bool $isShiny): self
+    {
+        $this->isShiny = $isShiny;
 
         return $this;
     }
