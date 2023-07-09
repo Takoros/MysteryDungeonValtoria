@@ -22,29 +22,17 @@ module.exports = {
 			interaction.client.env.get("api_host"),
 			interaction.client.env.get("api_token"),
 			"api/dungeon/instance/create",
-			api_data
+			api_data,
+            interaction
 		)
 
-		try {
-			await api_call.connectToAPI();
+        await api_call.connectToAPI();
 
-            if (api_call.getAPIResponseCode() === 200) {
-                interaction.reply({
-                    content : `Vous avez bien créé votre groupe d'exploration !`,
-                    ephemeral: true
-                });
-			}
-			else {
-                interaction.reply({
-                    content: api_call.getAPIResponseData().get('message')+'‎',
-                    ephemeral: true
-                });
-			}
-		} catch (error) {
-			interaction.reply({
-                content: 'Erreur, veuillez réessayer plus tard.',
+        if (api_call.getAPIResponseCode() === 200) {
+            interaction.reply({
+                content : `Vous avez bien créé votre groupe d'exploration !`,
                 ephemeral: true
             });
-		}
+        }
 	},
 };

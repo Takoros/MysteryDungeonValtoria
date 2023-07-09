@@ -50,21 +50,14 @@ module.exports = {
             interaction.client.env.get("api_host"),
             interaction.client.env.get("api_token"),
             "api/character/create",
-            api_data
+            api_data,
+            interaction
         )
+        
         await api_call.connectToAPI();
 
-        if(api_call.getAPIResponseCode() === 201){
+        if(api_call.getAPIResponseCode() === 200){
             interaction.reply('Personnage Créé !');
-        }
-        else if(api_call.getAPIResponseCode() === 400 && api_call.getAPIResponseData().get("message") === 'User already have a character.'){
-            interaction.reply('Vous possédez déjà un personnage.');
-        }
-        else if(api_call.getAPIResponseCode() === 400 && api_call.getAPIResponseData().get("message") === 'characterSpeciesName is not defined or incorrect.'){
-            interaction.reply("Nom de l'espèce incorrect.");
-        }
-        else {
-            interaction.reply('Erreur, veuillez réessayer plus tard.');
         }
     }
 };

@@ -4,7 +4,7 @@ const { CallingAPI } = require("../functions/CallingAPI.js");
 module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('bot-status')
-		.setDescription('Get status information about the bot !'),
+		.setDescription("Vérifiez l'état actuel du bot."),
 	async execute(interaction) {
 		var api_data = new Object()
 		var api_call = new CallingAPI(
@@ -14,17 +14,19 @@ module.exports = {
 			api_data
 		)
 
-		try {
-			await api_call.connectToAPI();
+		await api_call.connectToAPI();
 
-			if (api_call.getAPIResponseCode() !== 200) {
-				interaction.reply('Status : Not Ok :x:');
-			}
-			else {
-				await interaction.reply(`Status : OK :white_check_mark:`);
-			}
-		} catch (error) {
-			interaction.reply('Status : Not Ok :x:');
+		if (api_call.getAPIResponseCode() === 200) {
+			await interaction.reply({
+				content: `Status : En ligne :white_check_mark:`,
+				ephemeral: true
+			});
+		}
+		else {
+			await interaction.reply({
+				content: 'Status : Hors ligne :x:',
+				ephemeral: true
+			});
 		}
 	},
 };

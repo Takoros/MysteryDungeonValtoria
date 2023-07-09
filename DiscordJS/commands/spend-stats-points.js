@@ -38,23 +38,17 @@ module.exports = {
 			interaction.client.env.get("api_host"),
 			interaction.client.env.get("api_token"),
 			"api/character/spend/statPoint",
-			api_data
+			api_data,
+            interaction
 		)
 
-		try {
-			await api_call.connectToAPI();
+        await api_call.connectToAPI();
 
-            if (api_call.getAPIResponseCode() === 200) {
-                interaction.reply(`Statistique augmentée avec succès !`);
-			}
-            else if(api_call.getAPIResponseData().get('message') === 'Character does not have enough statPoints'){
-                interaction.reply(`Vous n'avez pas assez de points de statistiques !`);
-            }
-			else {
-                interaction.reply('Erreur, veuillez réessayer plus tard.');
-			}
-		} catch (error) {
-			interaction.reply('Erreur, veuillez réessayer plus tard.');
-		}
+        if (api_call.getAPIResponseCode() === 200) {
+            interaction.reply({
+                content: `Statistique augmentée avec succès !`,
+                ephemeral: true
+            });
+        }
 	},
 };

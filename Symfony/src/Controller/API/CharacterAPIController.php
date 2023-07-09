@@ -166,7 +166,7 @@ class CharacterAPIController extends AbstractAPIController
     /**
      * Responds a resume of all the attacks available for a character
      */
-    #[Route('/api/character/resume/available-att-acks', name: 'api_character_resume_available_attacks',  methods:["POST"])]
+    #[Route('/api/character/resume/available-attacks', name: 'api_character_resume_available_attacks',  methods:["POST"])]
     public function resumeAvailableAttacks(): JsonResponse
     {
         if(!is_bool($this->isValid)){

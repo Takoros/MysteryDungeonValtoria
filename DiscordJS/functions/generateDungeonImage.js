@@ -1,6 +1,6 @@
-const { AttachmentBuilder } = require('discord.js');
-const { CallingAPI } = require("../functions/CallingAPI.js");
 const chromium = require('chromium');
+const { CallingAPI } = require("./CallingAPI.js");
+const { AttachmentBuilder } = require('discord.js');
 const nodeHtmlToImage = require('node-html-to-image');
 
 async function generateDungeonImage(interaction){
@@ -14,37 +14,30 @@ async function generateDungeonImage(interaction){
         api_data
     )
 
-    try {
-        await api_call.connectToAPI();
+    await api_call.connectToAPI();
 
-        if (api_call.getAPIResponseCode() === 200) {
-            let response = api_call.getAPIResponseData();
+    if (api_call.getAPIResponseCode() === 200) {
+        let response = api_call.getAPIResponseData();
 
-            const images = await nodeHtmlToImage({
-                html: response.get('htmlContent'),
-                type: 'png',
-                selector: '#DungeonScreenshot',
-                puppeteerArgs: {
-                    args: ['--no-sandbox'],
-                    executablePath: chromium.path
-                },
-                encoding: 'buffer',
-            })
-            
-            return {
-                'image' : new AttachmentBuilder(images),
-                'webLink' : response.get('webLink'),
-                'instanceStatus' : response.get('instanceStatus')
-            }
+        const images = await nodeHtmlToImage({
+            html: response.get('htmlContent'),
+            type: 'png',
+            selector: '#DungeonScreenshot',
+            puppeteerArgs: {
+                args: ['--no-sandbox'],
+                executablePath: chromium.path
+            },
+            encoding: 'buffer',
+        })
+        
+        return {
+            'image' : new AttachmentBuilder(images),
+            'webLink' : response.get('webLink'),
+            'instanceStatus' : response.get('instanceStatus')
         }
-        else {
-            return 400;
-        }
-
-    } catch (error) {
-        console.log(error);
-
-        return 400;
+    }
+    else {
+        return null;
     }
 }
 
