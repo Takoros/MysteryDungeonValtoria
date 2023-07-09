@@ -9,6 +9,8 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainAPIController extends AbstractAPIController
 {   
+    public array $API_PING_ARGS = [];
+
     /**
      * Verify Token and reply 'pong' if good
      */

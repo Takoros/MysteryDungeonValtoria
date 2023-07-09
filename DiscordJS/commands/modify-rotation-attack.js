@@ -38,30 +38,14 @@ module.exports = {
 			interaction.client.env.get("api_host"),
 			interaction.client.env.get("api_token"),
 			"api/character/modify/attack",
-			api_data
+			api_data,
+            interaction
 		)
 
-		try {
-			await api_call.connectToAPI();
+        await api_call.connectToAPI();
 
-			if (api_call.getAPIResponseCode() === 200) {
-                interaction.reply(`Attaque modifiée avec succès !`);
-			}
-            else if(api_call.getAPIResponseData().get('message') === 'This Rotation does not have enough Action Point left to change this slot with this attack'){
-                interaction.reply(`Vous n'avez pas assez de PA restant pour ajouter cette attaque sur cet emplacement.`);
-            }
-            else if(api_call.getAPIResponseData().get('message') === 'AttackId does not relate to any Attack'){
-                interaction.reply(`Attaque introuvable.`);
-            }
-            else if(api_call.getAPIResponseData().get('message') === 'This Attack is not available for this character'){
-                interaction.reply(`Vous n'avez pas accès à cette attaque !`);
-            }
-			else {
-                interaction.reply('Erreur, veuillez réessayer plus tard.');
-			}
-
-		} catch (error) {
-			interaction.reply('Erreur, veuillez réessayer plus tard.');
-		}
+        if (api_call.getAPIResponseCode() === 200) {
+            interaction.reply(`Attaque modifiée avec succès !`);
+        }
 	},
 };

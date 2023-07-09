@@ -50,7 +50,7 @@ class CharacterService
                     $userExist = true;
                     return [
                         'statusCode' => 400,
-                        'message' => "User already have a character."
+                        'message' => "Vous avez déjà un personnage."
                     ];
                 }
                 else if($user->getDiscordTag() == $characterData->discordUserId){
@@ -247,7 +247,7 @@ class CharacterService
         $this->entityManager->flush();
 
         return [
-            'statusCode' => 201,
+            'statusCode' => 200,
             'message' => "Description modifiée."
         ];
     }

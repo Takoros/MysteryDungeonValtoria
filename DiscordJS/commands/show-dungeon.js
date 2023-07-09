@@ -11,7 +11,7 @@ module.exports = {
         await interaction.deferReply();
         let dungeonImageData = await generateDungeonImage(interaction);
 
-        if(dungeonImageData === 400){
+        if(dungeonImageData === null){
             interaction.editReply("Votre personnage ne fait pas parti d'un donjon, ou bien une erreur s'est produite.");
             return ;
         }

@@ -6,14 +6,11 @@ const {
 } = require("discord.js");
 
 async function buttonPages(interaction, pages, time = 60000, files = []) {
-    // errors
-    if (!interaction) throw new Error("Please provide an interaction argument");
     if (!pages) throw new Error("Please provide a page argument");
     if (!Array.isArray(pages)) throw new Error("Pages must be an array");
-
     if (typeof time !== "number") throw new Error("Time must be a number.");
-    if (parseInt(time) < 30000)
-        throw new Error("Time must be greater than 30 Seconds");
+    if (!interaction) throw new Error("Please provide an interaction argument");
+    if (parseInt(time) < 30000) throw new Error("Time must be greater than 30 Seconds");
 
     // defer reply
     await interaction.deferReply();

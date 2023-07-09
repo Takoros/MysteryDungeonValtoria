@@ -5,10 +5,8 @@ module.exports = {
 	data: new SlashCommandBuilder()
 		.setName('toggle-shiny')
 		.setDescription('Patreon Uniquement, activez/désactivez le mode shiny pour votre personnage !'),
-	async execute(interaction) {
-        let member = interaction.member;
-        
-        if (!member.roles.cache.some(role => role.name === 'Explorateur (Patreon)')) {
+	async execute(interaction) {        
+        if (!interaction.member.roles.cache.some(role => role.name === 'Explorateur (Patreon)')) {
             interaction.reply({
                 content: "Vous n'avez pas le rôle Explorateur, rendez vous sur le Patreon pour l'obtenir.",
                 ephemeral: true
@@ -24,31 +22,17 @@ module.exports = {
 			interaction.client.env.get("api_host"),
 			interaction.client.env.get("api_token"),
 			"api/character/toggle-shiny",
-			api_data
+			api_data,
+            interaction
 		)
 
-		try {
-			await api_call.connectToAPI();
+        await api_call.connectToAPI();
 
-			if (api_call.getAPIResponseCode() === 200) {
-                interaction.reply({
-                    content: api_call.getAPIResponseData().get('message'),
-                    ephemeral: true
-                });
-			}
-			else {
-                interaction.reply({
-                    content: "Erreur, veuillez ressayer plus tard.",
-                    ephemeral: true
-                });
-                console.log(api_call.getAPIResponseData().get('message'));
-			}
-		} catch (error) {
-            console.log(error);
+        if (api_call.getAPIResponseCode() === 200) {
             interaction.reply({
-                content: "Erreur, veuillez ressayer plus tard.",
+                content: api_call.getAPIResponseData().get('message'),
                 ephemeral: true
             });
-		}
+        }
 	},
 };

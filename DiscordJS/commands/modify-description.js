@@ -20,22 +20,14 @@ module.exports = {
 			interaction.client.env.get("api_host"),
 			interaction.client.env.get("api_token"),
 			"api/character/modify/description",
-			api_data
+			api_data,
+			interaction
 		)
 
-		try {
-			await api_call.connectToAPI();
+		await api_call.connectToAPI();
 
-			if (api_call.getAPIResponseCode() !== 201) {
-				interaction.reply('Erreur, veuillez réessayer plus tard.');
-			}
-			else {
-
-				await interaction.reply(`Description modifiée avec succès !`);
-			}
-
-		} catch (error) {
-			interaction.reply('Erreur, veuillez réessayer plus tard.');
+		if (api_call.getAPIResponseCode() === 200) {
+			await interaction.reply(`Description modifiée avec succès !`);
 		}
 	},
 };

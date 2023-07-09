@@ -1,7 +1,8 @@
 require('dotenv').config()
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, GatewayIntentBits, REST, Routes } = require('discord.js');
+const process = require('node:process');
+const { Client, Collection, GatewayIntentBits } = require('discord.js');
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 
 // Loading env vars
@@ -35,6 +36,20 @@ switch(process.env.STATUS) {
         client.env.set("api_token", process.env.DISCORDBOT_TOKEN);
         console.log('Connecting with DEV/DEFAULT');
 }
+
+
+/* Anti Crash */
+process.on('unhandledRejection', async (reason, promise) => {
+    console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+});
+
+process.on('uncaughtException', (err) => {
+    console.log('Uncaught Exception:', err);
+});
+
+process.on('uncaughtExceptionMonitor', (err, origin) => {
+    console.log('Uncaugh Exception Monitor', err, origin);
+});
 
 (async () => {
 	try {
