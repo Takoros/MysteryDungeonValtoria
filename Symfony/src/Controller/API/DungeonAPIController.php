@@ -447,8 +447,7 @@ class DungeonAPIController extends AbstractAPIController
             if(count($dungeonInstance->getExplorers()) < 1){
                 $this->deleteDungeonInstance($em, $dungeonInstance);
             }
-
-            if($user->getCharacter() === $dungeonInstance->getLeader()){
+            else if($user->getCharacter() === $dungeonInstance->getLeader()){
                 $dungeonInstance->setLeader($dungeonInstance->getExplorers()[0]);
             }
             
