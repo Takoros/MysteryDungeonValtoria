@@ -1,0 +1,71 @@
+<div id="navbar" class="">
+    <img id='valtoriaIcon' onClick='onIconClick()' src="{{ asset('icons/valtoria-text.png') }}" alt="icone de Valtoria">
+    <div id='title'>
+        <div>Pokémon Donjon Mystère</div>
+        <div>Valtoria</div>
+    </div>
+    {% if not app.user %}
+        <form action="{{ path('app_discord_connect') }}" method='post'>
+            <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
+            <button id='loginButton'>Connexion</button>
+        </form>
+    {% else %}
+        <div id="characterInfo" onClick='onCharacterInfoClick()'>
+            <div>{{ app.user.character.name }}</div>
+            <img src="{{ asset(app.user.character|speciesIcon) }}" alt="Image de {{ app.user.character.name }}">
+        </div>
+
+        <div id='navbar-desktop-menu'>
+            <div id='navbar-desktop-menu-character-name' onClick='onCharacterInfoClick()'>{{ app.user.character.name }}</div>
+            <div id='navbar-desktop-menu-links'>
+                <div class="navbar-desktop-menu-separator"></div>
+                <div id='navbar-desktop-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
+            </div>
+        </div>
+    {% endif %}
+
+    <div id='navbar-phone-menu'>
+        {% if not app.user %}
+            <form action="{{ path('app_discord_connect') }}" method='post'>
+                <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
+                <button id='navbar-phone-menu-loginButton'>Connexion</button>
+            </form>
+        {% else %}
+            <div id='navbar-phone-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
+        {% endif %}
+    </div>
+    
+</div>
+<script>
+    const navbar = document.getElementById('navbar');
+    const phone_menu = document.getElementById('navbar-phone-menu');
+    const desktop_menu = document.getElementById('navbar-desktop-menu');
+
+    function onIconClick(){
+        if (window.innerWidth <= 480){
+            if(!navbar.classList.contains('navbar-phone-menu-opened')){
+                navbar.classList.toggle('navbar-phone-menu-opened');
+                setTimeout(function(){
+                    phone_menu.classList.toggle('phone-menu-opened');
+                }, 1000);
+            }
+            else {
+                navbar.classList.toggle('navbar-phone-menu-opened');
+                phone_menu.classList.toggle('phone-menu-opened');
+            }
+        }
+        else {
+            window.location.replace("{{ path('app_home') }}");
+        }
+    }
+
+    function onCharacterInfoClick(){
+        if (window.innerWidth > 480){
+            desktop_menu.classList.toggle('navbar-desktop-menu-opened');
+        }
+    }
+
+    function onClickLogout(){
+        window.location.replace("{{ path('app_logout') }}");
+    }
+</script>

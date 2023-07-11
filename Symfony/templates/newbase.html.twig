@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+        <title>{% block title %}PMD : Valtoria{% endblock %}</title>
+        <link rel="icon" href="{{ asset('icons/valtoria.png') }}">
+
+        <link rel="stylesheet" href="{{ asset('newbase.css') }}">
+        {% block stylesheets %}{% endblock %}
+    </head>
+    <body>
+        {% include '_shared/_navbar.html.twig' %}
+        {% block uppercontent %}{% endblock %}
+        <div id='content'>
+            {% block body %}{% endblock %}
+        </div>
+        {% block javascripts %}{% endblock %}
+        
+        <footer>
+            <p>Valtoria  est un jeu web/discord aucunement lié à Nintendo. Tout les médias et designs conceptuels à (C) Nintendo 2023.Les personnages et images de Pokémon™ appartiennent à Pokémon USA, Inc. Ce site web n’est aucunement affilié ni approuvé par Nintendo, Creatures, GAMEFREAK, The Pokémon Company, Chunsoft, Pokémon USA, Inc ou Wizards of the coast</p>
+        </footer>
+    </body>
+</html>
