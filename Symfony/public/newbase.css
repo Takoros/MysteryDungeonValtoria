@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Croissant+One&display=swap');
+
+@font-face {
+    font-family: 'Daesang Brothers';
+    src: url('font/DaesangBrothers-Regular.woff2') format('woff2'),
+        url('font/DaesangBrothers-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+body {
+    margin: 0;
+    background-color: rgb(121,169,92);
+}
+
+#navbar {
+    width: 100%;
+    height: 80px;
+    background-image: url('texture/parchement.jpg');
+    border-bottom: solid 2px rgb(235,213,179);
+    display: flex;
+    justify-content: space-between;
+}
+
+#navbar img {
+    width: 75px;
+    height: 75px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 5px;
+}
+
+#navbar img:hover {
+    cursor: pointer;
+}
+
+#navbar #title {
+    position: absolute;
+    transform: translate(-50%, 0);
+    left: 50%;
+    text-align: center;
+}
+
+#navbar #title :first-child {
+    font-family: 'Eagle Lake', cursive;
+}
+
+#navbar #title :last-child {
+    margin-top: -10px;
+    font-family: 'Daesang Brothers', cursive;
+    font-size: 40px;
+}
+
+#navbar form {
+    display:flex;
+    justify-content:center;
+}
+
+#loginButton {
+    width: 125px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px white;
+    border-radius: 10px;
+    background-color: rgb(121,169,92);
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    user-select: none;
+}
+
+#loginButton:hover {
+    cursor: pointer;
+}
+
+#navbar #characterInfo {
+    display:flex;
+    margin-right: 15px;
+    align-items: center;
+}
+
+#navbar #characterInfo :first-child {
+    font-family: 'Eagle Lake', cursive;
+}
+
+#navbar #characterInfo img {
+    width: 65px;
+    height: 65px;
+}
+
+#navbar #characterInfo :hover {
+    cursor: pointer;
+}
+
+#navbar-phone-menu {
+    display:none;
+}
+
+#navbar-desktop-menu {
+    z-index: 2;
+    font-family: 'Eagle Lake', cursive;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    right:0px;
+    width: 220px;
+    height: 265px;
+    background-image: url('texture/parchement.jpg');
+    border: solid 4px rgb(235,213,179);
+}
+
+.navbar-desktop-menu-opened {
+    display: flex !important;
+}
+
+#navbar-desktop-menu #navbar-desktop-menu-character-name {
+    margin-top: 5px;
+    font-size: 18px;
+}
+
+#navbar-desktop-menu #navbar-desktop-menu-character-name:hover {
+    cursor: pointer;
+}
+
+#navbar-desktop-menu #navbar-desktop-menu-links {
+    margin-bottom: 5px
+}
+
+#navbar-desktop-menu-links #navbar-desktop-menu-logoutButton {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 135px;
+    background-color: rgba(255, 62, 1, 1);
+    border: solid 2px rgba(193, 48, 2, 1);
+    border-radius: 10px;
+}
+
+#navbar-desktop-menu-links #navbar-desktop-menu-logoutButton:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 590px) {
+    #navbar #characterInfo :first-child {
+        display:none;
+    }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+    #navbar {
+        justify-content: center;
+    }
+
+    #navbar #title {
+        display:none;
+    }
+
+    #navbar #loginButton, #navbar #characterInfo {
+        display:none;
+    }
+    
+    #navbar-desktop-menu {
+        display:none !important;
+    }
+
+    /* Menu Opened */
+    .navbar-phone-menu-opened {
+        flex-direction: column;
+        align-items: center;
+        height: 400px !important;
+
+        transition-property: height;
+        transition-duration: 1s;
+        transition-delay: 0s;
+    }
+
+    .phone-menu-opened {
+        display:flex !important;
+    }
+
+    #navbar-phone-menu {
+        margin-bottom: 10px;
+    }
+
+    .navbar-phone-menu-opened img {
+        margin-top: 0 !important;
+    }
+
+    /* Phone Menu */
+    #navbar-phone-menu-loginButton {
+        width: 145px;
+        height: 55px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: solid 2px white;
+        border-radius: 10px;
+        background-color: rgb(121,169,92);
+        font-family: 'Eagle Lake', cursive;
+        font-size: 18px;
+        margin-top: auto;
+        margin-bottom: auto;
+        user-select: none;
+    }
+
+    #navbar-phone-menu-logoutButton {
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        height: 40px;
+        width: 135px;
+        font-family: 'Eagle Lake', cursive;
+        background-color: rgba(255, 62, 1, 1);
+        border: solid 2px rgba(193, 48, 2, 1);
+        border-radius: 10px;
+    }
+}
+
+/* Content */
+
+#content {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 80vh;
+    width: 95vw;
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    background-image: url('texture/parchement.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+/* Footer */
+
+footer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95vw;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+    border-radius: 15px 15px 0 0;
+
+    background-image: url('texture/parchement.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    font-family: 'Comic sans MS';
+    font-size: 12px;
+    text-align: center;
+}
+
+footer p {
+    padding-left: 10px;
+    padding-right: 10px;
+}

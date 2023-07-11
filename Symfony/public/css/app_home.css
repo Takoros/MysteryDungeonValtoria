@@ -1,0 +1,650 @@
+.playButton {
+    position: relative;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0);
+    margin-top: -40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 140px;
+    background-color: rgba(121, 169, 92, 1);
+    border: 2px solid white;
+    border-radius: 8px;
+    font-family: 'Croissant One', cursive;
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+    font-style: normal;
+}
+
+.separator {
+    max-height: 40px;
+    min-height: 5px;
+    height: 30px;
+    width: 75%;
+    background-image: url('../texture/leaf-line.png');
+    background-size: contain;
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    
+    position: relative;
+    z-index: 5;
+}
+
+@media (min-width: 1550px) {
+    .separator {
+        max-width: 1175px;
+    }
+}
+
+@media (max-width: 750px) {
+    .separator {
+        background-size: cover;
+        max-height: 40px;
+        min-height: 5px;
+        height: 25px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Home Presentation                             */
+/* -------------------------------------------------------------------------- */
+
+.homePresentation {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.homePresentation .homePresentationBoard {
+    min-width: 55%;
+    max-width: 55%;
+    height: 415px;
+    
+    background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../texture/wooden_board.png');
+    background-size: cover;
+
+    border: 12px solid rgba(116, 43, 14, 1);
+    border-radius: 15px;
+}
+
+.homePresentationBoard .gameResume {
+    display: flex;
+    align-items: center;
+    font-size: 17px;
+    font-family: 'Eagle Lake', cursive;
+    color: white;
+}
+
+.homePresentationBoard .gameResume:first-child img {
+    width: 135px;
+}
+
+.homePresentation .homePresentationRightPannel {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 15px;
+}
+
+.homePresentation .separator {
+    max-height: 40px;
+    min-height: 30px;
+    width: 95%;
+    background-image: url('../texture/leaf-line.png');
+    background-size: cover;
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -15px;
+}
+
+.homePresentationBoard .gameRpResume {
+    margin-left: 5px;
+    font-size: 17px;
+    font-family: 'Eagle Lake', cursive;
+    color: white;
+    overflow-y: hidden;
+}
+
+.explorersImage {
+    display: block;
+    width: 95%;
+}
+
+.explorersImage img {
+    display: block;
+    width: 100%;
+}
+
+@media (min-width: 1550px) {
+    .homePresentation {
+        max-width: 1475px;
+    }
+
+    .homePresentation .gameResume {
+        padding: 5px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        padding: 5px;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+    }
+    
+    .gameRpResumeText1 {
+        margin-bottom: 10px;
+    }
+
+    .explorersImage {
+        max-width: 475px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .homePresentation .gameResume {
+        font-size: 16px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 950px) {
+    .homePresentation {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .homePresentation .homePresentationBoard {
+        max-width: 95%;
+        height: auto;
+    }
+
+    .gameRpResume {
+        text-align: center;
+        margin-left: 0px !important;
+    }
+
+    .gameRpResumeText1 {
+        margin-bottom: 10px !important;
+    }
+
+    .homePresentation .gameResume {
+        font-size: 18px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 18px;
+        margin-top: 15px;
+    }
+
+    .explorersImage {
+        min-width: 400px;
+    }
+}
+
+@media (max-width: 670px) {
+    .homePresentation .gameResume {
+        justify-content: center;
+        text-align: center;
+        margin-top: 5px;
+        margin-bottom: 15px;
+    }
+    
+    .mysteryDungeonIcon {
+        position: relative;
+        left: 50%;
+        top: -75px;
+        
+        z-index: 2;
+        width: 0;
+    }
+
+    .mysteryDungeonIcon img {
+        transform: translate(-50%, 0);
+    }
+
+    .explorersImage {
+        min-width: 400px;
+    }
+
+    .gameRpResume {
+        text-align: center;
+        margin-left: 0px !important;
+    }
+
+    .gameRpResumeText1 {
+        margin-bottom: 10px !important;
+    }
+
+    .homePresentation .gameResume {
+        font-size: 16px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 515px) {
+    .homePresentation .gameResume {
+        font-size: 15px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 465px) {
+    .homePresentation .gameResume {
+        font-size: 14px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 405px) {
+    .homePresentation .gameResume {
+        font-size: 12px;
+    }
+
+    .homePresentationBoard .gameRpResume {
+        font-size: 12px;
+        margin-top: 5px;
+    }
+
+    .mysteryDungeonIcon {
+        top: -75px;
+    }
+
+    .mysteryDungeonIcon img {
+        width: 110px !important;
+    }
+    
+    .explorersImage {
+        min-width: 300px;
+    }
+
+    .homePresentation .separator {
+        max-height: 30px;
+        min-height: 20px;
+    }
+}
+
+@media (max-width: 325px) {
+    .explorersImage {
+        min-width: 210px;
+    }
+
+    .mysteryDungeonIcon {
+        top: -75px;
+    }
+
+    .mysteryDungeonIcon img {
+        width: 90px !important;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  Home Team                                 */
+/* -------------------------------------------------------------------------- */
+
+.homeTeam {
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    position: relative;
+    z-index: 5;
+}
+
+.homeTeamTopPannel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeTeamTopPannelImage img {
+    max-width: 350px;
+}
+
+.homeTeamTopPannelText {
+    font-size: 18px;
+    font-family: 'Eagle Lake', cursive;
+}
+
+.homeTeamBottomPannel {
+    margin-top: 20px;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.homeTeamBottomPannelCard {
+    font-family: 'Eagle Lake', cursive;
+    display: flex;
+    flex-direction: column;
+    width: 32%;
+    height: 100%;
+}
+
+.homeTeamBottomPannelCardTopPannel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeTeamBottomPannelCardTopPannelImage {
+    height: 125px !important;
+}
+
+.homeTeamBottomPannelCardTopPannelImage img {
+    height: 125px !important;
+}
+
+.homeTeamBottomPannelCardBottomPannel {
+    margin-top: 12.5px;
+    text-align: center;
+}
+
+.homeTeamBottomPannelDivider {
+    height: 85%;
+    width: 2px;
+    background-color: black;
+}
+
+@media (min-width: 1550px) {
+    .homeTeam {
+        max-width: 1475px;
+    }
+}
+
+@media (max-width: 710px) {
+    .homeTeamBottomPannel {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .homeTeamBottomPannelCard {
+        width: 300px;
+    }
+
+    .homeTeamBottomPannelDivider {
+        height: 2px !important;
+        width: 45%;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+@media (max-width: 405px) {
+    .homeTeamTopPannelImage img {
+        max-width: 300px;
+    }
+
+    .homeTeamTopPannelText {
+        font-size: 16px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Home Exploration                              */
+/* -------------------------------------------------------------------------- */
+
+.homeExploration {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 15px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.homeExplorationLeftPannel {
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.homeExplorationLeftPannelImage {
+    position: relative;
+    height: 650px;
+    top: -30px;
+    left: 30px;
+    z-index: 1;
+}
+
+.homeExplorationLeftPannelTexture {
+    position: absolute;
+    top: -380px;
+    left: -225px;
+    height: 1200px;
+    z-index: 1;
+}
+
+.homeExplorationRightPannel {
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
+    
+    position: relative;
+    z-index: 5;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.homeExplorationRightPannelTitle {
+    font-size: 18px
+}
+
+.homeExplorationRightPannelContent {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.homeExplorationRightPannelImage {
+    display: flex;
+    justify-content: space-around;
+    margin-top: -15px;
+}
+
+.homeExplorationRightPannelImage img {
+    height: 150px;
+}
+
+@media (min-width: 1550px) {
+    .homeExploration {
+        max-width: 1475px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .homeExplorationRightPannel {
+        max-width: 660px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .homeExplorationRightPannel {
+        margin-top: 0px;
+    }
+
+    .homeExplorationLeftPannel {
+        display: none;
+    }
+
+    .homeExplorationRightPannelContent {
+        max-width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .homeExplorationRightPannelImage {
+        justify-content: center;
+    }
+
+    .homeExplorationRightPannelImage img:first-of-type {
+        margin-right: 15px;
+    }
+    
+    .homeExplorationRightPannelImage img:last-of-type {
+        margin-left: 15px;
+    }
+}
+
+@media (max-width: 710px) {
+    .homeExplorationRightPannelContent {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 490px) {
+    .homeExplorationRightPannelContent {
+        max-width: 95%;
+    }
+
+    .homeExplorationRightPannelImage img {
+        height: 125px;
+    }
+
+    .homeExplorationRightPannelImage img:first-of-type {
+        margin-right: 7px;
+    }
+    
+    .homeExplorationRightPannelImage img:last-of-type {
+        margin-left: 7px;
+    }
+
+    .homeExplorationRightPannelImage {
+        margin-top: 5px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             Home Join Explorers                            */
+/* -------------------------------------------------------------------------- */
+
+.homeJoinExplorers {
+    margin-top: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+
+    position: relative;
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.homeJoinExplorersTopPannel {
+    position: relative;
+    z-index: 5;
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+}
+
+.homeJoinExplorersTopPannelTitle {
+    font-size: 18px;
+}
+
+.homeJoinExplorersBottomPannel {
+    margin-bottom: -150px;
+    position: relative;
+    z-index: 3;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.homeJoinExplorersBottomPannelImage {
+    position: relative;
+    width: 100%;
+    min-height: 350px;
+    max-width: 900px !important;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.homeJoinExplorersBottomPannelTexture {
+    position: absolute;
+    top: -115px;
+    width: 100%;
+    z-index: 4;
+}
+
+@media (min-width: 1550px) {
+    .homeJoinExplorersBottomPannel {
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 1475px;
+    }
+}
+
+@media (min-width: 950px) {
+    .homeJoinExplorersBottomPannelImage {
+        border-radius: 75px;
+    }
+}
+
+@media (max-width: 875px) {
+    .homeJoinExplorersBottomPannelImage {
+        min-height: 300px;
+    }
+}
+
+@media (max-width: 690px) {
+    .homeJoinExplorersTopPannelTitle {
+        font-size: 17px;
+    }
+
+    .homeJoinExplorersTopPannelContent {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 560px) {
+    .homeJoinExplorersBottomPannelImage {
+        min-height: 265px;
+        background-position: bottom;
+    }
+}
+
+
+@media (max-width: 450px) {
+    .homeJoinExplorersBottomPannelImage {
+        min-height: 235px;
+    }
+}

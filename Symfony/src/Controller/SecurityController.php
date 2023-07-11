@@ -83,13 +83,7 @@ class SecurityController extends AbstractController
     {
         return $this->redirectToRoute('app_home');
     }
-
-    #[Route('/login', name: 'app_login')]
-    public function login(): Response
-    {
-        return $this->render('discord_login.html.twig');
-    }
-
+    
     #[Route('/logout', name: 'app_logout')]
     public function logout(): Response
     {
