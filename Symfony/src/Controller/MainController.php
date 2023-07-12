@@ -68,7 +68,7 @@ class MainController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('dungeon.html.twig', [
+        return $this->render('Dungeon/dungeon.html.twig', [
             'dungeonInstance' => $dungeonInstance,
             'dungeon' => $dungeonInstance->getContent()['dungeon'],
             'data' => $dungeonInstance->getContent()['data'],

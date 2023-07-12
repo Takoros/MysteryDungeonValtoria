@@ -1,0 +1,68 @@
+.character-card {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+
+    border: 1px black solid;
+    border-radius: 5px;
+    width: 500px;
+    height: 225px;
+    background-image: url('../../texture/parchement.jpg');
+    margin-top: 10px;
+}
+
+.character-card-1st {
+    display: flex;
+    flex-direction: row;
+    margin-left: 5px;
+    margin-top: 5px;
+    justify-content: space-between;
+}
+
+.character-card-infobox {
+    display: flex;
+    flex-direction: row;
+}
+
+.character-card-species-icon {
+    width: 100px;
+    height: 100px;
+    border: black 2px solid;
+    border-radius: 5px;
+}
+
+.character-card-infos {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.genderIcon {
+    display: flex;
+    justify-content: end;
+}
+
+.character-card-separator {
+    width: 375px;
+    height: 1px;
+    background-color: black;
+    margin: auto;
+    margin-top: 5px;
+}
+
+.character-card-statTable {
+    margin: auto;
+    width: 95%;
+    font-size: 13px;
+}
+
+.character-card-statTable tbody {
+    margin: auto;
+}
+
+.character-card-stat-icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 2px;
+    vertical-align: middle;
+}

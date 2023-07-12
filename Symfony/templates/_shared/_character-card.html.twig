@@ -1,12 +1,12 @@
-<div class="combatLog-character-card">
-    <div class="combatLog-character-card-1st">
-        <div class="combatLog-character-card-infobox">
-            <img class="combatLog-character-card-species-icon" src="{{ asset(character|speciesIcon) }}" alt="">
-            <div class="combatLog-character-card-infos">
-                <div>Nom : {{ character.name }}</div>
-                <div>Age : {{ character.age }}</div>
-                <div>Niveau : {{ character.level }}</div>
-                <div>Espèce : {{ character.Species.name }}</div>
+<div class="character-card">
+    <div class="character-card-1st">
+        <div class="character-card-infobox">
+            <img class="character-card-species-icon" src="{{ asset(character|speciesIcon) }}" alt="">
+            <div class="character-card-infos">
+                <div><span class="character-card-infos-name character-card-infos-name-name">Nom : </span>{{ character.name }}</div>
+                <div><span class="character-card-infos-name">Age : </span>{{ character.age }}</div>
+                <div><span class="character-card-infos-name">Niveau : </span>{{ character.level }}</div>
+                <div><span class="character-card-infos-name character-card-infos-name-species">Espèce : </span>{{ character.Species.name }}</div>
             </div>
         </div>
         {% if character.gender == 'Mâle' %}
@@ -15,30 +15,30 @@
             <img class="genderIcon" src="{{ asset('icons/female.png') }}" width='32px' height="30px">
         {% endif %}
     </div>
-    <div class="combatLog-character-card-separator"></div>
-    <div class="combatLog-character-card-2nd">
-        <table class="combatLog-character-card-statTable">
+    <div class="character-card-separator"></div>
+    <div class="character-card-2nd">
+        <table class="character-card-statTable">
             <tbody>
                 <tr>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/vitality.png') }}">Vitalité : {{ character.Stats.vitality }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/strength.png') }}">Force : {{ character.Stats.strength }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/power.png') }}">Pouvoir : {{ character.Stats.power }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/vitality.png') }}"><span class="character-card-stat-name">Vitalité : </span>{{ character.Stats.vitality }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/strength.png') }}"><span class="character-card-stat-name">Force : </span>{{ character.Stats.strength }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/power.png') }}"><span class="character-card-stat-name">Pouvoir : </span>{{ character.Stats.power }}</td>
                 </tr>
                 <tr>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/speed.png') }}">Vitesse : {{ character.Stats.speed }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/stamina.png') }}">Endurance : {{ character.Stats.stamina }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/bravery.png') }}">Courage : {{ character.Stats.bravery }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/speed.png') }}"><span class="character-card-stat-name">Vitesse : </span>{{ character.Stats.speed }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/stamina.png') }}"><span class="character-card-stat-name">Endurance : </span>{{ character.Stats.stamina }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/bravery.png') }}"><span class="character-card-stat-name">Courage : </span>{{ character.Stats.bravery }}</td>
                     
                 </tr>
                 <tr>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}">Agility : {{ character.Stats.agility }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}">Présence : {{ character.Stats.presence }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}">Points d'Action : {{ character.Stats.actionPoint }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}"><span class="character-card-stat-name">Agility : </span>{{ character.Stats.agility }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}"><span class="character-card-stat-name">Présence : </span>{{ character.Stats.presence }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}"><span class="character-card-stat-name">Points d'Action : </span>{{ character.Stats.actionPoint }}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/coordination.png') }}">Coordination : {{ character.Stats.coordination }}</td>
-                    <td><img class="combatLog-character-card-stat-icon" src="{{ asset('icons/stats/impassiveness.png') }}">Impassibilité : {{ character.Stats.impassiveness }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/coordination.png') }}"><span class="character-card-stat-name">Coordination : </span>{{ character.Stats.coordination }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/impassiveness.png') }}"><span class="character-card-stat-name">Impassibilité : </span>{{ character.Stats.impassiveness }}</td>
                     <td></td>
                 </tr>
             </tbody>

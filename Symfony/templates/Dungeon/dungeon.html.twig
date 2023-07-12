@@ -1,0 +1,95 @@
+{% extends "newbase.html.twig" %}
+
+{% block title %}PMD : Valtoria | Donjon {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/dungeon/app_dungeon.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/_shared/_character-card.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="dungeonTitleName">{{ dungeonInstance.dungeon.name }}</div>
+    <div class="dungeonStatus">Statut : {{ dungeonInstance.status|DungeonInstanceStatus }}</div>
+
+    {% if dungeonInstance.status == 'dungeon_status_preparation'%}
+        <div class="dungeonPreparationFlavourText">Votre équipe se prépare à entrer dans le donjon.</div>
+
+        <div class="dungeonPreparationExplorersContainer">
+            <div class="dungeonPreparationExplorersContainerTitle">Composition de l'Équipe</div>
+            <div class="dungeonPreparationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
+            <div class="dungeonPreparationExplorersContainerList">
+                {% for character in dungeonInstance.explorers %}
+                    {% include '_shared/_character-card.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="dungeonPreparationButtons">
+            <button onclick="sendEnterDungeonCall()" class="dungeonButton buttonEnterDungeon">Commencer</button>
+            <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+            <div class="dungeonErrorMessages"></div>
+        </div>
+    {% else %}
+        <div class="dungeonExplorationFlavourText">Exploration du donjon</div>
+
+        <div class="dungeonExplorationFirstRowContainer">
+            <div class="dungeonExplorationTips"></div>
+
+            <div class="dungeon">
+                {% for y in data.maxY .. data.minY %}
+                    <div class="dungeon-row">
+                        {% for x in data.minX .. data.maxX %}
+                            {% set tilePos = y ~ ',' ~ x %}
+                                <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+
+            <div class="dungeonExplorationExplorersContainer">
+                <div class="dungeonExplorationExplorersContainerTitle">Composition de l'Équipe</div>
+                <div class="dungeonExplorationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
+                <div class="dungeonExplorationExplorersContainerList">
+                    {% for character in dungeonInstance.explorers %}
+                        {% include '_shared/_character-card.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+    {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+            function sendEnterDungeonCall(){
+                let urlToCall = "{{ path('app_dungeon_instance_enter', {'id' : dungeonInstance.id}) }}";
+
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+
+        function sendLeaveApiCall(){
+            let urlToCall = "{{ path('app_dungeon_instance_leave', {'id' : dungeonInstance.id}) }}";
+
+            fetch(urlToCall).then(function(response){
+                if(response.status === 200){
+                    location.reload();
+                }
+                else if(response.status === 400){
+                    response.json().then(function(jsonData){
+                        errorMessages.innerHTML = jsonData.message
+                    });
+                }
+            })
+        }
+    </script>
+{% endblock %}

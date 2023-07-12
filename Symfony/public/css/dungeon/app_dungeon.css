@@ -1,0 +1,324 @@
+.dungeonTitleName {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 27px;
+}
+
+.dungeonStatus {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+    margin-top: -10px;
+}
+
+.dungeonButton {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 122px;
+    height: 50px;
+}
+
+.dungeonButton:hover {
+    cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               DUNGEON BUTTONS                              */
+/* -------------------------------------------------------------------------- */
+
+.ButtonLeave {
+    background-color: rgb(235, 19, 19);
+    width: 500px !important;
+    border-radius: 5px;
+}
+
+.buttonEnterDungeon {
+    background-color: rgb(0, 182, 12);
+    width: 500px !important;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+/*                             DUNGEON PREPARATION                            */
+/* -------------------------------------------------------------------------- */
+
+.dungeonPreparationFlavourText {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+}
+
+.dungeonPreparationExplorersContainer {
+    margin-top: 30px;
+    width: 80%;
+    width: 1025px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 15px;
+
+    background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../../texture/wooden_board.png');
+    background-size: cover;
+}
+
+.dungeonPreparationExplorersContainerTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -36px;
+
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.dungeonPreparationExplorersContainerNumber {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -2px;
+
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 0 0 10px 10px;
+}
+
+.dungeonPreparationExplorersContainerList {
+    margin-left: auto;
+    margin-right: auto;
+    display:grid;
+    grid-template-columns: 500px 225px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 5px;
+}
+
+.dungeonPreparationButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.dungeonPreparationButtons > button {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 1150px) {
+    .dungeonPreparationExplorersContainerList {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dungeonPreparationExplorersContainer {
+        width: 520px !important;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 595px) {
+
+    .dungeonPreparationExplorersContainer {
+        width: 275px !important;
+    }
+
+    .dungeonPreparationExplorersContainer .character-card {
+        width: 270px !important;
+    }
+
+    .dungeonPreparationExplorersContainer .character-card-separator {
+        width: 270px !important;
+    }
+
+    .dungeonPreparationExplorersContainer .character-card-stat-name {
+        display: none;
+    }
+
+    .dungeonPreparationExplorersContainer .character-card-infos-name-name {
+        display: none;
+    }
+    
+    .dungeonPreparationExplorersContainer .character-card-infos-name-species {
+        display: none;
+    }
+
+    .dungeonPreparationExplorersContainer .dungeonPreparationExplorersContainerTitle {
+        margin-left: -25px;
+    }
+    
+    .dungeonPreparationExplorersContainer .dungeonPreparationButtons > button {
+        width: 200px !important;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                             DUNGEON EXPLORATION                            */
+/* -------------------------------------------------------------------------- */
+.dungeonExplorationTips {
+    width: 33%;
+}
+
+.dungeonExplorationFlavourText {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.dungeon {
+    min-width: 550px;
+    margin: auto;
+}
+
+.dungeon-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.tile {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    border: 1px solid rgb(50, 50, 50);
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.tile-unknown::before {
+    content: '?';
+    font-size: 28px;
+}
+
+.tile-unknown {
+    background: rgb(99, 99, 99);
+}
+
+.tile-entrance {
+    background: rgb(0, 96, 144);
+}
+
+.tile-exit {
+    background: green;
+}
+
+.tile-full {
+    background-color: blanchedalmond;
+}
+
+.tile-empty {
+    background: rgb(0, 0, 0);
+}
+
+.tile-monsters-1::before {
+    content: '1';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
+}
+
+.tile-monsters-1 {
+    background: rgb(186, 34, 34);
+    justify-content: end !important;
+    align-items: start !important;
+}
+
+.tile-monsters-2::before {
+    content: '2';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
+}
+
+.tile-monsters-2 {
+    background: rgb(148, 20, 20);
+    justify-content: end !important;
+    align-items: start !important;
+}
+
+.tile-monsters-3::before {
+    content : '3';
+    font-size: 25px;
+    margin-right: 2px;
+    margin-top: -2px;
+}
+
+.tile-monsters-3 {
+    background: rgb(111, 10, 10);
+    justify-content: end !important;
+    align-items: start !important;
+}
+
+.tile-current-explorers-position {
+    background-image: url("/images/mystery-dungeon-icon.png");
+    background-size: 50px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.dungeonExplorationExplorersContainer {
+    margin-top: 30px;
+    width: 520px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 15px;
+
+    background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../../texture/wooden_board.png');
+    background-size: cover;
+}
+
+.dungeonExplorationExplorersContainerTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -36px;
+
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.dungeonExplorationExplorersContainerNumber {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -2px;
+
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 0 0 10px 10px;
+}
+
+.dungeonExplorationExplorersContainerList {
+    margin-left: auto;
+    margin-right: auto;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
