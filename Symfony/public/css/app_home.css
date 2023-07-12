@@ -70,7 +70,7 @@
     background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../texture/wooden_board.png');
     background-size: cover;
 
-    border: 12px solid rgba(116, 43, 14, 1);
+    border: 12px solid rgb(133, 64, 36);
     border-radius: 15px;
 }
 
