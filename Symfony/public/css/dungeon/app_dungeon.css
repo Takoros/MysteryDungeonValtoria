@@ -40,6 +40,31 @@
     border-radius: 5px;
 }
 
+.ButtonFight {
+    background-color: rgb(186, 42, 42);
+    width: 248px !important;
+}
+
+.ButtonLeave {
+    background-color: rgb(235, 19, 19);
+    width: 500px !important;
+}
+
+.ButtonInteract {
+    background-color: rgb(52, 202, 80);
+    width: 248px !important;
+}
+
+.dungeonDirectionButtons button {
+    background-color: rgb(0, 166, 255);
+}
+
+.dungeonInteractionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2px;
+}
 
 /* -------------------------------------------------------------------------- */
 /*                             DUNGEON PREPARATION                            */
@@ -171,6 +196,56 @@
 /* -------------------------------------------------------------------------- */
 .dungeonExplorationTips {
     width: 33%;
+    font-family: 'Eagle Lake', cursive;
+}
+
+.dungeonTipsRow {
+    display: flex;
+    justify-content: start;
+    justify-self: center;
+    margin-bottom: 5px;
+    margin-left: 25px;
+}
+
+.tile-tip {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgb(50, 50, 50);
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: 'Eagle Lake', cursive;
+}
+
+.tile-tip-text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-left: 5px;
+    font-size: 18px;
+}
+
+.dungeonTipsRow {
+    display: flex;
+}
+
+.dungeonTipsSeparator {
+    height: 1px;
+    background-color: rgba(0, 0, 0, 0.45);
+    width: 85%;
+    margin: auto;
+}
+
+.dungeonTipsNotes {
+    margin-top: 5px;
+    list-style-type: circle;
+    font-size: 18px;
+}
+
+.dungeonTipsNotesTitle {
+    font-size: 30px;
+    text-align: center;
 }
 
 .dungeonExplorationFlavourText {
@@ -178,6 +253,11 @@
     font-family: 'Eagle Lake', cursive;
     font-size: 16px;
     margin-bottom: 20px;
+}
+
+.dungeonExplorationFirstRowContainer {
+    display: flex;
+    flex-direction: row;    
 }
 
 .dungeon {
@@ -272,8 +352,14 @@
     background-position: center;
 }
 
+.dungeonExplorationExplorers {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+}
+
 .dungeonExplorationExplorersContainer {
-    margin-top: 30px;
+    position: absolute;
     width: 520px;
     margin-left: auto;
     margin-right: auto;
@@ -321,4 +407,408 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+
+.dungeonInteractionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 2px;
+}
+
+.dungeonDirectionButtons {
+    display: flex;
+    justify-content: center;
+}
+
+.dungeonEndingButton {
+    display: flex;
+    justify-content: center;
+}
+
+.dungeonButtons {
+    margin-top: 10px;
+}
+
+.dungeonEndingButton {
+    margin-top: 4px;
+}
+
+.dungeonFightsLogs {
+    width: 550px;
+    height: 250px;
+    background-image: url('../../texture/parchement.jpg');
+    border-radius: 15px;
+    border: 2px solid black;
+    font-family: 'Eagle Lake', cursive;
+    position: absolute;
+    margin-left: 30px;
+}
+
+.dungeonFightsLogsSeparator {
+    width: 500px;
+    height: 1px;
+    margin: auto;
+    background-color: black;
+}
+
+.dungeonFightsLogsTitle {
+    font-size: 28px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.dungeonFightsLogsList {
+    height: 500px;
+    overflow-y: scroll;    
+}
+
+.dungeonFightsLogsList ul {
+    list-style: square;
+    padding: 0;
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dungeonFightsLogsList li {
+    margin-top: 8px;
+    font-size: 16px;
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;
+}
+
+.dungeonFightsLogsList li:hover {
+    background-color: rgb(220, 202, 175);
+}
+
+.dungeonFightsLogsList li a {
+    color: black !important;
+    text-decoration: none !important;
+}
+
+.dungeonFightsLogsList li a img {
+    width: 25px;
+    height: 25px;
+    margin-left: 8px;
+}
+
+.dungeonFightsLogsList li a img:hover {
+    cursor: pointer;
+}
+
+.dungeonFightsLogsList::-webkit-scrollbar {
+    display: none; 
+}
+
+.dungeonExplorationSecondRowContainer {
+    min-height: 300px;
+}
+
+@media (max-width: 1850px) {
+    .dungeonTipsNotes {
+        margin-top: 5px;
+        list-style-type: circle;
+        font-size: 16px;
+    }
+    
+    .dungeonTipsNotesTitle {
+        font-size: 25px;
+    }
+
+    .tile-tip-text {
+        font-size: 16px;
+    }
+
+    .tile {
+        display: flex;
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 1800px) {
+    .dungeonFightsLogs {
+        width: 400px;
+    }
+
+    .dungeonFightsLogsSeparator {
+        width: 400px;
+    }
+}
+
+@media (max-width: 1750px) {
+    .dungeonExplorationExplorersContainer {
+        width: 275px !important;
+    }
+
+    .dungeonExplorationExplorersContainer .character-card {
+        width: 270px !important;
+    }
+
+    .dungeonExplorationExplorersContainer .character-card-separator {
+        width: 270px !important;
+    }
+
+    .dungeonExplorationExplorersContainer .character-card-stat-name {
+        display: none;
+    }
+
+    .dungeonExplorationExplorersContainer .character-card-infos-name-name {
+        display: none;
+    }
+    
+    .dungeonExplorationExplorersContainer .character-card-infos-name-species {
+        display: none;
+    }
+
+    .dungeonExplorationExplorersContainer .dungeonExplorationExplorersContainerTitle {
+        margin-left: -25px;
+    }
+    
+    .dungeonExplorationExplorersContainer .dungeonPreparationButtons > button {
+        width: 200px !important;
+    }
+}
+
+@media (max-width: 1470px) {
+    .dungeonFightsLogs {
+        width: 300px;
+    }
+
+    .dungeonFightsLogsSeparator {
+        width: 300px;
+    }
+
+    .dungeonFightsLogsTitle {
+        font-size: 22px;
+    }
+
+    .dungeon-logs-line-text {
+        display: none;
+    }
+}
+
+@media (max-width: 1300px) {
+    .dungeonExplorationExplorersContainer .dungeonExplorationExplorersContainerTitle {
+        margin-left: auto
+    }
+
+    .dungeonExplorationFirstRowContainer {
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dungeonExplorationExplorers {
+        width: 600px !important;
+        margin-bottom: 20px;
+    }
+
+    .dungeonExplorationExplorersContainer {
+        width: 560px !important;
+    }
+
+    .dungeonExplorationExplorersContainerList {
+        display:grid;
+        grid-template-columns: 275px 225px;
+        grid-row: auto auto;
+        grid-column-gap: 13px;
+        grid-row-gap: 5px;
+        justify-content: unset;
+    }
+
+    .dungeonExplorationTips {
+        display: none;
+    }
+
+    .dungeonButtons {
+        margin-top: 10px;
+    }
+
+    .dungeonExplorationExplorersContainer {
+        position: static;
+    }
+
+    .dungeonExplorationSecondRowContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .dungeonFightsLogs {
+        margin-left: 0px;
+        margin-top: 25px;
+        position: static;
+
+        width: 504px;
+    }
+
+    .dungeonFightsLogsTitle {
+        font-size: 22px;
+    }
+
+    .dungeon-logs-line-text {
+        display: unset;
+    }
+
+    .dungeonFightsLogsList li {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 650px) {
+    .dungeonExplorationExplorersContainer {
+        width: 275px !important;
+    }
+
+    .dungeonExplorationExplorersContainerList {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .tile {
+        display: flex;
+        width: 40px;
+        height: 40px;
+    }
+
+    .tile-current-explorers-position {
+        background-size: 40px 40px;
+    }
+
+    .dungeonExplorationExplorersContainer .dungeonExplorationExplorersContainerTitle {
+        margin-left: -25px;
+    }
+
+    .dungeon {
+        min-width:unset;
+    }
+
+    .ButtonFight {
+        background-color: rgb(186, 42, 42);
+        width: 155px !important;
+    }
+    
+    .ButtonLeave {
+        background-color: rgb(235, 19, 19);
+        width: 316px !important;
+    }
+    
+    .ButtonInteract {
+        background-color: rgb(52, 202, 80);
+        width: 155px !important;
+    }
+    
+    .dungeonButton {
+        width: 75px;
+    }
+}
+
+@media (max-width: 570px) {
+    .dungeonFightsLogs {
+        width: 300px;
+    }
+
+    .dungeonFightsLogsSeparator {
+        width: 300px;
+    }
+
+    .dungeonFightsLogsTitle {
+        font-size: 22px;
+    }
+
+    .dungeon-logs-line-text {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .tile {
+        display: flex;
+        width: 35px;
+        height: 35px;
+    }
+
+    .tile-current-explorers-position {
+        background-size: 35px 35px;
+    }
+}
+
+@media (max-width: 420px) {
+    .tile {
+        display: flex;
+        width: 30px;
+        height: 30px;
+    }
+
+    .tile-current-explorers-position {
+        background-size: 30px 30px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 No Dungeon                                 */
+/* -------------------------------------------------------------------------- */
+
+.noDungeonImage {
+    display: flex;
+    justify-content: center;
+}
+
+.noDungeonImage img {
+    width: 275px;
+}
+
+.noDungeonCooldownTimerContainer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.noDungeonTitle {
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Eagle Lake', cursive;
+    margin-top: -15px;
+}
+
+#noDungeonCooldownTimer {
+    width: 125px;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    text-align: center;
+    background-image: url('../../texture/parchement.jpg');
+}
+
+.noDungeonCreateDungeonInstanceLink {
+    text-decoration: none;
+    color: black;
+}
+
+.noDungeonCreateDungeonInstance {
+    width: 220px;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    margin-top: 40px;
+    text-align: center;
+    background-color: rgb(75,181,67);
 }

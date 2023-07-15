@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\TimersRepository;
 use DateTime;
+use DateTimeImmutable;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -54,10 +55,22 @@ class Timers
         return false;
     }
 
-    public function getCooldownDateTime($lastDateTime, $type): DateTime
+    public function getCooldownDungeonTime(): DateTimeImmutable|null 
     {
+        if($this->lastDungeon === null || new DateTime() > $this->getCooldownDateTime($this->lastDungeon, self::TIMERS_TYPE_DUNGEON)){
+            return null;
+        }
+
+        return $this->getCooldownDateTime($this->lastDungeon, self::TIMERS_TYPE_DUNGEON);
+    }
+
+    public function getCooldownDateTime($lastDateTime, $type): DateTimeImmutable
+    {   
+        $dateTimeImmutable = new DateTimeImmutable();
+        $dateTimeImmutable = $dateTimeImmutable->createFromMutable($lastDateTime);
+
         if($type === self::TIMERS_TYPE_DUNGEON){
-            return $lastDateTime->add(new \DateInterval('PT' . self::TIMERS_COOLDOWN_DUNGEON . 'M'));
+            return $dateTimeImmutable->modify('+ 720 minute');
         }
     }
 }

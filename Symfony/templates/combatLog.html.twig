@@ -1,9 +1,21 @@
-{% extends "base.html.twig" %}
+{% extends "newbase.html.twig" %}
 
-{% block title %}PDM : Valtoria | Rapport de Bataille {% endblock %}
+{% block title %}PMD : Valtoria | Rapport de Bataille {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/fight/app_combat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/_shared/_character-card.css') }}">
+{% endblock %}
 
 {% block body %}
-    <h1>Rapport de Combat</h1>
+    {% if combatLog.dungeonInstance is not null %}
+        <a class="combatLog-returnToDungeonLink" href="{{ path('app_dungeon', {'id':combatLog.dungeonInstance.id})}}">
+            <div class="combatLog-returnToDungeonButton">Retour au Donjon</div>
+        </a>
+    {% endif %}
+    
+    <h1 class="combatLog-title">Rapport de Combat</h1>
+    <h2 class="combatLog-date">{{ combatLog.dateCreation | date('d/m/Y H:i', "Europe/Paris")}}</h2>
 
     <div class="combatLog-team-display">
         <div class="combatLog-team">
@@ -12,6 +24,7 @@
                 {% include '_shared/_character-card.html.twig' %}
             {% endfor %}
         </div>
+        <div class="combatLog-vertical-separator"></div>
         <div class="combatLog-vs"><img class="combatLog-vs-image" src="{{ asset('icons/versus.png')}}"></div>
         <div class="combatLog-team">
             <div class="combatLog-team-name">Équipe 2</div>
@@ -24,7 +37,7 @@
     <table class='combatLogTable'>
         <thead>
             <tr>
-                <th colspan="2">Rapport du Combat du {{ combatLog.dateCreation | date('d/m/Y H:i', "Europe/Paris")}}</th>
+                <th colspan="2">Rapport</th>
             </tr>
         </thead>
         <tbody>
