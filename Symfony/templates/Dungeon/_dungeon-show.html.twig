@@ -1,0 +1,142 @@
+<div class="dungeonTitleName">{{ dungeonInstance.dungeon.name }}</div>
+<div class="dungeonStatus">Statut : {{ dungeonInstance.status|DungeonInstanceStatus }}</div>
+
+{% if dungeonInstance.status == 'dungeon_status_preparation' %}
+    <div class="dungeonPreparationFlavourText">Votre équipe se prépare à entrer dans le donjon.</div>
+
+    <div class="dungeonPreparationExplorersContainer">
+        <div class="dungeonPreparationExplorersContainerTitle">Composition de l'Équipe</div>
+        <div class="dungeonPreparationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
+        <div class="dungeonPreparationExplorersContainerList">
+            {% for character in dungeonInstance.explorers %}
+                {% include '_shared/_character-card.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="dungeonPreparationButtons">
+        {% if app.user.character == dungeonInstance.leader  %}
+            <button onclick="sendEnterDungeonCall()" class="dungeonButton buttonEnterDungeon">Commencer</button>
+        {% endif %}
+        
+        <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+        <div class="dungeonErrorMessages"></div>
+    </div>
+{% else %}
+    {% if dungeonInstance.status == 'dungeon_status_exploration' %}
+        <div class="dungeonExplorationFlavourText">Exploration du donjon</div>
+    {% else %}
+        <div class="dungeonExplorationFlavourText">Exploration terminée</div>
+    {% endif %}
+
+
+    <div class="dungeonExplorationFirstRowContainer">
+        <div class="dungeonExplorationTips">
+            <div class="dungeonTipsRow">
+                <div class="tile-tip tile-unknown"></div>
+                <div class="tile-tip-text">Pièce inconnue du donjon, que contient-elle ?</div>
+            </div>
+            <div class="dungeonTipsRow">
+                <div class="tile-tip tile-empty"></div>
+                <div class="tile-tip-text">Ceci est un mur, vous ne pouvez vous y rendre.</div>
+            </div>
+            <div class="dungeonTipsRow">
+                <div class="tile-tip tile-full"></div>
+                <div class="tile-tip-text">Pièce vide du donjon, passez votre chemin.</div>
+            </div>
+            <div class="dungeonTipsRow">
+                <div class="tile-tip tile-entrance"></div>
+                <div class="tile-tip-text">Entrée du donjon.</div>
+            </div>
+            <div class="dungeonTipsRow">
+                <div class="tile-tip tile-exit"></div>
+                <div class="tile-tip-text">Sortie du donjon.</div>
+            </div>
+            <div class="dungeonTipsRow" style="margin-bottom : 10px">
+                <div class="tile-tip tile-monsters-1" style="margin-right: 2px"></div>
+                <div class="tile-tip tile-monsters-2" style="margin-right: 2px"></div>
+                <div class="tile-tip tile-monsters-3"></div>
+                <div class="tile-tip-text">Pokémon(s) sauvage(s) en vue !</div>
+            </div>
+            <div class="dungeonTipsSeparator"></div>
+            <div class="dungeonTipsNotes">
+                <div class="dungeonTipsNotesTitle">Notes</div>
+                <ul>
+                    <li>Pour compléter le donjon, vous devez trouver la sortie et sortir.</li>
+                    <li>Vous ne pouvez pas vous enfuir d'une case contenant un/des pokémon(s) sauvage(s)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="dungeon">
+            {% for y in data.maxY .. data.minY %}
+                <div class="dungeon-row">
+                    {% for x in data.minX .. data.maxX %}
+                        {% set tilePos = y ~ ',' ~ x %}
+                            <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="dungeonExplorationExplorers">
+            <div class="dungeonExplorationExplorersContainer">
+                <div class="dungeonExplorationExplorersContainerTitle">Composition de l'Équipe</div>
+                <div class="dungeonExplorationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
+                <div class="dungeonExplorationExplorersContainerList">
+                    {% for character in dungeonInstance.explorers %}
+                        {% include '_shared/_character-card.html.twig' %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="dungeonExplorationSecondRowContainer">
+        <div class="dungeonFightsLogs">
+            <div class="dungeonFightsLogsTitle">Liste des combats</div>
+            <div class="dungeonFightsLogsSeparator"></div>
+            <div class="dungeonFightsLogsList">
+                <ul>
+                    {% for fightLog in dungeonInstance.Fights|reverse %}
+                        {% if fightLog.winner == 1 %}
+                            <li class="dungeonFightsLogsListLiVictory">
+                        {% else %}
+                            <li class="dungeonFightsLogsListLiDefeat">
+                        {% endif %}
+                                <a href="{{ path('app_combat', {'id' : fightLog.id }) }}" style='display:flex; align-items:center;'>
+                                    {% if fightLog.winner == 1 %}
+                                        <span style='margin-right:5px; color: rgb(2, 188, 2);'>[VICTOIRE]</span> <span class='dungeon-logs-line-text'>{{ fightLog.teamTwo|length }} Pokémons sauvages vaincus.</span> ({{fightLog.message}})
+                                    {% else %}
+                                        <span style='margin-right:5px; color:red;'>[DÉFAITE]</span> <span class='dungeon-logs-line-text'> Votre équipe a été vaincu.</span> ({{fightLog.message}})
+                                    {% endif %}
+                                    <img src="{{ asset('icons/oeil.png') }}" width=25 height=25 alt="">
+                                </a>
+                            </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="dungeonButtons">
+            {% if dungeonInstance.status == 'dungeon_status_exploration' and app.user.character == dungeonInstance.leader %}
+                <div class="dungeonDirectionButtons">
+                    <button onclick="sendMovementApiCall('left')" class="dungeonButton"><img src="{{ asset('icons/arrow_left.png') }}" width='25px'></button>
+                    <button onclick="sendMovementApiCall('up')" class="dungeonButton"><img src="{{ asset('icons/arrow_up.png') }}" width='20px'></button>
+                    <button onclick="sendMovementApiCall('down')" class="dungeonButton"><img src="{{ asset('icons/arrow_down.png') }}" width='20px'></button>
+                    <button onclick="sendMovementApiCall('right')" class="dungeonButton"><img src="{{ asset('icons/arrow_right.png') }}" width='25px'></button>
+                </div>
+                <div class="dungeonInteractionButtons">
+                    <button onclick="sendFightApiCall()" class="dungeonButton ButtonFight"><img src="{{ asset('icons/dual-swords.svg') }}" width='28px'></button>
+                    <button onclick="sendInteractApiCall()" class="dungeonButton ButtonInteract"><img src="{{ asset('icons/hand.png') }}" width='28px'></button>
+                </div>
+                <div class="dungeonEndingButton">
+                    <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+                </div>
+            {% else %}
+                <div class="dungeonEndingButton">
+                    <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endif %}

@@ -8,60 +8,38 @@
 {% endblock %}
 
 {% block body %}
-    <div class="dungeonTitleName">{{ dungeonInstance.dungeon.name }}</div>
-    <div class="dungeonStatus">Statut : {{ dungeonInstance.status|DungeonInstanceStatus }}</div>
+    {% if dungeonInstance is not null %}
+        {% set dungeon = dungeonInstance.getContent()['dungeon'] %}
+        {% set data = dungeonInstance.getContent()['data'] %}
+        {% set currentExplorersPosition = dungeonInstance.getCurrentExplorersPosition() %}
 
-    {% if dungeonInstance.status == 'dungeon_status_preparation'%}
-        <div class="dungeonPreparationFlavourText">Votre équipe se prépare à entrer dans le donjon.</div>
-
-        <div class="dungeonPreparationExplorersContainer">
-            <div class="dungeonPreparationExplorersContainerTitle">Composition de l'Équipe</div>
-            <div class="dungeonPreparationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
-            <div class="dungeonPreparationExplorersContainerList">
-                {% for character in dungeonInstance.explorers %}
-                    {% include '_shared/_character-card.html.twig' %}
-                {% endfor %}
-            </div>
-        </div>
-
-        <div class="dungeonPreparationButtons">
-            <button onclick="sendEnterDungeonCall()" class="dungeonButton buttonEnterDungeon">Commencer</button>
-            <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
-            <div class="dungeonErrorMessages"></div>
-        </div>
+        {% include "Dungeon/_dungeon-show.html.twig" %}
     {% else %}
-        <div class="dungeonExplorationFlavourText">Exploration du donjon</div>
-
-        <div class="dungeonExplorationFirstRowContainer">
-            <div class="dungeonExplorationTips"></div>
-
-            <div class="dungeon">
-                {% for y in data.maxY .. data.minY %}
-                    <div class="dungeon-row">
-                        {% for x in data.minX .. data.maxX %}
-                            {% set tilePos = y ~ ',' ~ x %}
-                                <div title='{{ tilePos }}' class="{{ dungeon[tilePos] |dungeonTile(currentExplorersPosition, tilePos) }}"></div>
-                        {% endfor %}
-                    </div>
-                {% endfor %}
-            </div>
-
-            <div class="dungeonExplorationExplorersContainer">
-                <div class="dungeonExplorationExplorersContainerTitle">Composition de l'Équipe</div>
-                <div class="dungeonExplorationExplorersContainerNumber">{{dungeonInstance.explorers|length}}/4</div>
-                <div class="dungeonExplorationExplorersContainerList">
-                    {% for character in dungeonInstance.explorers %}
-                        {% include '_shared/_character-card.html.twig' %}
-                    {% endfor %}
-                </div>
-            </div>
-        </div>
+        <div class="noDungeonImage"><img src="{{ asset('images/evoli-sleep.png') }}" alt="Evoli qui dort"></div>
+        <div class="noDungeonTitle">Vous n'êtes dans aucun donjon</div>
         
+        {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
+            <div class="noDungeonCooldownTimerContainer">
+                <p>Vous êtes fatigué, reposez vous..</p>
+                <div id="noDungeonCooldownTimer">-</div>  
+            </div>
+        {% else %}
+            <a class="noDungeonCreateDungeonInstanceLink" href="">
+                <div class="noDungeonCreateDungeonInstance">Créer un groupe d'exploration</div>
+            </a>
+        {% endif %}
+        
+
+            
     {% endif %}
 {% endblock %}
 
 {% block javascripts %}
-    <script>
+    {% if dungeonInstance is not null %}
+        <script>
+            const directionButtons = document.querySelectorAll("[data-direction]");
+            var errorMessages = document.getElementsByClassName('dungeonErrorMessages')[0];
+
             function sendEnterDungeonCall(){
                 let urlToCall = "{{ path('app_dungeon_instance_enter', {'id' : dungeonInstance.id}) }}";
 
@@ -77,19 +55,99 @@
                 })
             }
 
-        function sendLeaveApiCall(){
-            let urlToCall = "{{ path('app_dungeon_instance_leave', {'id' : dungeonInstance.id}) }}";
+            function sendLeaveApiCall(){
+                let urlToCall = "{{ path('app_dungeon_instance_leave', {'id' : dungeonInstance.id}) }}";
 
-            fetch(urlToCall).then(function(response){
-                if(response.status === 200){
-                    location.reload();
-                }
-                else if(response.status === 400){
-                    response.json().then(function(jsonData){
-                        errorMessages.innerHTML = jsonData.message
-                    });
-                }
-            })
-        }
-    </script>
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+
+            function sendMovementApiCall(direction){
+                let urlToCall = "{{ path('app_dungeon_instance_move', {'id' : dungeonInstance.id, 'direction' : 'DIRECTION'}) }}";
+                urlToCall = urlToCall.replace('DIRECTION', direction);
+                
+                fetch(urlToCall).then(function(response) {
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                });
+            }
+
+            function sendFightApiCall(){
+                let urlToCall = "{{ path('app_dungeon_instance_fight', {'id' : dungeonInstance.id}) }}";
+
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+
+            function sendInteractApiCall(){
+                let urlToCall = "{{ path('app_dungeon_instance_interact', {'id' : dungeonInstance.id}) }}";
+
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+        </script>
+    {% endif %}
+
+    {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
+        <script>
+            var dungeonCooldown = "{{app.user.character.timers.getCooldownDungeonTime()|date("m-d-Y H:i:s")}}";
+            var countDownDate = new Date(dungeonCooldown).getTime();
+
+            // Update the count down every 1 second
+            var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("noDungeonCooldownTimer").innerHTML =  hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("noDungeonCooldownTimer").innerHTML = "Prêt !";
+                window.location.reload();
+            }
+            }, 1000);
+        </script>
+    {% endif %}
 {% endblock %}

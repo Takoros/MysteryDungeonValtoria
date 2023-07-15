@@ -52,27 +52,14 @@ class MainController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/donjon/instance/{id}', name: 'app_dungeon')]
-    public function dungeonExplorationShow($id, DungeonInstanceRepository $dungeonInstanceRepository): Response
+    #[Route('/donjon/instance/', name: 'app_dungeon')]
+    public function dungeonExplorationShow(): Response
     {
-        $dungeonInstance = $dungeonInstanceRepository->find($id);
-
-        if($dungeonInstance === null){
-            $this->addFlash('danger', "Cette instance n'existe pas.");
-            return $this->redirectToRoute('app_home');
-        }
-
         $user = $this->getUser();
-
-        if(!$this->hasCharacterInDungeon($user, $dungeonInstance)){
-            return $this->redirectToRoute('app_home');
-        }
+        $dungeonInstance = $user->getCharacter()->getCurrentExplorationDungeonInstance();
 
         return $this->render('Dungeon/dungeon.html.twig', [
             'dungeonInstance' => $dungeonInstance,
-            'dungeon' => $dungeonInstance->getContent()['dungeon'],
-            'data' => $dungeonInstance->getContent()['data'],
-            'currentExplorersPosition' => $dungeonInstance->getCurrentExplorersPosition()
         ]);
     }
 

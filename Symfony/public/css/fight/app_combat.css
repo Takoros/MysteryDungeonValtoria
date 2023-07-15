@@ -1,0 +1,300 @@
+.combatLog-returnToDungeonLink {
+    text-decoration: none;
+    color: black;
+}
+
+.combatLog-returnToDungeonButton {
+    font-family: 'Eagle Lake', cursive;
+    position: absolute;
+    margin-left: 20px;
+    font-size: 12px;
+    padding: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: solid 1.5px black;
+    border-radius: 5px;
+    width: 122px;
+    background-image: url('../../texture/parchement.jpg');
+}
+
+.combatLog-title {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 24px;
+}
+
+.combatLog-date {
+    text-align: center;
+    font-size: 18px;
+    margin-top: -15px;
+}
+
+.combatLog-team-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 20px;
+}
+
+.combatLog-team {
+    display: flex;
+    flex-direction: column;
+}
+
+.combatLog-team-name {
+    font-family: 'Eagle Lake', cursive;
+    align-self: center;
+    font-size: 24px;
+}
+
+.combatLog-vs {
+    display: flex;
+    align-items: center;
+}
+
+.combatLog-vs-image {
+    width: 125px;
+    height: 125px;
+}
+
+.combatLog-vertical-separator {
+    width: 2px;
+    background-color: black;
+    display: none;
+}
+
+@media (max-width: 1250px) {
+    .combatLog-team .character-card {
+        width: 270px !important;
+    }
+
+    .combatLog-team .character-card-separator {
+        width: 270px !important;
+    }
+
+    .combatLog-team .character-card-stat-name {
+        display: none;
+    }
+
+    .combatLog-team .character-card-infos-name-name {
+        display: none;
+    }
+    
+    .combatLog-team .character-card-infos-name-species {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .combatLog-vs-image {
+        width: 90px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 700px) {
+    .combatLog-vs-image {
+        display: none;
+    }
+
+    .combatLog-vertical-separator {
+        display: unset;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 650px) {
+    .combatLog-title {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 580px) {
+    .combatLog-vs-image {
+        display: unset;
+    }
+
+    .combatLog-vertical-separator {
+        display: none;    
+    }
+
+    .combatLog-team-display {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .combatLog-team:first-of-type {
+        margin-bottom: 10px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                  LOG LINES                                 */
+/* -------------------------------------------------------------------------- */
+
+.combatLogTable {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 18px;
+    width: 95%;
+    margin: auto;
+    border: 1px solid black;
+    table-layout: unset;
+
+    background-color: rgb(255, 235, 205);
+    border-radius: 15px;
+}
+
+.combatLogTable tr {
+    height: 25px !important;
+    padding: 0;
+    margin: 0;
+}
+
+.combatLogTable td {
+    font-family: 'Rajdhani', sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+.combatLogTableTdIcon {
+    width: 25px;
+    border: 1px solid #333;
+}
+
+.combatLogTableTdText {
+    border: 1px solid #333;
+    padding-left: 5px !important;
+}
+
+.combatLogTableTdRound {
+    background-color: rgb(224, 196, 152);
+    border: 1px solid #333;
+    padding-left: 5px !important;
+}
+
+.combatLogTableTdIcon .winner {
+    display: block;
+    background-image: url("/icons/trophy.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .sword-crossed {
+    display: block;
+    background-image: url("/icons/dual-swords.svg");
+    background-position: -0.5px;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .dodge {
+    display: block;
+    background-image: url("/icons/player-dodge.svg");
+    background-position: -0.5px;
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .damageTakenByAttack {
+    display: block;
+    background-image: url("/icons/damage-kinetic.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .healingTakenByAttack {
+    display: block;
+    background-image: url("/icons/health.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .ko {
+    display: block;
+    background-image: url("/icons/death.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .remainingHealth {
+    display: block;
+    background-image: url("/icons/heart-rate.svg");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .buff {
+    display: block;
+    background-image: url("/icons/buff.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .nerf {
+    display: block;
+    background-image: url("/icons/debuff.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .modifierStatusLoss {
+    display: block;
+    background-image: url("/icons/balance.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .damagingReceived {
+    display: block;
+    background-image: url("/icons/blood.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .statusReceived {
+    display: block;
+    background-image: url("/icons/confus.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .statusLoss {
+    display: block;
+    background-image: url("/icons/potion.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+.combatLogTableTdIcon .attackNoEffect {
+    display: block;
+    background-image: url("/icons/effacer.png");
+    background-size: 25px 25px;
+    width: 25px;
+    height: 25px;
+}
+
+@media (max-width: 500px) {
+    .combatLogTableTdText {
+        font-size: 15px;
+    }    
+}
+
+@media (max-width: 400px) {
+    .combatLogTableTdText {
+        font-size: 13px;
+    }    
+}
