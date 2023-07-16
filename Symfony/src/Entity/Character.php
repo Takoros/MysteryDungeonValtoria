@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\CharacterRepository;
+use App\Repository\DungeonRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
@@ -374,6 +375,18 @@ class Character
         return $this;
     }
 
+    public function isShiny(): ?bool
+    {
+        return $this->isShiny;
+    }
+
+    public function setIsShiny(bool $isShiny): self
+    {
+        $this->isShiny = $isShiny;
+
+        return $this;
+    }
+
     // ///
     // Services Functions
     // ///
@@ -441,15 +454,14 @@ class Character
         return null;
     }
 
-    public function isShiny(): ?bool
+    public function getAvailableDungeons(DungeonRepository $dungeonRepository): array
     {
-        return $this->isShiny;
-    }
+        // Does not require exploration
+        $DUNGEON_ONE = $dungeonRepository->find('DUNGEON_ONE');
 
-    public function setIsShiny(bool $isShiny): self
-    {
-        $this->isShiny = $isShiny;
+        // Requires to be explorated
+        // Todo with Exploration's Update
 
-        return $this;
+        return [$DUNGEON_ONE];
     }
 }

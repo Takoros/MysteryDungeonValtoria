@@ -5,9 +5,11 @@ namespace App\Controller;
 use App\Entity\CombatLog;
 use App\Entity\DungeonInstance;
 use App\Entity\User;
+use App\Form\CreateDungeonInstanceType;
 use App\Repository\AttackRepository;
 use App\Repository\CombatLogRepository;
 use App\Repository\DungeonInstanceRepository;
+use App\Repository\DungeonRepository;
 use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
 use DateTime;
@@ -53,13 +55,34 @@ class MainController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/donjon/instance/', name: 'app_dungeon')]
-    public function dungeonExplorationShow(): Response
+    public function dungeonShow(): Response
     {
         $user = $this->getUser();
         $dungeonInstance = $user->getCharacter()->getCurrentExplorationDungeonInstance();
 
         return $this->render('Dungeon/dungeon.html.twig', [
             'dungeonInstance' => $dungeonInstance,
+        ]);
+    }
+
+    #[IsGranted('ROLE_USER')]
+    #[Route('/donjon/instance/create', name: 'app_dungeon_create')]
+    public function dungeonCreate(DungeonRepository $dungeonRepository): Response
+    {
+        $user = $this->getUser();
+        $character = $user->getCharacter();
+
+        if(!$character->getTimers()->canEnterDungeon()){
+            return $this->redirectToRoute('app_dungeon');
+        }
+
+        $dungeonInstanceCreateForm = $this->createForm(CreateDungeonInstanceType::class, null,[
+            'character' => $user->getCharacter(),
+            'dungeonRepository' => $dungeonRepository
+        ]);
+
+        return $this->render('Dungeon/dungeon-create.html.twig', [
+            'dungeonInstanceCreateFormView' => $dungeonInstanceCreateForm->createView()
         ]);
     }
 

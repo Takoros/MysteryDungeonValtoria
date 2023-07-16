@@ -1,0 +1,13 @@
+{% extends "newbase.html.twig" %}
+
+{% block title %}PMD : Valtoria | Donjon {% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/_shared/_character-card.css') }}">
+{% endblock %}
+
+{% block body %}
+    {{ form_start(dungeonInstanceCreateFormView) }}
+
+    {{ form_end(dungeonInstanceCreateFormView) }}
+{% endblock %}
