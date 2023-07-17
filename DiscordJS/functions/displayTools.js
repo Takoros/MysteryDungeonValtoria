@@ -129,7 +129,7 @@ module.exports = {
             return 'Disponible :white_check_mark:';
         }
 
-        cooldownDate = new Date(value.date).getTime();
+        cooldownDate = changeTimeZone(value.date, value.timezone);
         now = new Date().getTime();
 
         // Find the distance between now and the count down date
@@ -158,3 +158,19 @@ module.exports = {
         return result;
     }
 }
+
+function changeTimeZone(date, timeZone) {
+    if (typeof date === 'string') {
+      return new Date(
+        new Date(date).toLocaleString('en-US', {
+          timeZone,
+        }),
+      );
+    }
+  
+    return new Date(
+      date.toLocaleString('en-US', {
+        timeZone,
+      }),
+    );
+  }
