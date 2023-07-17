@@ -444,6 +444,7 @@
     font-family: 'Eagle Lake', cursive;
     position: absolute;
     margin-left: 30px;
+    overflow-y: scroll;
 }
 
 .dungeonFightsLogsSeparator {

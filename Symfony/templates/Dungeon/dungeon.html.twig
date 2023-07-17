@@ -120,8 +120,7 @@
 
     {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
         <script>
-            var dungeonCooldown = "{{app.user.character.timers.getCooldownDungeonTime()|date("m-d-Y H:i:s")}}";
-            var countDownDate = new Date(dungeonCooldown).getTime();
+            var countDownDate = new Date({{app.user.character.timers.getCooldownDungeonTime()|date("Y,m,d,H,i,s")}});
 
             // Update the count down every 1 second
             var x = setInterval(function() {
@@ -131,7 +130,6 @@
 
             // Find the distance between now and the count down date
             var distance = countDownDate - now;
-
             // Time calculations for days, hours, minutes and seconds
             var days = Math.floor(distance / (1000 * 60 * 60 * 24));
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
