@@ -12,11 +12,13 @@ use App\Repository\DungeonInstanceRepository;
 use App\Repository\DungeonRepository;
 use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
+use App\Service\Dungeon\DungeonGenerationService;
 use DateTime;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
@@ -54,7 +56,7 @@ class MainController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/donjon/instance/', name: 'app_dungeon')]
+    #[Route('/donjon', name: 'app_dungeon')]
     public function dungeonShow(): Response
     {
         $user = $this->getUser();
@@ -66,8 +68,8 @@ class MainController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/donjon/instance/create', name: 'app_dungeon_create')]
-    public function dungeonCreate(DungeonRepository $dungeonRepository): Response
+    #[Route('/donjon/create', name: 'app_dungeon_create')]
+    public function dungeonCreate(Request $request, DungeonRepository $dungeonRepository, DungeonGenerationService $dungeonGenerationService, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $character = $user->getCharacter();
@@ -80,6 +82,26 @@ class MainController extends AbstractController
             'character' => $user->getCharacter(),
             'dungeonRepository' => $dungeonRepository
         ]);
+
+        $dungeonInstanceCreateForm->handleRequest($request);
+
+        if($dungeonInstanceCreateForm->isSubmitted() && $dungeonInstanceCreateForm->isValid()){
+            $formData = $dungeonInstanceCreateForm->getData();
+
+            $generatedDungeon = $dungeonGenerationService->generateDungeon($formData['Dungeon'], $formData['Dungeon']->getSize());
+            $dungeonInstance = new DungeonInstance();
+            $dungeonInstance->setContent($generatedDungeon['content'])
+                            ->setDateCreated(new DateTime())
+                            ->setDungeon($formData['Dungeon'])
+                            ->setCurrentExplorersPosition($generatedDungeon['currentExplorersPosition'])
+                            ->setLeader($character)
+                            ->addExplorer($character)
+                            ->setStatus(DungeonInstance::DUNGEON_STATUS_PREPARATION);
+
+            $em->persist($dungeonInstance);
+            $em->flush();
+            return $this->redirectToRoute('app_dungeon');
+        }
 
         return $this->render('Dungeon/dungeon-create.html.twig', [
             'dungeonInstanceCreateFormView' => $dungeonInstanceCreateForm->createView()
@@ -301,6 +323,9 @@ class MainController extends AbstractController
 
             if(count($dungeonInstance->getExplorers()) < 1){
                 $this->deleteDungeonInstance($em, $dungeonInstance);
+            }
+            else if($user->getCharacter() === $dungeonInstance->getLeader()){
+                $dungeonInstance->setLeader($dungeonInstance->getExplorers()[0]);
             }
             
             $em->flush();

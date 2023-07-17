@@ -23,7 +23,7 @@ class Arena
     const DRAW = 0;
 
     /** Maximum of rounds playable before the combat stop to prevent infinite fights */
-    const MAX_ROUND = 100;
+    const MAX_ROUND = 1000;
 
     /**
      * Character / Fighters Properties

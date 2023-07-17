@@ -8,6 +8,7 @@ use App\Repository\DungeonRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\DependencyInjection\Exception\ParameterNotFoundException;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -29,10 +30,13 @@ class CreateDungeonInstanceType extends AbstractType
         $builder
             ->add('Dungeon', EntityType::class, [
                 'required' => true,
-                'label' => 'Donjon à explorer',
+                'label' => ' ',
                 'class' => Dungeon::class,
                 'choices' => $character->getAvailableDungeons($dungeonRepository),
                 'choice_label' => 'name'
+            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Confirmer'
             ])
         ;
     }

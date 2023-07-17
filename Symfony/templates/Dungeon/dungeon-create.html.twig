@@ -3,11 +3,13 @@
 {% block title %}PMD : Valtoria | Donjon {% endblock %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="{{ asset('css/_shared/_character-card.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/dungeon/app_dungeon_create.css') }}">
 {% endblock %}
 
 {% block body %}
-    {{ form_start(dungeonInstanceCreateFormView) }}
-
+    <div class="dungeonCreateTitle">Quel donjon voulez-vous explorer ?</div>
+    {{ form_start(dungeonInstanceCreateFormView, {'attr': {'class': 'dungeonCreate_form'}}) }}
+        {{ form_widget(dungeonInstanceCreateFormView.Dungeon, {'attr': {'class': 'dungeonCreate_formWidget'}}) }}
+        {{ form_widget(dungeonInstanceCreateFormView.submit, {'attr': {'class': 'dungeonCreate_Submit'}}) }}
     {{ form_end(dungeonInstanceCreateFormView) }}
 {% endblock %}

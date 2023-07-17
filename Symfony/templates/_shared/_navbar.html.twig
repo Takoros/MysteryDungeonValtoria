@@ -18,6 +18,7 @@
         <div id='navbar-desktop-menu'>
             <div id='navbar-desktop-menu-character-name' onClick='onCharacterInfoClick()'>{{ app.user.character.name }}</div>
             <div id='navbar-desktop-menu-links'>
+                <a class="navbar-desktop-menu-link" href="{{ path('app_dungeon') }}">Donjons</a>
                 <div class="navbar-desktop-menu-separator"></div>
                 <div id='navbar-desktop-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
             </div>
@@ -25,6 +26,12 @@
     {% endif %}
 
     <div id='navbar-phone-menu'>
+        <div class="navbar-phone-menu-links">
+            <a href="{{ path('app_home') }}" class="navbar-phone-menu-link">Accueil</a>
+            <div class="navbar-phone-menu-separator"></div>
+            <a href="{{ path('app_dungeon') }}" class="navbar-phone-menu-link">Donjons</a>
+            <div class="navbar-phone-menu-separator"></div>
+        </div>
         {% if not app.user %}
             <form action="{{ path('app_discord_connect') }}" method='post'>
                 <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
