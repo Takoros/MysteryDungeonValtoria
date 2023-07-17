@@ -186,7 +186,7 @@
         margin-left: -25px;
     }
     
-    .dungeonPreparationExplorersContainer .dungeonPreparationButtons > button {
+    .dungeonPreparationButtons > button {
         width: 200px !important;
     }
 }
@@ -691,22 +691,22 @@
         min-width:unset;
     }
 
-    .ButtonFight {
+    .dungeonExplorationSecondRowContainer .ButtonFight {
         background-color: rgb(186, 42, 42);
         width: 155px !important;
     }
     
-    .ButtonLeave {
+    .dungeonExplorationSecondRowContainer .ButtonLeave {
         background-color: rgb(235, 19, 19);
         width: 316px !important;
     }
     
-    .ButtonInteract {
+    .dungeonExplorationSecondRowContainer .ButtonInteract {
         background-color: rgb(52, 202, 80);
         width: 155px !important;
     }
     
-    .dungeonButton {
+    .dungeonExplorationSecondRowContainer .dungeonButton {
         width: 75px;
     }
 }
@@ -811,4 +811,33 @@
     margin-top: 40px;
     text-align: center;
     background-color: rgb(75,181,67);
+}
+
+.noDungeonCooldownTimerContainer p {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+}
+
+@media (min-width: 1500px) {
+    .noDungeonImage img {
+        width: 425px;
+    }
+
+    .noDungeonTitle {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    #noDungeonCooldownTimer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 30px;
+        font-size: 22px;
+    }
+
+    .noDungeonCooldownTimerContainer p {
+        font-size: 18px;
+    }
 }

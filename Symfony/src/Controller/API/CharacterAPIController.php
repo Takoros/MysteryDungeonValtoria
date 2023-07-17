@@ -16,6 +16,7 @@ class CharacterAPIController extends AbstractAPIController
     public array $API_CHARACTER_RESUME_ROTATION_ARGS = ["discordUserId", "rotationType"];
     public array $API_CHARACTER_RESUME_AVAILABLE_ATTACKS_ARGS = ["discordUserId"];
     public array $API_CHARACTER_TOGGLE_SHINY_ARGS = ["discordUserId"];
+    public array $API_CHARACTER_GET_TIMERS_ARGS = ["discordUserId"];
 
     /**
      * Creates a new character on API request
@@ -228,5 +229,34 @@ class CharacterAPIController extends AbstractAPIController
         }
 
         return new JsonResponse(['message' => $message], 200);
+    }
+
+    #[Route('/api/character/timers', name: 'api_character_get_timers',  methods:["POST"])]
+    public function getTimers(): JsonResponse
+    {
+        if(!is_bool($this->isValid)){
+            return $this->isValid;
+        }
+
+        $user = $this->apiGetUserByDiscordTag($this->post->data->discordUserId);
+
+        if(get_class($user) === JsonResponse::class){
+            return $user;
+        }
+        
+        $character = $this->apiGetCharacterByUser($user);
+
+        if(get_class($character) === JsonResponse::class){
+            return $character;
+        }
+
+        $timers = $character->getTimers();
+        $dungeonTimer = $timers->getCooldownDungeonTime();
+
+        $data = [
+            'dungeonTimer' => $dungeonTimer
+        ];
+
+        return new JsonResponse(['data' => $data], 200);
     }
 }

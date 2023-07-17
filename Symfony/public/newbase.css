@@ -131,7 +131,11 @@ body {
 }
 
 #navbar-desktop-menu #navbar-desktop-menu-links {
-    margin-bottom: 5px
+    margin-bottom: 5px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 #navbar-desktop-menu-links #navbar-desktop-menu-logoutButton {
@@ -147,6 +151,24 @@ body {
 
 #navbar-desktop-menu-links #navbar-desktop-menu-logoutButton:hover {
     cursor: pointer;
+}
+
+.navbar-desktop-menu-link {
+    text-align: center;
+    text-decoration: none;
+    color: black;
+}
+
+.navbar-desktop-menu-link:hover {
+    cursor: pointer;
+}
+
+.navbar-desktop-menu-separator {
+    width: 160px;
+    height: 1px;
+    background-color: black;
+    margin-top: 8px;
+    margin-bottom: 8px;
 }
 
 @media (max-width: 590px) {
@@ -185,7 +207,10 @@ body {
     }
 
     .phone-menu-opened {
+        width: 100%;
         display:flex !important;
+        flex-direction: column;
+        align-items: center;
     }
 
     #navbar-phone-menu {
@@ -223,6 +248,29 @@ body {
         background-color: rgba(255, 62, 1, 1);
         border: solid 2px rgba(193, 48, 2, 1);
         border-radius: 10px;
+    }
+
+    .navbar-phone-menu-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .navbar-phone-menu-separator {
+        width: 40%;
+        margin-bottom: 12px;
+        margin-top: 12px;
+        height: 1px;
+        background-color: black;
+    }
+
+    .navbar-phone-menu-link {
+        font-family: 'Eagle Lake', cursive;
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
     }
 }
 
