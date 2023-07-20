@@ -41,6 +41,7 @@ class CreateAttacksCommand extends Command
     const PSY_ATTACKS_FILE = '/src/Data/attacks/psy_attacks.json';
     const FAIRY_ATTACKS_FILE = '/src/Data/attacks/fairy_attacks.json';
     const DRAGON_ATTACKS_FILE = '/src/Data/attacks/dragon_attacks.json';
+    const MONSTER_ATTACKS_FILE = '/src/Data/attacks/monster_attacks.json';
 
     private $entityManager;
     private $attackRepository;
@@ -78,6 +79,7 @@ class CreateAttacksCommand extends Command
         $psyAttackListJson = json_decode(file_get_contents($this->kernel->getProjectDir() . self::PSY_ATTACKS_FILE));
         $fairyAttackListJson = json_decode(file_get_contents($this->kernel->getProjectDir() . self::FAIRY_ATTACKS_FILE));
         $dragonAttackListJson = json_decode(file_get_contents($this->kernel->getProjectDir() . self::DRAGON_ATTACKS_FILE));
+        $monsterAttackListJson = json_decode(file_get_contents($this->kernel->getProjectDir() . self::MONSTER_ATTACKS_FILE));
 
         $attackListJson = (object) array_merge((array) $bugAttackListJson,
                                                (array) $poisonAttackListJson,
@@ -97,7 +99,8 @@ class CreateAttacksCommand extends Command
                                                (array) $fightingAttackListJson,
                                                (array) $psyAttackListJson,
                                                (array) $fairyAttackListJson,
-                                               (array) $dragonAttackListJson);
+                                               (array) $dragonAttackListJson,
+                                               (array) $monsterAttackListJson);
 
         $attackListDatabase = $this->attackRepository->findAll();
 

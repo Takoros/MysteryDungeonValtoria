@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_ONE",
+    "name": "Ratata (A)",
+    "gender": "Mâle",
+    "age": 26,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 175,
+        "strength": 20,
+        "stamina": 40,
+        "power": 15,
+        "bravery": 35,
+        "presence": 20,
+        "impassiveness": 25,
+        "agility": 18,
+        "coordination": 15,
+        "speed": 20,
+        "actionPoint": 6
+    },
+    "Species" : 2,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_MONSTER_ONE",
+        "ATTACK_TWO_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_THREE_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_FOUR_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_TWO_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_THREE_ID": "ATTACK_NORMAL_TWO",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "isShiny": false
+}

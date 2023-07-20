@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_THREE",
+    "name": "Ratata (C)",
+    "gender": "Mâle",
+    "age": 29,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 95,
+        "strength": 32,
+        "stamina": 22,
+        "power": 14,
+        "bravery": 16,
+        "presence": 16,
+        "impassiveness": 19,
+        "agility": 23,
+        "coordination": 27,
+        "speed": 30,
+        "actionPoint": 6
+    },
+    "Species" : 2,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_TWO_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_TWO_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "isShiny": false
+}

@@ -14,7 +14,6 @@ use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
 use App\Service\Dungeon\DungeonGenerationService;
 use DateTime;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;

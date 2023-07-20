@@ -1,0 +1,15 @@
+{
+    "name": "Repaire des Acolytes",
+    "area": "Fort-Écorce",
+    "enterMinLevel": 3,
+    "roomNumbers": 5,
+    "description": "Des activités suspectes ont lieux dans les égouts de Fort-Écorce, menez l'enquête pour découvrir ce qu'il s'y trame.",
+    "rooms": {
+        "room-1": {
+            "name": "Porte Sombre",
+            "description": "Vous trouvez une porte étrange qui attire votre attention, cependant, quatre ratatas sauvages vous barre le chemin. Vous allez devoir user de la force pour passer.",
+            "monstersNumber" : "4",
+            "monstersId" : ["MONSTER_ONE", "MONSTER_TWO", "MONSTER_THREE", "MONSTER_FOUR"]
+        }
+    }
+}

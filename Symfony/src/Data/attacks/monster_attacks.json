@@ -1,0 +1,28 @@
+{
+    "ATTACK_MONSTER_ONE" : {
+        "name" : "Débris Protecteurs",
+        "type" : "Normal",
+        "description" : "Se roule dans les débris alentours pour augmenter son endurance et son courage pendant 4 tours.",
+        "power" : 0,
+        "status_power" : 4,
+        "critical_power" : 50,
+        "action_point_cost" : 0,
+        "scope" : "self",
+        "level_required" : 0,
+        "attackTree" : "Monstre",
+        "actionType" : "action-type-defensive"
+    },
+    "ATTACK_MONSTER_TWO": {
+        "name" : "Cri perçant",
+        "type" : "Normal",
+        "description" : "Pousse un cri perçant les tympans des pokémons adverses, réduisant leur coordination et leur endurance pendant 3 tours.",
+        "power" : 0,
+        "status_power" : 6,
+        "critical_power" : 80,
+        "action_point_cost" : 0,
+        "scope" : "enemy_team",
+        "level_required" : 0,
+        "attackTree" : "Monstre",
+        "actionType" : "action-type-utility"
+    }
+}

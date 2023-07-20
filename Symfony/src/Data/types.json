@@ -55,5 +55,8 @@
     },
     "19" : {
         "name" : "Insecte"
+    },
+    "20" : {
+        "name" : "Monstre"
     }
 }

@@ -1,0 +1,32 @@
+<div class="raidTitleName">{{ raidInstance.raid.name }}</div>
+<div class="raidStatus">Statut : {{ raidInstance.status|RaidInstanceStatus }}</div>
+
+{% if raidInstance.status == 'raid_status_preparation' %}
+    <div class="raidPreparationFlavourText">Votre équipe se prépare à entrer dans le donjon.</div>
+
+    <div class="raidPreparationDescriptionContainer">
+        <div class="raidPreparationDescriptionContainerTitle">Résumé de la mission</div>
+        <div class="raidPreparationDescription">{{ raidInstance.raid.description }}</div>
+    </div>
+
+    <div class="raidPreparationExplorersContainer">
+        <div class="raidPreparationExplorersContainerTitle">Composition de l'Équipe</div>
+        <div class="raidPreparationExplorersContainerNumber">{{raidInstance.explorers|length}}/{{ constant('App\\Entity\\RaidInstance::RAID_MAX_NUMBERS_OF_EXPLORERS') }}</div>
+        <div class="raidPreparationExplorersContainerList">
+            {% for character in raidInstance.explorers %}
+                {% include '_shared/_character-card.html.twig' %}
+            {% endfor %}
+        </div>
+    </div>
+
+    <div class="raidPreparationButtons">
+        {% if app.user.character == raidInstance.leader  %}
+            <button onclick="sendEnterRaidCall()" class="raidButton buttonEnterRaid">Commencer</button>
+        {% endif %}
+        
+        <button onclick="sendLeaveRaidCall()" class="raidButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+        <div class="raidErrorMessages"></div>
+    </div>
+{% else %}
+
+{% endif %}

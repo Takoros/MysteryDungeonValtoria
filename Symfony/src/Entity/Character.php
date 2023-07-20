@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CharacterRepository;
 use App\Repository\DungeonRepository;
+use App\Repository\RaidRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
@@ -82,6 +83,9 @@ class Character
 
     #[ORM\Column]
     private ?bool $isShiny = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Explorers')]
+    private ?RaidInstance $currentExplorationRaidInstance = null;
 
     public function __construct()
     {
@@ -463,5 +467,28 @@ class Character
         // Todo with Exploration's Update
 
         return [$DUNGEON_ONE];
+    }
+
+    public function getAvailableRaids(RaidRepository $raidRepository): array
+    {
+        // Does not require exploration
+        $RAID_ONE = $raidRepository->find('RAID_ONE');
+
+        // Require to be explorated
+        // TODO with Exploration's Update
+
+        return [$RAID_ONE];
+    }
+
+    public function getCurrentExplorationRaidInstance(): ?RaidInstance
+    {
+        return $this->currentExplorationRaidInstance;
+    }
+
+    public function setCurrentExplorationRaidInstance(?RaidInstance $currentExplorationRaidInstance): self
+    {
+        $this->currentExplorationRaidInstance = $currentExplorationRaidInstance;
+
+        return $this;
     }
 }

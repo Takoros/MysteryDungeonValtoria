@@ -24,9 +24,13 @@ class Area
     #[ORM\Column]
     private ?bool $isExplorable = null;
 
+    #[ORM\OneToMany(mappedBy: 'Area', targetEntity: Raid::class)]
+    private Collection $Raids;
+
     public function __construct()
     {
         $this->Dungeons = new ArrayCollection();
+        $this->Raids = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -84,6 +88,36 @@ class Area
     public function setIsExplorable(bool $isExplorable): self
     {
         $this->isExplorable = $isExplorable;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Raid>
+     */
+    public function getRaids(): Collection
+    {
+        return $this->Raids;
+    }
+
+    public function addRaid(Raid $raid): self
+    {
+        if (!$this->Raids->contains($raid)) {
+            $this->Raids->add($raid);
+            $raid->setArea($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRaid(Raid $raid): self
+    {
+        if ($this->Raids->removeElement($raid)) {
+            // set the owning side to null (unless already changed)
+            if ($raid->getArea() === $this) {
+                $raid->setArea(null);
+            }
+        }
 
         return $this;
     }
