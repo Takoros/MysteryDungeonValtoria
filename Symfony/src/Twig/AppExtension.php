@@ -3,6 +3,7 @@
 namespace App\Twig;
 
 use App\Entity\DungeonInstance;
+use App\Entity\RaidInstance;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\DungeonGenerationService;
 use Exception;
@@ -20,7 +21,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('damaging', [$this, 'displayDamaging']),
             new TwigFilter('dungeonTile', [$this, 'giveCssClassDungeonTile']),
             new TwigFilter('speciesIcon', [$this, 'getSpeciesIconFileName']),
-            new TwigFilter('DungeonInstanceStatus', [$this, 'getDungeonInstanceStatusName'])
+            new TwigFilter('DungeonInstanceStatus', [$this, 'getInstanceStatusName']),
+            new TwigFilter('RaidInstanceStatus', [$this, 'getInstanceStatusName'])
         ];
     }
 
@@ -208,15 +210,31 @@ class AppExtension extends AbstractExtension
         return 'pokemon-icons/'. $speciesName .'.png';
     }
 
-    public function getDungeonInstanceStatusName($dungeonInstanceStatus): string
+    public function getInstanceStatusName($instanceStatus): string
     {
-        if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_PREPARATION){
+        /**
+         * Dungeons
+         */
+        if($instanceStatus === DungeonInstance::DUNGEON_STATUS_PREPARATION){
             return 'Préparation';
         }
-        else if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_EXPLORATION){
+        else if($instanceStatus === DungeonInstance::DUNGEON_STATUS_EXPLORATION){
             return 'Exploration';
         }
-        else if($dungeonInstanceStatus === DungeonInstance::DUNGEON_STATUS_TERMINATION){
+        else if($instanceStatus === DungeonInstance::DUNGEON_STATUS_TERMINATION){
+            return 'Terminaison';
+        }
+        
+        /**
+         * Raids
+         */
+        if($instanceStatus === RaidInstance::RAID_STATUS_PREPARATION){
+            return 'Préparation';
+        }
+        else if($instanceStatus === RaidInstance::RAID_STATUS_EXPLORATION){
+            return 'Exploration';
+        }
+        else if($instanceStatus === RaidInstance::RAID_STATUS_TERMINATION){
             return 'Terminaison';
         }
     }

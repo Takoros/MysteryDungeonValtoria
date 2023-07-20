@@ -180,6 +180,7 @@ class CharacterService
 
         // Timers
         $timers = new Timers();
+        $timers->setRaidCharges(1);
         $this->entityManager->persist($timers);
 
         $newCharacter->setLevel(1)

@@ -1,0 +1,72 @@
+.raidCreateTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+}
+
+.raidCreate_form {
+    display: flex;
+    flex-direction: column;
+} 
+
+.raidCreate_formWidget {
+    margin-left: auto;
+    margin-right: auto;
+    width: 375px;
+    height: 35px;
+    margin-top: 50px;
+    font-family: 'Eagle Lake', cursive;
+    background-image: url('../../texture/parchement.jpg');
+    border-radius: 10px;
+    padding-left: 5px;
+    font-size: 17px;
+}
+
+.raidCreate_Submit {
+    width: 140px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('../../texture/parchement.jpg');
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+}
+
+.raidCreate_Submit:hover {
+    cursor: pointer;
+}
+
+@media (min-width: 1300px) {
+    .raidCreate_formWidget {
+        width: 420px;
+        height: 40px;
+        font-size: 20px;
+    }
+
+    .raidCreate_Submit {
+        width: 180px;
+        height: 40px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 400px) {
+    .raidCreateTitle {
+        font-size: 19px;
+    }
+
+    .raidCreate_formWidget {
+        width: 300px;
+        height: 30px;
+        font-size: 17px;
+    }
+
+    .raidCreate_Submit {
+        width: 120px;
+        height: 30px;
+        font-size: 17px;
+    }
+}

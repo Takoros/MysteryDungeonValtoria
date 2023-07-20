@@ -61,6 +61,14 @@ class CombatLog
     #[ORM\Column(type: Types::JSON, nullable: false)]
     private array|string $LogLines = [];
 
+    public $arena = null;
+
+    #[ORM\ManyToOne(inversedBy: 'fights')]
+    private ?DungeonInstance $dungeonInstance = null;
+
+    #[ORM\ManyToOne(inversedBy: 'fights')]
+    private ?RaidInstance $raidInstance = null;
+
     public function __construct()
     {
         $this->Characters = new ArrayCollection();
@@ -220,6 +228,30 @@ class CombatLog
         return $this;
     }
 
+    public function getDungeonInstance(): ?DungeonInstance
+    {
+        return $this->dungeonInstance;
+    }
+
+    public function setDungeonInstance(?DungeonInstance $dungeonInstance): self
+    {
+        $this->dungeonInstance = $dungeonInstance;
+
+        return $this;
+    }
+
+    public function getRaidInstance(): ?RaidInstance
+    {
+        return $this->raidInstance;
+    }
+
+    public function setRaidInstance(?RaidInstance $raidInstance): self
+    {
+        $this->raidInstance = $raidInstance;
+
+        return $this;
+    }
+
     public function serializeLogLines(): self
     {
         $encoders = [new JsonEncoder()];
@@ -344,11 +376,6 @@ class CombatLog
     /* -------------------------------------------------------------------------- */
     /*                                  IN COMBAT                                 */
     /* -------------------------------------------------------------------------- */
-
-    public $arena = null;
-
-    #[ORM\ManyToOne(inversedBy: 'fights')]
-    private ?DungeonInstance $dungeonInstance = null;
 
     /**
      * Creates a log for the winner announcement
@@ -545,17 +572,5 @@ class CombatLog
         $logLine->initTypeAttackNoEffect();
 
         $this->addLogLine($logLine);
-    }
-
-    public function getDungeonInstance(): ?DungeonInstance
-    {
-        return $this->dungeonInstance;
-    }
-
-    public function setDungeonInstance(?DungeonInstance $dungeonInstance): self
-    {
-        $this->dungeonInstance = $dungeonInstance;
-
-        return $this;
     }
 }

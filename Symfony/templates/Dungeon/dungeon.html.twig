@@ -28,9 +28,6 @@
                 <div class="noDungeonCreateDungeonInstance">Créer un groupe d'exploration</div>
             </a>
         {% endif %}
-        
-
-            
     {% endif %}
 {% endblock %}
 
@@ -118,7 +115,7 @@
         </script>
     {% endif %}
 
-    {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
+    {% if app.user.character.timers.getCooldownDungeonTime() is not null and dungeonInstance is null%}
         <script>
             var countDownDate = new Date({{app.user.character.timers.getCooldownDungeonTime()|date("Y,m,d,H,i,s")}});
 

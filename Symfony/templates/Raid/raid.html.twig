@@ -1,0 +1,101 @@
+{% extends 'newbase.html.twig' %}
+
+{% block title %}PMD : Valtoria | Raid{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/raid/app_raid.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/_shared/_character-card.css') }}">
+{% endblock %}
+
+{% block body %}
+    {% if raidInstance is not null %}
+        {% include "Raid/_raid-show.html.twig" %}
+    {% else %}
+        <div class="noRaidImage"><img src="{{ asset('images/evoli-sleep.png') }}" alt="Evoli qui dort"></div>
+        <div class="noRaidTitle">Vous n'êtes dans aucun raid</div>
+
+        {% if app.user.character.timers.getCooldownRaidTime() is not null %}
+            <div class="noRaidCooldownTimerContainer">
+                <p>Temps de récupération avant la prochaine charge</p>
+                <div id="noRaidCooldownTimer">-</div>  
+            </div>
+        {% endif %}
+
+        {% if app.user.character.timers.getRaidCharges() > 0 %}
+            <div class="noRaidChargesNumber">Charges de Raid actuelles : {{ app.user.character.timers.getRaidCharges() }} / {{ constant('App\\Entity\\Timers::MAX_RAID_CHARGES') }}</div>
+            <a class="noRaidCreateRaidInstanceLink" href="{{ path('app_raid_create') }}">
+                <div class="noRaidCreateRaidInstance">Créer un groupe d'exploration</div>
+            </a>
+        {% endif %}
+    {% endif %}
+    
+{% endblock %}
+
+{% block javascripts %}
+    {% if raidInstance is not null %}
+        <script>
+            function sendEnterRaidCall(){
+                let urlToCall = "{{ path('app_raid_instance_enter', {'id' : raidInstance.id}) }}";
+
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+
+            function sendLeaveRaidCall(){
+                let urlToCall = "{{ path('app_raid_instance_leave', {'id' : raidInstance.id}) }}";
+
+                fetch(urlToCall).then(function(response){
+                    if(response.status === 200){
+                        location.reload();
+                    }
+                    else if(response.status === 400){
+                        response.json().then(function(jsonData){
+                            errorMessages.innerHTML = jsonData.message
+                        });
+                    }
+                })
+            }
+        </script>
+    {% endif %}
+
+    {% if app.user.character.timers.getCooldownRaidTime() is not null and raidInstance is null %}
+        <script>
+            var month = {{app.user.character.timers.getCooldownRaidTime()|date("m")}}-1;
+            var countDownDate = new Date({{app.user.character.timers.getCooldownRaidTime()|date("Y,")}} month, {{app.user.character.timers.getCooldownRaidTime()|date("d,H,i,s")}});
+
+            // Update the count down every 1 second 
+            var x = setInterval(function() {
+
+            // Get today's date and time
+            var now = new Date().getTime();
+
+            // Find the distance between now and the count down date
+            var distance = countDownDate - now;
+
+            // Time calculations for days, hours, minutes and seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Display the result in the element with id="demo"
+            document.getElementById("noRaidCooldownTimer").innerHTML = days + "j " + hours + "h " + minutes + "m " + seconds + "s ";
+
+            // If the count down is finished, write some text
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("noRaidCooldownTimer").innerHTML = "Prêt !";
+                window.location.reload();
+            }
+            }, 1000);
+        </script>
+    {% endif %}
+{% endblock %}

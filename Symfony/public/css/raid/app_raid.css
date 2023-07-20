@@ -1,0 +1,317 @@
+/* -------------------------------------------------------------------------- */
+/*                                   No raid                                  */
+/* -------------------------------------------------------------------------- */
+
+.noRaidImage {
+    display: flex;
+    justify-content: center;
+}
+
+.noRaidImage img {
+    width: 275px;
+}
+
+.noRaidCooldownTimerContainer {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.noRaidTitle {
+    text-align: center;
+    font-size: 18px;
+    font-family: 'Eagle Lake', cursive;
+    margin-top: -15px;
+}
+
+#noRaidCooldownTimer {
+    width: 125px;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: -10px;
+    text-align: center;
+    background-image: url('../../texture/parchement.jpg');
+}
+
+.noRaidCreateRaidInstanceLink {
+    text-decoration: none;
+    color: black;
+}
+
+.noRaidCreateRaidInstance {
+    width: 220px;
+    border: 2px black solid;
+    border-radius: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 18px;
+    padding: 12px;
+    padding-top: 14px;
+    padding-bottom: 14px;
+    text-align: center;
+    background-color: rgb(75,181,67);
+}
+
+.noRaidChargesNumber {
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.noRaidCooldownTimerContainer p {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+}
+
+@media (min-width: 1500px) {
+    .noRaidImage img {
+        width: 425px;
+    }
+
+    .noRaidTitle {
+        text-align: center;
+        font-size: 22px;
+    }
+
+    #noRaidCooldownTimer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 200px;
+        height: 30px;
+        font-size: 22px;
+    }
+
+    .noRaidCooldownTimerContainer p {
+        font-size: 18px;
+    }
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                 Global Raid                                */
+/* -------------------------------------------------------------------------- */
+
+.raidTitleName {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 27px;
+}
+
+.raidStatus {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+    margin-top: -8px;
+}
+
+.raidButton {
+    margin-left: 2px;
+    margin-right: 2px;
+    width: 122px;
+    height: 50px;
+}
+
+.raidButton:hover {
+    cursor: pointer;
+}
+
+.ButtonLeave {
+    background-color: rgb(235, 19, 19);
+    width: 500px !important;
+    border-radius: 5px;
+}
+
+.buttonEnterRaid {
+    background-color: rgb(0, 182, 12);
+    width: 500px !important;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.ButtonFight {
+    background-color: rgb(186, 42, 42);
+    width: 248px !important;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Raid Preparation                              */
+/* -------------------------------------------------------------------------- */
+
+.raidPreparationFlavourText {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+}
+
+.raidPreparationDescriptionContainer {
+    margin-top: 30px;
+    width: 80%;
+    width: 1025px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 15px;
+
+    background: linear-gradient( rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25) ), url('../../texture/wooden_board.png');
+    background-size: cover;
+}
+
+.raidPreparationDescriptionContainerTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -36px;
+
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.raidPreparationDescription {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 8px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+    color: white;
+    text-align: center;
+}
+
+.raidPreparationExplorersContainer {
+    margin-top: 30px;
+    width: 80%;
+    width: 1025px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 8px;
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 15px;
+
+    background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../../texture/wooden_board.png');
+    background-size: cover;
+}
+
+.raidPreparationExplorersContainerTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -36px;
+
+    width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.raidPreparationExplorersContainerNumber {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -2px;
+
+    width: 60px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: white;
+    border: 2px black solid;
+    border-radius: 0 0 10px 10px;
+}
+
+.raidPreparationExplorersContainerList {
+    margin-left: auto;
+    margin-right: auto;
+    display:grid;
+    grid-template-columns: 500px 225px;
+    grid-row: auto auto;
+    grid-column-gap: 20px;
+    grid-row-gap: 5px;
+}
+
+.raidPreparationButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.raidPreparationButtons > button {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+@media (max-width: 1150px) {
+    .raidPreparationExplorersContainerList {
+        display:flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .raidPreparationExplorersContainer {
+        width: 520px !important;
+        min-width: unset;
+    }
+
+    .raidPreparationDescriptionContainer {
+        width: 520px !important;
+        min-width: unset;
+    }
+}
+
+@media (max-width: 595px) {
+
+    .raidPreparationExplorersContainer {
+        width: 275px !important;
+    }
+
+    .raidPreparationDescriptionContainer {
+        width: 275px !important;
+    }
+
+    .raidPreparationDescriptionContainerTitle {
+        margin-left: -25px;
+    }
+
+    .raidPreparationExplorersContainer .character-card {
+        width: 270px !important;
+    }
+
+    .raidPreparationExplorersContainer .character-card-separator {
+        width: 270px !important;
+    }
+
+    .raidPreparationExplorersContainer .character-card-stat-name {
+        display: none;
+    }
+
+    .raidPreparationExplorersContainer .character-card-infos-name-name {
+        display: none;
+    }
+    
+    .raidPreparationExplorersContainer .character-card-infos-name-species {
+        display: none;
+    }
+
+    .raidPreparationExplorersContainer .raidPreparationExplorersContainerTitle {
+        margin-left: -25px;
+    }
+    
+    .raidPreparationButtons > button {
+        width: 200px !important;
+    }
+}

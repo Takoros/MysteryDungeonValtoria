@@ -1,0 +1,15 @@
+{% extends 'newbase.html.twig' %}
+
+{% block title %}PMD : Valtoria | Raid{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/raid/app_raid_create.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="raidCreateTitle">Quel raid voulez-vous explorer ?</div>
+    {{ form_start(raidInstanceCreateFormView, {'attr': {'class': 'raidCreate_form'}}) }}
+        {{ form_widget(raidInstanceCreateFormView.Raid, {'attr': {'class': 'raidCreate_formWidget'}}) }}
+        {{ form_widget(raidInstanceCreateFormView.submit, {'attr': {'class': 'raidCreate_Submit'}}) }}
+    {{ form_end(raidInstanceCreateFormView) }}
+{% endblock %}
