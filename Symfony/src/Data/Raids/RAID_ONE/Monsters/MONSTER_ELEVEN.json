@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_ELEVEN",
+    "name": "Smogo (B)",
+    "gender": "Femelle",
+    "age": 23,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 61,
+        "strength": 15,
+        "stamina": 15,
+        "power": 15,
+        "bravery": 15,
+        "presence": 28,
+        "impassiveness": 15,
+        "agility": 20,
+        "coordination": 25,
+        "speed": 20,
+        "actionPoint": 6
+    },
+    "Species" : 109,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_POISON_ONE",
+        "ATTACK_TWO_ID": "ATTACK_EXPLORER_FOUR",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_FOUR",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_TWO_ID": "ATTACK_POISON_ONE",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FOUR_ID": "ATTACK_POISON_ONE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_FOUR"
+    },
+    "isShiny": false
+}

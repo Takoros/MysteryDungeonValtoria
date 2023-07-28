@@ -230,7 +230,7 @@ trait AbstractAttacks
      */
     public static function calculateBuffStatusValue(float $statusPower, int $casterPresence): int
     {
-        return round($statusPower * ($casterPresence / 5) * 0.9);
+        return round($statusPower * ($casterPresence / 5) * 0.75);
     }
 
     /**
@@ -246,7 +246,7 @@ trait AbstractAttacks
      */
     public static function calculateNerfValueReceived(int $rawNerfStatusValue, int $targetLevel, int $targetImpassiveness): int
     {
-        return round($rawNerfStatusValue / (($targetLevel / 1.5) + ($targetImpassiveness / 8)));
+        return round($rawNerfStatusValue / ($targetImpassiveness / 8));
     }
 
     /**
@@ -256,7 +256,7 @@ trait AbstractAttacks
     {
         $rawValue = round($damagingStatusPower * ($casterPresence / 5) * 1.25);
 
-        return round($rawValue / (($targetLevel / 1.5) + ($targetImpassiveness / 8)));
+        return round($rawValue / ($targetImpassiveness / 8));
     }
 
     /**

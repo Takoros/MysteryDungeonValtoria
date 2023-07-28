@@ -13,16 +13,16 @@ trait NormalAttacks
 {
     use AbstractAttacks;
 
-    /** @var Attack Chargeur */
+    /** @var Attack Flair */
     public Attack $ATTACK_NORMAL_ONE;
 
-    /** @var Attack Éclair */
+    /** @var Attack Charge */
     public Attack $ATTACK_NORMAL_TWO;
 
-    /** @var Attack Crocs Éclair */
+    /** @var Attack Météores */
     public Attack $ATTACK_NORMAL_THREE;
 
-    /** @var Attack Parabochaines */
+    /** @var Attack Abri */
     public Attack $ATTACK_NORMAL_FOUR;
 
     public function loadNormalAttacks() {

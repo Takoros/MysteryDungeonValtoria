@@ -53,6 +53,8 @@ class CreateRaidCommand extends Command
             $raidListJson[$raidId] = $raidData;
         }
 
+        $raidListJson = (object) $raidListJson;
+
         /**
          * Verifies the Raids in database and apply correct data if necessary
          */

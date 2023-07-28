@@ -10,6 +10,7 @@ use App\Service\Combat\Status\DamagingStatus;
 use App\Service\Combat\Status\StatisticModifierStatus;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\MonsterCharacter;
+use App\Service\Raid\MonsterRaidCharacter;
 use DateTime;
 use DateTimeZone;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -341,7 +342,7 @@ class CombatLog
         ];
     }
 
-    public function formatMonster(MonsterCharacter $monsterCharacter){
+    public function formatMonster(MonsterCharacter|MonsterRaidCharacter $monsterCharacter){
         return [
             'class' => 'Character',
             'id' => $monsterCharacter->getId(),

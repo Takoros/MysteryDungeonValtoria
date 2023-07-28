@@ -222,7 +222,7 @@ class AppExtension extends AbstractExtension
             return 'Exploration';
         }
         else if($instanceStatus === DungeonInstance::DUNGEON_STATUS_TERMINATION){
-            return 'Terminaison';
+            return 'Fin';
         }
         
         /**
@@ -234,8 +234,8 @@ class AppExtension extends AbstractExtension
         else if($instanceStatus === RaidInstance::RAID_STATUS_EXPLORATION){
             return 'Exploration';
         }
-        else if($instanceStatus === RaidInstance::RAID_STATUS_TERMINATION){
-            return 'Terminaison';
+        else if($instanceStatus === RaidInstance::RAID_STATUS_TERMINATION || $instanceStatus === RaidInstance::RAID_STATUS_TERMINATION_DEFEAT){
+            return 'Fin';
         }
     }
 }

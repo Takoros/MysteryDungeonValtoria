@@ -27,6 +27,129 @@
         <button onclick="sendLeaveRaidCall()" class="raidButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
         <div class="raidErrorMessages"></div>
     </div>
-{% else %}
+
+    {% if app.user.character == raidInstance.leader %}
+        <div class="inviteCodePannel">
+            <div class="inviteCodePannelTitle">Code d'invitation</div>
+            <div class="inviteCodePannelContent">{{ raidInstance.inviteCode }}</div>
+        </div>
+    {% endif %}
+{% elseif raidInstance.status == 'raid_status_exploration' %}
+    <div class="raidExplorationFlavourText">Pièce {{raidInstance.currentExplorersRoom }} / {{raidInstance.Raid.roomNumbers}}</div>
+
+    <div class="raidExplorationCurrentRoomDescriptionContainer">
+        <div class="raidExplorationCurrentRoomDescriptionContainerTitle">Description</div>
+        <div class="raidExplorationCurrentRoomDescription">{{ raidInstance.getCurrentRoomDescription() }}</div>
+    </div>
+
+    <div class="raidExplorationTeamsContainer">
+        <div class="raidExplorationTeamWoodContainer">
+            <div class="raidExplorationTeamWoodContainerTitle">Aventuriers</div>
+            <div class="raidExplorationTeamContainer">
+                {% for character in raidInstance.Explorers %}
+                    {% include '_shared/_character-card-mini.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="raidExplorationVersus"><img class="raidExplorationVersusIcon" src="{{ asset('icons/versus.png')}}"></div>
+
+        <div class="raidExplorationTeamWoodContainer">
+            <div class="raidExplorationTeamWoodContainerTitle">Pokémons Sauvages</div>
+            <div class="raidExplorationTeamContainer">
+                {% for character in raidInstance.getCurrentRoomMonsters(raidDataManager) %}
+                    {% include '_shared/_character-card-mini.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="raidExplorationButtons">
+        {% if app.user.character == raidInstance.leader  %}
+            <button onclick="sendFightRaidCall()" class="raidButton buttonEnterRaid">Combattre</button>
+        {% endif %}
+        
+        <button onclick="sendLeaveRaidCall()" class="raidButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+        <div class="raidErrorMessages"></div>
+    </div>
+
+    <div class="raidFightsLogs">
+        <div class="raidFightsLogsTitle">Liste des combats</div>
+        <div class="raidFightsLogsSeparator"></div>
+        <div class="raidFightsLogsList">
+            <ul>
+                {% for fightLog in raidInstance.Fights|reverse %}
+                    {% if fightLog.winner == 1 %}
+                        <li class="raidFightsLogsListLiVictory">
+                    {% else %}
+                        <li class="raidFightsLogsListLiDefeat">
+                    {% endif %}
+                            <a href="{{ path('app_combat', {'id' : fightLog.id }) }}" style='display:flex; align-items:center;'>
+                                {% if fightLog.winner == 1 %}
+                                    <span style='margin-right:5px; color: rgb(2, 188, 2);'>[VICTOIRE]</span> <span class='raid-logs-line-text'>{{ fightLog.teamTwo|length }} Pokémons sauvages vaincus.</span> ({{fightLog.message}})
+                                {% else %}
+                                    <span style='margin-right:5px; color:red;'>[DÉFAITE]</span> <span class='raid-logs-line-text'> Votre équipe a été vaincu.</span> ({{fightLog.message}})
+                                {% endif %}
+                                <img src="{{ asset('icons/oeil.png') }}" width=25 height=25 alt="">
+                            </a>
+                        </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+
+{% elseif raidInstance.status == 'raid_status_termination' or raidInstance.status == 'raid_status_termination_defeat' %}
+
+    <div class="raidExplorationFlavourText">Pièce {{raidInstance.currentExplorersRoom }} / {{raidInstance.Raid.roomNumbers}}</div>
+
+    <div class="raidExplorationCurrentRoomDescriptionContainer">
+        <div class="raidExplorationCurrentRoomDescriptionContainerTitle">Résultat</div>
+        {% if raidInstance.status == 'raid_status_termination' %}
+            <div class="raidExplorationCurrentRoomDescription">Vous avez réussi à conquérir le {{ raidInstance.raid.name }}, félicitations aventuriers.</div>
+        {% elseif raidInstance.status == 'raid_status_termination_defeat' %}
+            <div class="raidExplorationCurrentRoomDescription">Vous vous êtes fait battre en essayant de conquérir le {{ raidInstance.raid.name }}, reveneez une fois plus fort ! </div>
+        {% endif %}
+    </div>
+
+    <div class="raidExplorationTeamsContainer">
+        <div class="raidExplorationTeamWoodContainer">
+            <div class="raidExplorationTeamWoodContainerTitle">Aventuriers</div>
+            <div class="raidExplorationTeamContainer">
+                {% for character in raidInstance.Explorers %}
+                    {% include '_shared/_character-card-mini.html.twig' %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="raidExplorationButtons">
+        <button onclick="sendLeaveRaidCall()" class="raidButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
+        <div class="raidErrorMessages"></div>
+    </div>
+
+    <div class="raidFightsLogs">
+        <div class="raidFightsLogsTitle">Liste des combats</div>
+        <div class="raidFightsLogsSeparator"></div>
+        <div class="raidFightsLogsList">
+            <ul>
+                {% for fightLog in raidInstance.Fights|reverse %}
+                    {% if fightLog.winner == 1 %}
+                        <li class="raidFightsLogsListLiVictory">
+                    {% else %}
+                        <li class="raidFightsLogsListLiDefeat">
+                    {% endif %}
+                            <a href="{{ path('app_combat', {'id' : fightLog.id }) }}" style='display:flex; align-items:center;'>
+                                {% if fightLog.winner == 1 %}
+                                    <span style='margin-right:5px; color: rgb(2, 188, 2);'>[VICTOIRE]</span> <span class='raid-logs-line-text'>{{ fightLog.teamTwo|length }} Pokémons sauvages vaincus.</span> ({{fightLog.message}})
+                                {% else %}
+                                    <span style='margin-right:5px; color:red;'>[DÉFAITE]</span> <span class='raid-logs-line-text'> Votre équipe a été vaincu.</span> ({{fightLog.message}})
+                                {% endif %}
+                                <img src="{{ asset('icons/oeil.png') }}" width=25 height=25 alt="">
+                            </a>
+                        </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
 
 {% endif %}

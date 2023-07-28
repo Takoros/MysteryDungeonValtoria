@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_TWELVE",
+    "name": "Mimigal",
+    "gender": "Femelle",
+    "age": 20,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 66,
+        "strength": 28,
+        "stamina": 15,
+        "power": 15,
+        "bravery": 15,
+        "presence": 15,
+        "impassiveness": 15,
+        "agility": 16,
+        "coordination": 29,
+        "speed": 20,
+        "actionPoint": 6
+    },
+    "Species" : 167,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_BUG_TWO",
+        "ATTACK_TWO_ID": "ATTACK_BUG_TWO",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_BUG_TWO"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_BUG_TWO",
+        "ATTACK_TWO_ID": "ATTACK_BUG_TWO",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_BUG_TWO"
+    },
+    "isShiny": false
+}
