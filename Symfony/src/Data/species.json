@@ -71,6 +71,18 @@
         "isPlayable" : true,
         "description" : "Ponyta est un Pokémon équin avec des flammes jaune et rouge orangé qui forment sa crinière et sa queue. Sa crinière et sa queue se développent une heure après l'éclosion."
     },
+    "88" : {
+        "name" : "Tadmorv",
+        "types" : [16],
+        "isPlayable" : false,
+        "description" : "Tadmorv est une créature rampante recouverte d'une épaisse substance toxique violette. Il possède deux bras avec trois doigts à chaque main, et est souvent vu la bouche grande ouverte."
+    },
+    "89" : {
+        "name" : "Grotadmorv",
+        "types" : [16],
+        "isPlayable" : false,
+        "description" : "Grotadmorv est un immonde mélange de plusieurs produits toxiques, son corps est entièrement composé d'une mixture pâteuse et épaisse grise violacée et qui dégagerait une odeur insupportable. Un trou béant lui sert de bouche, et on peut y apercevoir sa grande langue bleu-gris."
+    },
     "104" : {
         "name" : "Osselait",
         "types" : [18],

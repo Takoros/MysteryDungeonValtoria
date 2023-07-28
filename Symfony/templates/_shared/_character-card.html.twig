@@ -3,7 +3,7 @@
         <div class="character-card-infobox">
             <img class="character-card-species-icon" src="{{ asset(character|speciesIcon) }}" alt="">
             <div class="character-card-infos">
-                <div><span class="character-card-infos-name character-card-infos-name-name">Nom : </span>{{ character.name }}{% if dungeonInstance is defined and character == dungeonInstance.leader or character == raidInstance.leader %}<span class="character-card-dungeon-leader-icon"> 👑</span>{% endif %}</div>
+                <div><span class="character-card-infos-name character-card-infos-name-name">Nom : </span>{{ character.name }}{% if dungeonInstance is defined and character == dungeonInstance.leader or raidInstance is defined and character == raidInstance.leader %}<span class="character-card-dungeon-leader-icon"> 👑</span>{% endif %}</div>
                 <div><span class="character-card-infos-name">Age : </span>{{ character.age }}</div>
                 <div><span class="character-card-infos-name">Niveau : </span>{{ character.level }}</div>
                 <div><span class="character-card-infos-name character-card-infos-name-species">Espèce : </span>{{ character.Species.name }}</div>
@@ -33,7 +33,7 @@
                 <tr>
                     <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}"><span class="character-card-stat-name">Agility : </span>{{ character.Stats.agility }}</td>
                     <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}"><span class="character-card-stat-name">Présence : </span>{{ character.Stats.presence }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}"><span class="character-card-stat-name">Points d'Action : </span>{{ character.Stats.actionPoint }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}"><span class="character-card-stat-name">PA : </span>{{ character.Stats.actionPoint }}</td>
                     <td></td>
                 </tr>
                 <tr>

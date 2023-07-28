@@ -2,7 +2,7 @@
     "ATTACK_DRAGON_ONE" : {
         "name" : "Danse Draco",
         "type" : "Dragon",
-        "description" : "Augmente la Vitesse et la Force du lanceur",
+        "description" : "Augmente la Vitesse et la Force du lanceur pendant 3 tours",
         "power" : 0,
         "status_power" : 4,
         "critical_power" : 10,

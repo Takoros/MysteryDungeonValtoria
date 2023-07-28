@@ -9,8 +9,12 @@
 
 {% block body %}
     {% if combatLog.dungeonInstance is not null %}
-        <a class="combatLog-returnToDungeonLink" href="{{ path('app_dungeon', {'id':combatLog.dungeonInstance.id})}}">
+        <a class="combatLog-returnToDungeonLink" href="{{ path('app_dungeon')}}">
             <div class="combatLog-returnToDungeonButton">Retour au Donjon</div>
+        </a>
+    {% elseif combatLog.raidInstance is not null %}
+        <a class="combatLog-returnToDungeonLink" href="{{ path('app_raid')}}">
+            <div class="combatLog-returnToDungeonButton">Retour au Raid</div>
         </a>
     {% endif %}
     

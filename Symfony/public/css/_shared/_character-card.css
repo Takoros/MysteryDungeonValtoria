@@ -10,6 +10,18 @@
     margin-top: 10px;
 }
 
+.character-mini-card {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+
+    border: 1px black solid;
+    border-radius: 5px;
+    width: 300px;
+    height: 111.5px;
+    background-image: url('../../texture/parchement.jpg');
+    margin-top: 10px;
+}
+
 .character-card-1st {
     display: flex;
     flex-direction: row;

@@ -27,6 +27,7 @@ class FighterAttacks
     use PsyAttacks;
     use FairyAttacks;
     use DragonAttacks;
+    use MonsterAttacks;
 
     const STAB_DAMAGE = 1.25; // Dégâts du STAB
 
@@ -66,5 +67,6 @@ class FighterAttacks
         $this->loadPsyAttacks();
         $this->loadFairyAttacks();
         $this->loadDragonAttacks();
+        $this->loadMonsterAttacks();
     }
 }

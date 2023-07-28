@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_EIGHT",
+    "name": "Nosférapti (A)",
+    "gender": "Femelle",
+    "age": 33,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 60,
+        "strength": 18,
+        "stamina": 14,
+        "power": 26,
+        "bravery": 16,
+        "presence": 14,
+        "impassiveness": 14,
+        "agility": 23,
+        "coordination": 25,
+        "speed": 23,
+        "actionPoint": 6
+    },
+    "Species" : 41,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_TWO_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_THREE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_POISON_THREE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_FLYING_THREE",
+        "ATTACK_TWO_ID": "ATTACK_FLYING_THREE",
+        "ATTACK_THREE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FOUR_ID": "ATTACK_EXPLORER_BASE",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_BASE"
+    },
+    "isShiny": false
+}

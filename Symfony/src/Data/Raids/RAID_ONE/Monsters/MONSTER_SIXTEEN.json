@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_SIXTEEN",
+    "name": "Rejeton",
+    "gender": "Mâle",
+    "age": 24,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 25,
+        "strength": 5,
+        "stamina": 5,
+        "power": 30,
+        "bravery": 5,
+        "presence": 12,
+        "impassiveness": 5,
+        "agility": 5,
+        "coordination": 5,
+        "speed": 12,
+        "actionPoint": 10
+    },
+    "Species" : 88,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_TWO_ID": "ATTACK_POISON_THREE",
+        "ATTACK_THREE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FOUR_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FIVE_ID": "ATTACK_POISON_THREE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_TWO_ID": "ATTACK_POISON_THREE",
+        "ATTACK_THREE_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FOUR_ID": "ATTACK_POISON_THREE",
+        "ATTACK_FIVE_ID": "ATTACK_POISON_THREE"
+    },
+    "isShiny": false
+}

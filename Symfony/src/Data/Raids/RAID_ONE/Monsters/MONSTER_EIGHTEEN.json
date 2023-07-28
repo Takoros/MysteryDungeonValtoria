@@ -1,0 +1,40 @@
+{
+    "id": "MONSTER_EIGHTEEN",
+    "name": "Zrakheeb",
+    "gender": "Mâle",
+    "age": 24,
+    "description" : null,
+    "level": 8,
+    "xp": 0,
+    "statPoints": 0,
+    "rank": 0,
+    "Stats" : {
+        "vitality": 300,
+        "strength": 60,
+        "stamina": 26,
+        "power": 40,
+        "bravery": 26,
+        "presence": 28,
+        "impassiveness": 20,
+        "agility": 15,
+        "coordination": 20,
+        "speed": 30,
+        "actionPoint": 10
+    },
+    "Species" : 89,
+    "Opener" : {
+        "ATTACK_ONE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_TWO_ID": "ATTACK_MONSTER_ONE",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_FOUR_ID": "ATTACK_POISON_TWO",
+        "ATTACK_FIVE_ID": "ATTACK_EXPLORER_ONE"
+    },
+    "Rotation" : {
+        "ATTACK_ONE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_TWO_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_THREE_ID": "ATTACK_EXPLORER_ONE",
+        "ATTACK_FOUR_ID": "ATTACK_MONSTER_ONE",
+        "ATTACK_FIVE_ID": "ATTACK_POISON_TWO"
+    },
+    "isShiny": false
+}

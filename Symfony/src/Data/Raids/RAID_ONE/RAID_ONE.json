@@ -9,7 +9,36 @@
             "name": "Porte Sombre",
             "description": "Vous trouvez une porte étrange qui attire votre attention, cependant, quatre ratatas sauvages vous barre le chemin. Vous allez devoir user de la force pour passer.",
             "monstersNumber" : "4",
-            "monstersId" : ["MONSTER_ONE", "MONSTER_TWO", "MONSTER_THREE", "MONSTER_FOUR"]
+            "monstersId" : ["MONSTER_ONE", "MONSTER_TWO", "MONSTER_THREE", "MONSTER_FOUR"],
+            "xpPerMonsterKOd" : 19
+        },
+        "room-2": {
+            "name": "Couloirs Tortueux",
+            "description": "Après avoir battu les Ratatas et passé la porte, vous vous trouvez dans un couloir étrange, qui tourbillonne de façon étrange. De plus, vous pouvez remarquer des déchets de plus en plus présent dans les couloirs. Soudainement, vous entendez un groupement de bruit qui vous fonce dessus, des adversaires !",
+            "monstersNumber" : "4",
+            "monstersId" : ["MONSTER_FIVE", "MONSTER_SIX", "MONSTER_SEVEN", "MONSTER_EIGHT"],
+            "xpPerMonsterKOd" : 23
+        },
+        "room-3": {
+            "name": "Pièce nauséabonde",
+            "description": "Vous avez fait fuir les pokémons sauvage vous attaquant, et avancé dans les couloirs. Après un moment, vous arrivez dans une grande pièce dont l'odeur vous donne des nausées, elle est remplie de déchets en tout genre et d'autres adversaires semblent avoir remarqué votre présence. Préparez vous !",
+            "monstersNumber" : "4",
+            "monstersId" : ["MONSTER_NINE", "MONSTER_TEN", "MONSTER_ELEVEN", "MONSTER_TWELVE"],
+            "xpPerMonsterKOd" : 31
+        },
+        "room-4": {
+            "name": "Chambre Rituel",
+            "description": "Après avoir vaincu les pokémons sauvages, vous remarquez une porte un peu plus loin dans la pièce, que vous prenez pour découvrir une nouvelle pièce à l'ambiance étrange, un grand cercle de couleur rouge se trouvant au centre de celle-ci, avec trois pokémons semblant prier dessus. Ils tournent la tête en vous entendant, et s'élancent vers vous.",
+            "monstersNumber" : "3",
+            "monstersId" : ["MONSTER_THIRTEEN", "MONSTER_FOURTEEN", "MONSTER_FIFTEEN"],
+            "xpPerMonsterKOd" : 40
+        },
+        "room-5": {
+            "name": "Chambre Rituel",
+            "description": "Malgré votre réussite dans ce combat, leurs prières sincères semblent avoir réussi à faire quelque chose, le cercle brillant fortement alors que tout les déchets se trouvant en son centre s'agglutinent ensemble. Soudain, une lumière vive vous aveugle pendant quelques instants, vous laissant ensuite découvrir la finalité du rituel, un gigantèsque Grotadmorve ainsi que deux petits tadmorv.. Ils semblent aggressifs, préparez vous aventuriers ! ",
+            "monstersNumber" : "3",
+            "monstersId" : ["MONSTER_SIXTEEN", "MONSTER_SEVENTEEN", "MONSTER_EIGHTEEN"],
+            "xpPerMonsterKOd" : 45
         }
     }
 }
