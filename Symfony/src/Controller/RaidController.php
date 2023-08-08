@@ -25,7 +25,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 class RaidController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
-    #[Route('/raid', name: 'app_raid')]
+    #[Route('/jeu/raid', name: 'app_raid')]
     public function raid(Request $request, RaidDataManager $raidDataManager, RaidInstanceRepository $raidInstanceRepository, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
@@ -60,7 +60,7 @@ class RaidController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/raid/create', name: 'app_raid_create')]
+    #[Route('/jeu/raid/create', name: 'app_raid_create')]
     public function create(Request $request, RaidRepository $raidRepository, RaidInstanceRepository $raidInstanceRepository, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
@@ -101,7 +101,7 @@ class RaidController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/raid/instance/{id}/enter', name: 'app_raid_instance_enter')]
+    #[Route('/jeu/raid/instance/{id}/enter', name: 'app_raid_instance_enter')]
     public function enterInstance($id, RaidInstanceRepository $raidInstanceRepository, EntityManagerInterface $em): JsonResponse
     {
         $raidInstance = $raidInstanceRepository->find($id);
@@ -134,7 +134,7 @@ class RaidController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/raid/instance/{id}/leave', name: 'app_raid_instance_leave')]
+    #[Route('/jeu/raid/instance/{id}/leave', name: 'app_raid_instance_leave')]
     public function leaveInstance($id, RaidInstanceRepository $raidInstanceRepository, EntityManagerInterface $em): JsonResponse
     {
         $raidInstance = $raidInstanceRepository->find($id);
@@ -163,7 +163,7 @@ class RaidController extends AbstractController
     }
 
     #[IsGranted('ROLE_USER')]
-    #[Route('/raid/instance/{id}/fight', name: 'app_raid_instance_fight')]
+    #[Route('/jeu/raid/instance/{id}/fight', name: 'app_raid_instance_fight')]
     public function fightMonsterInstance($id, RaidInstanceRepository $raidInstanceRepository, AttackRepository $attackRepository, RaidDataManager $raidDataManager, EntityManagerInterface $em): JsonResponse
     {
         $raidInstance = $raidInstanceRepository->find($id);

@@ -206,33 +206,43 @@ class Stats
         switch ($statToModify) {
             case 'vitality':
                 $this->setVitality($this->getVitality() + 3);
+                return $this->getVitality();
                 break;
             case 'strength':
                 $this->setStrength($this->getStrength() + 1);
+                return $this->getStrength();
                 break;
             case 'stamina':
                 $this->setStamina($this->getStamina() + 1);
+                return $this->getStamina();
                 break;
             case 'power':
                 $this->setPower($this->getPower() + 1);
+                return $this->getPower();
                 break;
             case 'bravery':
                 $this->setBravery($this->getBravery() + 1);
+                return $this->getBravery();
                 break;
             case 'presence':
                 $this->setPresence($this->getPresence() + 1);
+                return $this->getPresence();
                 break;
             case 'impassiveness':
                 $this->setImpassiveness($this->getImpassiveness() + 1);
+                return $this->getImpassiveness();
                 break;
             case 'agility':
                 $this->setAgility($this->getAgility() + 1);
+                return $this->getAgility();
                 break;
             case 'coordination':
                 $this->setCoordination($this->getCoordination() + 1);
+                return $this->getCoordination();
                 break;    
             case 'speed':
                 $this->setSpeed($this->getSpeed() + 1);
+                return $this->getSpeed();
                 break;
         }
     }

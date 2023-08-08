@@ -1,0 +1,179 @@
+.characterCreateTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 28px;
+}
+
+.createCharacter_form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
+
+.sideForm {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+}
+
+.formInput {
+    margin-top: 15px;
+}
+
+.formInput select {
+    width: 200px;
+    height: 30px;
+    font-family: 'Eagle Lake', cursive;
+    border-radius: 4px;
+
+    background-image: url('../../texture/parchement.jpg');
+    padding-left: 5px;
+    font-size: 17px;
+}
+
+.formInput input {
+    width: 192px;
+    height: 24px;
+    font-family: 'Eagle Lake', cursive;
+    border-radius: 4px;
+    border: 1px black solid;
+
+    background-image: url('../../texture/parchement.jpg');
+    padding-left: 5px;
+    font-size: 17px;
+}
+
+.formInput textarea {
+    background-image: url('../../texture/parchement.jpg');
+    resize: none;
+    width: 415px;
+    height: 90px;
+    font-family: 'Eagle Lake', cursive;
+    border-radius: 4px;
+    border: 1px black solid;
+}
+
+.formLabel {
+    font-family: 'Eagle Lake', cursive;
+}
+
+.leftFormSide {
+    width: 300px;
+}
+
+.rightFormSide {
+    width: 300px;
+}
+
+.speciesPannel {
+    display: flex;
+    flex-direction: row;
+}
+
+.speciesPannel .formInput {
+    width: 225px;
+}
+
+.speciesIcon {
+    margin-left: 25px;
+}
+
+.speciesIcon img {
+    width: 90px;
+}
+
+.descriptionFormInput {
+    margin-top: -5px;
+}
+
+.createCharacterSubmit {
+    display: block;
+    width: 140px;
+    height: 35px;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: url('../../texture/parchement.jpg');
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+}
+
+.createCharacterSubmit:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 900px) {
+    .leftFormSide {
+        width: 220px;
+    }
+
+    .formInput textarea {
+        width: 335px;
+    }
+}
+
+@media (max-width: 650px) {
+    .createCharacter_form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .formLabel {
+        text-align: center;
+    }
+}
+
+@media (max-width: 410px) {
+    .characterCreateTitle {
+        font-size: 22px;
+    }
+
+    .speciesPannel {
+        flex-direction: column-reverse;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #selectedSpeciesIcon {
+        margin-top: 20px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .speciesIcon {
+        margin-left: 0;
+        display: flex;
+        justify-content: center;
+    }
+
+    .formInput {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .formInput textarea {
+        width: 275px;
+    }
+
+    .descriptionFormInput {
+        margin-top: 20px;
+    }
+
+    .sideForm {
+        width: 300px !important;
+    }
+
+    .speciesFormInput {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .speciesFormInput select {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

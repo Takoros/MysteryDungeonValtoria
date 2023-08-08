@@ -43,15 +43,14 @@ class SecurityController extends AbstractController
         $accessToken = $request->get('access_token');
 
         if(!$accessToken){
-            return $this->render('discord_login_check.html.twig');
+            return $this->render('Login/discord_login_check.html.twig');
         }
 
         $discordUser = $this->discordApiService->fetchUser($accessToken);
 
         $user = $userRepository->findOneBy(['discordTag' => $discordUser->getDiscordTag()]);
 
-        if($user){
-
+        if($discordUser && $user){
             if($user->getEmail() !== $discordUser->getEmail()){
                 $user->setEmail($discordUser->getEmail());
             }
@@ -74,8 +73,18 @@ class SecurityController extends AbstractController
                 'accessToken' => $accessToken
             ]);
         }
+        else if ($discordUser && $user === null){
+            $discordUser->setAccessToken($accessToken);
 
-        return new JsonResponse(['message' => 'Veuillez créer un personnage sur le bot discord avant de vous connecter']);
+            $em->persist($discordUser);
+            $em->flush();
+
+            return $this->redirectToRoute('app_discord_auth', [
+                'accessToken' => $accessToken
+            ]);
+        }
+
+        return new JsonResponse(['message' => 'Utilisateur discord introuvable']);
     }
 
     #[Route('/discord/auth', name: 'app_discord_auth')]

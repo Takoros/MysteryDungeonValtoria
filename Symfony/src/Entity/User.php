@@ -69,6 +69,15 @@ class User implements UserInterface
         return $this;
     }
 
+    public function addRoles(array $roles): self
+    {
+        foreach ($roles as $role) {
+            $this->roles[] = $role;
+        }
+
+        return $this;
+    }
+
     public function getCharacter(): ?Character
     {
         return $this->Character;

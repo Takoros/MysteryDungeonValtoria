@@ -1,0 +1,283 @@
+.modifyRotationTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 28px;
+}
+
+.modifyRotationTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 825px;
+    font-family: 'Eagle Lake', cursive;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.modifyRotationTable th:nth-child(1) {
+    width: 50px;
+}
+
+.modifyRotationTable th:nth-child(2) {
+    width: 225px;
+}
+
+.modifyRotationTable th:nth-child(3) {
+    width: 550px;
+}
+
+.modifyRotationTable thead {
+    border: solid 1px black;
+    border-left: none;
+    border-right: none;
+}
+
+.modifyRotationTable th {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.modifyRotationTable th:nth-child(1), .modifyRotationTable th:nth-child(2) {
+    border-right: 1px solid black;
+}
+
+.modifyRotationTable td {
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+.modifyRotationTable tr td:first-of-type, .modifyRotationTable tr td:nth-child(2) {
+    border-right: 1px solid black;
+}
+
+.modifyRotationTable .modifyRotationFormSelect {
+    width: 220px;
+    height: 80px;
+    font-family: 'Eagle Lake', cursive;
+    border: none;
+    background-color: unset;
+    font-size: 17px;
+}
+
+.modifyRotationTable .modifyRotationFormSelect:focus {
+    outline: none;
+}
+
+.modifyRotationPAIcon {
+    width: 22px;
+    vertical-align: sub;
+}
+
+.firstLine {
+    display: flex;
+}
+
+.statContainer {
+    border: 1px solid black;
+    padding: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 15px;
+}
+
+.firstLine .statContainer:nth-child(1) {
+    width: 50px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.firstLine .statContainer:nth-child(2) {
+    width: 140px;
+    margin-right: 5px;
+}
+
+.firstLine .statContainer:nth-child(3) {
+    width: 140px;
+    margin-right: 5px;
+}
+
+.firstLine .statContainer:nth-child(4) {
+    width: 140px;
+}
+
+#attackDescription {
+    font-size: 13px;
+    padding: 4px;
+}
+
+.actionButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.modifyRotationSubmit {
+    display: block;
+    width: 140px;
+    height: 35px;
+    margin-top: 30px;
+    background-image: url('../../texture/parchement.jpg');
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+}
+
+.modifyRotationSubmit:hover {
+    cursor: pointer;
+}
+
+.returnLink {
+    text-decoration: none;
+}
+
+.returnButton {
+    display: block;
+    width: 140px;
+    height: 35px;
+    margin-top: 30px;
+    background-image: url('../../texture/parchement.jpg');
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+.returnButton:hover {
+    cursor: pointer;
+}
+
+.attackListLink {
+    text-decoration: none;
+}
+
+.attackListButton {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 280px;
+    height: 35px;
+    background-image: url('../../texture/parchement.jpg');
+    border: 1px solid black;
+    border-radius: 5px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+}
+
+.attackListButton:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 880px) {
+    .modifyRotationTitle {
+        font-size: 24px;
+    }
+
+    .modifyRotationTable {
+        width: 555px;
+    }
+
+    .modifyRotationTable th:nth-child(1) {
+        width: 35px;
+    }
+    
+    .modifyRotationTable th:nth-child(2) {
+        width: 120px;
+    }
+    
+    .modifyRotationTable th:nth-child(3) {
+        width: 400px;
+    }
+
+    .modifyRotationTable .modifyRotationFormSelect {
+        width: 115px;
+        height: 50px;
+        font-size: 13px;
+    }
+
+    .statContainer {
+        font-size: 12px;
+        padding: 0px;
+        padding-left: 4px;
+        padding-right: 4px;
+        border-radius: 15px;
+        height: 20px;
+    }
+
+    .modifyRotationPAIcon {
+        width: 15px;
+    }
+
+    .firstLine .statContainer:nth-child(1) {
+        width: 35px;
+    }
+
+    .firstLine .statContainer:nth-child(2) {
+        width: 110px;
+    }
+
+    .firstLine .statContainer:nth-child(3) {
+        width: 110px;
+    }
+
+    .firstLine .statContainer:nth-child(4) {
+        width: 110px;
+    }
+
+    #attackDescription {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 595px) {
+    .modifyRotationTitle {
+        font-size: 20px;
+    }
+
+    .modifyRotationTable {
+        width: 348px;
+    }
+
+    .modifyRotationTable th:nth-child(1) {
+        width: 18px;
+    }
+    
+    .modifyRotationTable th:nth-child(2) {
+        width: 80px;
+    }
+
+    .modifyRotationTable th:nth-child(3) {
+        width: 250px;
+    }
+
+    .modifyRotationTable .modifyRotationFormSelect {
+        width: 80px;
+        height: 40px;
+        font-size: 11px;
+    }
+
+    #attackDescription {
+        font-size: 9px;
+    }
+
+    .modifyRotationPAIcon {
+        width: 10px;
+    }
+
+    .statContainer {
+        font-size: 10px;
+        padding: 0px;
+        padding-left: 2px;
+        padding-right: 2px;
+        border-radius: 15px;
+        height: 40px;
+    }
+
+    #content {
+        overflow-x: scroll;
+    }
+}
