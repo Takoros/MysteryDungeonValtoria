@@ -1,0 +1,278 @@
+.characterAttacksTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 28px;
+}
+
+.characterAttacksSelect {
+    width: 225px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-top: 20px;
+    border: solid black 1px;
+    border-radius: 15px;
+    padding: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 17px;
+}
+
+.characterAttacksSelect summary img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.characterAttacksSelect summary span {
+    vertical-align: middle;
+    text-align: start;
+    width: 140px;
+    margin-left: 10px;
+}
+
+.characterAttacksSelect:hover {
+    cursor: pointer;
+}
+
+.characterAttacksSelect summary, ul {
+    list-style: none;
+}
+
+.characterAttacksSelect summary::-webkit-details-marker {
+    display: none; /* special fix, required just for Safari */
+}
+
+.characterAttacksSelect ul {
+    background: rgb(254, 254, 254);
+    box-shadow: 10px 5px 5px rgba(0,0,0,0.5);
+    margin-top: 0px;
+    padding: 10px;
+    width: 540px;
+
+    display: grid;
+    grid-template-columns: 180px 180px 180px;
+    grid-template-rows: auto;
+
+    position: absolute;
+    left:0;
+    right:0;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.characterAttacksSelect li {
+    display: flex;
+    padding: 10px;
+    margin: 5px;
+    justify-content: start;
+}
+
+.characterAttacksSelect li img {
+    width: 30px;
+    height: 30px;
+    vertical-align: middle;
+}
+
+.characterAttacksSelect li span {
+    vertical-align: middle;
+    text-align: start;
+    width: 140px;
+    margin-left: 10px;
+}
+
+.characterAttacksSelect li:hover {
+    background: rgba(255,255,0,0.5);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                    Table                                   */
+/* -------------------------------------------------------------------------- */
+
+.characterAttacksTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 825px;
+    font-family: 'Eagle Lake', cursive;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    table-layout: fixed;
+
+    background: linear-gradient( rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.20) ), url('../../texture/wooden_board.png');
+    background-size: cover;
+    color: white;
+}
+
+.characterAttackLineHidden {
+    display: none;
+}
+
+.TD-Number {
+    text-align: center;
+    border: 1px solid black;
+    height: 40px;
+    font-size: 20px;
+}
+
+.TD-NumberHide {
+    display: none;
+}
+
+.TD-Attack {
+    text-align: center;
+    border: 1px solid black;
+    background-image: url('../../texture/parchement.jpg');
+    color: black;
+}
+
+.TD-Attack .attackName {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.TD-Attack .attackName img {
+    width: 25px;
+    vertical-align: middle;
+}
+
+.TD-Attack .attackName span {
+    vertical-align: middle;
+}
+
+.modifyRotationPAIcon {
+    width: 22px;
+    vertical-align: sub;
+}
+
+.firstLine {
+    display: flex;
+    width: 540px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.statContainer {
+    border: 1px solid black;
+    padding: 2px;
+    padding-left: 7px;
+    padding-right: 7px;
+    border-radius: 15px;
+}
+
+.firstLine .statContainer:nth-child(1) {
+    width: 50px;
+    margin-right: 5px;
+    margin-left: 5px;
+}
+
+.firstLine .statContainer:nth-child(2) {
+    width: 140px;
+    margin-right: 5px;
+}
+
+.firstLine .statContainer:nth-child(3) {
+    width: 140px;
+    margin-right: 5px;
+}
+
+.firstLine .statContainer:nth-child(4) {
+    width: 140px;
+}
+
+.secondLine {
+    width: 665px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+@media (max-width: 880px) {
+    .characterAttacksTable {
+        width: 525px;
+    }
+
+    .firstLine {
+        justify-content: center;
+        width: 520px;
+    }
+
+    .modifyRotationPAIcon {
+        width: 17px;
+    }
+
+    .firstLine .statContainer:nth-child(1) {
+        width: 35px;
+        font-size: 13px;
+    }
+    
+    .firstLine .statContainer:nth-child(2) {
+        width: 115px;
+        font-size: 13px;
+    }
+    
+    .firstLine .statContainer:nth-child(3) {
+        width: 115px;
+        font-size: 13px;
+    }
+    
+    .firstLine .statContainer:nth-child(4) {
+        width: 115px;
+        font-size: 13px;
+    }
+
+    .secondLine {
+        width: 520px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 555px) {
+    .characterAttacksTable {
+        width: 340px;
+    }
+
+    .attackName {
+        font-size: 13px;
+    }
+
+    .firstLine {
+        width: 335px;
+        display: grid;
+        grid-template-columns: 105px 105px;
+        grid-row-gap: 5px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .TD-Attack .attackName img {
+        width: 20px;
+        vertical-align: middle;
+    }
+
+    .firstLine .statContainer:nth-child(1) {
+        width: unset;
+        font-size: 10px;
+    }
+    
+    .firstLine .statContainer:nth-child(2) {
+        width: unset;
+        font-size: 10px;
+    }
+    
+    .firstLine .statContainer:nth-child(3) {
+        width: unset;
+        font-size: 10px;
+    }
+    
+    .firstLine .statContainer:nth-child(4) {
+        width: unset;
+        font-size: 10px;
+    }
+
+    .secondLine {
+        width: 335px;
+        font-size: 12.5px;
+    }
+}

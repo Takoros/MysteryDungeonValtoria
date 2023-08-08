@@ -79,6 +79,35 @@ body {
     cursor: pointer;
 }
 
+#createCharacterLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    text-decoration: none;
+}
+
+#createCharacterButton {
+    width: 225px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid 2px white;
+    border-radius: 10px;
+    background-color: rgb(121,169,92);
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    user-select: none;
+}
+
+#createCharacterButton:hover {
+    cursor: pointer;
+}
+
 #navbar #characterInfo {
     display:flex;
     margin-right: 15px;
@@ -171,6 +200,13 @@ body {
     margin-bottom: 8px;
 }
 
+@media (max-width: 750px) {
+    #createCharacterButton {
+        width: 105px;
+        font-size: 14px;
+    }
+}
+
 @media (max-width: 590px) {
     #navbar #characterInfo :first-child {
         display:none;
@@ -189,6 +225,10 @@ body {
 
     #navbar #loginButton, #navbar #characterInfo {
         display:none;
+    }
+
+    #createCharacterLink {
+        display: none;
     }
     
     #navbar-desktop-menu {

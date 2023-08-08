@@ -413,6 +413,11 @@ class Character
         return intval(round(10.1 * pow($this->getLevel(), 2.83)));
     }
 
+    public function getXPPercentage(): int
+    {
+        return ceil($this->getXp() * 100 / $this->getXPCeil());
+    }
+
     public function hasEnoughXP(): bool
     {
         if($this->getXp() >= $this->getXPCeil()){

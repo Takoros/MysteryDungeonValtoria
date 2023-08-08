@@ -13,6 +13,7 @@ use App\Repository\TypeRepository;
 use App\Repository\UserRepository;
 use App\Service\Dungeon\MonsterCharacter;
 use Doctrine\Persistence\ManagerRegistry;
+use Exception;
 
 class CharacterService
 {
@@ -34,107 +35,41 @@ class CharacterService
     /**
      * Creates a new character and persist it
      */
-    public function persistNewCharacter($characterData){
-        $newCharacter = new Character;
-        $User = null;
+    public function persistNewCharacter(Character $character, User $user){
 
         /**
-         * Verify that user does not already have a character, add the user if it doesnt exist
+         * Verify that user does not already have a character
          */
-        if($characterData->discordUserId && is_string($characterData->discordUserId)){
-            $users = $this->userRepository->findAll();
-            $userExist = false;
-
-            foreach ($users as $user) {
-                if($user->getDiscordTag() == $characterData->discordUserId && $user->getCharacter() !== null){
-                    $userExist = true;
-                    return [
-                        'statusCode' => 400,
-                        'message' => "Vous avez déjà un personnage."
-                    ];
-                }
-                else if($user->getDiscordTag() == $characterData->discordUserId){
-                    $User = $user;
-                    $userExist = true;
-                    break;
-                }
-            }
-
-            if($userExist === false){
-                $User = new User();
-                $User->setDiscordTag($characterData->discordUserId);
-                $this->entityManager->persist($User);
-            }
+        if($user->getCharacter() !== null){
+            throw new Exception("L'utilisateur possède déjà un personnage.");
         }
-        else {
-            return [
-                'statusCode' => 400,
-                'message' => "Le discordUserId est incorrect."
-            ];
-        }
-
 
         /**
          * Verify and Add Name
          */
-        if($characterData->characterName && is_string($characterData->characterName) && strlen($characterData->characterName) <= 30
-           && !preg_match('~[0-9]+~', $characterData->characterName)){
-            $newCharacter->setName($characterData->characterName);
-        }
-        else {
-            return [
-                'statusCode' => 400,
-                'message' => "Le nom du personnage est non-valide."
-            ];
+        if(preg_match('~[0-9]+~', $character->getName())){
+            throw new Exception("Le nom ne peut contenir de numéros");
         }
 
         /**
          * Verify and Add Gender
          */
-        if($characterData->characterGender && ($characterData->characterGender === Character::GENDER_MALE || $characterData->characterGender === Character::GENDER_FEMALE)){
-            $newCharacter->setGender($characterData->characterGender);
-        }
-        else {
-            return [
-                'statusCode' => 400,
-                'message' => "Le genre du personnage est incorrect."
-            ];
+        if(!$character->getGender() && ($character->getGender() !== Character::GENDER_MALE && $character->getGender() !== Character::GENDER_FEMALE)){
+            throw new Exception("Le genre n'est pas défini, ou incorrect.");
         }
 
         /**
          * Verify and Add Age
          */
-        if($characterData->characterAge && $characterData->characterAge >= 18 && $characterData->characterAge <= 60){
-            $newCharacter->setAge($characterData->characterAge);
-        }
-        else {
-            return [
-                'statusCode' => 400,
-                'message' => "L'âge du personnage est incorrect."
-            ];
+        if(!$character->getAge() && ($character->getAge() < 18 || $character->getAge() > 44)){
+            throw new Exception("L'âge n'est pas défini, ou incorrect.");
         }
 
         /**
          * Verify and Add Species
          */
-        if($characterData->characterSpeciesName){
-            $species = $this->speciesRepository->findOneBy(['name' => $characterData->characterSpeciesName]);
-
-            if($species !== null && $species->isIsPlayable()){
-                $newCharacter->setSpecies($species);
-            }
-            else {
-                return [
-                    'statusCode' => 400,
-                    'message' => "Le nom de l'espèce est incorrect."
-                ];
-            }
-        }
-        else {
-            return [
-                'statusCode' => 400,
-                'message' => "Le nom de l'espèce est incorrect."
-            ];
+        if(!$character->getSpecies() || !$character->getSpecies()->isIsPlayable()){
+            throw new Exception("L'espèce n'est pas défini, ou incorrect.");
         }
 
         /**
@@ -143,7 +78,7 @@ class CharacterService
         $lutte = $this->attackRepository->find("ATTACK_EXPLORER_BASE");
 
         $openerRotation = new Rotation();
-        $openerRotation->setCharacter($newCharacter)
+        $openerRotation->setCharacter($character)
                        ->setType(Rotation::TYPE_OPENER)
                        ->setAttackOne($lutte)
                        ->setAttackTwo($lutte)
@@ -152,7 +87,7 @@ class CharacterService
                        ->setAttackFive($lutte);
 
         $rotation = new Rotation();
-        $rotation->setCharacter($newCharacter)
+        $rotation->setCharacter($character)
         ->setType(Rotation::TYPE_ROTATION)
         ->setAttackOne($lutte)
         ->setAttackTwo($lutte)
@@ -183,23 +118,22 @@ class CharacterService
         $timers->setRaidCharges(1);
         $this->entityManager->persist($timers);
 
-        $newCharacter->setLevel(1)
-                     ->setXP(0)
-                     ->setStatPoints(5)
-                     ->setDescription('')
-                     ->setRank(0)
-                     ->setUserI($User)
-                     ->setStats($newStats)
-                     ->setTimers($timers)
-                     ->setIsShiny(false);
+        $character->setLevel(1)
+                  ->setXP(0)
+                  ->setStatPoints(5)
+                  ->setDescription('')
+                  ->setRank(0)
+                  ->setUserI($user)
+                  ->setStats($newStats)
+                  ->setTimers($timers)
+                  ->setIsShiny(false);
 
-        $this->entityManager->persist($newCharacter);
+        $user->addRoles(['ROLE_CHARACTER']);
+
+        $this->entityManager->persist($character);
         $this->entityManager->flush();
 
-        return [
-            'statusCode' => 200,
-            'message' => "Personnage créé avec succès."
-        ];
+        return $character;
     }
 
     /**
@@ -268,14 +202,16 @@ class CharacterService
 
         if($character->getStatPoints() >= $amount ){
             for ($i=0; $i < $amount; $i++) { 
-                $character->getStats()->increaseStat($statToModify);
+                $newStatValue = $character->getStats()->increaseStat($statToModify);
                 $character->setStatPoints($character->getStatPoints() - 1);
             }
 
             $this->entityManager->flush();
             return [
                 'statusCode' => 200,
-                'message' => "Statistique augmentée."
+                'message' => "Statistique augmentée.",
+                'newStatValue' => $newStatValue,
+                'newStatPointsValue' => $character->getStatPoints() 
             ];
         }
         else {

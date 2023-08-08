@@ -74,6 +74,25 @@ class Rotation
         ];
     }
 
+    public function getAttack($number): ?Attack
+    {
+        if($number === 'One'){
+            return $this->attackOne;
+        }
+        else if($number === 'Two'){
+            return $this->attackTwo;
+        }
+        else if($number === 'Three'){
+            return $this->attackThree;
+        }
+        else if($number === 'Four'){
+            return $this->attackFour;
+        }
+        else if($number === 'Five'){
+            return $this->attackFive;
+        }
+    }
+
     public function getAttackOne(): ?Attack
     {
         return $this->attackOne;

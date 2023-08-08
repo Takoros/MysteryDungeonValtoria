@@ -1,0 +1,17 @@
+<tr class="characterAttackLine characterAttackLineHidden" data-id='attack-type-{{ attack.attackTree.getName() }}' >
+    <td class="characterAttacksTD TD-Attack">
+        <div class="attackName">
+            <img title="{{ attack.type.getName() }}" src='{{ asset(attack.type | typeIcon) }}'/>
+            <span>{{ attack.name }}</span> 
+        </div>
+        <div class="firstLine">
+            <div class="statContainer" title="Le cout en Points d'Action de cette attaque.">{{ attack.actionPointCost }} <img class="modifyRotationPAIcon" src="{{ asset('icons/stats/actionPoint.png') }}"></div>
+            <div class="statContainer" title="Valeur permettant de calculer les dégâts infligés par l'attaque. Dans le cas d'une attaque infligeant des dégâts mixtes, la valeur est appliquée sur chacun des calculs de dégât et non divisé. Elle représente aussi la valeur de soin prodigué.">Puissance : {{ attack.power }}</div>
+            <div class="statContainer" title="Valeur déterminant la puissance des status (bonus/malus de stat) infligés par cette attaque.">P.Statut : {{ attack.statusPower }}</div>
+            <div class="statContainer" title="Détermine le multiplicateur appliqué aux valeurs de l'attaque en cas de critique. (Exemple : Une attaque avec un P.Critique de 25 verra ses effets augmentés de 25% en cas de critique)">P.Critique : {{ attack.criticalPower }}</div>
+        </div>
+        <div class="secondLine">
+            <span id="attackDescription">{{ attack.description }}</span>
+        </div>
+    </td>
+</tr>

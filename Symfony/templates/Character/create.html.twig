@@ -1,0 +1,83 @@
+{% extends 'newbase.html.twig' %}
+
+{% block title %}PMD : Valtoria | Nouveau Personnage{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Character/app_character_create.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="characterCreateTitle">Création de personnage</div>
+
+    {{ form_start(createCharacterFormView) }}
+        <div class="createCharacter_form">
+             <div class="sideForm leftFormSide">
+            <div class="formInput">
+                <div class="formLabel">Nom du personnage :</div>
+                {{ form_widget(createCharacterFormView.name) }}
+            </div>
+
+            <div class="formInput">
+                <div class="formLabel">Genre du personnage :</div>
+                {{ form_widget(createCharacterFormView.gender) }}
+            </div>
+
+            <div class="formInput">
+                <div class="formLabel">Age du personnage :</div>
+                {{ form_widget(createCharacterFormView.age) }}
+            </div>
+            </div>
+            <div class="sideForm rightFormSide">
+                <div class="speciesPannel">
+                    <div class="formInput speciesFormInput">
+                        <div class="formLabel">Espèce : </div>
+                        {{ form_widget(createCharacterFormView.Species, {'attr': {'class': 'selectSpeciesInput', 'onChange': 'updateSelectedSpeciesIcon()'}}) }}
+                    </div>
+                    <div class="speciesIcon">
+                        <img id='selectedSpeciesIcon' src=''>
+                    </div>
+                </div>
+                <div class="formInput descriptionFormInput">
+                    <div class="formLabel">Description du personnage :</div>
+                    {{ form_widget(createCharacterFormView.description) }}
+                </div>
+            </div>
+        </div>
+
+        {{ form_widget(createCharacterFormView.submit, {'attr': {'class': 'createCharacterSubmit'}}) }}
+    {{ form_end(createCharacterFormView) }}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        function speciesNameToSpeciesIconFileName(speciesName){
+            speciesName = speciesName.toLowerCase();
+            speciesName = speciesName.replaceAll('é', 'e');
+            speciesName = speciesName.replaceAll('â', 'a');
+            speciesName = speciesName.replaceAll('è', 'e');
+
+            return speciesName;
+        }
+
+        function updateSelectedSpeciesIcon(){
+            var selectSpeciesInput = document.getElementsByClassName('selectSpeciesInput')[0];
+            var selectedSpeciesIcon = document.getElementById('selectedSpeciesIcon');
+            
+            optionValue = selectSpeciesInput.value;
+            options = Array.prototype.slice.call(selectSpeciesInput.options);
+
+            options.forEach(option => {
+                if(option.value === optionValue){
+                    optionText = option.innerText;
+                }
+            });
+
+            baseIconUrl = "{{ asset('pokemon-icons/SPECIES.png') }}";
+            currentIconUrl = baseIconUrl.replace('SPECIES', speciesNameToSpeciesIconFileName(optionText));
+
+            selectedSpeciesIcon.src = currentIconUrl;
+        }
+
+        updateSelectedSpeciesIcon();
+    </script>
+{% endblock %}

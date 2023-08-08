@@ -1,0 +1,107 @@
+{% extends 'newbase.html.twig' %}
+
+{% block title %}PMD : Valtoria | Modifier Rotation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Character/app_character_modify_rotation.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="modifyRotationTitle">Modification de votre {{ type }}</div>
+    <a class="attackListLink" href="{{ path('app_character_attacks') }}"><button class="attackListButton">Voir les attaques disponibles</button></a>
+
+    {{ form_start(modifyRotationFormView)}}
+        <table class="modifyRotationTable">
+            <thead>
+                <tr>
+                    <th colspan="1">N°</th>
+                    <th colspan="1">Attaque</th>
+                    <th colspan="2">Informations (Max : {{character.Stats.actionPoint}} <img class="modifyRotationPAIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% include 'Character/modify_rotation_line.html.twig' with {'formViewNumber': 1, 'formViewLine': modifyRotationFormView.attackOne} only %}
+                {% include 'Character/modify_rotation_line.html.twig' with {'formViewNumber': 2, 'formViewLine': modifyRotationFormView.attackTwo} only %}
+                {% include 'Character/modify_rotation_line.html.twig' with {'formViewNumber': 3, 'formViewLine': modifyRotationFormView.attackThree} only %}
+                {% include 'Character/modify_rotation_line.html.twig' with {'formViewNumber': 4, 'formViewLine': modifyRotationFormView.attackFour} only %}
+                {% include 'Character/modify_rotation_line.html.twig' with {'formViewNumber': 5, 'formViewLine': modifyRotationFormView.attackFive} only %}
+            </tbody>
+        </table>
+        <div class="actionButtons">
+            <a class="returnLink" href="{{ path('app_character') }}"><button class="returnButton">Retour</button></a>
+            {{ form_widget(modifyRotationFormView.submit, {'attr': {'class': 'modifyRotationSubmit'}}) }}
+        </div>
+    {{ form_end(modifyRotationFormView)}}
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        updateSelectedAttack(1).then((result) => {
+            updateSelectedAttack(2).then((result) => {
+                updateSelectedAttack(3).then((result) => {
+                    updateSelectedAttack(4).then((result) => {
+                        updateSelectedAttack(5);
+                    })
+                })
+            })
+        })
+
+        async function updateSelectedAttack(formViewLine){
+            formViewLineFields = Array.prototype.slice.call(document.querySelectorAll(`[data-id='formViewLine-${formViewLine}']`));
+            attackSelect = document.querySelectorAll("[data-id='attackSelect"+formViewLine+"']")[0];
+            
+            result = await fetch(`{{ path('app_character_data-attack') }}`, {
+                method: 'POST',
+                body: JSON.stringify({
+                    "data": {
+                        'attackId' : attackSelect.value
+                    }
+                }), // string or object
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            result = await result.json();
+
+            formViewLineFields.forEach((lineField) => {
+                if(lineField.id === 'attackActionPointCost'){
+                    lineField.innerText = result.attack.actionPointCost;
+                }
+                else if (lineField.id === 'attackPower'){
+                    lineField.innerText = result.attack.attackPower;
+                }
+                else if (lineField.id === 'attackStatusPower'){
+                    lineField.innerText = result.attack.attackStatusPower;
+                }
+                else if (lineField.id === 'attackCriticalPower'){
+                    lineField.innerText = result.attack.attackCriticalPower;
+                }
+                else if (lineField.id === 'attackDescription'){
+                    lineField.innerText = result.attack.attackDescription;
+                }
+            })
+
+            checkSubmitCondition();
+        }
+
+        function checkSubmitCondition(){
+            var maxActionPointCost = {{ character.Stats.actionPoint }};
+            actionPointCostValues = Array.prototype.slice.call(document.querySelectorAll("[id='attackActionPointCost']"));
+
+            currentUsedActionPoint = 0;
+            actionPointCostValues.forEach((element) => {
+                currentUsedActionPoint += parseInt(element.innerText);
+            })
+
+            submitButton = document.getElementsByClassName('modifyRotationSubmit')[0];
+            if(currentUsedActionPoint > maxActionPointCost){
+                submitButton.disabled = true;
+            }
+            else {
+                submitButton.disabled = false;
+            }
+        }
+    </script>
+{% endblock %}

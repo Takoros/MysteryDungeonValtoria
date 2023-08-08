@@ -1,0 +1,88 @@
+{% extends 'newbase.html.twig' %}
+
+{% block title %}PMD : Valtoria | Modifier Rotation{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Character/app_character_attacks.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="characterAttacksTitle">Attaques disponibles du jeu</div>
+
+    {% include 'Character/attacks_summary.html.twig' %}
+
+    <table class="characterAttacksTable">
+        <tbody>
+            <tr class="characterAttackLine">
+                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 1</td>
+            </tr>
+            {% for attack in allAttacks %}
+                {% if attack.levelRequired == 1 %}
+                    {% include "Character/attacks_attack-line.html.twig" with {'attack' : attack} only %}
+                {% endif %}
+            {% endfor %}
+            <tr class="characterAttackLine">
+                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 5</td>
+            </tr>
+            {% for attack in allAttacks %}
+                {% if attack.levelRequired == 5 %}
+                    {% include "Character/attacks_attack-line.html.twig" with {'attack' : attack} only %}
+                {% endif %}
+            {% endfor %}
+            <tr class="characterAttackLine">
+                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 10</td>
+            </tr>
+            {% for attack in allAttacks %}
+                {% if attack.levelRequired == 10 %}
+                    {% include "Character/attacks_attack-line.html.twig" with {'attack' : attack} only %}
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        var characterAttacksSelect = document.getElementById('characterAttacksSelect');
+        var characterAttacksSelectSummary = document.getElementById('characterAttacksSelectSummary');
+        var currentTypeShown = null;
+
+        function onClickChangeSummary(type){
+            typeName = type;
+            typeName = typeName.toLowerCase();
+            typeName = typeName.replaceAll('é', 'e');
+            typeName = typeName.replaceAll('â', 'a');
+            typeName = typeName.replaceAll('è', 'e');
+
+            baseIconLink = "{{ asset('icons/pokemon-types/TOREPLACE.png') }}";
+            typeIconLink = baseIconLink.replace('TOREPLACE', typeName); 
+
+            characterAttacksSelectSummary.innerHTML = `<img src='${typeIconLink}'/><span>${type}</span>`;
+            characterAttacksSelect.open = false;
+
+            if(currentTypeShown !== null){
+                allTypeAttacks = document.querySelectorAll(`[data-id='attack-type-${currentTypeShown}']`);
+
+                allTypeAttacks.forEach((element) => {
+                    element.classList.add('characterAttackLineHidden');
+                })
+            }
+            else {
+                allNumberTD = Array.prototype.slice.call(document.getElementsByClassName('TD-Number'));
+
+                allNumberTD.forEach((element) => {
+                    element.classList.remove('TD-NumberHide');
+                })
+            }
+
+            allTypeAttacks = document.querySelectorAll(`[data-id='attack-type-${type}']`);
+
+            allTypeAttacks.forEach((element) => {
+                element.classList.remove('characterAttackLineHidden');
+            })
+
+            currentTypeShown = type;
+        }
+    </script>
+{% endblock %}

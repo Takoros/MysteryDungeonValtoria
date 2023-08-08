@@ -4,6 +4,7 @@ namespace App\Twig;
 
 use App\Entity\DungeonInstance;
 use App\Entity\RaidInstance;
+use App\Entity\Type;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\DungeonGenerationService;
 use Exception;
@@ -22,7 +23,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('dungeonTile', [$this, 'giveCssClassDungeonTile']),
             new TwigFilter('speciesIcon', [$this, 'getSpeciesIconFileName']),
             new TwigFilter('DungeonInstanceStatus', [$this, 'getInstanceStatusName']),
-            new TwigFilter('RaidInstanceStatus', [$this, 'getInstanceStatusName'])
+            new TwigFilter('RaidInstanceStatus', [$this, 'getInstanceStatusName']),
+            new TwigFilter('typeIcon', [$this, 'getTypeIconName'])
         ];
     }
 
@@ -208,6 +210,20 @@ class AppExtension extends AbstractExtension
         }
 
         return 'pokemon-icons/'. $speciesName .'.png';
+    }
+
+    public function getTypeIconName(Type $type){
+        $typeName = $type->getName();
+
+        $typeName = strtolower($typeName);
+        $typeName = str_replace("É","e", $typeName);
+        $typeName = str_replace("é","e", $typeName);
+        $typeName = str_replace("È","e", $typeName);
+        $typeName = str_replace("è","e", $typeName);
+        $typeName = str_replace("Â","a", $typeName);
+        $typeName = str_replace("â","a", $typeName);
+
+        return 'icons/pokemon-types/'. $typeName . '.png';
     }
 
     public function getInstanceStatusName($instanceStatus): string

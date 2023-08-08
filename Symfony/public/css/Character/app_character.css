@@ -1,0 +1,729 @@
+.characterShowTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 28px;
+}
+
+* {box-sizing:border-box}
+
+.xpBar {
+    width: 100%; /* Full width */
+    background-color: #ddd; /* Grey background */
+}
+
+.xpBarFill {
+    text-align: right; /* Right-align text */
+    padding-top: 2px; /* Add top padding */
+    padding-bottom: 5px; /* Add bottom padding */
+    color: white; /* White text color */
+    background-color: 	#71de04;
+}
+
+.genderIcon {
+    margin-left: 10px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+
+.profileCharacterCard {
+    background-image: url('../../texture/parchement.jpg');
+    width: 1000px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+
+.profileCharacterCardUpper {
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+}
+
+.cardUpperRight, .cardUpperLeft {
+    height: 160px;
+}
+
+.cardUpperRightNameLevelGender {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 21px;
+}
+
+.cardUpperRightName {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cardUpperRightLevel {
+    margin-left: 10px;
+}
+
+.cardUpperRightSpeciesAgeRank {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 21px;
+}
+
+.cardUpperRightSpecies {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cardUpperRightAge {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.cardUpperRightRank {
+    margin-left: 10px;
+}
+
+.cardUpperRightSeparator {
+    margin-top: 6px;
+    height: 1px;
+    width: 80%;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cardUpperRightDescription {
+    margin-left: 10px;
+    margin-top: 6px;
+
+    font-family: 'Eagle Lake', cursive;
+    font-style: italic;
+    font-size: 15px;
+}
+
+.profileCharacterCardSeparator {
+    margin-top: 0px;
+    margin-bottom: 8px;
+    height: 1px;
+    width: 90%;
+    background-color: black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.modifyDescriptionForm {
+    width: 100%;
+}
+
+.modifyDescriptionForm textarea {
+    resize: none;
+    width: 800px;
+    height: 80px;
+
+    font-family: 'Eagle Lake', cursive;
+    font-style: italic;
+    font-size: 15px;
+    display: block;
+    overflow: hidden;
+    appearance: none;
+    background: none;
+    border: none;
+}
+
+.modifyDescriptionFormToggle {
+    width: 40px;
+    height: 25px;
+    background-image: url('../../icons/feather-pen.png'), url('../../texture/parchement.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    position: relative;
+    top: -20px;
+    right: -770px;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.modifyRotationLink {
+    width: 40px;
+    height: 25px;
+    background-image: url('../../icons/feather-pen.png'), url('../../texture/parchement.jpg');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    border: 1px solid black;
+    border-radius: 10px;
+    display: inline-block;
+}
+
+.modifyDescriptionFormToggle:hover {
+    cursor: pointer;
+}
+
+.modifyDescriptionFormToggleHide {
+    display: none;
+}
+
+.modifyDescriptionValidationButtons {
+    position: relative;
+    top: -25px;
+    right: -630px;
+    display: flex;
+    flex-direction: row;
+}
+
+.modifyDescriptionValidationButtonsHide {
+    display: none;
+}
+
+.modifyDescriptionValidationButtonCancel {
+    font-size: 13px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: darkred;
+    color: white;
+    margin-right: 5px;
+}
+
+.modifyDescriptionValidationButtonCancel:hover {
+    cursor: pointer;
+}
+
+.modifyDescriptionValidationButtonSubmit {
+    font-size: 13px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+    background-color: darkgreen;
+    color: white;
+    margin-right: 5px;
+    font-family: 'Eagle Lake', cursive;
+}
+
+.modifyDescriptionValidationButtonSubmit:hover {
+    cursor: pointer;
+}
+/* -------------------------------------------------------------------------- */
+/*                          ProfileCharacterCardLower                         */
+/* -------------------------------------------------------------------------- */
+
+.profileCharacterCardLowerTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+}
+
+.profileCharacterCardStats {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+    display: grid;
+    grid-template-columns: 140px 140px 140px 140px 140px;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    column-gap: 10px;
+    justify-content: center;
+    height: 80px;
+}
+
+.profileCharacterCardStats2ndRow {
+    margin-top: 10px;
+}
+
+.profileCharacterCardStats3rdRow {
+    display: grid;
+    grid-template-columns: 140px 140px;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    column-gap: 10px;
+    justify-content: center;
+    margin-top: 10px;
+    height: 80px;
+}
+
+.profileCharacterCardStat {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 14px;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    overflow-x: hidden;
+}
+
+.profileCharacterCardStatInfo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileCharacterCardStatIcon {
+    height: 20px;
+}
+
+.profileCharacterCardStatValue {
+    text-align: center;
+}
+
+.spendPointButton {
+    height: 25px;
+    width: 25px;
+    position: relative;
+    right: -110px;
+    top: -75px;
+    border-radius: 0 3px 0 8px;
+    margin-bottom: -100px;
+    border: 1px solid black;
+    background-image: url('../../icons/arrow_up_upgrade.png');
+    background-position: center 6px;
+    background-repeat: no-repeat;
+    background-size:60%;
+}
+
+.spendPointButton:hover {
+    cursor: pointer;
+}
+
+.spendPointButtonHide {
+    display: none;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                         ProfileCharacterCardBottom                         */
+/* -------------------------------------------------------------------------- */
+
+.profileCharacterCardBottomTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+}
+
+.profileCharacterCardBottomTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 700px;
+    font-family: 'Eagle Lake', cursive;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 20px;
+}
+
+.profileCharacterCardBottomTable thead tr th {
+    font-size: 18px;
+}
+
+.rotationCostResume {
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.rotationCostResume img {
+    width: 15px;
+    height: 15px;
+}
+
+.rotationTh {
+    min-width: 312px;
+}
+
+.profileCharacterCardBottomTableThead {
+    border-bottom: 1px solid black;
+}
+
+.valueTr td {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
+}
+
+.valueTr td:nth-child(1) {
+    font-size: 25px;
+    text-align: center;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    width: 75px;
+    
+}
+
+.valueTr td:nth-child(2) {
+    border-left: 1px solid black;
+    width: 75px;
+    text-align: center;
+    border-bottom: none;
+}
+
+.valueTr td:nth-child(2) img {
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.valueTr td:nth-child(3) {
+    border-right: 1px solid black;
+    border-bottom: none;
+}
+
+.valueTr td:nth-child(4) {
+    width: 75px;
+    text-align: center;
+    border-bottom: none;
+}
+
+.valueTr td:nth-child(4) img {
+    vertical-align: top;
+    margin-top: 2px;
+}
+
+.valueTr td:nth-child(5) {
+    border-right: 1px solid black;
+    border-bottom: none;
+}
+
+.descriptionTr {
+    font-size: 12px;
+    text-align: center;
+    font-style: italic;
+}
+
+.descriptionTr td:nth-child(1) {
+    width: 237px !important;
+    border-right: 1px solid black;
+    border-bottom: solid 1px black;
+    border-left: solid 1px black;
+}
+
+.descriptionTr td:nth-child(2) {
+    border-bottom: solid 1px black;
+    border-right: solid 1px black;
+}
+
+.profileCharacterCardTypeIcon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-top: -5px;
+}
+
+.mobileSwapShow {
+    display: none;
+}
+
+@media (max-width: 1060px) {
+    .profileCharacterCard {
+        width: 855px;
+    }
+
+    .modifyDescriptionForm textarea {
+        width: 670px;
+    }
+
+    .modifyDescriptionFormToggle {
+        top: -25px;
+        right: -625px;
+    }
+
+    .modifyDescriptionValidationButtons {
+        top: -25px;
+        right: -485px;
+    }
+}
+
+@media (max-width: 900px) {
+    .profileCharacterCard {
+        width: 701px;
+    }
+
+    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+        width: 700px;
+        grid-template-columns: 130px 130px 130px 130px 130px;
+    }
+
+    .profileCharacterCardStats3rdRow {
+        width: 700px;
+    }
+
+    .cardUpperRight, .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+        font-size: 17px;
+    }
+
+    .spendPointButton {
+        right: -100px;
+    }
+
+    .modifyDescriptionForm textarea {
+        width: 515px;
+        height: 100px;
+        margin-top: -5px;
+    }
+
+    .modifyDescriptionFormToggle {
+        top: -23px;
+        right: -472px;
+    }
+
+    .modifyDescriptionValidationButtons {
+        top: -24px;
+        right: -330px;
+    }
+}
+
+@media (max-width: 740px) {
+    .profileCharacterCard {
+        width: 500px;
+    }
+
+    .cardUpperLeft, .speciesIcon, .speciesIcon img {
+        height: 120px;
+        width: 120px;
+    }
+
+    .cardUpperRight {
+        margin-top: -5px;
+        height: 125px;
+    }
+
+    .cardUpperRight, .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+        font-size: 13px;
+    }
+
+    .genderIcon {
+        width: 15px;
+        height: 15px;
+        margin-left: 5px;
+    }
+
+    .cardUpperRightDescription {
+        margin-top: 1px;
+        font-size: 11.5px;
+    }
+
+    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+        width: 499px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+        column-gap: 5px;
+        row-gap: 5px;
+        height: 140px;
+    }
+
+    .profileCharacterCardStats3rdRow {
+        width: 499px;
+        height: 65px;
+        grid-template-columns: 120px 120px;
+    }
+
+    .profileCharacterCardStat {
+        font-size: 11.5px;
+    }
+
+    .profileCharacterCardStatIcon {
+        height: 15px;
+    }
+
+    .profileCharacterCardBottomTable {
+        width: 499px;
+        margin-bottom: 0px;
+    }
+
+    .rotationTh {
+        min-width: 235px;
+    }
+
+    .profileCharacterCardBottomTable thead tr th {
+        font-size: 16px;
+    }
+
+    .rotationCostResume {
+        font-size: 13px;
+    }
+
+    .valueTr {
+        font-size: 14px;
+    }
+
+    .descriptionTr {
+        font-size: 10px;
+    }
+
+    .spendPointButton {
+        right: -70px;
+        top: -60px;
+    }
+
+    .modifyDescriptionForm textarea {
+        width: 355px;
+        height: 85px;
+        font-size: 11px;
+        margin-top: 0px;
+    }
+
+    .modifyDescriptionFormToggle {
+        top: -18px;
+        right: -313px;
+    }
+
+    .modifyDescriptionValidationButtons {
+        top: -13px;
+        right: -212px;
+    }
+
+    .modifyDescriptionValidationButtonCancel {
+        font-size: 11px;
+        padding: 1px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .modifyDescriptionValidationButtonSubmit {
+        font-size: 11px;
+        padding: 1px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .profileCharacterCardUpper {
+        padding-bottom: 20px;
+    }
+}
+
+@media (max-width: 530px) {
+    .profileCharacterCard {
+        width: 340px;
+    }
+
+    .profileCharacterCardUpper {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .cardUpperLeft {
+        margin-bottom: 10px;
+    }
+
+    .speciesIcon, .speciesIcon img, .cardUpperLeft {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cardUpperRight {
+        width: 340px;
+        height: 110px;
+    }
+
+    .cardUpperRightDescription {
+        width: 340px;
+        margin-left: 0px;
+        text-align: center;
+    }
+
+    .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+        font-size: 11px;
+        justify-content: center;
+    }
+
+    .cardUpperRightDescription {
+        font-size: 10px;
+    }
+
+    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+        width: 340px;
+        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
+        column-gap: 5px;
+        row-gap: 5px;
+        height: 140px;
+    }
+
+    .profileCharacterCardStats3rdRow {
+        width: 340px;
+        height: 65px;
+        grid-template-columns: 120px 120px;
+    }
+
+    .rotationItem, .openerItem {
+        display: none;
+    }
+
+    .rotationItem {
+        width: 237px;
+        height: 35px;
+        border-left: solid 1px black;
+    }
+
+    .valueTr td:last-of-type {
+        border-left: none;
+    }
+
+    .profileCharacterCardBottomTable {
+        width: 339px;
+    }
+
+    .mobileSwapShow {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 120px;
+        background-image: url('../../texture/parchement.jpg');
+        border: solid 1px black;
+        padding: 8px;
+        text-align: center;
+        padding-left: 10px;
+        padding-right: 10px;
+        margin-top: 10px;
+        font-family: 'Eagle Lake', cursive;
+        font-size: 12px;
+    }
+
+    .mobileSwapShow:hover {
+        cursor: pointer;
+    }
+
+    .showItem {
+        display: table-cell;
+    }
+
+    .modifyDescriptionForm textarea {
+        width: 335px;
+        height: 75px;
+        font-size: 10.5px;
+    }
+
+    .modifyDescriptionFormToggle {
+        top: -8px;
+        right: -295px;
+    }
+
+    .modifyDescriptionValidationButtons {
+        top: -4px;
+        right: -190px;
+    }
+
+    .modifyDescriptionValidationButtonCancel {
+        font-size: 11px;
+        padding: 1px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .modifyDescriptionValidationButtonSubmit {
+        font-size: 11px;
+        padding: 1px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+
+    .profileCharacterCardUpper {
+        padding-bottom: 30px;
+    }
+}
