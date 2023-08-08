@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\DungeonInstance;
 use App\Entity\User;
+use App\Form\CreateDungeonInstanceType;
 use App\Repository\AttackRepository;
 use App\Repository\DungeonInstanceRepository;
 use App\Repository\DungeonRepository;
