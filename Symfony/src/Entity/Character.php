@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CharacterRepository;
 use App\Repository\DungeonRepository;
 use App\Repository\RaidRepository;
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\EntityManager;
@@ -282,6 +283,17 @@ class Character
         return $this->CombatLogs;
     }
 
+    public function getLastTenCombatLogs(): array
+    {
+        $combatLogs = $this->CombatLogs->toArray();
+
+        usort($combatLogs, function($a, $b){
+            return $b->getDateCreation()->getTimestamp() - $a->getDateCreation()->getTimestamp();
+        });
+
+        return array_slice($combatLogs, 0, 10);
+    }
+    
     public function addCombatLog(CombatLog $combatLog): self
     {
         if (!$this->CombatLogs->contains($combatLog)) {

@@ -18,11 +18,9 @@
         <div id='navbar-desktop-menu'>
             <div id='navbar-desktop-menu-character-name' onClick='onCharacterInfoClick()'>{{ app.user.character.name }}</div>
             <div id='navbar-desktop-menu-links'>
+                <a class="navbar-desktop-menu-link" href="{{ path('app_hub') }}">Guilde</a>
+                <div class="navbar-desktop-menu-separator"></div>
                 <a class="navbar-desktop-menu-link" href="{{ path('app_character') }}">Profil</a>
-                <div class="navbar-desktop-menu-separator"></div>
-                <a class="navbar-desktop-menu-link" href="{{ path('app_raid') }}">Raids</a>
-                <div class="navbar-desktop-menu-separator"></div>
-                <a class="navbar-desktop-menu-link" href="{{ path('app_dungeon') }}">Donjons</a>
                 <div class="navbar-desktop-menu-separator"></div>
                 <div id='navbar-desktop-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
             </div>
@@ -38,9 +36,7 @@
             {% if app.user and app.user.character is not null %}
                 <a href="{{ path('app_character') }}" class="navbar-phone-menu-link">Profil</a>
                 <div class="navbar-phone-menu-separator"></div>
-                <a href="{{ path('app_dungeon') }}" class="navbar-phone-menu-link">Donjons</a>
-                <div class="navbar-phone-menu-separator"></div>
-                <a href="{{ path('app_raid') }}" class="navbar-phone-menu-link">Raids</a>
+                <a href="{{ path('app_hub') }}" class="navbar-phone-menu-link">Guilde</a>
                 <div class="navbar-phone-menu-separator"></div>
             {% elseif app.user and app.user.character is null %}
                 <a href="{{ path('app_character_create') }}" class="navbar-phone-menu-link">Créer votre Personnage</a>

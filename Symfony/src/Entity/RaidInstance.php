@@ -348,6 +348,10 @@ class RaidInstance
 
     }
 
+    /* -------------------------------------------------------------------------- */
+    /*                            INVITE CODE FUNCTIONS                           */
+    /* -------------------------------------------------------------------------- */
+
     public function generateRandomInviteCode(RaidInstanceRepository $raidInstanceRepository): self
     {
         $isInviteCodeValid = false;

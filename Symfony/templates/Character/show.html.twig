@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="characterShowTitle">Profil</div>
+    <div class="characterShowTitle">{% if isSelfCharacter %}Profil{% else %}Profil de {{ character.getName() }} {% endif %}</div>
 
     <div class="profileCharacterCard">
         <div class="xpBar" title="EXP : {{ character.getXP() }} / {{ character.getXPCeil() }} ({{ character.getXPPercentage() }}%)"><div class="xpBarFill" style='width: {{ character.getXPPercentage() }}%;'></div></div>
@@ -36,7 +36,7 @@
                     {{ form_start(modifyDescriptionFormView, {'attr': {'class': 'modifyDescriptionForm'}}) }}
                         {{ form_widget(modifyDescriptionFormView.description, {'attr': {'disabled':true, 'data-id': 'modifyDescriptionTextArea'}}) }}
                     
-                    <div id="modifyDescriptionFormToggle" onClick="modifyDescriptionToggle()" class="modifyDescriptionFormToggle"></div>
+                    {% if isSelfCharacter %}<div id="modifyDescriptionFormToggle" onClick="modifyDescriptionToggle()" class="modifyDescriptionFormToggle"></div>{% endif %}
                     <div id="modifyDescriptionValidationButtons" class="modifyDescriptionValidationButtons modifyDescriptionValidationButtonsHide">
                         <div class="modifyDescriptionValidationButtonCancel" onClick="OnCLickCancel()">Annuler</div>
                         {{ form_widget(modifyDescriptionFormView.submit,{'attr': {'class':'modifyDescriptionValidationButtonSubmit'}}) }}
@@ -57,7 +57,7 @@
                             <span class="profileCharacterCardStatName">Vitalité</span>
                         </div>
                         <div id='vitalityValue' class="profileCharacterCardStatValue">{{ character.Stats.vitality }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('vitality')" title="Dépenser 1 Point de Stat pour gagner 3 Vitalité."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('vitality')" title="Dépenser 1 Point de Stat pour gagner 3 Vitalité."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Stamina" title="L'Endurance représente la capacité de votre Pokémon à encaisser les attaques physiques, plus la valeur est élevée, plus les dégâts physiques subits seront réduits.">
                         <div class="profileCharacterCardStatInfo">
@@ -65,7 +65,7 @@
                             <span class="profileCharacterCardStatName">Endurance</span>
                         </div>
                         <div id='staminaValue' class="profileCharacterCardStatValue">{{ character.Stats.stamina }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('stamina')" title="Dépenser 1 Point de Stat pour gagner 1 Endurance."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('stamina')" title="Dépenser 1 Point de Stat pour gagner 1 Endurance."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Bravery" title="Le Courage représente la capacité de votre Pokémon à encaisser les attaques spéciales, plus la valeur est élevée, plus les dégâts spéciaux subits seront réduits.">
                         <div class="profileCharacterCardStatInfo">
@@ -73,7 +73,7 @@
                             <span class="profileCharacterCardStatName">Courage</span>
                         </div>
                         <div id='braveryValue' class="profileCharacterCardStatValue">{{ character.Stats.bravery }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('bravery')" title="Dépenser 1 Point de Stat pour gagner 1 Courage."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('bravery')" title="Dépenser 1 Point de Stat pour gagner 1 Courage."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Agility" title="L'Agilité permet d'augmenter les chances d'esquive du Pokémon, plus sa valeur est élevée, plus les chances sont haute.">
                         <div class="profileCharacterCardStatInfo">
@@ -81,7 +81,7 @@
                             <span class="profileCharacterCardStatName">Agilité</span>
                         </div>
                         <div id='agilityValue' class="profileCharacterCardStatValue">{{ character.Stats.agility }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('agility')" title="Dépenser 1 Point de Stat pour gagner 1 Agilité."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('agility')" title="Dépenser 1 Point de Stat pour gagner 1 Agilité."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Impassiveness" title="L'Impassibilité permet à un Pokémon de résister aux effets négatifs qui lui sont infligés (Status de controle, malus de stat..). Plus la valeur est élevée, plus les chances de ne pas subir un status de controle seront élevée & moins les malus de stat seront efficaces sur lui.">
                         <div class="profileCharacterCardStatInfo">
@@ -89,7 +89,7 @@
                             <span class="profileCharacterCardStatName">Impassiblité</span>
                         </div>
                         <div id='impassivenessValue' class="profileCharacterCardStatValue">{{ character.Stats.impassiveness }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('impassiveness')" title="Dépenser 1 Point de Stat pour gagner 1 Impassiblité."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('impassiveness')" title="Dépenser 1 Point de Stat pour gagner 1 Impassiblité."></div>{% endif %}
                     </div>
                 </div>
                 <div class="profileCharacterCardStats2ndRow">
@@ -99,7 +99,7 @@
                             <span class="profileCharacterCardStatName">Force</span>
                         </div>
                         <div id='strengthValue' class="profileCharacterCardStatValue">{{ character.Stats.strength }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('strength')" title="Dépenser 1 Point de Stat pour gagner 1 Force."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('strength')" title="Dépenser 1 Point de Stat pour gagner 1 Force."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Power" title="Le Pouvoir représente la capacité de votre pokémon à effectuer des attaques spéciales puissante, plus la valeur est élevée, plus les dégâts spéciaux infligés par le pokémon seront augmentés.">
                         <div class="profileCharacterCardStatInfo">
@@ -107,7 +107,7 @@
                             <span class="profileCharacterCardStatName">Pouvoir</span>
                         </div>
                         <div id='powerValue' class="profileCharacterCardStatValue">{{ character.Stats.power }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('power')" title="Dépenser 1 Point de Stat pour gagner 1 Pouvoir."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('power')" title="Dépenser 1 Point de Stat pour gagner 1 Pouvoir."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Presence" title="La Présence représente la capacité de votre Pokémon à infliger des status (positifs ou négatifs) & octroyer des soins. Plus la Présence d'un pokémon est elevée, plus ses soins et ses status seront efficaces.">
                         <div class="profileCharacterCardStatInfo">
@@ -115,7 +115,7 @@
                             <span class="profileCharacterCardStatName">Présence</span>
                         </div>
                         <div id='presenceValue' class="profileCharacterCardStatValue">{{ character.Stats.presence }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('presence')" title="Dépenser 1 Point de Stat pour gagner 1 Présence."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('presence')" title="Dépenser 1 Point de Stat pour gagner 1 Présence."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Coordination" title="La Coordination permet de déterminer la fréquence à laquelle un Pokémon infligera des coups critiques, plus la valeur est élevée, plus les chances de rendre ses attaques critiques sont augmentés. De plus, la Coordination permet de réduire les chances d'esquive lors d'une attaque sur un pokémon adverse.">
                         <div class="profileCharacterCardStatInfo">
@@ -123,7 +123,7 @@
                             <span class="profileCharacterCardStatName">Coordination</span>
                         </div>
                         <div id='coordinationValue' class="profileCharacterCardStatValue">{{ character.Stats.coordination }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('coordination')" title="Dépenser 1 Point de Stat pour gagner 1 Coordination."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('coordination')" title="Dépenser 1 Point de Stat pour gagner 1 Coordination."></div>{% endif %}
                     </div>
                     <div class="profileCharacterCardStat Stat-Speed" title="La Vitesse permet d'attaquer plus rapidement et plus souvent durant un combat.">
                         <div class="profileCharacterCardStatInfo">
@@ -131,7 +131,7 @@
                             <span class="profileCharacterCardStatName">Vitesse</span>
                         </div>
                         <div id='speedValue' class="profileCharacterCardStatValue">{{ character.Stats.speed }}</div>
-                        <div class="spendPointButton" onClick="spendPoints('speed')" title="Dépenser 1 Point de Stat pour gagner 1 Vitesse."></div>
+                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('speed')" title="Dépenser 1 Point de Stat pour gagner 1 Vitesse."></div>{% endif %}
                     </div>
                 </div>
                 <div class="profileCharacterCardStats3rdRow">
@@ -162,8 +162,8 @@
                 <thead class="profileCharacterCardBottomTableThead">
                     <tr>
                         <th colspan="1">N°</th>
-                        <th class="rotationTh openerItem" colspan="2"><a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Opener'}) }}"></a> Opener <span class="rotationCostResume">({{ character.getOpenerRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
-                        <th class="rotationTh rotationItem" colspan="2"><a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Rotation'}) }}"></a> Rotation <span class="rotationCostResume">({{ character.getRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
+                        <th class="rotationTh openerItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Opener'}) }}"></a>{% endif %} Opener <span class="rotationCostResume">({{ character.getOpenerRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
+                        <th class="rotationTh rotationItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Rotation'}) }}"></a>{% endif %} Rotation <span class="rotationCostResume">({{ character.getRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -187,6 +187,35 @@
 
         </div>
     </div>
+
+    {% if isSelfCharacter %}
+        <div class="profileFightListCard">
+            <div class="profileFightListCardTitle">Combats Récents</div>
+                {% if character.getCombatLogs()|length > 0 %}
+                    <div class="profileFightListContainer">
+                        {% for combat in character.getLastTenCombatLogs()  %}
+                            <a href="{{ path('app_combat', {'id': combat.id}) }}">
+                                <div class="fightLine">
+                                    <div class="fightLineWinStatus">
+                                        {% if combat.isCharacterTeamWinner(character) %}
+                                            <span class="fightLineWinStatusVictory">Victoire</span>
+                                        {% else %}
+                                            <span class="fightLineWinStatusDefeat">Défaite</span>
+                                        {% endif %}
+                                    </div>
+                                    <div class="fightLineArea">{{ combat.location }}</div>
+                                    <div class="fightLineSeparator"></div>
+                                    <div class="fightLineDate">{{ combat.dateCreation | date('d/m/Y H:i')}}</div>
+                                    <div class="fightLineMessage">{{ combat.message }}</div>
+                                </div>
+                            </a>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="noCombatLogMessage">Vous n'avez encore de combats..</div>
+                {% endif %}
+        </div>
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

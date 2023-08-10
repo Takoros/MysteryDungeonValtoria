@@ -420,6 +420,111 @@
     display: none;
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                  combatlog                                 */
+/* -------------------------------------------------------------------------- */
+
+.profileFightListCard {
+    background-image: url('../../texture/parchement.jpg');
+    width: 1000px;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+
+.profileFightListCardTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 24px;
+    text-align: center;
+    margin-top: 5px;
+}
+
+.noCombatLogMessage {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 18px;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+
+.profileFightListContainer {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 480px 480px;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.profileFightListContainer a {
+    color: unset;
+    text-decoration: unset;
+}
+
+.fightLine {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: solid 1px black;
+    border-radius: 15px;
+    height: 105px;
+}
+
+.fightLine:hover {
+    cursor: pointer;
+}
+
+.fightLineWinStatus {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 18px;
+}
+
+.fightLineWinStatusVictory {
+    color: #5baa0c;
+}
+
+.fightLineWinStatusDefeat {
+    color: rgb(175, 52, 30);
+}
+
+.fightLineArea {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 15px;
+    text-align: center;
+    margin-top: -7.5px;
+    margin-bottom: 2.5px;
+}
+
+.fightLineSeparator {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: black;
+    height: 1px;
+}
+
+.fightLineDate {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 14px;
+}
+
+.fightLineMessage {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 14px;
+    border: solid 1px black;
+    border-radius: 25px;
+    width: 70px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (max-width: 1060px) {
     .profileCharacterCard {
         width: 855px;
@@ -437,6 +542,16 @@
     .modifyDescriptionValidationButtons {
         top: -25px;
         right: -485px;
+    }
+
+    .profileFightListCard {
+        width: 855px;
+    }
+
+    .profileFightListContainer {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 375px 375px;
     }
 }
 
@@ -476,6 +591,16 @@
     .modifyDescriptionValidationButtons {
         top: -24px;
         right: -330px;
+    }
+
+    .profileFightListCard {
+        width: 701px;
+    }
+
+    .profileFightListContainer {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 330px 330px;
     }
 }
 
@@ -594,6 +719,16 @@
 
     .profileCharacterCardUpper {
         padding-bottom: 20px;
+    }
+
+    .profileFightListCard {
+        width: 500px;
+    }
+
+    .profileFightListContainer {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 230px 230px;
     }
 }
 
@@ -725,5 +860,15 @@
 
     .profileCharacterCardUpper {
         padding-bottom: 30px;
+    }
+
+    .profileFightListCard {
+        width: 340px;
+    }
+
+    .profileFightListContainer {
+        margin-top: 10px;
+        display: grid;
+        grid-template-columns: 230px;
     }
 }

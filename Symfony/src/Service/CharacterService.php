@@ -115,7 +115,8 @@ class CharacterService
 
         // Timers
         $timers = new Timers();
-        $timers->setRaidCharges(1);
+        $timers->setRaidCharges(1)
+               ->setDungeonCharges(1);
         $this->entityManager->persist($timers);
 
         $character->setLevel(1)

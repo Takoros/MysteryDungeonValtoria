@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Main/app_hub.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="hubTitle">QG de la guide de Fort-Écorce</div>
+
+    <div class="activitiesPannel">
+        <div class="activitiesPannelTitle">Activitées</div>
+        <div class="activitiesContainer">
+            <a href="{{ path('app_dungeon') }}" class="activityLink">
+                <button class="activityButton">
+                    <img src="{{ asset('icons/dungeon.png') }}">
+                    <span>Donjon</span>
+                </button>
+            </a>
+            <a href="{{ path('app_raid') }}" class="activityLink">
+                <button class="activityButton">
+                    <img src="{{ asset('icons/boss.png') }}">
+                    <span>Raid</span>
+                </button>
+            </a>
+            <a href="{{ path('app_character') }}" class="activityLink">
+                <button class="activityButton">
+                    <img src="{{ asset('icons/parchment.png') }}">
+                    <span>Profil</span>
+                </button>
+            </a>
+            <a href="{{ path('app_character_attacks') }}" class="activityLink">
+                <button class="activityButton">
+                    <img src="{{ asset('icons/magic-book.png') }}">
+                    <span>Wiki Attaques</span>
+                </button>
+            </a>
+            <a href="{{ path('app_ranking') }}" class="activityLink">
+                <button class="activityButton">
+                    <img src="{{ asset('icons/trophy.png') }}">
+                    <span>Classement</span>
+                </button>
+            </a>
+        </div>
+    </div>
+{% endblock %}

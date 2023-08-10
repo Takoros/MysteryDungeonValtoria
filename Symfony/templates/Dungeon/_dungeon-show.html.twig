@@ -22,6 +22,13 @@
         <button onclick="sendLeaveApiCall()" class="dungeonButton ButtonLeave"><img src="{{ asset('icons/exit.png') }}" width='25px'></button>
         <div class="dungeonErrorMessages"></div>
     </div>
+
+    {% if app.user.character == dungeonInstance.leader %}
+        <div class="inviteCodePannel">
+            <div class="inviteCodePannelTitle">Code d'invitation</div>
+            <div class="inviteCodePannelContent">{{ dungeonInstance.inviteCode }}</div>
+        </div>
+    {% endif %}
 {% else %}
     {% if dungeonInstance.status == 'dungeon_status_exploration' %}
         <div class="dungeonExplorationFlavourText">Exploration du donjon</div>

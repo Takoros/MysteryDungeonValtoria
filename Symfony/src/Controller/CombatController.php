@@ -31,7 +31,7 @@ class CombatController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        return $this->render('combatLog.html.twig', [
+        return $this->render('Combat/combatLog.html.twig', [
             'displayableLogs' => $combatLog->getDisplayableLogs(),
             'combatLog' => $combatLog
         ]);

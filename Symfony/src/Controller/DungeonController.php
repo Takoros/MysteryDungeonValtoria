@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\DungeonInstance;
 use App\Entity\User;
 use App\Form\CreateDungeonInstanceType;
+use App\Form\JoinDungeonInstanceType;
 use App\Repository\AttackRepository;
 use App\Repository\DungeonInstanceRepository;
 use App\Repository\DungeonRepository;
@@ -12,6 +13,7 @@ use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
 use App\Service\Dungeon\DungeonGenerationService;
 use DateTime;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -24,24 +26,42 @@ class DungeonController extends AbstractController
 {
     #[IsGranted('ROLE_USER')]
     #[Route('/jeu/donjon', name: 'app_dungeon')]
-    public function dungeonShow(): Response
+    public function dungeonShow(Request $request, DungeonInstanceRepository $dungeonInstanceRepository, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $dungeonInstance = $user->getCharacter()->getCurrentExplorationDungeonInstance();
 
+        $joinDungeonInstanceForm = $this->createForm(JoinDungeonInstanceType::class);
+
+        $joinDungeonInstanceForm->handleRequest($request);
+
+        if($joinDungeonInstanceForm->isSubmitted() && $joinDungeonInstanceForm->isValid() && $user->getCharacter()->getTimers()->getDungeonCharges() > 0){
+            $formData = $joinDungeonInstanceForm->getData();
+
+            $dungeonInstance = $dungeonInstanceRepository->findOneBy(['inviteCode' => $formData['inviteCode']]);
+
+            if($dungeonInstance !== null){
+                $dungeonInstance->addExplorer($user->getCharacter());
+
+                $em->flush();
+                return $this->redirectToRoute('app_dungeon');
+            }
+        }
+
         return $this->render('Dungeon/dungeon.html.twig', [
             'dungeonInstance' => $dungeonInstance,
+            'joinDungeonInstanceView' => $joinDungeonInstanceForm->createView()
         ]);
     }
 
     #[IsGranted('ROLE_USER')]
     #[Route('/jeu/donjon/create', name: 'app_dungeon_create')]
-    public function dungeonCreate(Request $request, DungeonRepository $dungeonRepository, DungeonGenerationService $dungeonGenerationService, EntityManagerInterface $em): Response
+    public function dungeonCreate(Request $request, DungeonRepository $dungeonRepository, DungeonGenerationService $dungeonGenerationService, DungeonInstanceRepository $dungeonInstanceRepository, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $character = $user->getCharacter();
 
-        if(!$character->getTimers()->canEnterDungeon()){
+        if(!$character->getTimers()->getDungeonCharges() > 0){
             return $this->redirectToRoute('app_dungeon');
         }
 
@@ -63,10 +83,12 @@ class DungeonController extends AbstractController
                             ->setCurrentExplorersPosition($generatedDungeon['currentExplorersPosition'])
                             ->setLeader($character)
                             ->addExplorer($character)
-                            ->setStatus(DungeonInstance::DUNGEON_STATUS_PREPARATION);
+                            ->setStatus(DungeonInstance::DUNGEON_STATUS_PREPARATION)
+                            ->generateRandomInviteCode($dungeonInstanceRepository);
 
             $em->persist($dungeonInstance);
             $em->flush();
+
             return $this->redirectToRoute('app_dungeon');
         }
 
@@ -183,6 +205,12 @@ class DungeonController extends AbstractController
 
         $message = $dungeonInstance->setStatus(DungeonInstance::DUNGEON_STATUS_EXPLORATION);
 
+        foreach ($dungeonInstance->getExplorers() as $explorers) {
+            $explorersTimers = $explorers->getTimers();
+
+            $explorersTimers->setDungeonCharges($explorersTimers->getDungeonCharges() - 1);
+        }
+
         $em->flush();
 
         return new JsonResponse([
@@ -223,7 +251,6 @@ class DungeonController extends AbstractController
 
             foreach ($dungeonInstance->getExplorers() as $explorer) {
                 $explorer->gainXp($xpWonAmount);
-                $explorer->getTimers()->setLastDungeon(new DateTime());
             }
 
             $em->flush();
@@ -280,8 +307,6 @@ class DungeonController extends AbstractController
             else if($user->getCharacter() === $dungeonInstance->getLeader()){
                 $dungeonInstance->setLeader($dungeonInstance->getExplorers()[0]);
             }
-
-            $user->getCharacter()->getTimers()->setLastDungeon(new DateTime('-12h'));
 
             $em->flush();
         }
