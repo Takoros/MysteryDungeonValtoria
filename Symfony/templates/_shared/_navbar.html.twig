@@ -1,13 +1,13 @@
 <div id="navbar" class="">
     <img id='valtoriaIcon' onClick='onIconClick()' src="{{ asset('icons/valtoria-text.png') }}" alt="icone de Valtoria">
     <div id='title'>
-        <div>Pokémon Donjon Mystère</div>
-        <div>Valtoria</div>
+        <div>{{ 'pokemon_donjon_mystere'|trans({}, 'app') }}</div>
+        <div>{{ 'valtoria'|trans({}, 'app') }}</div>
     </div>
     {% if not app.user %}
         <form action="{{ path('app_discord_connect') }}" method='post'>
             <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
-            <button id='loginButton'>Connexion</button>
+            <button id='loginButton'>{{ 'connexion'|trans({}, 'app') }}</button>
         </form>
     {% elseif app.user and app.user.character is not null %}
         <div id="characterInfo" onClick='onCharacterInfoClick()'>
@@ -18,38 +18,38 @@
         <div id='navbar-desktop-menu'>
             <div id='navbar-desktop-menu-character-name' onClick='onCharacterInfoClick()'>{{ app.user.character.name }}</div>
             <div id='navbar-desktop-menu-links'>
-                <a class="navbar-desktop-menu-link" href="{{ path('app_hub') }}">Guilde</a>
+                <a class="navbar-desktop-menu-link" href="{{ path('app_hub') }}">{{ 'guilde'|trans({}, 'app') }}</a>
                 <div class="navbar-desktop-menu-separator"></div>
-                <a class="navbar-desktop-menu-link" href="{{ path('app_character') }}">Profil</a>
+                <a class="navbar-desktop-menu-link" href="{{ path('app_character') }}">{{ 'profil'|trans({}, 'app') }}</a>
                 <div class="navbar-desktop-menu-separator"></div>
-                <div id='navbar-desktop-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
+                <div id='navbar-desktop-menu-logoutButton' onClick='onClickLogout()'>{{ 'deconnexion'|trans({}, 'app') }}</div>
             </div>
         </div>
     {% elseif app.user and app.user.character is null %}
-        <a id='createCharacterLink' href="{{ path('app_character_create') }}"><button id='createCharacterButton'>Créer son personnage</button></a>
+        <a id='createCharacterLink' href="{{ path('app_character_create') }}"><button id='createCharacterButton'>{{ 'creer_son_personnage'|trans({}, 'app') }}</button></a>
     {% endif %}
 
     <div id='navbar-phone-menu'>
         <div class="navbar-phone-menu-links">
-            <a href="{{ path('app_home') }}" class="navbar-phone-menu-link">Accueil</a>
+            <a href="{{ path('app_home') }}" class="navbar-phone-menu-link">{{ 'accueil'|trans({}, 'app') }}</a>
             <div class="navbar-phone-menu-separator"></div>
             {% if app.user and app.user.character is not null %}
-                <a href="{{ path('app_character') }}" class="navbar-phone-menu-link">Profil</a>
+                <a href="{{ path('app_character') }}" class="navbar-phone-menu-link">{{ 'profil'|trans({}, 'app') }}</a>
                 <div class="navbar-phone-menu-separator"></div>
-                <a href="{{ path('app_hub') }}" class="navbar-phone-menu-link">Guilde</a>
+                <a href="{{ path('app_hub') }}" class="navbar-phone-menu-link">{{ 'guilde'|trans({}, 'app') }}</a>
                 <div class="navbar-phone-menu-separator"></div>
             {% elseif app.user and app.user.character is null %}
-                <a href="{{ path('app_character_create') }}" class="navbar-phone-menu-link">Créer votre Personnage</a>
+                <a href="{{ path('app_character_create') }}" class="navbar-phone-menu-link">{{ 'creer_son_personnage'|trans({}, 'app') }}</a>
                 <div class="navbar-phone-menu-separator"></div>
             {% endif %}
         </div>
         {% if not app.user %}
             <form action="{{ path('app_discord_connect') }}" method='post'>
                 <input type="hidden" name='token' value="{{ csrf_token('discord-auth') }}">
-                <button id='navbar-phone-menu-loginButton'>Connexion</button>
+                <button id='navbar-phone-menu-loginButton'>{{ 'connexion'|trans({}, 'app') }}</button>
             </form>
         {% else %}
-            <div id='navbar-phone-menu-logoutButton' onClick='onClickLogout()'>Déconnexion</div>
+            <div id='navbar-phone-menu-logoutButton' onClick='onClickLogout()'>{{ 'deconnexion'|trans({}, 'app') }}</div>
         {% endif %}
     </div>
 </div>

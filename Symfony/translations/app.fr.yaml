@@ -1,0 +1,100 @@
+# ---------------------------------------------------------------------------- #
+#                                    Navbar                                    #
+# ---------------------------------------------------------------------------- #
+
+pokemon_donjon_mystere: Pokémon Donjon Mystère
+valtoria: Valtoria
+connexion: Connexion
+guilde: Guilde
+profil: Profil
+deconnexion: Déconnexion
+creer_son_personnage: Créer son personnage
+accueil: Accueil
+
+# ---------------------------------------------------------------------------- #
+#                                     BASE                                     #
+# ---------------------------------------------------------------------------- #
+
+jouer: Jouer
+footer_description: "Valtoria  est un jeu web/discord aucunement lié à Nintendo. Tout les médias et designs conceptuels à (C) Nintendo 2023.Les personnages et images de Pokémon™ appartiennent à Pokémon USA, Inc. Ce site web n’est aucunement affilié ni approuvé par Nintendo, Creatures, GAMEFREAK, The Pokémon Company, Chunsoft, Pokémon USA, Inc ou Wizards of the coast"
+
+# ---------------------------------------------------------------------------- #
+#                                     HOME                                     #
+# ---------------------------------------------------------------------------- #
+
+valtoria_game_resume: Valtoria est un jeu Pokémon Donjon Mystère gratuit sur navigateur. Découvrez son univers, explorez ses donjons & faites vous des amis.
+valtoria_game_rp_resume_1: "Vous voici à Fort-Écorce, une grande ville remplie de pokémons en tout genre, située sur une gigantèsque souche d’arbre sur lequel a poussé un grand arbre au centre, contenant le lieu le plus important de la ville : La guilde d’aventurier."
+valtoria_game_rp_resume_2: "Au sein de la guilde, des pokémons cavalent avec fierté et conviction. Accomplir leur mission, aider les gens et découvrir le monde semble être leur priorités. De vrai héros ! C’est décidé, aujourd’hui, vous devenez l’un des leurs."
+faites_equipe_avec_vos_amis: Faites Équipe avec vos amis !
+infligez_des_degats: Infligez des dégâts
+infligez_des_degats_description: Avec la Force & le Pouvoir, infligez des tonnes de dégâts aux Pokémons sauvages sur votre chemin
+protegez_vos_allies: Protégez vos alliés
+protegez_vos_allies_description: Augmentez vos statistiques défensives pour encaisser les coups pour votre équipe !
+soutenez_votre_equipe: Soutenez votre Équipe
+soutenez_votre_equipe_description: Gênez vos adversaires, améliorez vos alliés et soignez-les grâce à la statistique Présence !
+explorez_les_contrees_de_valtoria: Explorez les contrées de Valtoria !
+explorez_les_contrees_de_valtoria_description_1: Explorez des terres inexeplorées, découvrez des trésors cachés et révélez les secrets enfouis dans les profondeurs de ce monde étrange.
+explorez_les_contrees_de_valtoria_description_2: Plongez dans des donjons mystérieux, où chaque étage est unique et regorge de rencontres surprenantes. Affrontez des hordes de Pokémons Sauvages qui ne souhaitent que vous voir échouer.
+explorez_les_contrees_de_valtoria_description_3: Déjouez les plans de Pokémons sauvages machiavéliques et puissant au sein des Raids, en équipe de huit aventuriers. Rencontrez des personnages excitants et intéressants, découvrez de nouveaux donjons & de nouveaux raids au fur et à mesure que vous explorerez le monde de Valtoria.
+explorez_les_contrees_de_valtoria_description_4: Lancez-vous dans cette aventure extraordinaire et laissez votre empreinte dans l’histoire de Valtoria.
+rejoignez_la_guilde_de_fort_ecorce: Rejoignez la guilde de Fort-Écorce
+rejoignez_la_guilde_de_fort_ecorce_description: De nombreux aventuriers vous attendent pour partir avec vous en éxpédition
+
+# ---------------------------------------------------------------------------- #
+#                                     RAID                                     #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Raid Data - - - - #
+
+# Repaire des Acolytes:
+
+Repaire des Acolytes: Repaire des Acolytes
+Des activités suspectes ont lieux dans les égouts de Fort-Écorce, menez l'enquête pour découvrir ce qu'il s'y trame.: "Des activités suspectes ont lieux dans les égouts de Fort-Écorce, menez l'enquête pour découvrir ce qu'il s'y trame."
+raid_RAID_ONE_description_room_1: "Vous trouvez une porte étrange qui attire votre attention, cependant, quatre rattatas sauvages vous barre le chemin. Vous allez devoir user de la force pour passer."
+raid_RAID_ONE_description_room_2: "Après avoir battu les Rattatas et passé la porte, vous vous trouvez dans un couloir étrange, qui tourbillonne de façon hypnotisante. De plus, vous pouvez remarquer des déchets de plus en plus présent dans les couloirs. Soudainement, vous entendez un groupement de bruit qui vous fonce dessus, des adversaires !"
+raid_RAID_ONE_description_room_3: "Vous avez fait fuir les pokémons sauvage vous attaquant, et avancé dans les couloirs. Après un moment, vous arrivez dans une grande pièce dont l'odeur vous donne des nausées, elle est remplie de déchets en tout genre et d'autres adversaires semblent avoir remarqué votre présence. Préparez vous !"
+raid_RAID_ONE_description_room_4: "Après avoir vaincu les pokémons sauvages, vous remarquez une porte un peu plus loin dans la pièce, que vous prenez pour découvrir une nouvelle pièce à l'ambiance étrange, un grand cercle de couleur rouge se trouvant au centre de celle-ci, avec trois pokémons semblant prier dessus. Ils tournent la tête en vous entendant, et s'élancent vers vous."
+raid_RAID_ONE_description_room_5: "Malgré votre réussite dans ce combat, leurs prières sincères semblent avoir réussi à faire quelque chose, le cercle brillant fortement alors que tout les déchets se trouvant en son centre s'agglutinent ensemble. Soudain, une lumière vive vous aveugle pendant quelques instants, vous laissant ensuite découvrir la finalité du rituel, un gigantèsque Grotadmorve ainsi que deux petits tadmorv.. Ils semblent aggressifs, préparez vous aventuriers !"
+
+# - - - - Raid Templates - - - - #
+
+# raid.html.twig
+
+vous_etes_dans_aucun_raid: Vous n'êtes dans aucun raid
+temps_de_recuperation_avant_la_prochaine_charge: Temps de récupération avant la prochaine charge
+charge_de_raid_actuelle: "Charge de Raid actuelles :"
+creer_un_groupe_exploration: "Créer un groupe d'exploration"
+un_groupe_vous_attends_rejoignez_le: "Un groupe vous attends ? Rejoignez-le !"
+code_invitation: "Code d'invitation"
+
+# raid-create.html.twig
+
+quel_raid_voulez_vous_explorer: Quel raid voulez-vous explorer ?
+raid_create_form_confirm: 'Confirmer'
+
+# _raid-show.html.twig
+
+Préparation: Préparation
+Exploration: Exploration
+Fin: Fin
+
+statut: "Statut :"
+votre_equipe_se_prepare_entrer_dans_raid: 'Votre équipe se prépare à entrer dans le raid.'
+resume_de_la_mission: "Résumé de la mission"
+composition_de_equipe: "Composition de l'Équipe"
+commencer: "Commencer"
+piece: "Pièce"
+description: "Description"
+aventuriers: "Aventuriers"
+pokemons_sauvages: "Pokémons Sauvages"
+combattre: "Combattre"
+liste_des_combats: "Liste des combats"
+VICTOIRE: 'VICTOIRE'
+DEFAITE: 'DÉFAITE'
+pokemons_sauvages_vaincus: "Pokémons Sauvages vaincus"
+votre_equipe_a_ete_vaincu: "Votre équipe a été vaincu"
+resultat: "Résultat"
+vous_avez_reussi_a_conquerir_le: "Vous avez réussi à conquérir le"
+felicitations_aventuriers: "félicitations aventuriers"
+vous_vous_etes_fait_battre_en_essayant_de_conquérir_le: "Vous vous êtes fait battre en essayant de conquérir le"
+revenez_une_fois_plus_fort: "revenez une fois plus fort"

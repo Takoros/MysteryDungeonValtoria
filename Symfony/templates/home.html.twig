@@ -10,21 +10,15 @@
         <div class="homePresentationBoard">
             <div class="gameResume">
                 <div class="mysteryDungeonIcon"><img src="{{ asset('images/mystery-dungeon-icon.png') }}" alt="Icone de donjon mystère"></div>
-                <div>Valtoria est un jeu Pokémon Donjon Mystère gratuit sur navigateur. Découvrez son univers, explorez ses donjons & faites vous des amis.</div>
+                <div>{{ 'valtoria_game_resume'|trans({}, 'app') }}</div>
             </div>
             <div class="separator"></div>
             <div class="gameRpResume">
                 <div class="gameRpResumeText1">
-                    Vous voici à Fort-Écorce, une grande ville remplie de pokémons en
-                    tout genre, située sur une gigantèsque souche d’arbre sur lequel
-                    a poussé un grand arbre au centre, contenant le lieu le plus
-                    important de la ville : La guilde d’aventurier.
+                    {{ 'valtoria_game_rp_resume_1'|trans({}, 'app') }}
                 </div>
                 <div class="gameRpResumeText2">
-                    Au sein de la guilde, des pokémons cavalent avec fierté et conviction,
-                    accomplir leur mission, aider les gens et découvrir le monde semble
-                    être leur priorité. De vrai héros ! C’est décidé, aujourd’hui, vous
-                    devenez l’un des leurs.
+                    {{ 'valtoria_game_rp_resume_2'|trans({}, 'app') }}
                 </div>
             </div>
         </div>
@@ -38,31 +32,31 @@
     <div class="homeTeam">
         <div class="homeTeamTopPannel">
             <div class="homeTeamTopPannelImage"><img src="{{ asset('images/three-explorers.png') }}" alt="Trois aventuriers"></div>
-            <div class="homeTeamTopPannelText">Faites Équipe avec vos amis !</div>
+            <div class="homeTeamTopPannelText">{{ 'faites_equipe_avec_vos_amis'|trans({}, 'app') }}</div>
         </div>
         <div class="homeTeamBottomPannel">
             <div class="homeTeamBottomPannelCard">
                 <div class="homeTeamBottomPannelCardTopPannel">
                     <div class="homeTeamBottomPannelCardTopPannelImage"><img src="{{ asset('images/fighting-riolu.png') }}" alt="Riolu combattant"></div>
-                    <div class="homeTeamBottomPannelCardTopPannelTitle">Infligez des dégâts</div>
+                    <div class="homeTeamBottomPannelCardTopPannelTitle">{{ 'infligez_des_degats'|trans({}, 'app') }}</div>
                 </div>
-                <div class="homeTeamBottomPannelCardBottomPannel">Avec la Force & le Pouvoir, infligez des tonnes de dégâts aux Pokémons sauvages sur votre chemin</div>
+                <div class="homeTeamBottomPannelCardBottomPannel">{{ 'infligez_des_degats_description'|trans({}, 'app') }}</div>
             </div>
             <div class="homeTeamBottomPannelDivider"></div>
             <div class="homeTeamBottomPannelCard">
                 <div class="homeTeamBottomPannelCardTopPannel">
                     <div class="homeTeamBottomPannelCardTopPannelImage"><img src="{{ asset('images/carapuce-protecteur.png') }}" alt="Riolu combattant"></div>
-                    <div class="homeTeamBottomPannelCardTopPannelTitle">Protégez vos alliés</div>
+                    <div class="homeTeamBottomPannelCardTopPannelTitle">{{ 'protegez_vos_allies'|trans({}, 'app') }}</div>
                 </div>
-                <div class="homeTeamBottomPannelCardBottomPannel">Augmentez vos statistiques défensives pour encaisser les coups pour votre équipe !</div>
+                <div class="homeTeamBottomPannelCardBottomPannel">{{ 'protegez_vos_allies_description'|trans({}, 'app') }}</div>
             </div>
             <div class="homeTeamBottomPannelDivider"></div>
             <div class="homeTeamBottomPannelCard">
                 <div class="homeTeamBottomPannelCardTopPannel">
                     <div class="homeTeamBottomPannelCardTopPannelImage"><img src="{{ asset('images/fennekin.png') }}" alt="Riolu combattant"></div>
-                    <div class="homeTeamBottomPannelCardTopPannelTitle">Soutenez votre Équipe</div>
+                    <div class="homeTeamBottomPannelCardTopPannelTitle">{{ 'soutenez_votre_equipe'|trans({}, 'app') }}</div>
                 </div>
-                <div class="homeTeamBottomPannelCardBottomPannel">Gênez vos adversaires, améliorez vos alliés et soignez-les grâce à la statistique Présence !</div>
+                <div class="homeTeamBottomPannelCardBottomPannel">{{ 'soutenez_votre_equipe_description'|trans({}, 'app') }}</div>
             </div>
         </div>
     </div>
@@ -75,12 +69,12 @@
             <img class="homeExplorationLeftPannelTexture" src="{{ asset('texture/parchement-hole.png') }}">
         </div>
         <div class="homeExplorationRightPannel">
-            <div class="homeExplorationRightPannelTitle">Explorez les contrées de Valtoria !</div>
+            <div class="homeExplorationRightPannelTitle">{{ 'explorez_les_contrees_de_valtoria'|trans({}, 'app') }}</div>
             <div class="homeExplorationRightPannelContent">
-                <p>Explorez des terres inexeplorées, découvrez des trésors cachés et révélez les secrets enfouis dans les profondeurs de ce monde étrange.</p>
-                <p>Plongez dans des donjons mystérieux, où chaque étage est unique et regorge de rencontres surprenantes. Affrontez des hordes de Pokémons Sauvages qui ne souhaitent que vous voir échouer.</p>
-                <p>Déjouez les plans de Pokémons sauvages machiavéliques et puissant au sein des Raids, en équipe de huit aventuriers.Rencontrez des personnages, découvrez de nouveaux donjons & de nouveaux raids au fur et à mesure que vous explorerez le monde de Valtoria.</p>
-                <p>Lancez-vous dans cette aventure extraordinaire et laissez votre empreinte dans l’histoire de Valtoria.</p>
+                <p>{{ 'explorez_les_contrees_de_valtoria_description_1'|trans({}, 'app') }}</p>
+                <p>{{ 'explorez_les_contrees_de_valtoria_description_2'|trans({}, 'app') }}</p>
+                <p>{{ 'explorez_les_contrees_de_valtoria_description_3'|trans({}, 'app') }}</p>
+                <p>{{ 'explorez_les_contrees_de_valtoria_description_4'|trans({}, 'app') }}</p>
             </div>
             <div class="homeExplorationRightPannelImage">
                 <img src="{{ asset('images/bulbizarre-aventurier.png') }}" alt="Bulbizarre aventurier">
@@ -93,8 +87,8 @@
 
     <div class="homeJoinExplorers">
         <div class="homeJoinExplorersTopPannel">
-            <div class="homeJoinExplorersTopPannelTitle">Rejoignez la guilde de Fort-Écorce</div>
-            <div class="homeJoinExplorersTopPannelContent">De nombreux aventuriers vous attendent pour partir avec vous en éxpédition</div>
+            <div class="homeJoinExplorersTopPannelTitle">{{ 'rejoignez_la_guilde_de_fort_ecorce'|trans({}, 'app') }}</div>
+            <div class="homeJoinExplorersTopPannelContent">{{ 'rejoignez_la_guilde_de_fort_ecorce_description'|trans({}, 'app') }}</div>
         </div>
     </div>
     <div class="homeJoinExplorersBottomPannel">

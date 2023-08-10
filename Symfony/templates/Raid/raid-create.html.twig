@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="raidCreateTitle">Quel raid voulez-vous explorer ?</div>
+    <div class="raidCreateTitle">{{ 'quel_raid_voulez_vous_explorer'|trans({}, 'app') }}</div>
     {{ form_start(raidInstanceCreateFormView, {'attr': {'class': 'raidCreate_form'}}) }}
         {{ form_widget(raidInstanceCreateFormView.Raid, {'attr': {'class': 'raidCreate_formWidget'}}) }}
         {{ form_widget(raidInstanceCreateFormView.submit, {'attr': {'class': 'raidCreate_Submit'}}) }}
