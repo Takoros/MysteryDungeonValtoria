@@ -20,15 +20,30 @@
         
         {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
             <div class="noDungeonCooldownTimerContainer">
-                <p>Vous êtes fatigué, reposez vous..</p>
+                <p>Temps de récupération avant la prochaine charge</p>
                 <div id="noDungeonCooldownTimer">-</div>  
             </div>
-        {% else %}
+        {% endif %}
+
+        {% if app.user.character.timers.getDungeonCharges() > 0 %}
+            <div class="noDungeonChargesNumber">Charges de Donjon actuelles : {{ app.user.character.timers.getDungeonCharges() }} / {{ constant('App\\Entity\\Timers::MAX_DUNGEON_CHARGES') }}</div>
             <a class="noDungeonCreateDungeonInstanceLink" href="{{ path('app_dungeon_create') }}">
                 <div class="noDungeonCreateDungeonInstance">Créer un groupe d'exploration</div>
             </a>
+            
+            <div class="joinDungeonInstanceSeparator"></div>
+
+            <div class="joinDungeonInstanceTitle">Un groupe vous attends ? Rejoignez-le !</div>
+
+            {{ form_start(joinDungeonInstanceView, {'attr': {'class': 'dungeonInstanceJoin_form'}}) }}
+                <div class="joinInviteCodePannel">
+                    <div class="joinInviteCodePannelTitle">Code d'invitation</div>
+                    {{ form_widget(joinDungeonInstanceView.inviteCode, {'attr': {'class': 'dungeonInstanceJoin_formWidget joinInviteCodePannelContent'}}) }}
+                </div>
+            {{ form_end(joinDungeonInstanceView) }}
         {% endif %}
     {% endif %}
+
 {% endblock %}
 
 {% block javascripts %}
@@ -117,7 +132,8 @@
 
     {% if app.user.character.timers.getCooldownDungeonTime() is not null and dungeonInstance is null%}
         <script>
-            var countDownDate = new Date({{app.user.character.timers.getCooldownDungeonTime()|date("Y,m,d,H,i,s")}});
+            var month = {{app.user.character.timers.getCooldownDungeonTime()|date("m")}}-1;
+            var countDownDate = new Date({{app.user.character.timers.getCooldownDungeonTime()|date("Y,")}} month, {{app.user.character.timers.getCooldownDungeonTime()|date("d,H,i,s")}});
 
             // Update the count down every 1 second
             var x = setInterval(function() {

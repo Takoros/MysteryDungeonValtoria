@@ -62,6 +62,9 @@ class DungeonInstance
     #[ORM\OneToMany(mappedBy: 'dungeonInstance', targetEntity: CombatLog::class)]
     private Collection $fights;
 
+    #[ORM\Column(length: 255)]
+    private ?string $inviteCode = null;
+
     public function __construct()
     {
         $this->Explorers = new ArrayCollection();
@@ -173,6 +176,18 @@ class DungeonInstance
         return $this;
     }
 
+    public function getInviteCode(): ?string
+    {
+        return $this->inviteCode;
+    }
+
+    public function setInviteCode(string $inviteCode): self
+    {
+        $this->inviteCode = $inviteCode;
+
+        return $this;
+    }
+
     /* -------------------------------------------------------------------------- */
     /*                            EXPLORATION FUNCTIONS                           */
     /* -------------------------------------------------------------------------- */
@@ -248,7 +263,6 @@ class DungeonInstance
 
             foreach ($this->getExplorers() as $explorer) {
                 $explorer->gainXp($xpWonAmount);
-                $explorer->getTimers()->setLastDungeon(new DateTime());
             }
 
             $this->setStatus(self::DUNGEON_STATUS_TERMINATION);
@@ -349,5 +363,41 @@ class DungeonInstance
         }
 
         return $this;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                            INVITE CODE FUNCTIONS                           */
+    /* -------------------------------------------------------------------------- */
+
+    public function generateRandomInviteCode(DungeonInstanceRepository $dungeonInstanceRepository): self
+    {
+        $isInviteCodeValid = false;
+
+        while ($isInviteCodeValid === false) {
+            $currentCode = $this->generateRandomString();
+
+            $raidInstanceCode = $dungeonInstanceRepository->findOneBy(['inviteCode' => $currentCode]);
+
+            if($raidInstanceCode === null){
+                $isInviteCodeValid = true;
+            }
+        }
+
+        $this->inviteCode = $currentCode;
+
+        return $this;
+    }
+
+    private function generateRandomString(): string
+    {
+        $characters = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $charactersLength = strlen($characters);
+        $randomString = '';
+
+        for ($i = 0; $i < 6; $i++) {
+            $randomString .= $characters[random_int(0, $charactersLength - 1)];
+        }
+
+        return $randomString;
     }
 }

@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/Main/app_ranking.css') }}">
+{% endblock %}
+
+{% block body %}
+    <div class="rankingTitle">Classement</div>
+    
+    <table class="rankingTable">
+        <thead>
+            <tr>
+                <th colspan="1">N°</th>
+                <th colspan="2">Personnage</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set i = 1 %}
+            {% for character in allCharacters %}
+                <tr>
+                    <td>{{ i }}</td>
+                    <td colspan="2">
+                        <a href="{{ path('app_character_other_view', {'id': character.id}) }}">
+                            <span class="rankingCharacterContainer">
+                                <img src="{{ asset(character | speciesIcon) }}">
+                                <span class="rankingCharacterInfo">
+                                    <span>{{ character.getName() }} | Niveau {{ character.level }}</span>
+                                    <span>(EXP : {{ character.xp }} / {{ character.getXPCeil() }})</span>
+                                </span>
+                            </span>
+                        </a>
+                    </td>
+                </tr>
+                {% set i = i + 1 %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

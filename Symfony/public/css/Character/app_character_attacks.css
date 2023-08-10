@@ -189,6 +189,11 @@
 }
 
 @media (max-width: 880px) {
+    .characterAttacksSelect ul {
+        width: 360px;
+        grid-template-columns: 180px 180px;
+    }
+
     .characterAttacksTable {
         width: 525px;
     }
@@ -229,6 +234,11 @@
 }
 
 @media (max-width: 555px) {
+    .characterAttacksSelect ul {
+        width: 330px;
+        grid-template-columns: 165px 165px;
+    }
+
     .characterAttacksTable {
         width: 340px;
     }

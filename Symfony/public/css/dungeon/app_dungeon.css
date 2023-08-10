@@ -809,14 +809,121 @@
     padding: 12px;
     padding-top: 14px;
     padding-bottom: 14px;
-    margin-top: 40px;
     text-align: center;
     background-color: rgb(75,181,67);
+}
+
+.noDungeonChargesNumber {
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+    margin-top: 40px;
 }
 
 .noDungeonCooldownTimerContainer p {
     font-family: 'Eagle Lake', cursive;
     font-size: 16px;
+}
+
+.joinDungeonInstanceSeparator {
+    height: 1px;
+    background-color: black;
+    width: 60%;
+
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.joinDungeonInstanceTitle {
+    margin-top: 25px;
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+}
+
+.joinInviteCodePannel {
+    margin-top: 10px;
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Eagle Lake', cursive;
+
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 8px;
+    background: linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url('../../texture/wooden_board.png');
+}
+
+.dungeonInstanceJoin_form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.joinInviteCodePannelTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 19px;
+    text-align: center;
+    margin-top: -26px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 225px;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.joinInviteCodePannelContent {
+    font-size: 28px;
+    color: white;
+    text-align: center;
+    width: 220px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: unset;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border: unset;
+}
+
+.joinInviteCodePannelContent:focus {
+    outline: unset !important;
+}
+
+.inviteCodePannel {
+    margin-top: 25px;
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+
+    font-family: 'Eagle Lake', cursive;
+
+    border: 12px solid rgb(133, 64, 36);
+    border-radius: 8px;
+    background: linear-gradient( rgba(0, 0, 0, 0.28), rgba(0, 0, 0, 0.28) ), url('../../texture/wooden_board.png');
+}
+
+.inviteCodePannelTitle {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 22px;
+    text-align: center;
+    margin-top: -26px;
+    margin-left: auto;
+    margin-right: auto;
+
+    width: 225px;
+    background-color: white;
+    padding: 2px;
+    border: 2px black solid;
+    border-radius: 10px;
+}
+
+.inviteCodePannelContent {
+    font-size: 28px;
+    color: white;
+    text-align: center;
 }
 
 @media (min-width: 1500px) {

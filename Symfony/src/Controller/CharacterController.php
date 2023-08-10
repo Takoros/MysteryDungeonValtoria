@@ -6,6 +6,7 @@ use App\Form\CreateCharacterType;
 use App\Form\ModifyDescriptionType;
 use App\Form\ModifyRotationType;
 use App\Repository\AttackRepository;
+use App\Repository\CharacterRepository;
 use App\Repository\SpeciesRepository;
 use App\Service\CharacterService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -40,22 +41,36 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/jeu/personnage', name: 'app_character')]
-    public function show(Request $request, EntityManagerInterface $em): Response
+    #[Route('/jeu/personnage/{id}', name:'app_character_other_view')]
+    public function show(int $id = null, Request $request, CharacterRepository $characterRepository, EntityManagerInterface $em): Response
     {
-        $user = $this->getUser();
-        $modifyDescriptionForm = $this->createForm(ModifyDescriptionType::class, $user->getCharacter());
+        if($id === null){
+            $user = $this->getUser();
+            $character = $user->getCharacter();
+            $isSelfCharacter = true;
+        }
+        else {
+            $isSelfCharacter = false;
+            $character = $characterRepository->find($id);
 
+            if($character === null){
+                return $this->redirectToRoute('app_home');
+            }
+        }
+
+        $modifyDescriptionForm = $this->createForm(ModifyDescriptionType::class, $character);
         $modifyDescriptionForm->handleRequest($request);
 
-        if($modifyDescriptionForm->isSubmitted() && $modifyDescriptionForm->isValid()){
+        if($modifyDescriptionForm->isSubmitted() && $modifyDescriptionForm->isValid() && $id === null){
             $em->flush();
 
             return $this->redirectToRoute('app_character');
         }
 
         return $this->render('Character/show.html.twig', [
-            'character' => $user->getCharacter(),
-            'modifyDescriptionFormView' => $modifyDescriptionForm->createView()
+            'character' => $character,
+            'modifyDescriptionFormView' => $modifyDescriptionForm->createView(),
+            'isSelfCharacter' => $isSelfCharacter
         ]);
     }
 
@@ -103,7 +118,7 @@ class CharacterController extends AbstractController
         ]);
     }
 
-    #[Route('/jeu/personnage/attaques-disponibles', name: 'app_character_attacks')]
+    #[Route('/jeu/personnage/attaques-disponibles', name: 'app_character_attacks', priority:1)]
     public function attacks(AttackRepository $attackRepository): Response
     {
         return $this->render('Character/attacks.html.twig', [
@@ -115,7 +130,7 @@ class CharacterController extends AbstractController
     /*                               JS FETCH CALLS                               */
     /* -------------------------------------------------------------------------- */
 
-    #[Route('/jeu/personnage/spendPoint', name: 'app_character_spend_point')]
+    #[Route('/jeu/personnage/spendPoint', name: 'app_character_spend_point', priority:1)]
     public function spendPoint(Request $request, CharacterService $characterService): JsonResponse
     {
         $post = json_decode($request->getContent());
@@ -126,7 +141,7 @@ class CharacterController extends AbstractController
         return new JsonResponse($results);
     }
 
-    #[Route('/jeu/personnage/data-attack', name: 'app_character_data-attack')]
+    #[Route('/jeu/personnage/data-attack', name: 'app_character_data-attack', priority:1)]
     public function getAttackData(Request $request, AttackRepository $attackRepository): JsonResponse
     {
         $post = json_decode($request->getContent());

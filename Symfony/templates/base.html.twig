@@ -10,7 +10,13 @@
     </head>
     <body>
         {% include '_shared/_navbar.html.twig' %}
-        {% block uppercontent %}{% endblock %}
+        {% if app.user %}
+            {% if app.user.character == null %}
+                <a class="playButton" href="{{ path('app_character_create') }}">JOUER</a>
+            {% else %}
+                <a class="playButton" href="{{ path('app_hub') }}">Guilde</a>
+            {% endif %}
+        {% endif %}
         <div id='content'>
             {% block body %}{% endblock %}
         </div>

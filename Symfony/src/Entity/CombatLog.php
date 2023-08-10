@@ -304,6 +304,47 @@ class CombatLog
 
         return $displayableLogs;
     }
+
+    public function getCharacterTeam(Character $character): ?int
+    {
+        $inTeamOne = false;
+        $inTeamTwo = false;
+
+        foreach ($this->teamOne as $teamMember) {
+            if($teamMember['class'] === 'Character' && $teamMember['id'] === $character->getId()){
+                $inTeamOne = true;
+            }
+        }
+
+        if($inTeamOne === true){
+            return 1;
+        }
+
+        foreach ($this->teamTwo as $teamMember) {
+            if($teamMember['class'] === 'Character' && $teamMember['id'] === $character->getId()){
+                $inTeamTwo = true;
+            }
+        }
+
+        if($inTeamTwo === true){
+            return 2;
+        }
+        else {
+            return null;
+        }
+    }
+
+    public function isCharacterTeamWinner(Character $character): bool
+    {
+        $characterTeam = $this->getCharacterTeam($character);
+        
+        if($this->winner === $characterTeam){
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
     
     /* -------------------------------------------------------------------------- */
     /*                               TEAM FORMATTERS                              */

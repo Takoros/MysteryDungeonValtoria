@@ -1,0 +1,83 @@
+.rankingTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 28px;
+}
+
+.rankingTable {
+    margin-left: auto;
+    margin-right: auto;
+    width: 600px;
+    font-family: 'Eagle Lake', cursive;
+    border-collapse: collapse;
+    margin-bottom: 40px;
+    margin-top: 20px;
+    table-layout: fixed;
+}
+
+.rankingTable tr th {
+    height: 30px;
+}
+
+.rankingTable tr th:first-of-type {
+    width: 75px;
+}
+
+.rankingTable tr th:last-of-type {
+    width: 525px;
+}
+
+.rankingTable tbody tr {
+    height: 70px;
+}
+
+.rankingTable tr td {
+    border: solid 1px black;
+}
+
+.rankingTable tr td a {
+    text-decoration: none;
+    color: unset;
+}
+
+.rankingTable tr td:first-of-type {
+    text-align: center;
+    font-size: 28px;
+}
+
+.rankingTable tr td:last-of-type img {
+    width: 60px;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.rankingTable tr td:last-of-type span {
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+@media (max-width: 645px) {
+    .rankingTable {
+        width: 325px;
+    }
+
+    .rankingTable tr th:first-of-type {
+        width: 25px;
+    }
+    
+    .rankingTable tr th:last-of-type {
+        width: 300px;
+    }
+
+    .rankingCharacterContainer {
+        display: flex;
+        flex-direction: row;
+    }
+
+    .rankingCharacterInfo {
+        display: flex;
+        flex-direction: column;
+        font-size: 14px;
+        justify-content: center;
+    }
+}

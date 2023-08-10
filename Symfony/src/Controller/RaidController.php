@@ -9,10 +9,8 @@ use App\Form\JoinRaidInstanceType;
 use App\Repository\AttackRepository;
 use App\Repository\RaidInstanceRepository;
 use App\Repository\RaidRepository;
-use App\Repository\SpeciesRepository;
 use App\Service\Raid\RaidDataManager;
 use DateTime;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -35,7 +33,7 @@ class RaidController extends AbstractController
 
         $joinRaidInstanceForm->handleRequest($request);
 
-        if($joinRaidInstanceForm->isSubmitted() && $joinRaidInstanceForm->isValid()){
+        if($joinRaidInstanceForm->isSubmitted() && $joinRaidInstanceForm->isValid() && $user->getCharacter()->getTimers()->getRaidCharges() > 0){
             $formData = $joinRaidInstanceForm->getData();
 
             $raidInstance = $raidInstanceRepository->findOneBy(['inviteCode' => $formData['inviteCode']]);

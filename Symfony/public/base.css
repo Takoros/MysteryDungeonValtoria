@@ -200,6 +200,28 @@ body {
     margin-bottom: 8px;
 }
 
+.playButton {
+    position: relative;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, 0);
+    margin-top: -40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    width: 140px;
+    background-color: rgba(121, 169, 92, 1);
+    border: 2px solid white;
+    border-radius: 8px;
+    font-family: 'Croissant One', cursive;
+    font-size: 22px;
+    text-decoration: none;
+    color: black;
+    font-style: normal;
+}
+
 @media (max-width: 750px) {
     #createCharacterButton {
         width: 105px;
