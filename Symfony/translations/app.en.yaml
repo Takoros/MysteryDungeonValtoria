@@ -1,0 +1,101 @@
+# ---------------------------------------------------------------------------- #
+#                                    Navbar                                    #
+# ---------------------------------------------------------------------------- #
+
+pokemon_donjon_mystere: Pokémon Mystery Dungeon
+valtoria: Valtoria
+connexion: Login
+guilde: Guild
+profil: Profile
+deconnexion: Logout
+creer_son_personnage: Create character
+accueil: Home
+
+# ---------------------------------------------------------------------------- #
+#                                     BASE                                     #
+# ---------------------------------------------------------------------------- #
+
+jouer: Play
+footer_description: "Valtoria is a game nowhere associated with Nintendo. All medias and designs belongs to (C) Nintendo 2023. The characters and images of Pokémon™ belongs to  Pokémon USA, Inc. This website is not approved or affiliated by Nintendo, Creatures, GAMEFREAK, The Pokémon Company, Chunsoft, Pokémon USA, Inc ou Wizards of the coast"
+
+
+# ---------------------------------------------------------------------------- #
+#                                     HOME                                     #
+# ---------------------------------------------------------------------------- #
+
+valtoria_game_resume: Valtoria is a free Pokemon Mystery Dungeon browser game. Discover its universe, explore its dungeons & make friends.
+valtoria_game_rp_resume_1: "Here you are at Fort-Écorce, a big city filled with pokémons of all types, located on a gigantic tree stump on which have grown a big tree at the center, containing the most important area of the city : The Adventurer's Guild."
+valtoria_game_rp_resume_2: "Within the guild, some pokémons running around with pride and conviction. Fullfill their missions, help people and discover the world seems to be their priorities. Some true heroes ! Its decided, today, you become one of them !"
+faites_equipe_avec_vos_amis: Team up with your friends
+infligez_des_degats: Inflict damage
+infligez_des_degats_description: With Strength and Power, inflict tons of damage to wild Pokémons in your way
+protegez_vos_allies: Protect your allies
+protegez_vos_allies_description: Increase your defensives stats to withstand damage for your team
+soutenez_votre_equipe: Support your team
+soutenez_votre_equipe_description: Annoy your ennemies, enhance your teammates' capacities and heal them with the Presence stat !
+explorez_les_contrees_de_valtoria: Explore Valtoria's lands !
+explorez_les_contrees_de_valtoria_description_1: Explore some untrodden lands, discover hidden treasures and reveal the secrets buried in the depths of this strange world.
+explorez_les_contrees_de_valtoria_description_2: Dive into mysterious dungeons, where each floor is unique and is fullfilled with surprising encounters. Face hordes of wild Pokémons who only wish to see you fail.
+explorez_les_contrees_de_valtoria_description_3: Thwart the plans of mischievous and powerful wild Pokémons inside of raids, in team of eight adventurers. Meet various and exciting characters, discover new dungeons and raids gradually as you explore the world of Valtoria.
+explorez_les_contrees_de_valtoria_description_4: Dive into this extraordinary adventure and let your trace in Valtoria's history
+rejoignez_la_guilde_de_fort_ecorce: Join the guild of Fort-Écorce
+rejoignez_la_guilde_de_fort_ecorce_description: Many adventurers awaits you to go in expedition
+
+# ---------------------------------------------------------------------------- #
+#                                     RAID                                     #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Raid Data - - - - #
+
+# Repaire des Acolytes:
+
+Repaire des Acolytes: Acolytes's Lair
+Des activités suspectes ont lieux dans les égouts de Fort-Écorce, menez l'enquête pour découvrir ce qu'il s'y trame.: "Suspicious activites take place in the sewers of Fort-Écorce, lead the investigation to find the truth about theses occurings"
+raid_RAID_ONE_description_room_1: "You find a door that attract your attention, however four rattatas are blocking the way. You're gonna need to use strength to pass."
+raid_RAID_ONE_description_room_2: "After having defeated the Rattatas and go through the door, you find yourself in a strange corridor that swirls in a hypnotic way. Moreover, you can see that there's more and more rubbish along the path. Suddenly, you hear a group of sounds approaching you very quickly, some ennemies !"
+raid_RAID_ONE_description_room_3: "You made the group of wild Pokémons attacking you flee away, and made progress inside the corridors. After a moment, you reach a large room of which the stench gives you nausea. Its filled with a lot of garbage of all kinds, and some other foes seems to have noticed your presence. Prepare yourself !"
+raid_RAID_ONE_description_room_4: "After defeating the wild pokemons, you notice a door a little bit further in the room, that you go through to discover a new room with a strange atmosphere, a big red circle is located at the center of it, with three pokemons seeming to be praying on it. They turn their head in your direction when they hear you, and then rushes towards your group."
+raid_RAID_ONE_description_room_5: "Despite your victory in this fight, their sincere prayers seems to have succeded in making something, the red circle starts glowing a lot as the garbage around it gather itself at its center. Suddenly, a bright light blinds you during a brief moment, letting you finally see the purpose of the ritual : A gigantic Muk as well as two Grimers stands in front of you aggressively, prepare yourself, adventurers !"
+
+# - - - - Raid Templates - - - - #
+
+# raid.html.twig
+
+vous_etes_dans_aucun_raid: You are in no raid instance
+temps_de_recuperation_avant_la_prochaine_charge: Cooldown before next charge 
+charge_de_raid_actuelle: "Current Raid charges :"
+creer_un_groupe_exploration: "Create an exploration groupe"
+un_groupe_vous_attends_rejoignez_le: "A group awaits you ? Join it !"
+code_invitation: "Invite code"
+
+# raid-create.html.twig
+
+quel_raid_voulez_vous_explorer: Which raid do you wanna explore ?
+raid_create_form_confirm: 'Confirm'
+
+# _raid-show.html.twig
+
+Préparation: Preparation
+Exploration: Exploration
+Fin: End
+
+statut: "Status :"
+votre_equipe_se_prepare_entrer_dans_raid: 'Your team is about to enter the raid'
+resume_de_la_mission: "Mission's summary"
+composition_de_equipe: "Team's composition"
+commencer: "Start"
+piece: "Room"
+description: "Description"
+aventuriers: "Adventurers"
+pokemons_sauvages: "Wild Pokémons"
+combattre: "Fight"
+liste_des_combats: "Fights list"
+VICTOIRE: 'VICTORY'
+DEFAITE: 'DEFEAT'
+pokemons_sauvages_vaincus: "Wild Pokémons vanquished"
+votre_equipe_a_ete_vaincu: "Your team has been defeated"
+resultat: "Result"
+vous_avez_reussi_a_conquerir_le: "You managed to conquer the"
+felicitations_aventuriers: "congratulation adventurers"
+vous_vous_etes_fait_battre_en_essayant_de_conquérir_le: "You got defeated while trying to conquer the"
+revenez_une_fois_plus_fort: "come back when you are stronger"

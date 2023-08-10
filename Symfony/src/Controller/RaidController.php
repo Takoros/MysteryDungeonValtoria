@@ -19,6 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class RaidController extends AbstractController
 {
@@ -59,7 +60,7 @@ class RaidController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/jeu/raid/create', name: 'app_raid_create')]
-    public function create(Request $request, RaidRepository $raidRepository, RaidInstanceRepository $raidInstanceRepository, EntityManagerInterface $em): Response
+    public function create(Request $request, RaidRepository $raidRepository, RaidInstanceRepository $raidInstanceRepository, TranslatorInterface $translator, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $character = $user->getCharacter();
@@ -70,7 +71,8 @@ class RaidController extends AbstractController
 
         $raidInstanceCreateForm = $this->createForm(CreateRaidInstanceType::class, null, [
             'character' => $user->getCharacter(),
-            'raidRepository' => $raidRepository
+            'raidRepository' => $raidRepository,
+            'translator' => $translator
         ]);
 
         $raidInstanceCreateForm->handleRequest($request);

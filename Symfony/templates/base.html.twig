@@ -7,14 +7,15 @@
 
         <link rel="stylesheet" href="{{ asset('base.css') }}">
         {% block stylesheets %}{% endblock %}
+        {% trans_default_domain 'app' %}
     </head>
     <body>
         {% include '_shared/_navbar.html.twig' %}
         {% if app.user %}
             {% if app.user.character == null %}
-                <a class="playButton" href="{{ path('app_character_create') }}">JOUER</a>
+                <a class="playButton" href="{{ path('app_character_create') }}">{{ 'jouer'|trans({}, 'app') }}</a>
             {% else %}
-                <a class="playButton" href="{{ path('app_hub') }}">Guilde</a>
+                <a class="playButton" href="{{ path('app_hub') }}">{{ 'guilde'|trans({}, 'app') }}</a>
             {% endif %}
         {% endif %}
         <div id='content'>
@@ -23,7 +24,7 @@
         {% block javascripts %}{% endblock %}
         
         <footer>
-            <p>Valtoria  est un jeu web/discord aucunement lié à Nintendo. Tout les médias et designs conceptuels à (C) Nintendo 2023.Les personnages et images de Pokémon™ appartiennent à Pokémon USA, Inc. Ce site web n’est aucunement affilié ni approuvé par Nintendo, Creatures, GAMEFREAK, The Pokémon Company, Chunsoft, Pokémon USA, Inc ou Wizards of the coast</p>
+            <p>{{ 'footer_description'|trans({}, 'app') }}</p>
         </footer>
     </body>
 </html>

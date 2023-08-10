@@ -12,28 +12,28 @@
         {% include "Raid/_raid-show.html.twig" %}
     {% else %}
         <div class="noRaidImage"><img src="{{ asset('images/evoli-sleep.png') }}" alt="Evoli qui dort"></div>
-        <div class="noRaidTitle">Vous n'êtes dans aucun raid</div>
+        <div class="noRaidTitle">{{ 'vous_etes_dans_aucun_raid'|trans({}, 'app') }}</div>
 
         {% if app.user.character.timers.getCooldownRaidTime() is not null %}
             <div class="noRaidCooldownTimerContainer">
-                <p>Temps de récupération avant la prochaine charge</p>
+                <p>{{ 'temps_de_recuperation_avant_la_prochaine_charge'|trans({}, 'app') }}</p>
                 <div id="noRaidCooldownTimer">-</div>  
             </div>
         {% endif %}
 
         {% if app.user.character.timers.getRaidCharges() > 0 %}
-            <div class="noRaidChargesNumber">Charges de Raid actuelles : {{ app.user.character.timers.getRaidCharges() }} / {{ constant('App\\Entity\\Timers::MAX_RAID_CHARGES') }}</div>
+            <div class="noRaidChargesNumber">{{ 'charge_de_raid_actuelle'|trans({}, 'app') }} {{ app.user.character.timers.getRaidCharges() }} / {{ constant('App\\Entity\\Timers::MAX_RAID_CHARGES') }}</div>
             <a class="noRaidCreateRaidInstanceLink" href="{{ path('app_raid_create') }}">
-                <div class="noRaidCreateRaidInstance">Créer un groupe d'exploration</div>
+                <div class="noRaidCreateRaidInstance">{{ 'creer_un_groupe_exploration'|trans({}, 'app') }}</div>
             </a>
             
             <div class="joinRaidInstanceSeparator"></div>
 
-            <div class="joinRaidInstanceTitle">Un groupe vous attends ? Rejoignez-le !</div>
+            <div class="joinRaidInstanceTitle">{{ 'un_groupe_vous_attends_rejoignez_le'|trans({}, 'app') }}</div>
 
             {{ form_start(joinRaidInstanceView, {'attr': {'class': 'raidInstanceJoin_form'}}) }}
                 <div class="joinInviteCodePannel">
-                    <div class="joinInviteCodePannelTitle">Code d'invitation</div>
+                    <div class="joinInviteCodePannelTitle">{{ 'code_invitation'|trans({}, 'app') }}</div>
                     {{ form_widget(joinRaidInstanceView.inviteCode, {'attr': {'class': 'raidInstanceJoin_formWidget joinInviteCodePannelContent'}}) }}
                 </div>
             {{ form_end(joinRaidInstanceView) }}
