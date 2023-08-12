@@ -90,9 +90,9 @@ class Timers
         $todayDate = new DateTime();
         $nextTuesday = strtotime('next Tuesday 18:00'); // Timestamp du prochain Mardi à 18h00
         $nextSaturday = strtotime('next Saturday 18:00'); // Timestamp du prochain Samedi à 18h00
-
+        
         // Si le prochain Mardi est plus proche du jour actuel que le prochain Samedi
-        if($todayDate->format('l') === 'Tuesday' || $todayDate->format('l') === 'Saturday'){
+        if($todayDate->format('G') < 18 && ($todayDate->format('l') === 'Tuesday' || $todayDate->format('l') === 'Saturday')){
             $todayTimeStamp = strtotime('today 6pm');
             $date = date('Y-m-d H:i:s', $todayTimeStamp); // Formatage de la date en Y-m-d H:i:s
         }
