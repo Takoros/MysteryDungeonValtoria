@@ -98,3 +98,473 @@ vous_avez_reussi_a_conquerir_le: "Vous avez réussi à conquérir le"
 felicitations_aventuriers: "félicitations aventuriers"
 vous_vous_etes_fait_battre_en_essayant_de_conquérir_le: "Vous vous êtes fait battre en essayant de conquérir le"
 revenez_une_fois_plus_fort: "revenez une fois plus fort"
+
+# ---------------------------------------------------------------------------- #
+#                                    DONJON                                    #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Dungeon Data - - - - #
+
+Égouts de Fort-Écorce: "Égouts de Fort-Écorce"
+
+# - - - - Dungeon Templates - - - - #
+
+# dungeon.html.twig
+
+vous_etes_dans_aucun_donjon: "Vous n'êtes dans aucun Donjon"
+charge_de_donjon_actuelle: "Charge de Donjon actuelles :"
+
+# dungeon_create.html.twig
+
+quel_donjon_voulez_vous_explorer: "Quel donjon voulez-vous explorer ?"
+dungeon_create_form_confirm: 'Confirmer'
+
+#_dungeon-show.html.twig
+
+votre_equipe_se_prepare_entrer_dans_donjon: 'Votre équipe se prépare à entrer dans le donjon.'
+exploration_du_donjon: "Exploration du donjon"
+exploration_terminee: "Exploration terminée"
+piece_inconnue_du_donjon_que_contient_elle: "Pièce inconnue du donjon, que contient-elle ?"
+ceci_est_un_mur_vous_ne_pouvez_pas_vous_y_rendre: "Ceci est un mur, vous ne pouvez vous y rendre."
+piece_vide_du_donjon_passez_votre_chemin: "Pièce vide du donjon, passez votre chemin."
+entree_du_donjon: "Entrée du donjon."
+sortie_du_donjon: "Sortie du donjon."
+pokemons_sauvages_en_vue: "Pokémon(s) sauvage(s) en vue !"
+notes: "Notes"
+dungeon_notes_1: "Pour compléter le donjon, vous devez trouver la sortie et sortir."
+dungeon_notes_2: "Vous ne pouvez pas vous enfuir d'une case contenant un/des pokémon(s) sauvage(s)"
+
+# ---------------------------------------------------------------------------- #
+#                                    Ranking                                   #
+# ---------------------------------------------------------------------------- #
+
+N°: "N°"
+personnage: "Personnage"
+niveau: "Niveau"
+exp: "EXP"
+classement: "Classement"
+
+# ---------------------------------------------------------------------------- #
+#                                      HUB                                     #
+# ---------------------------------------------------------------------------- #
+
+qg_de_la_guilde_de_fort_ecorce: "QG de la guilde de Fort-Écorce"
+activites: "Activités"
+donjon: "Donjon"
+raid: "Raid"
+wiki_attaques: "Wiki Attaques"
+
+# ---------------------------------------------------------------------------- #
+#                                   CHARACTER                                  #
+# ---------------------------------------------------------------------------- #
+
+# show.html.twig
+
+profil_de: 'Profil de'
+nom: 'Nom'
+espece: 'Espèce'
+age: 'Age'
+rang: 'Rang'
+annuler: "Annuler"
+cuivre: "Cuivre"
+statistiques: 'Statistiques'
+depenser_N_points_de_stat_pour_gagner_N_Stat: "Dépenser %NumberPointsStat% Point de Stat pour gagner %NumberStat% %StatName%"
+
+# ---------------------------------------------------------------------------- #
+#                                    COMBAT                                    #
+# ---------------------------------------------------------------------------- #
+
+rapport_de_bataille: "Rapport de Bataille"
+retour_au_donjon: "Retour au donjon"
+retour_au_raid: "Retour au raid"
+equipe: "Équipe"
+rapport: "Rapport"
+round: "Round"
+
+# - - - - Log Lines - - - - #
+
+fin_du_combat: "Fin du combat !"
+egalite: "Égalité !"
+victoire_de_equipe: "Victoire de l'équipe %teamNumber%"
+critique: "Critique !"
+points_de_degats: "points de dégâts."
+
+log_type_attack: "%fighterName% lance %attackName% !"
+log_type_dodge: "%fighterName% a esquivé l'attaque"
+log_type_damage_taken_by_attack: "%fighterName% subit %damageTakenAmount%"
+log_type_damage_taken_by_status: "%fighterName% subit %damageTakenAmount% points de dégâts de son/sa %statusType%"
+log_type_healing_taken_by_attack: "%fighterName% est soigné de %healAmount% points de vitalité."
+log_type_ko: "%fighterName% est tombé K.O."
+log_type_remaining_vitality: "%fighterName% a (%remainingVitality%/%maxVitality%) points de vitalité restants !"
+log_type_statistic_modifier_received_buff: "%fighterName% voit %statistic% augmentée de %modifier%"
+log_type_statistic_modifier_received_nerf: "%fighterName% voit %statistic% baissée de %modifier%"
+log_type_statistic_modifier_loss_buff: "%fighterName% perd son bonus de %modifier% sur %statistic% !"
+log_type_statistic_modifier_loss_nerf: "%fighterName% perd son malus de %modifier% sur %statistic% !"
+log_type_damaging_status_received: "%fighterName% reçoit le statut %statusType%"
+log_type_damaging_status_loss: "%fighterName% perd le statut %statusType%"
+log_type_control_status_received: "%fighterName% reçoit le statut %statusType%"
+log_type_control_status_loss: "%fighterName% perd le statut %statusType%"
+
+log_control_status_activate_confusion: "%fighterName% est confus, il/elle s'attaque."
+log_control_status_activate_fatigue: "%fighterName% est fatigué, il/elle se repose."
+log_control_status_activate_freeze: "%fighterName% est gelé, il/elle ne peut pas bouger."
+log_control_status_activate_paralysis: "%fighterName% est paralysé, il/elle ne peut pas bouger."
+log_control_status_activate_petrification: "%fighterName% est pétrifié, il/elle ne peut pas bouger."
+log_control_status_activate_sleep: "%fighterName% est endormi, il/elle ne peut pas bouger."
+log_control_status_activate_yawn: "%fighterName% baille, il/elle va s'endormir sous peu."
+log_type_control_status_no_effect: "%fighterName% ne peut pas recevoir le statut %statusType%, iel en est déjà affecté."
+log_type_attack_no_effect: "L'attaque n'a eu aucun effet."
+
+log_display_stat_vitality: 'sa Vitalité'
+log_display_stat_strength: 'sa Force'
+log_display_stat_stamina: 'son Endurance'
+log_display_stat_power: 'son Pouvoir'
+log_display_stat_bravery: 'son Courage'
+log_display_stat_presence: 'sa Présence'
+log_display_stat_impassiveness: 'son Impassibilité'
+log_display_stat_agility: 'son Agilité'
+log_display_stat_coordination: 'sa Coordination'
+log_display_stat_speed: 'sa Vitesse'
+
+log_display_control_status_confusion: 'Confusion'
+log_display_control_status_fatigue: 'Fatigue'
+log_display_control_status_freeze: 'Gel'
+log_display_control_status_paralysis: 'Paralysie'
+log_display_control_status_petrification: 'Pétrification'
+log_display_control_status_sleep: 'Sommeil'
+log_display_control_status_yawn: 'Baillement'
+
+log_display_damaging_status_burn: 'Brûlure'
+log_display_damaging_status_poison: 'Empoisonnement'
+log_display_damaging_status_bad_poison: 'Empoisonnement Grave'
+
+# ---------------------------------------------------------------------------- #
+#                                    ATTACKS                                   #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Bug - - - - #
+
+secretion_attack: "Sécrétion"
+secretion_attack_description: "Réduit la Vitesse de la cible pendant 2 tours."
+# -- #
+piqure_attack: "Piqûre"
+piqure_attack_description: "Inflige des dégâts physique à la cible."
+# -- #
+survinsecte_attack: "Survinsecte"
+survinsecte_attack_description: "Inflige des dégâts spéciaux à tout les ennemis, diminie le Pouvoir de ceux-ci pendant 2 tours"
+# -- #
+papillodanse_attack: "Papillodanse"
+papillodanse_attack_description: "Augmente le Pouvoir, le Courage et la Vitesse du lanceur pendant 3 tours."
+
+# - - - - Dark - - - - #
+
+fumee_protectrice_attack : "Fumée Protectrice"
+fumee_protectrice_attack_description: "Augmente l'Endurance, le Courage et la Vitalité du lanceur pendant 3 tours."
+# -- #
+morsure_attack: "Morsure"
+morsure_attack_description: "Inflige des dégâts physique à la cible, 30% de chance d'infliger Pétrification."
+# -- #
+aboiement_attack: "Aboiement"
+aboiement_attack_description: "Inflige des dégâts spéciaux à tout les ennemis, réduisant leur Pouvoir pendant 2 tours."
+# -- #
+feinte_attack: "Feinte"
+feinte_attack_description: "Inflige des dégâts mixtes à la cible. Ne peut pas être esquivé."
+
+# - - - - Dragon - - - - #
+
+danse_draco_attack: "Danse Draco"
+danse_draco_attack_description: "Augmente la Vitesse et la Force du lanceur pendant 3 tours"
+# -- #
+ouragan_attack: "Ouragan"
+ouragan_attack_description: "Inflige des dégâts spéciaux à tout les ennemis."
+# -- #
+abattage_attack: "Abattage"
+abattage_attack_description: "Inflige des dégâts physiques à tout les ennemis et réduit leur Pouvoir pendant 2 tours."
+# -- #
+dracacophonie: "Dracacophonie"
+dracacophonie_description: "S'auto inflige des dégâts mixtes, mais augmente sa Force, son Pouvoir, sa Vitesse et sa Coordination pendant 3 tours."
+
+# - - - - Electric - - - - #
+
+chargeur_attack: "Chargeur"
+chargeur_attack_description: "Augmente la Vitesse et l'Agilité du lanceur pendant 3 tours."
+# -- #
+eclair_attack: 'Éclair'
+eclair_attack_description: 'Inflige des dégâts spéciaux à la cible, avec 30% de chance de la Paralyser.'
+# -- #
+crocs_eclair_attack: 'Crocs Éclair'
+crocs_eclair_attack_description: 'Inflige des dégâts physique à la cible et réduit son Endurance.'
+# -- #
+parabochaines_attack: 'Parabochaines'
+parabochaines_attack_description: "Inflige des dégâts spéciaux, réduit la Vitesse, l'Agilité et la Coordination de la cible pendant 3 tours."
+
+# - - - - Explorer - - - - #
+
+lutte_attack: 'Lutte'
+lutte_attack_description: 'Inflige des dégâts mixtes à la cible.'
+# -- #
+tranche_attack: 'Tranche'
+tranche_attack_description: 'Inflige des dégâts physiques à la cible.'
+# -- #
+reflet_attack: 'Reflet'
+reflet_attack_description: "Augmente l'Agilité du lanceur pendant 3 tours."
+# -- #
+regard_touchant_attack: 'Regard Touchant'
+regard_touchant_attack_description: 'Réduit la Force et le Pouvoir de la cible pendant 2 tours.'
+# -- #
+encouragement_attack: 'Encouragement'
+encouragement_attack_description: "Augmente la Vitesse de l'équipe alliée (y compris soi-même) pendant 3 tours."
+# -- #
+lechouille_attack: 'Léchouille'
+lechouille_attack_description: 'Inflige des dégâts physique à la cible, avec 30% de chance de Paralyser la cible.'
+# -- #
+equilibre_attack: 'Équilibre'
+equilibre_attack_description: 'Soigne de 1 à 3 status négatifs (1 : 45%, 2 : 35%, 3 : 20%).'
+# -- #
+coup_double_attack: 'Coup Double'
+coup_double_attack_description: 'Inflige des dégâts physique à la cible, deux fois'
+# -- #
+pansement_attack: 'Pansement'
+pansement_attack_description: "Soigne l'allié avec le moins de Vitalité"
+
+# - - - - Fairy - - - - #
+
+doux_baiser_attack: 'Doux Baiser'
+doux_baiser_attack_description: 'Inflige Confusion à la cible.'
+# -- #
+voix_enjoleuse_attack: 'Voix Enjôleuse'
+voix_enjoleuse_attack_description: 'Inflige des dégâts spéciaux à la cible.'
+# -- #
+vigilance_attack: 'Vigilance'
+vigilance_attack_description: "Augmente l'Impassibilité du lanceur pendant 3 tours."
+# -- #
+calinerie_attack: 'Câlinerie'
+calinerie_attack_description: 'Inflige des dégâts physique à la cible et réduit sa Force pendant 2 tours.'
+
+# - - - - Fighting - - - - #
+
+harmonie_attack: 'Harmonie'
+harmonie_attack_description: "Augmente la Présence et l'Impassibilité du lanceur pendant 3 tours."
+# -- #
+poing_karate_attack: 'Poing Karaté'
+poing_karate_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+aurasphere_attack: 'Aurasphère'
+aurasphere_attack_description: 'Inflige des dégâts spéciaux à la cible.'
+# -- #
+echauffement_attack: 'Échauffement'
+echauffement_attack_description: 'Inflige des dégâts physique à la cible et augmente la Force ainsi que le Pouvoir du lanceur pendant 3 tours.'
+
+# - - - - Fire - - - - #
+
+enhardir_attack: 'Enhardir'
+enhardir_attack_description: 'Augmente la Force du lanceur pour 3 tours.'
+# -- #
+flammeche_attack: 'Flammèche'
+flammeche_attack_description: 'Inflige des dégâts spéciaux à la cible avec 20% de chance de Brûler celle-ci.'
+# -- #
+poing_feu_attack: 'Poing Feu'
+poing_feu_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+danse_du_feu_attack: 'Danse du Feu'
+danse_du_feu_attack_description: 'Inflige des dégâts mixtes à la cible.'
+
+# - - - - Flying - - - - #
+
+danse_plume_attack: 'Danse Plume'
+danse_plume_attack_description: 'Augmente la Force et le Pouvoir du lanceur pendant 3 tours.'
+# -- #
+cru-ailes_attack: 'Cru-Ailes'
+cru-ailes_attack_description: 'Inflige des dégâts physique à la cible, et augmente la Force du lanceur pendant 3 tours.'
+# -- #
+tornade_attack: 'Tornade'
+tornade_attack_description: 'Inflige des dégâts spéciaux à la cible, et augmente le Pouvoir pendant 3 tours.'
+# -- #
+vol_attack: 'Vol' 
+vol_attack_description: 'Attaque en deux tours. Lors du premier tour, augmente son Endurance et son Courage pendant 2 tours. Lors du second tour, inflige des dégâts mixtes à la cible.'
+
+# - - - - Ghost - - - - #
+
+onde_folie_attack: 'Onde Folie'
+onde_folie_attack_description: 'Inflige Confusion à la cible.'
+# -- #
+etonnement_attack: 'Étonnement'
+etonnement_attack_description: "Inflige des dégâts spéciaux à la cible, 30% de chance d'infliger Pétrification."
+# -- #
+ball'ombre_attack: "Ball'Ombre"
+ball'ombre_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+chatiment_attack: 'Châtiment'
+chatiment_attack_description: "Inflige des dégâts spéciaux à la cible, augmente la puissance de l'attaque à 10, si la cible est affectée par un status de contrôle."
+
+# - - - - Grass - - - - #
+
+feuillage_attack: 'Feuillage'
+feuillage_attack_description: 'Inflige des dégâts spéciaux et réduit la Coordination de la cible pendant 2 tours'
+# -- #
+fouet_liane_attack: 'Fouet Liane'
+fouet_liane_attack_description: 'Inflige des dégâts physique à la cible, avec 15% de chance de la rendre Confuse.'
+# -- #
+vole-vie_attack: 'Vole-vie'
+vole-vie_attack_description: 'Inflige des dégâts mixtes à la cible, récupérant 25% des dégâts infligés.'
+# -- #
+para-spore_attack: 'Para-Spore'
+para-spore_attack_description: 'Inflige Paralysie à la cible.'
+
+# - - - - Ground - - - - #
+
+jet_de_sable_attack: 'Jet de sable'
+jet_de_sable_attack_description: 'Réduit la Coordination de la cible pendant 2 tours.'
+# -- #
+tourbi-sable_attack: 'Tourbi-Sable'
+tourbi-sable_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+tir_de_boue_attack: 'Tir de boue'
+tir_de_boue_attack_description: 'Inflige des dégâts spéciaux à la cible et réduit sa Vitesse pendant 2 tours.'
+# -- #
+tunnel_attack: 'Tunnel'
+tunnel_attack_description: 'Attaque en deux tours. Lors du premier tour, augmente son Endurance et son Courage pendant 2 tours. Lors du second tour, inflige des dégâts physique à la cible.'
+
+# - - - - Ice - - - - #
+
+buee_noire_attack: 'Buée Noire'
+buee_noire_attack_description: 'Retire 1 à 3 bonus sur la cible (1 : 45%, 2 : 35%, 3 : 20%)'
+# -- #
+poudreuse_attack: 'Poudreuse'
+poudreuse_attack_description: 'Inflige des dégâts spéciaux à la cible, et réduit son Endurance pendant 2 tours'
+# -- #
+eclats_glace_attack: 'Éclats Glace'
+eclats_glace_attack_description: 'Inflige des dégâts physique à la cible, et augmente la Vitesse du lanceur pendant 3 tours'
+# -- #
+onde_boréale_attack: 'Onde Boréale'
+onde_boréale_attack_description: 'Inflige des dégâts spéciaux à la cible, et réduit sa Vitesse pendant 2 tours'
+
+# - - - - Monster - - - - #
+
+debris_protecteurs_attack: 'Débris Protecteur'
+debris_protecteurs_attack_description: 'Se roule dans les débris alentours pour augmenter son endurance et son courage pendant 4 tours.'
+# -- #
+cri_percant_attack: 'Cri Perçant'
+cri_percant_attack_description: 'Pousse un cri perçant les tympans des pokémons adverses, réduisant leur coordination et leur endurance pendant 3 tours.'
+
+# - - - - Normal - - - - #
+
+flair_attack: 'Flair'
+flair_attack_description: "Purge les bonus d'Agilité de la cible, et augmente la Coordination du lanceur pendant 3 tours."
+charge_attack: 'Charge'
+charge_attack_description: 'Inflige des dégâts physique à la cible.'
+meteores_attack: 'Météores'
+meteores_attack_description: 'Inflige des dégâts spéciaux à la cible, et augmente le Pouvoir du lanceur pendant 3 tours.'
+abri_attack: 'Abri'
+abri_attack_description: "Augmente l'Endurance et le Courage du lanceur pendant 2 tours."
+
+# - - - - Poison - - - - #
+
+toxik_attack: 'Toxik'
+toxik_attack_description: 'Inflige Poison Grave à la cible.'
+# -- #
+dard-venin_attack: 'Dard-Venin'
+dard-venin_attack_description: "Inflige des dégâts physique à la cible, a 30% de chance d'infliger Poison."
+# -- #
+acide_attack: 'Acide'
+acide_attack_description: 'Inflige des dégâts spéciaux à tout les ennemis, de plus, possède 10% de chance de réduire la Force de celle-ci pendant 2 tours.'
+# -- #
+choc_venin_attack: 'Choc Venin'
+choc_venin_attack_description: 'Inflige des dégâts spéciaux à la cible, si celle-ci est empoisonnée, infligé également des dégâts physique de puissance 2 en utilisant la Présence comme statistique.'
+
+# - - - - Psy - - - - #
+
+hypnose_attack: 'Hypnose'
+hypnose_attack_description: 'Inflige Sommeil à la cible'
+# -- #
+choc_mental_attack: 'Choc Mental'
+choc_mental_attack_description: "Inflige des dégâts spéciaux à la cible et possède 10% de chance d'infliger Confusion à celle-ci."
+# -- #
+psykoud'boul_attack: "Psykoud'boul"
+psykoud'boul_attack_description: 'Inflige des dégâts physique à la cible'
+# -- #
+vibra_soin_attack: 'Vibra Soin'
+vibra_soin_attack_description: 'Soigne tout les alliés du groupe'
+
+# - - - - Rock - - - - #
+
+renforcement_attack: 'Renforcement'
+renforcement_attack_description: "Augmente l'Endurance du lanceur pendant 3 tours."
+# -- #
+jet_pierre_attack: 'Jet Pierre'
+jet_pierre_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+assourdir_attack: 'Assourdir'
+assourdir_attack_description: 'Inflige des dégâts spéciaux à la cible, avec 15% de chance de la rendre Confuse.'
+# -- #
+lourdeur_attack: 'Lourdeur'
+lourdeur_attack_description: 'Inflige des dégâts physique et réduit la Force ainsi que la Coordination de la cible pendant 2 tours.'
+
+# - - - - Steel - - - - #
+
+analyse_attack: 'Analyse'
+analyse_attack_description: "Augmente la Coordination de l'équipe alliée (y compris soi-même) pendant 3 tours."
+# -- #
+lancecrou_attack: 'Lancécrou'
+lancecrou_attack_description: 'Inflige des dégâts spéciaux à la cible.'
+# -- #
+griffes_acier_attack: 'Griffes Acier'
+griffes_acier_attack_description: 'Inflige des dégâts physique à la cible.'
+# -- #
+bombe_aimant_attack: 'Bombe Aimant'
+bombe_aimant_attack_description: 'Inflige des dégâts physique à tout les adversaires.'
+
+# - - - - Water - - - - #
+
+absorb'o_attack: "Absorb'O"
+absorb'o_attack_description: 'Soigne le lanceur.'
+# -- #
+pistolet_a_o_attack: 'Pistolet à O'
+pistolet_a_o_attack_description: 'Inflige des dégâts spéciaux à la cible.'
+# -- #
+aqua-jet_attack: 'Aqua-Jet'
+aqua-jet_attack_description: 'Inflige des dégâts physique à la cible, avec 30% de chance de la rendre Confuse.'
+# -- #
+repli_attack: 'Repli'
+repli_attack_description: "Augmente l'Endurance du lanceur pendant 3 tours."
+
+# ---------------------------------------------------------------------------- #
+#                                     STATS                                    #
+# ---------------------------------------------------------------------------- #
+
+vitalite: 'Vitalité'
+vitalite_description: "La Vitalité représente la capacité de votre pokémon à encaisser des coups sans tomber K.O. Un pokémon tombe K.O en combat lorsque sa vitalité atteint 0."
+# -- #
+endurance: 'Endurance'
+endurance_description: "L'Endurance représente la capacité de votre Pokémon à encaisser les attaques physiques, plus la valeur est élevée, plus les dégâts physiques subits seront réduits."
+# -- #
+courage: 'Courage'
+courage_description: "Le Courage représente la capacité de votre Pokémon à encaisser les attaques spéciales, plus la valeur est élevée, plus les dégâts spéciaux subits seront réduits."
+# -- #
+agilite: 'Agilité'
+agilite_description: "L'Agilité permet d'augmenter les chances d'esquive du Pokémon, plus sa valeur est élevée, plus les chances sont haute."
+# -- #
+impassibilite: 'Impassibilité'
+impassibilite_description: "L'Impassibilité permet à un Pokémon de résister aux effets négatifs qui lui sont infligés (Status de controle, malus de stat..). Plus la valeur est élevée, plus les chances de ne pas subir un status de controle seront élevée & moins les malus de stat seront efficaces sur lui."
+# -- #
+force: 'Force'
+force_description: "La Force représente la capacité de votre pokémon à effectuer des attaques physiques puissante, plus la valeur est élevée, plus les dégâts physiques infligés par le pokémon seront augmentés."
+# -- #
+pouvoir: 'Pouvoir'
+pouvoir_description: "Le Pouvoir représente la capacité de votre pokémon à effectuer des attaques spéciales puissante, plus la valeur est élevée, plus les dégâts spéciaux infligés par le pokémon seront augmentés."
+# -- #
+presence: "Présence"
+presence_description: "La Présence représente la capacité de votre Pokémon à infliger des status (positifs ou négatifs) & octroyer des soins. Plus la Présence d'un pokémon est elevée, plus ses soins et ses status seront efficaces."
+# -- #
+coordination: 'Coordination'
+coordination_description: "La Coordination permet de déterminer la fréquence à laquelle un Pokémon infligera des coups critiques, plus la valeur est élevée, plus les chances de rendre ses attaques critiques sont augmentés. De plus, la Coordination permet de réduire les chances d'esquive lors d'une attaque sur un pokémon adverse."
+# -- #
+vitesse: 'Vitesse'
+vitesse_description: "La Vitesse permet d'attaquer plus rapidement et plus souvent durant un combat."
+# -- #
+points_action: "Points d'Action"
+points_action_description: "Nombre de points d'action maximum par Rotation"
+# -- #
+points_de_stat: "Points de Stat"
+points_de_stat_description: "Points à dépenser pour augmenter les statistiques de votre personnage. Obtenu en montant de niveau."
+# -- #

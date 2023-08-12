@@ -33,7 +33,7 @@ trait BugAttacks
     }
 
     /**
-     * Sécrétion : Réduit la Vitesse de la cible.
+     * Sécrétion : Réduit la Vitesse de la cible pendant 2 tours.
      */
     public function ATTACK_BUG_ONE(Fighter &$caster, Fighter &$target): void
     {
@@ -61,7 +61,7 @@ trait BugAttacks
     }
 
     /**
-     * Survinsecte : Inflige des dégâts spéciaux à tout les ennemis, diminie le pouvoir de ceux-ci.
+     * Survinsecte : Inflige des dégâts spéciaux à tout les ennemis, diminie le pouvoir de ceux-ci pendant 2 tours.
      */
     public function ATTACK_BUG_THREE(Fighter &$caster, array &$targets): void
     {

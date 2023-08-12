@@ -7,7 +7,7 @@
 {% endblock %}
 
 {% block body %}
-    <div class="dungeonCreateTitle">Quel donjon voulez-vous explorer ?</div>
+    <div class="dungeonCreateTitle">{{ 'quel_donjon_voulez_vous_explorer'|trans({}, 'app') }}</div>
     {{ form_start(dungeonInstanceCreateFormView, {'attr': {'class': 'dungeonCreate_form'}}) }}
         {{ form_widget(dungeonInstanceCreateFormView.Dungeon, {'attr': {'class': 'dungeonCreate_formWidget'}}) }}
         {{ form_widget(dungeonInstanceCreateFormView.submit, {'attr': {'class': 'dungeonCreate_Submit'}}) }}

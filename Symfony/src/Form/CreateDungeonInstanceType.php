@@ -11,9 +11,12 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CreateDungeonInstanceType extends AbstractType
 {
+    public TranslatorInterface $translator;
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if(!array_key_exists('character', $options) || $options['character'] === null){
@@ -24,8 +27,13 @@ class CreateDungeonInstanceType extends AbstractType
             throw new ParameterNotFoundException('Paramètre dungeonRepository nécessaire au formulaire');
         }
 
+        if(!array_key_exists('translator', $options) || $options['translator'] === null){
+            throw new ParameterNotFoundException('Paramètre translator nécessaire au formulaire');
+        }
+
         $character = $options['character'];
         $dungeonRepository = $options['dungeonRepository'];
+        $this->translator = $options['translator'];
 
         $builder
             ->add('Dungeon', EntityType::class, [
@@ -33,10 +41,12 @@ class CreateDungeonInstanceType extends AbstractType
                 'label' => ' ',
                 'class' => Dungeon::class,
                 'choices' => $character->getAvailableDungeons($dungeonRepository),
-                'choice_label' => 'name'
+                'choice_label' => function (?Dungeon $dungeon): string {
+                    return $this->translator->trans($dungeon->getName(),[],'app');
+                }
             ])
             ->add('submit', SubmitType::class, [
-                'label' => 'Confirmer'
+                'label' => $this->translator->trans('dungeon_create_form_confirm',[],'app')
             ])
         ;
     }
@@ -45,7 +55,8 @@ class CreateDungeonInstanceType extends AbstractType
     {
         $resolver->setDefaults([
             'character' => null,
-            'dungeonRepository' => null
+            'dungeonRepository' => null,
+            'translator' => null
         ]);
 
         $resolver->setAllowedTypes('character', Character::class);

@@ -8,11 +8,19 @@ use App\Entity\Type;
 use App\Service\Combat\Status\StatusInterface;
 use App\Service\Dungeon\DungeonGenerationService;
 use Exception;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
+use Symfony\Contracts\Translation\TranslatorInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class AppExtension extends AbstractExtension
 {
+    public TranslatorInterface $translator;
+
+    public function __construct(TranslatorInterface $translator) {
+        $this->translator = $translator;
+    }
+
     public function getFilters()
     {
         return [
@@ -24,127 +32,143 @@ class AppExtension extends AbstractExtension
             new TwigFilter('speciesIcon', [$this, 'getSpeciesIconFileName']),
             new TwigFilter('DungeonInstanceStatus', [$this, 'getInstanceStatusName']),
             new TwigFilter('RaidInstanceStatus', [$this, 'getInstanceStatusName']),
-            new TwigFilter('typeIcon', [$this, 'getTypeIconName'])
+            new TwigFilter('typeIcon', [$this, 'getTypeIconName']),
+            new TwigFilter('transAttack', [$this, 'translateAttackName']),
         ];
     }
 
     public function displayStatistic(string $statistic): string
     {
         if($statistic === 'vitality'){
-            return 'sa Vitalité';
+            return $this->translator->trans('log_display_stat_vitality', [], 'app');
         }
 
         if($statistic === 'strength'){
-            return 'sa Force';
+            return $this->translator->trans('log_display_stat_strength', [], 'app');
         }
 
         if($statistic === 'stamina'){
-            return 'son Endurance';
+            return $this->translator->trans('log_display_stat_stamina', [], 'app');
         }
 
         if($statistic === 'power'){
-            return 'son Pouvoir';
+            return $this->translator->trans('log_display_stat_power', [], 'app');
         }
 
         if($statistic === 'bravery'){
-            return 'son Courage';
+            return $this->translator->trans('log_display_stat_bravery', [], 'app');
         }
 
         if($statistic === 'presence'){
-            return 'sa Présence';
+            return $this->translator->trans('log_display_stat_presence', [], 'app');
         }
 
         if($statistic === 'impassiveness'){
-            return 'son Impassibilité';
+            return $this->translator->trans('log_display_stat_impassiveness', [], 'app');
         }
 
         if($statistic === 'agility'){
-            return 'son Agilité';
+            return $this->translator->trans('log_display_stat_agility', [], 'app');
         }
 
         if($statistic === 'coordination'){
-            return 'sa Coordination';
+            return $this->translator->trans('log_display_stat_coordination', [], 'app');
         }
 
         if($statistic === 'speed'){
-            return 'sa Vitesse';
+            return $this->translator->trans('log_display_stat_speed', [], 'app');
         }
     }
 
     public function displayControl(string $control): string
     {
         if($control === StatusInterface::TYPE_CONTROL_CONFUSION){
-            return 'Confusion';
+            return $this->translator->trans('log_display_control_status_confusion', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_FATIGUE){
-            return 'Fatigue';
+            return $this->translator->trans('log_display_control_status_fatigue', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_FREEZE){
-            return 'Gel';
+            return $this->translator->trans('log_display_control_status_freeze', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_PARALYSIS){
-            return 'Paralysie';
+            return $this->translator->trans('log_display_control_status_paralysis', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_PETRIFICATION){
-            return 'Pétrification';
+            return $this->translator->trans('log_display_control_status_petrification', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_SLEEP){
-            return 'Sommeil';
+            return $this->translator->trans('log_display_control_status_sleep', [], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_YAWN){
-            return 'Baillement';
+            return $this->translator->trans('log_display_control_status_yawn', [], 'app');
         }
     }
 
     public function displayControlActivate(string $control, string $fighterName): string
     {
         if($control === StatusInterface::TYPE_CONTROL_CONFUSION){
-            return $fighterName . " est confus, il/elle s'attaque.";
+            return $this->translator->trans('log_control_status_activate_confusion', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_FATIGUE){
-            return $fighterName . " est fatigué, il/elle se repose.";
+            return $this->translator->trans('log_control_status_activate_fatigue', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_FREEZE){
-            return $fighterName . " est gelé, il/elle ne peut pas bouger.";
+            return $this->translator->trans('log_control_status_activate_freeze', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_PARALYSIS){
-            return $fighterName . " est paralysé, il/elle ne peut pas bouger.";
+            return $this->translator->trans('log_control_status_activate_paralysis', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_PETRIFICATION){
-            return $fighterName . " est pétrifié, il/elle ne peut pas bouger.";
+            return $this->translator->trans('log_control_status_activate_petrification', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_SLEEP){
-            return $fighterName . " est endormi, il/elle ne peut pas bouger.";
+            return $this->translator->trans('log_control_status_activate_sleep', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
 
         if($control === StatusInterface::TYPE_CONTROL_YAWN){
-            return $fighterName . " baille, il/elle va s'endormir sous peu.";
+            return $this->translator->trans('log_control_status_activate_yawn', [
+                '%fighterName%' => $fighterName
+            ], 'app');
         }
+
     }
 
     public function displayDamaging(string $damaging)
     {
         if($damaging === StatusInterface::TYPE_DAMAGING_BURN){
-            return 'brûlure';
+            return $this->translator->trans('log_display_damaging_status_burn', [], 'app');
         }
 
         if($damaging === StatusInterface::TYPE_DAMAGING_POISON){
-            return 'empoisonnement';
+            return $this->translator->trans('log_display_damaging_status_poison', [], 'app');
         }
 
         if($damaging === StatusInterface::TYPE_DAMAGING_BAD_POISON){
-            return 'empoisonnement grave';
+            return $this->translator->trans('log_display_damaging_status_bad_poison', [], 'app');
         }
     }
 
@@ -253,5 +277,19 @@ class AppExtension extends AbstractExtension
         else if($instanceStatus === RaidInstance::RAID_STATUS_TERMINATION || $instanceStatus === RaidInstance::RAID_STATUS_TERMINATION_DEFEAT){
             return 'Fin';
         }
+    }
+
+    public function translateAttackName($attackName){
+        $attackName = strtolower($attackName);
+        
+        $attackName = str_replace(' ', '_', $attackName);
+        $attackName = str_replace('ô', 'o', $attackName);
+        $attackName = str_replace('â', 'a', $attackName);
+        $attackName = str_replace('û', 'u', $attackName);
+        $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('è', 'e', $attackName);
+        $attackName = str_replace('ç', 'c', $attackName);
+
+        return $this->translator->trans($attackName.'_attack', [], 'app');
     }
 }
