@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}PMD : Valtoria | Rapport de Bataille {% endblock %}
+{% block title %}PMD : Valtoria | {{ 'rapport_de_bataille'|trans({}, 'app') }} {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/fight/app_combat.css') }}">
@@ -10,20 +10,20 @@
 {% block body %}
     {% if combatLog.dungeonInstance is not null %}
         <a class="combatLog-returnToDungeonLink" href="{{ path('app_dungeon')}}">
-            <div class="combatLog-returnToDungeonButton">Retour au Donjon</div>
+            <div class="combatLog-returnToDungeonButton">{{ 'retour_au_donjon'|trans({}, 'app') }}</div>
         </a>
     {% elseif combatLog.raidInstance is not null %}
         <a class="combatLog-returnToDungeonLink" href="{{ path('app_raid')}}">
-            <div class="combatLog-returnToDungeonButton">Retour au Raid</div>
+            <div class="combatLog-returnToDungeonButton">{{ 'retour_au_raid'|trans({}, 'app') }}</div>
         </a>
     {% endif %}
     
-    <h1 class="combatLog-title">Rapport de Combat</h1>
+    <h1 class="combatLog-title">{{ 'rapport_de_bataille'|trans({}, 'app') }}</h1>
     <h2 class="combatLog-date">{{ combatLog.dateCreation | date('d/m/Y H:i', "Europe/Paris")}}</h2>
 
     <div class="combatLog-team-display">
         <div class="combatLog-team">
-            <div class="combatLog-team-name">Équipe 1</div>
+            <div class="combatLog-team-name">{{ 'equipe'|trans({}, 'app') }} 1</div>
             {% for character in combatLog.teamOne %}
                 {% include '_shared/_character-card.html.twig' %}
             {% endfor %}
@@ -31,7 +31,7 @@
         <div class="combatLog-vertical-separator"></div>
         <div class="combatLog-vs"><img class="combatLog-vs-image" src="{{ asset('icons/versus.png')}}"></div>
         <div class="combatLog-team">
-            <div class="combatLog-team-name">Équipe 2</div>
+            <div class="combatLog-team-name">{{ 'equipe'|trans({}, 'app') }} 2</div>
             {% for character in combatLog.teamTwo %}
                 {% include '_shared/_character-card.html.twig' %}
             {% endfor %}
@@ -41,94 +41,94 @@
     <table class='combatLogTable'>
         <thead>
             <tr>
-                <th colspan="2">Rapport</th>
+                <th colspan="2">{{ 'rapport'|trans({}, 'app') }}</th>
             </tr>
         </thead>
         <tbody>
             {% for roundLog in displayableLogs %}
                 <tr>
-                    <td class='combatLogTableTdRound' colspan="2">Round {{ roundLog[0].roundNumber }}</td>
+                    <td class='combatLogTableTdRound' colspan="2">{{ 'round'|trans({}, 'app') }} {{ roundLog[0].roundNumber }}</td>
                 </tr>
                 {% for LogLine in roundLog %}
                     <tr>
                         {% if LogLine.type is same as('type_winner') %}
                             <td class='combatLogTableTdIcon'><div class='winner'></div></td>
-                            <td class='combatLogTableTdText'>Fin du combat ! {% if LogLine.data.winner == 0 %}Égalité !{% else %}Victoire de l'équipe {{LogLine.data.winner}} !{% endif %}</td>
+                            <td class='combatLogTableTdText'>{{ 'fin_du_combat'|trans({}, 'app') }} {% if LogLine.data.winner == 0 %}{{ 'egalite'|trans({}, 'app') }}{% else %}{{ 'victoire_de_equipe'|trans({'%teamNumber%': LogLine.data.winner}, 'app') }}{% endif %}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_attack') %}
                             <td class='combatLogTableTdIcon'><div class='sword-crossed'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} lance {{ LogLine.data.attackName }} ! {% if LogLine.data.isCrit %} Critique !{% endif %}</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_attack'|trans({'%fighterName%': LogLine.data.fighterName, '%attackName%': LogLine.data.attackName|transAttack }, 'app') }} {% if LogLine.data.isCrit %} {{ 'critique'|trans({}, 'app') }}{% endif %}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_dodge') %}
                             <td class='combatLogTableTdIcon'><div class='dodge'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} a esquivé l'attaque !</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_dodge'|trans({'%fighterName%': LogLine.data.fighterName}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_damage_taken_by_attack') %}
                             <td class='combatLogTableTdIcon'><div class='damageTakenByAttack'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} subit {{LogLine.data.physicalDamage + LogLine.data.specialDamage}} (<span class="physicalDamage">{{LogLine.data.physicalDamage}}</span>|<span class="specialDamage">{{LogLine.data.specialDamage}}</span>) points de dégâts.</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_damage_taken_by_attack'|trans({'%fighterName%': LogLine.data.fighterName, '%damageTakenAmount%': LogLine.data.physicalDamage + LogLine.data.specialDamage}, 'app') }} (<span class="physicalDamage">{{LogLine.data.physicalDamage}}</span>|<span class="specialDamage">{{LogLine.data.specialDamage}}</span>) {{ 'points_de_degats'|trans({}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_damage_taken_by_status') %}
                             <td class='combatLogTableTdIcon'><div class='damagingReceived'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} subit <span class="statusDamage">{{ LogLine.data.damageTaken }}</span> points de dégâts de son/sa {{LogLine.data.statusType | damaging}}</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_damage_taken_by_status'|trans({'%fighterName%': LogLine.data.fighterName, '%damageTakenAmount%': LogLine.data.damageTaken, '%statusType%': LogLine.data.statusType| damaging}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_healing_taken_by_attack') %}
                             <td class='combatLogTableTdIcon'><div class='healingTakenByAttack'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} est soigné de {{ LogLine.data.healAmount}} points de vitalité.</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_healing_taken_by_attack'|trans({'%fighterName%': LogLine.data.fighterName, '%healAmount%': LogLine.data.healAmount}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_ko') %}
                             <td class='combatLogTableTdIcon'><div class='ko'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} est tombé K.O.</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_ko'|trans({'%fighterName%': LogLine.data.fighterName}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_remaining_vitality') %}
                             <td class='combatLogTableTdIcon'><div class='remainingHealth'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} a ({{LogLine.data.remainingVitality}}/{{LogLine.data.vitality}}) points de vitalité restants !</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_remaining_vitality'|trans({'%fighterName%': LogLine.data.fighterName, '%remainingVitality%': LogLine.data.remainingVitality, '%maxVitality%': LogLine.data.vitality}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_statistic_modifier_received') %}
                             {% if LogLine.data.modifierType  == 'buff' %}
                                 <td class='combatLogTableTdIcon'><div class='buff'></div></td>
-                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} voit {{ LogLine.data.statistic | statistic }} augmentée de {{ LogLine.data.modifier }} !</td>
+                                <td class='combatLogTableTdText'>{{ 'log_type_statistic_modifier_received_buff'|trans({'%fighterName%': LogLine.data.fighterName, '%statistic%': LogLine.data.statistic | statistic, '%modifier%': LogLine.data.modifier}, 'app') }}</td>
                             {% elseif LogLine.data.modifierType  == 'nerf' %}
                                 <td class='combatLogTableTdIcon'><div class='nerf'></div></td>
-                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} voit {{ LogLine.data.statistic | statistic }} baissée de {{ LogLine.data.modifier }} !</td>
+                                <td class='combatLogTableTdText'>{{ 'log_type_statistic_modifier_received_nerf'|trans({'%fighterName%': LogLine.data.fighterName, '%statistic%': LogLine.data.statistic | statistic, '%modifier%': LogLine.data.modifier}, 'app') }}</td>
                             {% endif %}
                         {% endif %}
 
                         {% if LogLine.type is same as('type_statistic_modifier_loss') %}
                             {% if LogLine.data.modifierType  == 'buff' %}
                                 <td class='combatLogTableTdIcon'><div class='modifierStatusLoss'></div></td>
-                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd son bonus de {{ LogLine.data.modifier }} sur {{ LogLine.data.statistic | statistic }}!</td>
+                                <td class='combatLogTableTdText'>{{ 'log_type_statistic_modifier_loss_buff'|trans({'%fighterName%': LogLine.data.fighterName, '%statistic%': LogLine.data.statistic | statistic, '%modifier%': LogLine.data.modifier}, 'app') }}</td>
                             {% elseif LogLine.data.modifierType  == 'nerf' %}
                                 <td class='combatLogTableTdIcon'><div class='modifierStatusLoss'></div></td>
-                                <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd son malus de  {{ LogLine.data.modifier }} sur {{ LogLine.data.statistic | statistic }}!</td>
+                                <td class='combatLogTableTdText'>{{ 'log_type_statistic_modifier_loss_nerf'|trans({'%fighterName%': LogLine.data.fighterName, '%statistic%': LogLine.data.statistic | statistic, '%modifier%': LogLine.data.modifier}, 'app') }}</td>
                             {% endif %}
                         {% endif %}
 
                         {% if LogLine.type is same as('type_damaging_status_received') %}
                             <td class='combatLogTableTdIcon'><div class='damagingReceived'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} reçoit le status {{ LogLine.data.damagingType | damaging }} </td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_damaging_status_received'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_damaging_status_loss') %}
                             <td class='combatLogTableTdIcon'><div class='statusLoss'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd le status {{ LogLine.data.damagingType | damaging }} </td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_damaging_status_loss'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_control_status_received') %}
                             <td class='combatLogTableTdIcon'><div class='statusReceived'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} reçoit le status {{ LogLine.data.controlType | control }} </td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_received'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_control_status_loss') %}
                             <td class='combatLogTableTdIcon'><div class='statusLoss'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} perd le status {{ LogLine.data.controlType | control }} </td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_loss'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_control_status_activate') %}
@@ -138,12 +138,12 @@
 
                         {% if LogLine.type is same as('type_control_status_no_effect') %}
                             <td class='combatLogTableTdIcon'><div class='attackNoEffect'></div></td>
-                            <td class='combatLogTableTdText'>{{ LogLine.data.fighterName }} ne peut pas recevoir le status {{ LogLine.data.controlType | control }}, iel en est déjà affecté.</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_no_effect'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.controlType | control}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_attack_no_effect') %}
                             <td class='combatLogTableTdIcon'><div class='attackNoEffect'></div></td>
-                            <td class='combatLogTableTdText'>L'attaque n'a eu aucun effet.</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_attack_no_effect'|trans({}, 'app') }}</td>
                         {% endif %}
                     </tr>
                 {% endfor %}

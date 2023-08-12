@@ -10,8 +10,8 @@
     <table class="rankingTable">
         <thead>
             <tr>
-                <th colspan="1">N°</th>
-                <th colspan="2">Personnage</th>
+                <th colspan="1">{{ 'N°'|trans({}, 'app') }}</th>
+                <th colspan="2">{{ 'personnage'|trans({}, 'app') }}</th>
             </tr>
         </thead>
         <tbody>
@@ -24,8 +24,8 @@
                             <span class="rankingCharacterContainer">
                                 <img src="{{ asset(character | speciesIcon) }}">
                                 <span class="rankingCharacterInfo">
-                                    <span>{{ character.getName() }} | Niveau {{ character.level }}</span>
-                                    <span>(EXP : {{ character.xp }} / {{ character.getXPCeil() }})</span>
+                                    <span>{{ character.getName() }} | {{ 'niveau'|trans({}, 'app') }} {{ character.level }}</span>
+                                    <span>({{ 'exp'|trans({}, 'app') }} : {{ character.xp }} / {{ character.getXPCeil() }})</span>
                                 </span>
                             </span>
                         </a>

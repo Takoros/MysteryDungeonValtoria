@@ -21,6 +21,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class DungeonController extends AbstractController
 {
@@ -56,7 +57,7 @@ class DungeonController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/jeu/donjon/create', name: 'app_dungeon_create')]
-    public function dungeonCreate(Request $request, DungeonRepository $dungeonRepository, DungeonGenerationService $dungeonGenerationService, DungeonInstanceRepository $dungeonInstanceRepository, EntityManagerInterface $em): Response
+    public function dungeonCreate(Request $request, DungeonRepository $dungeonRepository, DungeonGenerationService $dungeonGenerationService, DungeonInstanceRepository $dungeonInstanceRepository, TranslatorInterface $translator, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
         $character = $user->getCharacter();
@@ -67,7 +68,8 @@ class DungeonController extends AbstractController
 
         $dungeonInstanceCreateForm = $this->createForm(CreateDungeonInstanceType::class, null,[
             'character' => $user->getCharacter(),
-            'dungeonRepository' => $dungeonRepository
+            'dungeonRepository' => $dungeonRepository,
+            'translator' => $translator
         ]);
 
         $dungeonInstanceCreateForm->handleRequest($request);

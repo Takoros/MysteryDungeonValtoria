@@ -1,6 +1,6 @@
 {% extends "base.html.twig" %}
 
-{% block title %}PMD : Valtoria | Donjon {% endblock %}
+{% block title %}PMD : Valtoria | {{ 'donjon'|trans({}, 'app') }} {% endblock %}
 
 {% block stylesheets %}
     <link rel="stylesheet" href="{{ asset('css/dungeon/app_dungeon.css') }}">
@@ -16,28 +16,28 @@
         {% include "Dungeon/_dungeon-show.html.twig" %}
     {% else %}
         <div class="noDungeonImage"><img src="{{ asset('images/evoli-sleep.png') }}" alt="Evoli qui dort"></div>
-        <div class="noDungeonTitle">Vous n'êtes dans aucun donjon</div>
+        <div class="noDungeonTitle">{{ 'vous_etes_dans_aucun_donjon'|trans({}, 'app') }}</div>
         
         {% if app.user.character.timers.getCooldownDungeonTime() is not null %}
             <div class="noDungeonCooldownTimerContainer">
-                <p>Temps de récupération avant la prochaine charge</p>
+                <p>{{ 'temps_de_recuperation_avant_la_prochaine_charge'|trans({}, 'app') }}</p>
                 <div id="noDungeonCooldownTimer">-</div>  
             </div>
         {% endif %}
 
         {% if app.user.character.timers.getDungeonCharges() > 0 %}
-            <div class="noDungeonChargesNumber">Charges de Donjon actuelles : {{ app.user.character.timers.getDungeonCharges() }} / {{ constant('App\\Entity\\Timers::MAX_DUNGEON_CHARGES') }}</div>
+            <div class="noDungeonChargesNumber">{{ 'charge_de_donjon_actuelle'|trans({}, 'app') }} {{ app.user.character.timers.getDungeonCharges() }} / {{ constant('App\\Entity\\Timers::MAX_DUNGEON_CHARGES') }}</div>
             <a class="noDungeonCreateDungeonInstanceLink" href="{{ path('app_dungeon_create') }}">
-                <div class="noDungeonCreateDungeonInstance">Créer un groupe d'exploration</div>
+                <div class="noDungeonCreateDungeonInstance">{{ 'creer_un_groupe_exploration'|trans({}, 'app') }}</div>
             </a>
             
             <div class="joinDungeonInstanceSeparator"></div>
 
-            <div class="joinDungeonInstanceTitle">Un groupe vous attends ? Rejoignez-le !</div>
+            <div class="joinDungeonInstanceTitle">{{ 'un_groupe_vous_attends_rejoignez_le'|trans({}, 'app') }}</div>
 
             {{ form_start(joinDungeonInstanceView, {'attr': {'class': 'dungeonInstanceJoin_form'}}) }}
                 <div class="joinInviteCodePannel">
-                    <div class="joinInviteCodePannelTitle">Code d'invitation</div>
+                    <div class="joinInviteCodePannelTitle">{{ 'code_invitation'|trans({}, 'app') }}</div>
                     {{ form_widget(joinDungeonInstanceView.inviteCode, {'attr': {'class': 'dungeonInstanceJoin_formWidget joinInviteCodePannelContent'}}) }}
                 </div>
             {{ form_end(joinDungeonInstanceView) }}

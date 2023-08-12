@@ -64,7 +64,7 @@ raid_RAID_ONE_description_room_5: "Despite your victory in this fight, their sin
 vous_etes_dans_aucun_raid: You are in no raid instance
 temps_de_recuperation_avant_la_prochaine_charge: Cooldown before next charge 
 charge_de_raid_actuelle: "Current Raid charges :"
-creer_un_groupe_exploration: "Create an exploration groupe"
+creer_un_groupe_exploration: "Create an exploration group"
 un_groupe_vous_attends_rejoignez_le: "A group awaits you ? Join it !"
 code_invitation: "Invite code"
 
@@ -99,3 +99,453 @@ vous_avez_reussi_a_conquerir_le: "You managed to conquer the"
 felicitations_aventuriers: "congratulation adventurers"
 vous_vous_etes_fait_battre_en_essayant_de_conquérir_le: "You got defeated while trying to conquer the"
 revenez_une_fois_plus_fort: "come back when you are stronger"
+
+# ---------------------------------------------------------------------------- #
+#                                    DONJON                                    #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Dungeon Data - - - - #
+
+Égouts de Fort-Écorce: "Sewers of Fort-Écorce"
+
+# - - - - Dungeon Templates - - - - #
+
+# dungeon.html.twig
+
+vous_etes_dans_aucun_donjon: "You are in no Dungeon instance"
+charge_de_donjon_actuelle: "Current Dungeon charges :"
+
+# dungeon_create.html.twig
+
+quel_donjon_voulez_vous_explorer: "Which dungeon do you wanna explore ?"
+dungeon_create_form_confirm: 'Confirm'
+
+#_dungeon-show.html.twig
+
+votre_equipe_se_prepare_entrer_dans_donjon: 'Your team is about to enter the dungeon'
+exploration_du_donjon: "Exploring dungeon"
+exploration_terminee: "Exploration finished"
+piece_inconnue_du_donjon_que_contient_elle: "Unknown room of the dungeon, what does it hide ?"
+ceci_est_un_mur_vous_ne_pouvez_pas_vous_y_rendre: "This is a wall, you cannot go there."
+piece_vide_du_donjon_passez_votre_chemin: "Empty room, nothing interesting."
+entree_du_donjon: "Dungeon's Entrance"
+sortie_du_donjon: "Dungeon's Exit"
+pokemons_sauvages_en_vue: "Wild Pokémons in sight"
+notes: "Remarks"
+dungeon_notes_1: "To complete the dungeon, you must find the exit and leave."
+dungeon_notes_2: "You cant run away form a tile containing wild pokemons"
+
+# ---------------------------------------------------------------------------- #
+#                                    Ranking                                   #
+# ---------------------------------------------------------------------------- #
+
+N°: "N°"
+personnage: "Character"
+niveau: "Level"
+exp: "EXP"
+classement: "Ranking"
+
+# ---------------------------------------------------------------------------- #
+#                                      HUB                                     #
+# ---------------------------------------------------------------------------- #
+
+qg_de_la_guilde_de_fort_ecorce: "HQ of the Fort-Écorce's guild"
+activites: "Activities"
+donjon: "Dungeon"
+raid: "Raid"
+wiki_attaques: "Attacks Wiki"
+
+# ---------------------------------------------------------------------------- #
+#                                   CHARACTER                                  #
+# ---------------------------------------------------------------------------- #
+
+# show.html.twig
+
+profil_de: 'Profile of'
+nom: 'Name'
+espece: 'Species'
+age: 'Age'
+rang: 'Rank'
+annuler: "Cancel"
+cuivre: "Copper"
+statistiques: 'Stats'
+depenser_N_points_de_stat_pour_gagner_N_Stat: "Spend %NumberPointsStat% Stat Point to increase %StatName% by %NumberStat% "
+
+# ---------------------------------------------------------------------------- #
+#                                    COMBAT                                    #
+# ---------------------------------------------------------------------------- #
+
+rapport_de_bataille: "Battle Report"
+retour_au_donjon: "Return to donjon"
+retour_au_raid: "Return to raid"
+equipe: "Team"
+rapport: "Report"
+round: "Round"
+
+# - - - - Log Lines - - - - #
+
+fin_du_combat: "Fight's End !"
+egalite: "Draw !"
+victoire_de_equipe: "Team %teamNumber% Won"
+critique: "Critical !"
+points_de_degats: "damage points."
+
+log_type_attack: "%fighterName% use %attackName% !"
+log_type_dodge: "%fighterName% dodged the attack"
+log_type_damage_taken_by_attack: "%fighterName% receive %damageTakenAmount%"
+log_type_damage_taken_by_status: "%fighterName% receive %damageTakenAmount% damage points from its %statusType%"
+log_type_healing_taken_by_attack: "%fighterName% is healed by %healAmount% Vitality points."
+log_type_ko: "%fighterName% is K.O."
+log_type_remaining_vitality: "%fighterName% has (%remainingVitality%/%maxVitality%) Vitality points left !"
+log_type_statistic_modifier_received_buff: "%fighterName% see %statistic% increased by %modifier%"
+log_type_statistic_modifier_received_nerf: "%fighterName% see %statistic% decreased by %modifier%"
+log_type_statistic_modifier_loss_buff: "%fighterName% loose its buff of %modifier% on %statistic%! "
+log_type_statistic_modifier_loss_nerf: "%fighterName% loose its debuff of %modifier% on %statistic% !"
+log_type_damaging_status_received: "%fighterName% receive the status %statusType%"
+log_type_damaging_status_loss: "%fighterName% loose the status %statusType%"
+log_type_control_status_received: "%fighterName% receive the status %statusType%"
+log_type_control_status_loss: "%fighterName% loose the status %statusType%"
+
+log_control_status_activate_confusion: "%fighterName% is confused, he/she attack itself."
+log_control_status_activate_fatigue: "%fighterName% is tired, he/she is resting."
+log_control_status_activate_freeze: "%fighterName% is freezed, he/she cant move."
+log_control_status_activate_paralysis: "%fighterName% is paralyzed, he/she cant move."
+log_control_status_activate_petrification: "%fighterName% is petrified, he/she cant move."
+log_control_status_activate_sleep: "%fighterName% is asleep, he/she cant move."
+log_control_status_activate_yawn: "%fighterName% yawns, he/she's gonna fall asleep soon."
+log_type_control_status_no_effect: "%fighterName% cant receive the status %statusType%, its already affected by it."
+log_type_attack_no_effect: "The attack didn't had any effect."
+
+log_display_stat_vitality: 'its Vitality'
+log_display_stat_strength: 'its Strength'
+log_display_stat_stamina: 'its Stamina'
+log_display_stat_power: 'its Power'
+log_display_stat_Bravery: 'its Bravery'
+log_display_stat_presence: 'its Presence'
+log_display_stat_impassiveness: 'its Impassiveness'
+log_display_stat_agility: 'its Agility'
+log_display_stat_coordination: 'its Coordination'
+log_display_stat_speed: 'its Speed'
+
+log_display_control_status_confusion: 'Confusion'
+log_display_control_status_fatigue: 'Fatigue'
+log_display_control_status_freeze: 'Freeze'
+log_display_control_status_paralysis: 'Paralysis'
+log_display_control_status_petrification: 'Petrification'
+log_display_control_status_sleep: 'Sleep'
+log_display_control_status_yawn: 'Yawn'
+
+log_display_damaging_status_burn: 'Burn'
+log_display_damaging_status_poison: 'Poison'
+log_display_damaging_status_bad_poison: 'Bad Poison'
+
+# ---------------------------------------------------------------------------- #
+#                                    ATTACKS                                   #
+# ---------------------------------------------------------------------------- #
+
+# - - - - Bug - - - - #
+
+secretion_attack: 'String Shot'
+secretion_attack_description: "Lowers the target's speed for 2 turns."
+piqure_attack: 'Bug Bite'
+piqure_attack_description: 'Deals physical damage to the target.'
+survinsecte_attack: 'Struggle Bug'
+survinsecte_attack_description: 'Deals special damage to every enemy, and lowers their Power for 2 turns.'
+papillodanse_attack: 'Quiver Dance'
+papillodanse_attack_description: 'Increases the Power, Bravery and Speed of the caster for 3 turns.'
+
+# - - - - Dark - - - - #
+
+fumee_protectrice_attack : 'Protective Smoke'
+fumee_protectrice_attack_description: 'Increases the Stamina, Bravery and Vitality of the caster for 3 turns.'
+morsure_attack: 'Bite'
+morsure_attack_description: 'Deals physical damage to the target, with a 30% chance to Petrify them.'
+aboiement_attack: 'Snarl'
+aboiement_attack_description: 'Deals special damage to every enemy, and lowers their Power for 2 turns.'
+feinte_attack: 'Feint Attack'
+feinte_attack_description: 'Deals mixed damage to the target. Cannot be dodged.'
+
+# - - - - Dragon - - - - #
+
+danse_draco_attack: 'Dragon Dance'
+danse_draco_attack_description: "Increases the caster's Speed and Strength for 3 turns."
+ouragan_attack: 'Twister'
+ouragan_attack_description: 'Deals special damage to every enemy.'
+abattage_attack: 'Breaking Swipe'
+abattage_attack_description: 'Deals physical damage to every enemy and lowers their Power for 2 turns.'
+dracacophonie: 'Clangorous Soul'
+dracacophonie_description: "The caster deals mixed damage to themselves, but increases their Strength, Power, Speed and Coordination for 3 turns."
+
+# - - - - Electric - - - - #
+
+chargeur_attack: 'Charge'
+chargeur_attack_description: "Increases the user's Speed and Agility for 3 turns"
+eclair_attack: 'Thunder Shock'
+eclair_attack_description: 'Deals special damage to the target, and has a 30% chance to Paralyse them.'
+crocs_eclair_attack: 'Thunder Fang'
+crocs_eclair_attack_description: 'Deals physical damage to the target, and lowers their Stamina.'
+parabochaines_attack: 'Parabolic Chains'
+parabochaines_attack_description: 'Deals special damage to the target, and lowers their Speed, Agility and Coordination for 3 turns.'
+
+# - - - - Explorer - - - - #
+
+lutte_attack: 'Struggle'
+lutte_attack_description: 'Deals mixed damage to the target.'
+tranche_attack: 'Slash'
+tranche_attack_description: 'Deals physical damage to the target.'
+reflet_attack: 'Double Team'
+reflet_attack_description: "Increases the user's Agility for 3 turns."
+regard_touchant_attack: 'Baby-Doll Eyes'
+regard_touchant_attack_description: 'Lowers the Strength and Power of the target for 2 turns.'
+encouragement_attack: 'Cheer Up'
+encouragement_attack_description: "Increases your team's speed (including the user) for 3 turns."
+lechouille_attack: 'Lick'
+lechouille_attack_description: 'Deals physical damage to the target, with a 30% chance to Paralyse them.'
+equilibre_attack: 'Balance'
+equilibre_attack_description: 'Heals up to 3 status conditions (1 : 45%, 2 : 35%, 3 : 20%). '
+coup_double_attack: 'Double Hit'
+coup_double_attack_description: 'Deals physical damage to the target, twice.'
+pansement_attack: 'Bandage'
+pansement_attack_description: 'Heals the ally with the least health.' 
+
+# - - - - Fairy - - - - #
+
+doux_baiser_attack: 'Sweet Kiss'
+doux_baiser_attack_description: 'Inflict Confusion to the target.'
+# -- #
+voix_enjoleuse_attack: 'Disarming Voice'
+voix_enjoleuse_attack_description: 'Inflict special damage to the target'
+# -- #
+vigilance_attack: 'Crafty Shield'
+vigilance_attack_description: 'Increase the Impassiveness of the caster'
+# -- #
+calinerie_attack: 'Play Rough'
+calinerie_attack_description: 'Inflict Physical damage to the target and reduce its Strength for two turns.'
+
+# - - - - Fighting - - - - #
+
+harmonie_attack: 'Harmony'
+harmonie_attack_description: 'Increase the Presence and the Impassiveness of the caster for 3 turns.'
+# -- #
+poing_karate_attack: 'Karate Chop'
+poing_karate_attack_description: 'Deals physical damage to the target'
+# -- #
+aurasphere_attack: 'Aura Sphere'
+aurasphere_attack_description: 'Deals special damage to the target'
+# -- #
+echauffement_attack: 'Limber'
+echauffement_attack_description: 'Deals physical damage to the target and increase the Strength and Power of the caster for 3 turns'
+
+# - - - - Fire - - - - #
+
+enhardir_attack: 'Embolden'
+enhardir_attack_description: 'Increase the Strength of the caster for 3 turns'
+# -- #
+flammeche_attack: 'Ember'
+flammeche_attack_description: 'Deals special damage to the target with 20% chance of burning it'
+# -- #
+poing_feu_attack: 'Fire Punch'
+poing_feu_attack_description: 'Deals physical damage to the target'
+# -- #
+danse_du_feu_attack: 'Fiery Dance'
+danse_du_feu_attack_description: 'Deals mixed damage to the target'
+
+# - - - - Flying - - - - #
+
+danse_plume_attack: 'Feather Dance'
+danse_plume_attack_description: 'Increase the Strength and Power of the caster for 3 turns.'
+# -- #
+cru-ailes_attack: 'Wing Attack'
+cru-ailes_attack_description: 'Deals physical damage to the target and increase the Strength of the caster for 3 turns'
+# -- #
+tornade_attack: 'Gust'
+tornade_attack_description: 'Deals special damage to the target, and increase the Power of the caster for 3 turns'
+# -- #
+vol_attack: 'Fly' 
+vol_attack_description: 'Two turn Attack. On the first turn, increase the caster Stamina and Bravery for 2 turns. On the second turn, deals mixed damage to the target.'
+
+# - - - - Ghost - - - - #
+
+onde_folie_attack: 'Confuse Ray'
+onde_folie_attack_description: 'Inflict Confusion to the target'
+# -- #
+etonnement_attack: 'Astonish'
+etonnement_attack_description: 'Deals special damage to the target with 30%'
+# -- #
+ball'ombre_attack: "Shadow Ball"
+ball'ombre_attack_description: 'Deals physical damage to the target'
+# -- #
+chatiment_attack: 'Hex'
+chatiment_attack_description: 'Deals special damage to the target, increase the attack power to 10 if the target is affected by a control status'
+
+# - - - - Grass - - - - #
+
+feuillage_attack: 'Leafage'
+feuillage_attack_description: "Deals special damage and decrease target's Coordination for 2 turns."
+# -- #
+fouet_liane_attack: 'Vine Whip'
+fouet_liane_attack_description: 'Deals physical damage to the target, with 15% chance of inflicting Confusion'
+# -- #
+vole-vie_attack: 'Absorb'
+vole-vie_attack_description: 'Deals mixed damage to the target, self-healing 25% of the dealt damage.'
+# -- #
+para-spore_attack: 'Stun Spore'
+para-spore_attack_description: 'Inflict Paralysis to the target'
+
+# - - - - Ground - - - - #
+
+jet_de_sable_attack: 'Sand Attack'
+jet_de_sable_attack_description: "Decrease the target's Coordination for 2 turns"
+# -- #
+tourbi-sable_attack: 'Sand Tomb'
+tourbi-sable_attack_description: 'Deals physical damage to the target'
+# -- #
+tir_de_boue_attack: 'Mud Shot'
+tir_de_boue_attack_description: 'Deals special damage to the target and decrease its Speed for 2 turns'
+# -- #
+tunnel_attack: 'Dig'
+tunnel_attack_description:  'Two turn attack. During the first turn, increase the caster Stamina and Bravery for 2 turns. During the second turn, deals physical damage to the target.'
+
+# - - - - Ice - - - - #
+
+buee_noire_attack: 'Haze'
+buee_noire_attack_description: 'Purge 1 to 3 buff on the target (1 : 45%, 2 : 35%, 3 : 20%)'
+# -- #
+poudreuse_attack: 'Powder Snow'
+poudreuse_attack_description: 'Deals special damage to the target and decrease its Stamina for 2 turns'
+# -- #
+eclats_glace_attack: 'Ice Shard'
+eclats_glace_attack_description: "Deals physical damage to the target and increase the caster's Speed for 3 turns"
+# -- #
+onde_boréale_attack: 'Aurora Beam'
+onde_boréale_attack_description: 'Deal special damage to the target, and decrease its Speed for 2 turns'
+
+# - - - - Monster - - - - #
+
+debris_protecteurs_attack: 'Protective Trash'
+debris_protecteurs_attack_description: 'Rolls into the surrounding garbage to increase its Stamina and Bravery for 4 turns.'
+# -- #
+cri_percant_attack: 'Piercing Scream'
+cri_percant_attack_description: 'Screams very loudly, decreasing the Coordination and Stamina of the enemy team for 3 turns.'
+
+# - - - - Normal - - - - #
+
+flair_attack: 'Odor Sleuth'
+flair_attack_description: 'Purge all Agility bonus of the target and increase the Coordination of the caster for 3 turns'
+charge_attack: 'Tackle'
+charge_attack_description: 'Deals physical damage to the target'
+meteores_attack: 'Swift'
+meteores_attack_description: 'Deals special damage to the target, and increase the Power of the caster for 3 turns'
+abri_attack: 'Protect'
+abri_attack_description: 'Increase the Stamina and Bravery of the caster for 2 turns'
+
+# - - - - Poison - - - - #
+
+toxik_attack: 'Toxic'
+toxik_attack_description: 'Inflict Bad Poison to the target'
+# -- #
+dard-venin_attack: 'Poison Sting'
+dard-venin_attack_description: 'Deals physical damage to the target with 30% chance to inflict Poison'
+# -- #
+acide_attack: 'Acid'
+acide_attack_description: 'Deals special damage to every enemy with 10% chance to decrease their Strength for 2 turns'
+# -- #
+choc_venin_attack: 'Venoshock'
+choc_venin_attack_description: "Deals special damage to the target, if its Poisoned also deals physical damage of 2 AttackPower using the Caster's Presence."
+
+# - - - - Psy - - - - #
+
+hypnose_attack: 'Hypnosis'
+hypnose_attack_description: 'Inflict Sleep to the target'
+# -- #
+choc_mental_attack: 'Confusion'
+choc_mental_attack_description: 'Deals special damage to the target with 10% chance of inflicting Confusion'
+# -- #
+psykoud'boul_attack: "Zen Headbutt"
+psykoud'boul_attack_description: "Deals physical damage to the target"
+# -- #
+vibra_soin_attack: 'Heal Pulse'
+vibra_soin_attack_description: "Heals all allies"
+
+# - - - - Rock - - - - #
+
+renforcement_attack: 'Consodilation'
+renforcement_attack_description: 'Increase the Stamina of the caster for 3 turns'
+# -- #
+jet_pierre_attack: 'Rock Throw'
+jet_pierre_attack_description: 'Deals physical damage to the target'
+# -- #
+assourdir_attack: 'Deafen'
+assourdir_attack_description: 'Deals special damage to the target with 15% of inflicting Confusion'
+# -- #
+lourdeur_attack: 'Heaviness'
+lourdeur_attack_description: 'Deals physical damage and decrease the Strength and the Coordination of the target for 2 turns'
+
+# - - - - Steel - - - - #
+
+analyse_attack: 'Analysis'
+analyse_attack_description: 'Increase the Coordination of all allies (including the caster) for 3 turns'
+# -- #
+lancecrou_attack: 'Gear Grind'
+lancecrou_attack_description: 'Deals special damage to the target'
+# -- #
+griffes_acier_attack: 'Metal Claw'
+griffes_acier_attack_description: 'Deals physical damage to the target'
+# -- #
+bombe_aimant_attack: 'Magnet Bomb'
+bombe_aimant_attack_description: 'Deals physical damage to all enemies'
+
+# - - - - Water - - - - #
+
+absorb'o_attack: "Water Absorb"
+absorb'o_attack_description: 'Heals the caster'
+# -- #
+pistolet_a_o_attack: 'Water Gun'
+pistolet_a_o_attack_description: 'Deals special damage to the target'
+# -- #
+aqua-jet_attack: 'Aqua Jet'
+aqua-jet_attack_description: 'Deals physical damage to the target with 30% of inflicting Confusion'
+# -- #
+repli_attack: 'Withdraw'
+repli_attack_description: 'Increase the Stamina of the caster for 3 turns'
+
+# ---------------------------------------------------------------------------- #
+#                                     STATS                                    #
+# ---------------------------------------------------------------------------- #
+
+vitalite: 'Vitality'
+vitalite_description: "Vitality represents your Pokémon's tanking capacity before fainting. A Pokémon faints in combat when their vitality drops to 0."
+# -- #
+endurance: 'Stamina'
+endurance_description: "Stamina is the ability of your Pokémon to take physical attacks, so the higher the value, the more physical damage will be reduced."
+# -- #
+courage: 'Bravery'
+courage_description: "Bravery is the ability of your Pokémon to take special attacks, so the higher the value, the more special damage will be reduced."
+# -- #
+agilite: 'Agility'
+agilite_description: "Agility increases the Pokémon’s chances of dodging, the higher its value, the higher the chances."
+# -- #
+impassibilite: 'Impassiveness'
+impassibilite_description: "Impassiveness allows a Pokémon to resist the negative effects inflicted on them (Control Status, stat malus.). The higher the value, the higher the chances of not undergoing a control status will be & the less stat malus will be effective on it."
+# -- #
+force: 'Strength'
+force_description: "Strength represents your Pokémon's ability to perform powerful physical attacks. The higher the value, the more physical damage the Pokémon deals."
+# -- #
+pouvoir: 'Power'
+pouvoir_description: "Power represents your Pokémon's ability to perform powerful special attacks. The higher the value, the more special damage the Pokémon deals."
+# -- #
+presence: "Presence"
+presence_description: "Presence represents your Pokémon’s ability to inflict status (positive or negative) & heal. The higher the Presence of a Pokémon, the more effective their healing and status will be."
+# -- #
+coordination: 'Coordination'
+coordination_description: "Coordination is used to determine how often a Pokémon will deal critical hits. The higher the value, the greater the chance of making critical attacks. Coordination also reduces the chance of dodging when attacking an opposing pokémon."
+# -- #
+vitesse: 'Speed'
+vitesse_description: "Speed allows you to attack faster and more often during a fight."
+# -- #
+points_action: "Action Points"
+points_action_description: "Set the maximum number of Action Points to spend in rotations."
+# -- #
+points_de_stat: "Stat Points"
+points_de_stat_description: "Points earned when leveling up, to spend in order to increase the stats of your character."
+# -- #

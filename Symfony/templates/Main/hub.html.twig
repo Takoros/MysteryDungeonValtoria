@@ -5,39 +5,39 @@
 {% endblock %}
 
 {% block body %}
-    <div class="hubTitle">QG de la guide de Fort-Écorce</div>
+    <div class="hubTitle">{{ 'qg_de_la_guilde_de_fort_ecorce'|trans({}, 'app') }}</div>
 
     <div class="activitiesPannel">
-        <div class="activitiesPannelTitle">Activitées</div>
+        <div class="activitiesPannelTitle">{{ 'activites'|trans({}, 'app') }}</div>
         <div class="activitiesContainer">
             <a href="{{ path('app_dungeon') }}" class="activityLink">
                 <button class="activityButton">
                     <img src="{{ asset('icons/dungeon.png') }}">
-                    <span>Donjon</span>
+                    <span>{{ 'donjon'|trans({}, 'app') }}</span>
                 </button>
             </a>
             <a href="{{ path('app_raid') }}" class="activityLink">
                 <button class="activityButton">
                     <img src="{{ asset('icons/boss.png') }}">
-                    <span>Raid</span>
+                    <span>{{ 'raid'|trans({}, 'app') }}</span>
                 </button>
             </a>
             <a href="{{ path('app_character') }}" class="activityLink">
                 <button class="activityButton">
                     <img src="{{ asset('icons/parchment.png') }}">
-                    <span>Profil</span>
+                    <span>{{ 'profil'|trans({}, 'app') }}</span>
                 </button>
             </a>
             <a href="{{ path('app_character_attacks') }}" class="activityLink">
                 <button class="activityButton">
                     <img src="{{ asset('icons/magic-book.png') }}">
-                    <span>Wiki Attaques</span>
+                    <span>{{ 'wiki_attaques'|trans({}, 'app') }}</span>
                 </button>
             </a>
             <a href="{{ path('app_ranking') }}" class="activityLink">
                 <button class="activityButton">
                     <img src="{{ asset('icons/trophy.png') }}">
-                    <span>Classement</span>
+                    <span>{{ 'classement'|trans({}, 'app') }}</span>
                 </button>
             </a>
         </div>
