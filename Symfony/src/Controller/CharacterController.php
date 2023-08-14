@@ -12,18 +12,21 @@ use App\Service\CharacterService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Translation\Translator;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CharacterController extends AbstractController
 {
     #[Route('/personnage/creation', name: 'app_character_create')]
-    public function create(Request $request, SpeciesRepository $speciesRepository, CharacterService $characterService): Response
+    public function create(Request $request, SpeciesRepository $speciesRepository, TranslatorInterface $translator, CharacterService $characterService): Response
     {
         $createCharacterForm = $this->createForm(CreateCharacterType::class, null, [
-            'speciesRepository' => $speciesRepository
+            'speciesRepository' => $speciesRepository,
+            'translator' => $translator
         ]);
 
         $createCharacterForm->handleRequest($request);
@@ -75,7 +78,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/jeu/personnage/modification/rotation/{type}', name: 'app_character_modify_rotation')]
-    public function modify_rotation(String $type, Request $request, CharacterService $characterService, EntityManagerInterface $em): Response
+    public function modify_rotation(String $type, Request $request, CharacterService $characterService, TranslatorInterface $translator, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 
@@ -91,7 +94,8 @@ class CharacterController extends AbstractController
 
         $modifyRotationForm = $this->createForm(ModifyRotationType::class, $rotationToModify, [
             'character' => $user->getCharacter(),
-            'characterService' => $characterService
+            'characterService' => $characterService,
+            'translator' => $translator
         ]);
 
         $modifyRotationForm->handleRequest($request);
@@ -142,7 +146,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/jeu/personnage/data-attack', name: 'app_character_data-attack', priority:1)]
-    public function getAttackData(Request $request, AttackRepository $attackRepository): JsonResponse
+    public function getAttackData(Request $request, AttackRepository $attackRepository, TranslatorInterface $translator): JsonResponse
     {
         $post = json_decode($request->getContent());
 
@@ -152,14 +156,24 @@ class CharacterController extends AbstractController
             return new JsonResponse('Attaque introuvable', 500);
         }
 
+        $attackName = strtolower($attack->getName());
+        
+        $attackName = str_replace(' ', '_', $attackName);
+        $attackName = str_replace('ô', 'o', $attackName);
+        $attackName = str_replace('â', 'a', $attackName);
+        $attackName = str_replace('û', 'u', $attackName);
+        $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('è', 'e', $attackName);
+        $attackName = str_replace('ç', 'c', $attackName);
+
         return new JsonResponse([
             'attack' => [
-                'name' => $attack->getName(),
+                'name' => $translator->trans($attackName.'_attack', [], 'app'),
                 'actionPointCost' => $attack->getActionPointCost(),
                 'attackPower' => $attack->getPower(),
                 'attackStatusPower' => $attack->getStatusPower(),
                 'attackCriticalPower' => $attack->getCriticalPower(),
-                'attackDescription' => $attack->getDescription()
+                'attackDescription' => $translator->trans($attackName.'_attack_description', [], 'app'),
             ]
         ]);
     }

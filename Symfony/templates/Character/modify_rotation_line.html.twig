@@ -4,12 +4,12 @@
     <td colspan="2">
         <div class="firstLine">
             <div class="statContainer"><span id="attackActionPointCost" data-id="formViewLine-{{ formViewNumber }}">0</span> <img class="modifyRotationPAIcon" src="{{ asset('icons/stats/actionPoint.png') }}"></div>
-            <div class="statContainer">Puissance : <span data-id="formViewLine-{{ formViewNumber }}" id="attackPower">0</span></div>
-            <div class="statContainer">P.Statut : <span data-id="formViewLine-{{ formViewNumber }}" id="attackStatusPower">0</span></div>
-            <div class="statContainer">P.Critique : <span data-id="formViewLine-{{ formViewNumber }}" id="attackCriticalPower">0</span></div>
+            <div class="statContainer">{{ 'puissance'|trans({}, 'app') }} : <span data-id="formViewLine-{{ formViewNumber }}" id="attackPower">0</span></div>
+            <div class="statContainer">{{ 'p.statut'|trans({}, 'app') }} : <span data-id="formViewLine-{{ formViewNumber }}" id="attackStatusPower">0</span></div>
+            <div class="statContainer">{{ 'p.critique'|trans({}, 'app') }} : <span data-id="formViewLine-{{ formViewNumber }}" id="attackCriticalPower">0</span></div>
         </div>
         <div class="secondLine">
-            <span id="attackDescription" data-id="formViewLine-{{ formViewNumber }}">chargement...</span>
+            <span id="attackDescription" data-id="formViewLine-{{ formViewNumber }}">{{ 'chargement'|trans({}, 'app') }}</span>
         </div>
     </td>
 </tr>

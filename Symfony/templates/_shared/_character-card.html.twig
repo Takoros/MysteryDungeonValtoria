@@ -3,10 +3,10 @@
         <div class="character-card-infobox">
             <img class="character-card-species-icon" src="{{ asset(character|speciesIcon) }}" alt="">
             <div class="character-card-infos">
-                <div><span class="character-card-infos-name character-card-infos-name-name">Nom : </span>{{ character.name }}{% if dungeonInstance is defined and character == dungeonInstance.leader or raidInstance is defined and character == raidInstance.leader %}<span class="character-card-dungeon-leader-icon"> 👑</span>{% endif %}</div>
-                <div><span class="character-card-infos-name">Age : </span>{{ character.age }}</div>
-                <div><span class="character-card-infos-name">Niveau : </span>{{ character.level }}</div>
-                <div><span class="character-card-infos-name character-card-infos-name-species">Espèce : </span>{{ character.Species.name }}</div>
+                <div><span class="character-card-infos-name character-card-infos-name-name">{{ 'nom'|trans({}, 'app') }} : </span>{{ character.name }}{% if dungeonInstance is defined and character == dungeonInstance.leader or raidInstance is defined and character == raidInstance.leader %}<span class="character-card-dungeon-leader-icon"> 👑</span>{% endif %}</div>
+                <div><span class="character-card-infos-name">{{ 'age'|trans({}, 'app') }} : </span>{{ character.age }}</div>
+                <div><span class="character-card-infos-name">{{ 'niveau'|trans({}, 'app') }} : </span>{{ character.level }}</div>
+                <div><span class="character-card-infos-name character-card-infos-name-species">{{ 'espece'|trans({}, 'app') }} : </span>{{ character.Species.name }}</div>
             </div>
         </div>
         {% if character.gender == 'Mâle' %}
@@ -20,25 +20,25 @@
         <table class="character-card-statTable">
             <tbody>
                 <tr>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/vitality.png') }}"><span class="character-card-stat-name">Vitalité : </span>{{ character.Stats.vitality }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/strength.png') }}"><span class="character-card-stat-name">Force : </span>{{ character.Stats.strength }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/power.png') }}"><span class="character-card-stat-name">Pouvoir : </span>{{ character.Stats.power }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/vitality.png') }}"><span class="character-card-stat-name">{{ 'vitalite'|trans({}, 'app') }} : </span>{{ character.Stats.vitality }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/strength.png') }}"><span class="character-card-stat-name">{{ 'force'|trans({}, 'app') }} : </span>{{ character.Stats.strength }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/power.png') }}"><span class="character-card-stat-name">{{ 'pouvoir'|trans({}, 'app') }} : </span>{{ character.Stats.power }}</td>
                 </tr>
                 <tr>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/speed.png') }}"><span class="character-card-stat-name">Vitesse : </span>{{ character.Stats.speed }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/stamina.png') }}"><span class="character-card-stat-name">Endurance : </span>{{ character.Stats.stamina }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/bravery.png') }}"><span class="character-card-stat-name">Courage : </span>{{ character.Stats.bravery }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/speed.png') }}"><span class="character-card-stat-name">{{ 'vitesse'|trans({}, 'app') }} : </span>{{ character.Stats.speed }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/stamina.png') }}"><span class="character-card-stat-name">{{ 'endurance'|trans({}, 'app') }} : </span>{{ character.Stats.stamina }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/bravery.png') }}"><span class="character-card-stat-name">{{ 'courage'|trans({}, 'app') }} : </span>{{ character.Stats.bravery }}</td>
                     
                 </tr>
                 <tr>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}"><span class="character-card-stat-name">Agility : </span>{{ character.Stats.agility }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}"><span class="character-card-stat-name">Présence : </span>{{ character.Stats.presence }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}"><span class="character-card-stat-name">PA : </span>{{ character.Stats.actionPoint }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/agility.svg') }}"><span class="character-card-stat-name">{{ 'agilite'|trans({}, 'app') }} : </span>{{ character.Stats.agility }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/presence.png') }}"><span class="character-card-stat-name">{{ 'presence'|trans({}, 'app') }} : </span>{{ character.Stats.presence }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/actionPoint.png') }}"><span class="character-card-stat-name">{{ 'pa'|trans({}, 'app') }} : </span>{{ character.Stats.actionPoint }}</td>
                     <td></td>
                 </tr>
                 <tr>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/coordination.png') }}"><span class="character-card-stat-name">Coordination : </span>{{ character.Stats.coordination }}</td>
-                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/impassiveness.png') }}"><span class="character-card-stat-name">Impassibilité : </span>{{ character.Stats.impassiveness }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/coordination.png') }}"><span class="character-card-stat-name">{{ 'coordination'|trans({}, 'app') }} : </span>{{ character.Stats.coordination }}</td>
+                    <td><img class="character-card-stat-icon" src="{{ asset('icons/stats/impassiveness.png') }}"><span class="character-card-stat-name">{{ 'impassibilite'|trans({}, 'app') }} : </span>{{ character.Stats.impassiveness }}</td>
                     <td></td>
                 </tr>
             </tbody>

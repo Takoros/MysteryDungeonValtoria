@@ -14,16 +14,24 @@ use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class CreateCharacterType extends AbstractType
 {
+    public TranslatorInterface $translator;
+
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         if(!array_key_exists('speciesRepository', $options) || $options['speciesRepository'] === null){
             throw new ParameterNotFoundException('Paramètre speciesRepository nécessaire au formulaire');
         }
+
+        if(!array_key_exists('translator', $options) || $options['translator'] === null){
+            throw new ParameterNotFoundException('Paramètre translator nécessaire au formulaire');
+        }
         
         $speciesRepository = $options['speciesRepository'];
+        $this->translator = $options['translator'];
 
         $builder
             ->add('name', TextType::class, [
@@ -35,8 +43,8 @@ class CreateCharacterType extends AbstractType
             ])
             ->add('gender', ChoiceType::class, [
                 'choices'  => [
-                    'Mâle' => 'Mâle',
-                    'Femelle' => 'Femelle',
+                    $this->translator->trans('genre_male', [], 'app') => 'Mâle',
+                    $this->translator->trans('genre_female', [], 'app') => 'Femelle',
                 ],
             ])
             ->add('age', IntegerType::class, [
@@ -56,7 +64,10 @@ class CreateCharacterType extends AbstractType
             ->add('Species', EntityType::class, [
                 'class' => Species::class,
                 'choices' => $speciesRepository->findBy(['isPlayable' => true]),
-                'choice_label' => 'name',
+                'choice_value' => 'name',
+                'choice_label' => function (?Species $species): string {
+                    return $this->translator->trans( $species->getId().'_species_name' ,[],'app');
+                },
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'Confirmer'
@@ -68,7 +79,8 @@ class CreateCharacterType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Character::class,
-            'speciesRepository' => null
+            'speciesRepository' => null,
+            'translator' => null
         ]);
     }
 }

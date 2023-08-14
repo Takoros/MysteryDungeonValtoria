@@ -27,7 +27,7 @@
                     {% endif %}
                 </div>
                 <div class="cardUpperRightSpeciesAgeRank">
-                    <div class="cardUpperRightSpecies">{{ 'espece'|trans({}, 'app') }} : {{ character.Species.name }}</div>
+                    <div class="cardUpperRightSpecies">{{ 'espece'|trans({}, 'app') }} : {{ character.Species|transSpecies }}</div>
                     | <div class="cardUpperRightAge">{{ 'age'|trans({}, 'app') }} : {{ character.age }}</div>
                     | <div class="cardUpperRightRank">{{ 'rang'|trans({}, 'app') }} : {{ 'cuivre'|trans({}, 'app') }}</div>
                 </div>
@@ -39,7 +39,7 @@
                     {% if isSelfCharacter %}<div id="modifyDescriptionFormToggle" onClick="modifyDescriptionToggle()" class="modifyDescriptionFormToggle"></div>{% endif %}
                     <div id="modifyDescriptionValidationButtons" class="modifyDescriptionValidationButtons modifyDescriptionValidationButtonsHide">
                         <div class="modifyDescriptionValidationButtonCancel" onClick="OnCLickCancel()">{{ 'annuler'|trans({}, 'app') }}</div>
-                        {{ form_widget(modifyDescriptionFormView.submit,{'attr': {'class':'modifyDescriptionValidationButtonSubmit'}}) }}
+                        {{ form_widget(modifyDescriptionFormView.submit,{'attr': {'class':'modifyDescriptionValidationButtonSubmit'}, 'label': 'dungeon_create_form_confirm'|trans({}, 'app')}) }}
                     </div>
                     {{ form_end(modifyDescriptionFormView) }}
                 </div>
@@ -154,16 +154,16 @@
         </div>
         <div class="profileCharacterCardSeparator"></div>
         <div class="profileCharacterCardBottom">
-            <div class="profileCharacterCardBottomTitle">Rotations :</div>
+            <div class="profileCharacterCardBottomTitle">{{ 'rotations'|trans({}, 'app') }} :</div>
 
-            <div id="mobileSwapShowButton" class="mobileSwapShow" onClick="mobileSwapRotationShow()">Voir Rotation</div>
+            <div id="mobileSwapShowButton" class="mobileSwapShow" onClick="mobileSwapRotationShow()">{{ 'voir_rotation'|trans({}, 'app') }}</div>
 
             <table class="profileCharacterCardBottomTable">
                 <thead class="profileCharacterCardBottomTableThead">
                     <tr>
                         <th colspan="1">N°</th>
-                        <th class="rotationTh openerItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Opener'}) }}"></a>{% endif %} Opener <span class="rotationCostResume">({{ character.getOpenerRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
-                        <th class="rotationTh rotationItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Rotation'}) }}"></a>{% endif %} Rotation <span class="rotationCostResume">({{ character.getRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
+                        <th class="rotationTh openerItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Opener'}) }}"></a>{% endif %} {{ 'opener'|trans({}, 'app') }} <span class="rotationCostResume">({{ character.getOpenerRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
+                        <th class="rotationTh rotationItem" colspan="2">{% if isSelfCharacter %}<a class="modifyRotationLink" href="{{ path('app_character_modify_rotation',{'type':'Rotation'}) }}"></a>{% endif %} {{ 'rotation'|trans({}, 'app') }} <span class="rotationCostResume">({{ character.getRotation().getActionPointUsed() }} / {{ character.getStats().getActionPoint() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -172,13 +172,13 @@
                         <tr class="valueTr">
                             <td rowspan="2">{{ i }}</td>
                             <td class="openerItem">{{ character.getOpenerRotation().getAttack(attackNumber).getActionPointCost() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}"></td>
-                            <td class="openerItem">{{ character.getOpenerRotation().getAttack(attackNumber).getName() }} <img title="{{ character.getOpenerRotation().getAttack(attackNumber).getType().getName() }}" class="profileCharacterCardTypeIcon" src="{{ asset(character.getOpenerRotation().getAttack(attackNumber).getType() | typeIcon) }}"></td>
+                            <td class="openerItem">{{ character.getOpenerRotation().getAttack(attackNumber).getName()|transAttack }} <img title="{{ character.getOpenerRotation().getAttack(attackNumber).getType().getName() }}" class="profileCharacterCardTypeIcon" src="{{ asset(character.getOpenerRotation().getAttack(attackNumber).getType() | typeIcon) }}"></td>
                             <td class="rotationItem">{{ character.getRotation().getAttack(attackNumber).getActionPointCost() }} <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}"></td>
-                            <td class="rotationItem">{{ character.getRotation().getAttack(attackNumber).getName() }} <img title="{{ character.getOpenerRotation().getAttack(attackNumber).getType().getName() }}" class="profileCharacterCardTypeIcon" src="{{ asset(character.getRotation().getAttack(attackNumber).getType() | typeIcon) }}"></td>
+                            <td class="rotationItem">{{ character.getRotation().getAttack(attackNumber).getName()|transAttack }} <img title="{{ character.getOpenerRotation().getAttack(attackNumber).getType().getName() }}" class="profileCharacterCardTypeIcon" src="{{ asset(character.getRotation().getAttack(attackNumber).getType() | typeIcon) }}"></td>
                         </tr>
                         <tr class="descriptionTr">
-                            <td colspan="2" class="openerItem">{{ character.getOpenerRotation().getAttack(attackNumber).getDescription() }}</td>
-                            <td colspan="2" class="rotationItem">{{ character.getRotation().getAttack(attackNumber).getDescription() }}</td>
+                            <td colspan="2" class="openerItem">{{ character.getOpenerRotation().getAttack(attackNumber).getName()|transAttackDesc }}</td>
+                            <td colspan="2" class="rotationItem">{{ character.getRotation().getAttack(attackNumber).getName()|transAttackDesc }}</td>
                         </tr>
                         {% set i = i + 1 %}
                     {% endfor %}
@@ -190,7 +190,7 @@
 
     {% if isSelfCharacter %}
         <div class="profileFightListCard">
-            <div class="profileFightListCardTitle">Combats Récents</div>
+            <div class="profileFightListCardTitle">{{ 'combats_recents'|trans({}, 'app') }}</div>
                 {% if character.getCombatLogs()|length > 0 %}
                     <div class="profileFightListContainer">
                         {% for combat in character.getLastTenCombatLogs()  %}
@@ -198,12 +198,12 @@
                                 <div class="fightLine">
                                     <div class="fightLineWinStatus">
                                         {% if combat.isCharacterTeamWinner(character) %}
-                                            <span class="fightLineWinStatusVictory">Victoire</span>
+                                            <span class="fightLineWinStatusVictory">{{ 'victoire'|trans({}, 'app') }}</span>
                                         {% else %}
-                                            <span class="fightLineWinStatusDefeat">Défaite</span>
+                                            <span class="fightLineWinStatusDefeat">{{ 'defaite'|trans({}, 'app') }}</span>
                                         {% endif %}
                                     </div>
-                                    <div class="fightLineArea">{{ combat.location }}</div>
+                                    <div class="fightLineArea">{{ combat.location|trans({}, 'app') }}</div>
                                     <div class="fightLineSeparator"></div>
                                     <div class="fightLineDate">{{ combat.dateCreation | date('d/m/Y H:i')}}</div>
                                     <div class="fightLineMessage">{{ combat.message }}</div>
@@ -212,7 +212,7 @@
                         {% endfor %}
                     </div>
                 {% else %}
-                    <div class="noCombatLogMessage">Vous n'avez encore de combats..</div>
+                    <div class="noCombatLogMessage">{{ 'vous_avez_pas_encore_de_combat'|trans({}, 'app') }}</div>
                 {% endif %}
         </div>
     {% endif %}
@@ -275,7 +275,7 @@
         })
 
         function mobileSwapRotationShow(){
-            mobileSwapShowButton.innerText = `Voir ${mobileRotationShowStates[currentMobileRotationShow]}`;
+            mobileSwapShowButton.innerText = `{{ 'voir'|trans({}, 'app')}} ${mobileRotationShowStates[currentMobileRotationShow]}`;
             if(currentMobileRotationShow === 0){
                 currentMobileRotationShow = 1;
             }

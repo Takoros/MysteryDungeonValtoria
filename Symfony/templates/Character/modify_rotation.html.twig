@@ -7,16 +7,16 @@
 {% endblock %}
 
 {% block body %}
-    <div class="modifyRotationTitle">Modification de votre {{ type }}</div>
-    <a class="attackListLink" href="{{ path('app_character_attacks') }}"><button class="attackListButton">Voir les attaques disponibles</button></a>
+    <div class="modifyRotationTitle">{{ 'modification_de_votre'|trans({}, 'app') }} {{ type }}</div>
+    <a class="attackListLink" href="{{ path('app_character_attacks') }}"><button class="attackListButton">{{ 'voir_les_attaques_disponibles'|trans({}, 'app') }}</button></a>
 
     {{ form_start(modifyRotationFormView)}}
         <table class="modifyRotationTable">
             <thead>
                 <tr>
                     <th colspan="1">N°</th>
-                    <th colspan="1">Attaque</th>
-                    <th colspan="2">Informations (Max : {{character.Stats.actionPoint}} <img class="modifyRotationPAIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</th>
+                    <th colspan="1">{{ 'attaque'|trans({}, 'app') }}</th>
+                    <th colspan="2">{{ 'informations'|trans({}, 'app') }} (Max : {{character.Stats.actionPoint}} <img class="modifyRotationPAIcon" src="{{ asset('icons/stats/actionPoint.png') }}">)</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
             </tbody>
         </table>
         <div class="actionButtons">
-            <a class="returnLink" href="{{ path('app_character') }}"><button class="returnButton">Retour</button></a>
+            <a class="returnLink" href="{{ path('app_character') }}"><button class="returnButton">{{ 'retour'|trans({}, 'app') }}</button></a>
             {{ form_widget(modifyRotationFormView.submit, {'attr': {'class': 'modifyRotationSubmit'}}) }}
         </div>
     {{ form_end(modifyRotationFormView)}}

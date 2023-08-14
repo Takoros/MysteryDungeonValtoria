@@ -18,7 +18,6 @@ accueil: Home
 jouer: Play
 footer_description: "Valtoria is a game nowhere associated with Nintendo. All medias and designs belongs to (C) Nintendo 2023. The characters and images of Pokémon™ belongs to  Pokémon USA, Inc. This website is not approved or affiliated by Nintendo, Creatures, GAMEFREAK, The Pokémon Company, Chunsoft, Pokémon USA, Inc ou Wizards of the coast"
 
-
 # ---------------------------------------------------------------------------- #
 #                                     HOME                                     #
 # ---------------------------------------------------------------------------- #
@@ -170,6 +169,57 @@ annuler: "Cancel"
 cuivre: "Copper"
 statistiques: 'Stats'
 depenser_N_points_de_stat_pour_gagner_N_Stat: "Spend %NumberPointsStat% Stat Point to increase %StatName% by %NumberStat% "
+rotations: "Rotations"
+voir_rotation: "See Rotation"
+rotation: "Rotation"
+opener: "Opener"
+combats_recents: "Last Fights"
+victoire: "Victory"
+defaite: "Defeat"
+vous_avez_pas_encore_de_combat: "You dont have any fight"
+voir: "See"
+
+# modify_rotation.html.twig
+
+modification_de_votre: "Modifying your"
+voir_les_attaques_disponibles: "See available attacks"
+attaque: "Attack"
+informations: "Informations"
+retour: 'Return'
+
+# modify_rotation_line.html.twig
+
+puissance: 'Power'
+p.statut: 'P.Status'
+p.critique: 'P.Critical'
+chargement: 'Loading...'
+
+# attacks.html.twig
+
+attaques_disponibles_du_jeu: 'Available attacks of the game'
+
+# attacks_summary.html.twig
+
+selectionnez_un_type: 'Select a type...'
+action_point_title: "The cost in Action Point this attack has."
+attack_power_title: "Value that affects damage inflicted by the attack. In the case of mixed damage, the value is used twice (once on each type of damage). It also affects healing done"
+attack_status_power_title: "Value that affects the power of status effects inflicted by the attack (Nerf/Buff/Control...)"
+attack_critical_power_title: "Determine the multiplier applied to the attack's value in case of crit. (Example : An attack with a p.critical of 25 will increase its effect by 25% in case of crit)"
+
+# character-card
+
+pa: 'AP'
+
+# create.html.twig
+
+creation_de_personnage: 'Creation of Character'
+nom_du_personnage: "Name of Character"
+genre_du_personnage: "Gender of Character"
+age_du_personnage: "Age of Character"
+description_du_personnage: "Resume of Character"
+genre_male: 'Male'
+genre_female: 'Female'
+
 
 # ---------------------------------------------------------------------------- #
 #                                    COMBAT                                    #
@@ -549,3 +599,109 @@ points_action_description: "Set the maximum number of Action Points to spend in 
 points_de_stat: "Stat Points"
 points_de_stat_description: "Points earned when leveling up, to spend in order to increase the stats of your character."
 # -- #
+
+# ---------------------------------------------------------------------------- #
+#                                    SPECIES                                   #
+# ---------------------------------------------------------------------------- #
+
+1_species_name: "Bulbasaur"
+19_species_name: "Rattata"
+20_species_name: "Raticate"
+23_species_name: "Ekans"
+27_species_name: "Sandshrew"
+29_species_name: "Nidoran ♀"
+32_species_name: "Nidoran ♂"
+37_species_name: "Vulpix"
+41_species_name: "Zubat"
+48_species_name: "Venonat"
+63_species_name: "Abra"
+77_species_name: "Ponyta"
+88_species_name: "Grimer"
+89_species_name: "Muk"
+104_species_name: "Cubone"
+109_species_name: "Koffing"
+133_species_name: "Eevee"
+140_species_name: "Kabuto"
+147_species_name: "Dratini"
+152_species_name: "Chikorita"
+155_species_name: "Cyndaquil"
+158_species_name: "Totodile"
+167_species_name: "Spinarak"
+169_species_name: "Crobat"
+173_species_name: "Cleffa"
+175_species_name: "Togepi"
+179_species_name: "Mareep"
+209_species_name: "Snubbull"
+215_species_name: "Sneasel"
+261_species_name: "Poochyena"
+263_species_name: "Zigzagoon"
+325_species_name: "Spoink"
+328_species_name: "Trapinch"
+355_species_name: "Duskull"
+360_species_name: "Wynaut"
+361_species_name: "Snorunt"
+371_species_name: "Bagon"
+399_species_name: "Bidoof"
+401_species_name: "Kricketot"
+403_species_name: "Shinx"
+418_species_name: "Buizel"
+425_species_name: "Drifloon"
+427_species_name: "Buneary"
+431_species_name: "Glameow"
+447_species_name: "Riolu"
+495_species_name: "Snivy"
+501_species_name: "Moustillon"
+524_species_name: "Oshawott"
+570_species_name: "Zorua"
+582_species_name: "Vanillite"
+590_species_name: "Foongus"
+599_species_name: "Klink"
+610_species_name: "Axew"
+613_species_name: "Cubchoo"
+619_species_name: "Mienfoo"
+653_species_name: "Fennekin"
+672_species_name: "Skiddo"
+674_species_name: "Pancham"
+677_species_name: "Espurr"
+704_species_name: "Goomy"
+714_species_name: "Noibat"
+728_species_name: "Popplio"
+744_species_name: "Rockruff"
+782_species_name: "Jangmo-o"
+821_species_name: "Rookidee"
+827_species_name: "Nickit"
+831_species_name: "Wooloo"
+835_species_name: "Yamper"
+852_species_name: "Clobbopus"
+870_species_name: "Falinks"
+878_species_name: "Cufant"
+906_species_name: "Sprigatito"
+917_species_name: "Tarountula"
+921_species_name: "Pawmi"
+926_species_name: "Fidough"
+971_species_name: "Greavard"
+
+# ---------------------------------------------------------------------------- #
+#                                     TYPES                                    #
+# ---------------------------------------------------------------------------- #
+
+insecte_type: 'Bug'
+tenebres_type: 'Dark'
+dragon_type: 'Dragon'
+electrik_type: 'Electric'
+aventurier_type: 'Explorer'
+fee_type: 'Fairy'
+combat_type: 'Fighting'
+feu_type: 'Fire'
+vol_type: 'Flying'
+spectre_type: 'Ghost'
+plante_type: 'Grass'
+sol_type: 'Ground'
+glace_type: 'Ice'
+monstre_type: 'Monster'
+normal_type: 'Normal'
+poison_type: 'Poison'
+psy_type: 'Psy'
+roche_type: 'Rock'
+acier_type: 'Steel'
+eau_type: 'Water'

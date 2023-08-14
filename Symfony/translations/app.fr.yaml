@@ -169,6 +169,56 @@ annuler: "Annuler"
 cuivre: "Cuivre"
 statistiques: 'Statistiques'
 depenser_N_points_de_stat_pour_gagner_N_Stat: "Dépenser %NumberPointsStat% Point de Stat pour gagner %NumberStat% %StatName%"
+rotations: "Rotations"
+voir_rotation: "Voir Rotation"
+rotation: "Rotation"
+opener: "Opener"
+combats_recents: "Combats Récent"
+victoire: "Victoire"
+defaite: "Défaite"
+vous_avez_pas_encore_de_combat: "Vous n'avez pas encore de combat"
+voir: "Voir"
+
+# modify_rotation.html.twig
+
+modification_de_votre: "Modification de votre"
+voir_les_attaques_disponibles: "Voir les attaques disponibles"
+attaque: "Attaque"
+informations: "Informations"
+retour: 'Retour'
+
+# modify_rotation_line.html.twig
+
+puissance: 'Puissance'
+p.statut: 'P.Statut'
+p.critique: 'P.Critique'
+chargement: 'Chargement...'
+
+# attacks.html.twig
+
+attaques_disponibles_du_jeu: 'Attaques disponibles du jeu'
+
+# attacks_summary.html.twig
+
+selectionnez_un_type: 'Séléctionnez un type...'
+action_point_title: "Le cout en Points d'Action de cette attaque."
+attack_power_title: "Valeur permettant de calculer les dégâts infligés par l'attaque. Dans le cas d'une attaque infligeant des dégâts mixtes, la valeur est appliquée sur chacun des calculs de dégât et non divisé. Elle représente aussi la valeur de soin prodigué."
+attack_status_power_title: "Valeur déterminant la puissance des status (bonus/malus de stat) infligés par cette attaque."
+attack_critical_power_title: "Détermine le multiplicateur appliqué aux valeurs de l'attaque en cas de critique. (Exemple : Une attaque avec un P.Critique de 25 verra ses effets augmentés de 25% en cas de critique)"
+
+# character-card
+
+pa: 'PA'
+
+# create.html.twig
+
+creation_de_personnage: 'Création de Personnage'
+nom_du_personnage: "Nom du Personnage"
+genre_du_personnage: "Genre du Personnage"
+age_du_personnage: "Age du Personnage"
+description_du_personnage: "Description du Personnage"
+genre_male: 'Mâle'
+genre_female: 'Femelle'
 
 # ---------------------------------------------------------------------------- #
 #                                    COMBAT                                    #
@@ -568,3 +618,109 @@ points_action_description: "Nombre de points d'action maximum par Rotation"
 points_de_stat: "Points de Stat"
 points_de_stat_description: "Points à dépenser pour augmenter les statistiques de votre personnage. Obtenu en montant de niveau."
 # -- #
+
+# ---------------------------------------------------------------------------- #
+#                                    SPECIES                                   #
+# ---------------------------------------------------------------------------- #
+
+1_species_name: "Bulbizarre"
+19_species_name: "Rattata"
+20_species_name: "Ratatac"
+23_species_name: "Abo"
+27_species_name: "Sabelette"
+29_species_name: "Nidoran ♀"
+32_species_name: "Nidoran ♂"
+37_species_name: "Goupix"
+41_species_name: "Nosferapti"
+48_species_name: "Mimitoss"
+63_species_name: "Abra"
+77_species_name: "Ponyta"
+88_species_name: "Tadmorv"
+89_species_name: "Grotadmorve"
+104_species_name: "Osselait"
+109_species_name: "Smogo"
+133_species_name: "Évoli"
+140_species_name: "Kabuto"
+147_species_name: "Minidraco"
+152_species_name: "Germignon"
+155_species_name: "Héricendre"
+158_species_name: "Kaiminus"
+167_species_name: "Mimigal"
+169_species_name: "Nostenfer"
+173_species_name: "Mélo"
+175_species_name: "Togepi"
+179_species_name: "Wattouat"
+209_species_name: "Snubbull"
+215_species_name: "Farfuret"
+261_species_name: "Medhyèna"
+263_species_name: "Zigzaton"
+325_species_name: "Spoink"
+328_species_name: "Kraknoix"
+355_species_name: "Skélénox"
+360_species_name: "Okéoké"
+361_species_name: "Stalgamin"
+371_species_name: "Draby"
+399_species_name: "Keunotor"
+401_species_name: "Crikzik"
+403_species_name: "Lixy"
+418_species_name: "Mustébouée"
+425_species_name: "Baudrive"
+427_species_name: "Laporeille"
+431_species_name: "Chaglam"
+447_species_name: "Riolu"
+495_species_name: "Vipélierre"
+501_species_name: "Moustillon"
+524_species_name: "Nodulithe"
+570_species_name: "Zorua"
+582_species_name: "Sorbébé"
+590_species_name: "Trompignon"
+599_species_name: "Tic"
+610_species_name: "Coupenotte"
+613_species_name: "Polarhume"
+619_species_name: "Kungfouine"
+653_species_name: "Feunnec"
+672_species_name: "Cabriolaine"
+674_species_name: "Pandespiègle"
+677_species_name: "Psystigri"
+704_species_name: "Mucuscule"
+714_species_name: "Sonistrelle"
+728_species_name: "Otaquin"
+744_species_name: "Rocabot"
+782_species_name: "Bébécaille"
+821_species_name: "Minisange"
+827_species_name: "Goupilou"
+831_species_name: "Moumouton"
+835_species_name: "Voltoutou"
+852_species_name: "Poulpaf"
+870_species_name: "Hexadron"
+878_species_name: "Charibari"
+906_species_name: "Poussacha"
+917_species_name: "Tissenboule"
+921_species_name: "Pohm"
+926_species_name: "Pâtachiot"
+971_species_name: "Toutombe"
+
+# ---------------------------------------------------------------------------- #
+#                                     TYPES                                    #
+# ---------------------------------------------------------------------------- #
+
+insecte_type: 'Insecte'
+tenebres_type: 'Ténèbres'
+dragon_type: 'Dragon'
+electrik_type: 'Electrik'
+aventurier_type: 'Aventurier'
+fee_type: 'Fée'
+combat_type: 'Combat'
+feu_type: 'Feu'
+vol_type: 'Vol'
+spectre_type: 'Spectre'
+plante_type: 'Plante'
+sol_type: 'Sol'
+glace_type: 'Glace'
+monstre_type: 'Monstre'
+normal_type: 'Normal'
+poison_type: 'Poison'
+psy_type: 'Psy'
+roche_type: 'Roche'
+acier_type: 'Acier'
+eau_type: 'Eau'

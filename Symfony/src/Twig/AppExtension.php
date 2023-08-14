@@ -34,6 +34,8 @@ class AppExtension extends AbstractExtension
             new TwigFilter('RaidInstanceStatus', [$this, 'getInstanceStatusName']),
             new TwigFilter('typeIcon', [$this, 'getTypeIconName']),
             new TwigFilter('transAttack', [$this, 'translateAttackName']),
+            new TwigFilter('transAttackDesc', [$this, 'translateAttackDesc']),
+            new TwigFilter('transSpecies', [$this, 'translateSpeciesName'])
         ];
     }
 
@@ -285,11 +287,30 @@ class AppExtension extends AbstractExtension
         $attackName = str_replace(' ', '_', $attackName);
         $attackName = str_replace('ô', 'o', $attackName);
         $attackName = str_replace('â', 'a', $attackName);
+        $attackName = str_replace('à', 'a', $attackName);
         $attackName = str_replace('û', 'u', $attackName);
         $attackName = str_replace('é', 'e', $attackName);
         $attackName = str_replace('è', 'e', $attackName);
         $attackName = str_replace('ç', 'c', $attackName);
 
         return $this->translator->trans($attackName.'_attack', [], 'app');
+    }
+    
+    public function translateAttackDesc($attackName){
+        $attackName = strtolower($attackName);
+        
+        $attackName = str_replace(' ', '_', $attackName);
+        $attackName = str_replace('ô', 'o', $attackName);
+        $attackName = str_replace('â', 'a', $attackName);
+        $attackName = str_replace('û', 'u', $attackName);
+        $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('è', 'e', $attackName);
+        $attackName = str_replace('ç', 'c', $attackName);
+
+        return $this->translator->trans($attackName.'_attack_description', [], 'app');
+    }
+
+    public function translateSpeciesName($species){
+        return $this->translator->trans($species->getId().'_species_name', [], 'app');
     }
 }
