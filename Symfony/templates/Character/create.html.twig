@@ -7,30 +7,30 @@
 {% endblock %}
 
 {% block body %}
-    <div class="characterCreateTitle">Création de personnage</div>
+    <div class="characterCreateTitle">{{ 'creation_de_personnage'|trans({}, 'app') }}</div>
 
     {{ form_start(createCharacterFormView) }}
         <div class="createCharacter_form">
              <div class="sideForm leftFormSide">
             <div class="formInput">
-                <div class="formLabel">Nom du personnage :</div>
+                <div class="formLabel">{{ 'nom_du_personnage'|trans({}, 'app') }} :</div>
                 {{ form_widget(createCharacterFormView.name) }}
             </div>
 
             <div class="formInput">
-                <div class="formLabel">Genre du personnage :</div>
+                <div class="formLabel">{{ 'genre_du_personnage'|trans({}, 'app') }} :</div>
                 {{ form_widget(createCharacterFormView.gender) }}
             </div>
 
             <div class="formInput">
-                <div class="formLabel">Age du personnage :</div>
+                <div class="formLabel">{{ 'age_du_personnage'|trans({}, 'app') }} :</div>
                 {{ form_widget(createCharacterFormView.age) }}
             </div>
             </div>
             <div class="sideForm rightFormSide">
                 <div class="speciesPannel">
                     <div class="formInput speciesFormInput">
-                        <div class="formLabel">Espèce : </div>
+                        <div class="formLabel">{{ 'espece'|trans({}, 'app') }} : </div>
                         {{ form_widget(createCharacterFormView.Species, {'attr': {'class': 'selectSpeciesInput', 'onChange': 'updateSelectedSpeciesIcon()'}}) }}
                     </div>
                     <div class="speciesIcon">
@@ -38,13 +38,13 @@
                     </div>
                 </div>
                 <div class="formInput descriptionFormInput">
-                    <div class="formLabel">Description du personnage :</div>
+                    <div class="formLabel">{{ 'description_du_personnage'|trans({}, 'app') }} :</div>
                     {{ form_widget(createCharacterFormView.description) }}
                 </div>
             </div>
         </div>
 
-        {{ form_widget(createCharacterFormView.submit, {'attr': {'class': 'createCharacterSubmit'}}) }}
+        {{ form_widget(createCharacterFormView.submit, {'attr': {'class': 'createCharacterSubmit'}, 'label': 'dungeon_create_form_confirm'|trans({}, 'app')}) }}
     {{ form_end(createCharacterFormView) }}
 {% endblock %}
 
@@ -68,7 +68,7 @@
 
             options.forEach(option => {
                 if(option.value === optionValue){
-                    optionText = option.innerText;
+                    optionText = option.value;
                 }
             });
 

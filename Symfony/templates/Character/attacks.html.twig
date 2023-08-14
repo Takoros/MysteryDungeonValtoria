@@ -7,14 +7,14 @@
 {% endblock %}
 
 {% block body %}
-    <div class="characterAttacksTitle">Attaques disponibles du jeu</div>
+    <div class="characterAttacksTitle">{{ 'attaques_disponibles_du_jeu'|trans({}, 'app') }}</div>
 
     {% include 'Character/attacks_summary.html.twig' %}
 
     <table class="characterAttacksTable">
         <tbody>
             <tr class="characterAttackLine">
-                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 1</td>
+                <td class="characterAttacksTD TD-Number TD-NumberHide">{{ 'niveau'|trans({}, 'app') }} 1</td>
             </tr>
             {% for attack in allAttacks %}
                 {% if attack.levelRequired == 1 %}
@@ -22,7 +22,7 @@
                 {% endif %}
             {% endfor %}
             <tr class="characterAttackLine">
-                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 5</td>
+                <td class="characterAttacksTD TD-Number TD-NumberHide">{{ 'niveau'|trans({}, 'app') }} 5</td>
             </tr>
             {% for attack in allAttacks %}
                 {% if attack.levelRequired == 5 %}
@@ -30,7 +30,7 @@
                 {% endif %}
             {% endfor %}
             <tr class="characterAttackLine">
-                <td class="characterAttacksTD TD-Number TD-NumberHide">Niveau 10</td>
+                <td class="characterAttacksTD TD-Number TD-NumberHide">{{ 'niveau'|trans({}, 'app') }} 10</td>
             </tr>
             {% for attack in allAttacks %}
                 {% if attack.levelRequired == 10 %}
