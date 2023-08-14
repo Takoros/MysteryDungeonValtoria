@@ -260,7 +260,7 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 .profileCharacterCardStatInfo {

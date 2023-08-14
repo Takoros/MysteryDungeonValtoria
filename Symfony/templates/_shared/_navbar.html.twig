@@ -18,6 +18,8 @@
         <div id='navbar-desktop-menu'>
             <div id='navbar-desktop-menu-character-name' onClick='onCharacterInfoClick()'>{{ app.user.character.name }}</div>
             <div id='navbar-desktop-menu-links'>
+                <a class="navbar-desktop-menu-link" href="https://discord.gg/FCKs9kd3">Discord</a>
+                <div class="navbar-desktop-menu-separator"></div>
                 <a class="navbar-desktop-menu-link" href="{{ path('app_hub') }}">{{ 'guilde'|trans({}, 'app') }}</a>
                 <div class="navbar-desktop-menu-separator"></div>
                 <a class="navbar-desktop-menu-link" href="{{ path('app_character') }}">{{ 'profil'|trans({}, 'app') }}</a>
@@ -34,6 +36,8 @@
             <a href="{{ path('app_home') }}" class="navbar-phone-menu-link">{{ 'accueil'|trans({}, 'app') }}</a>
             <div class="navbar-phone-menu-separator"></div>
             {% if app.user and app.user.character is not null %}
+                <a href="https://discord.gg/FCKs9kd3" class="navbar-phone-menu-link">Discord</a>
+                <div class="navbar-phone-menu-separator"></div>
                 <a href="{{ path('app_character') }}" class="navbar-phone-menu-link">{{ 'profil'|trans({}, 'app') }}</a>
                 <div class="navbar-phone-menu-separator"></div>
                 <a href="{{ path('app_hub') }}" class="navbar-phone-menu-link">{{ 'guilde'|trans({}, 'app') }}</a>
