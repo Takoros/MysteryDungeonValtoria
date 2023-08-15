@@ -290,6 +290,7 @@ class AppExtension extends AbstractExtension
         $attackName = str_replace('à', 'a', $attackName);
         $attackName = str_replace('û', 'u', $attackName);
         $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('É', 'e', $attackName);
         $attackName = str_replace('è', 'e', $attackName);
         $attackName = str_replace('ç', 'c', $attackName);
 
@@ -302,8 +303,10 @@ class AppExtension extends AbstractExtension
         $attackName = str_replace(' ', '_', $attackName);
         $attackName = str_replace('ô', 'o', $attackName);
         $attackName = str_replace('â', 'a', $attackName);
+        $attackName = str_replace('à', 'a', $attackName);
         $attackName = str_replace('û', 'u', $attackName);
         $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('É', 'e', $attackName);
         $attackName = str_replace('è', 'e', $attackName);
         $attackName = str_replace('ç', 'c', $attackName);
 

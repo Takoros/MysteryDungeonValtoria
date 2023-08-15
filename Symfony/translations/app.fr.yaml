@@ -331,8 +331,8 @@ ouragan_attack_description: "Inflige des dégâts spéciaux à tout les ennemis.
 abattage_attack: "Abattage"
 abattage_attack_description: "Inflige des dégâts physiques à tout les ennemis et réduit leur Pouvoir pendant 2 tours."
 # -- #
-dracacophonie: "Dracacophonie"
-dracacophonie_description: "S'auto inflige des dégâts mixtes, mais augmente sa Force, son Pouvoir, sa Vitesse et sa Coordination pendant 3 tours."
+dracacophonie_attack: "Dracacophonie"
+dracacophonie_attack_description: "S'auto inflige des dégâts mixtes, mais augmente sa Force, son Pouvoir, sa Vitesse et sa Coordination pendant 3 tours."
 
 # - - - - Electric - - - - #
 
@@ -486,8 +486,8 @@ poudreuse_attack_description: 'Inflige des dégâts spéciaux à la cible, et r�
 eclats_glace_attack: 'Éclats Glace'
 eclats_glace_attack_description: 'Inflige des dégâts physique à la cible, et augmente la Vitesse du lanceur pendant 3 tours'
 # -- #
-onde_boréale_attack: 'Onde Boréale'
-onde_boréale_attack_description: 'Inflige des dégâts spéciaux à la cible, et réduit sa Vitesse pendant 2 tours'
+onde_boreale_attack: 'Onde Boréale'
+onde_boreale_attack_description: 'Inflige des dégâts spéciaux à la cible, et réduit sa Vitesse pendant 2 tours'
 
 # - - - - Monster - - - - #
 

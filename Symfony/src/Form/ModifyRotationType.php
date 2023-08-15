@@ -96,6 +96,7 @@ class ModifyRotationType extends AbstractType
         $attackName = str_replace('à', 'a', $attackName);
         $attackName = str_replace('û', 'u', $attackName);
         $attackName = str_replace('é', 'e', $attackName);
+        $attackName = str_replace('É', 'e', $attackName);
         $attackName = str_replace('è', 'e', $attackName);
         $attackName = str_replace('ç', 'c', $attackName);
 
@@ -108,8 +109,10 @@ class ModifyRotationType extends AbstractType
         $typeName = str_replace(' ', '_', $typeName);
         $typeName = str_replace('ô', 'o', $typeName);
         $typeName = str_replace('â', 'a', $typeName);
+        $typeName = str_replace('à', 'a', $typeName);
         $typeName = str_replace('û', 'u', $typeName);
         $typeName = str_replace('é', 'e', $typeName);
+        $typeName = str_replace('É', 'e', $typeName);
         $typeName = str_replace('è', 'e', $typeName);
         $typeName = str_replace('ç', 'c', $typeName);
 

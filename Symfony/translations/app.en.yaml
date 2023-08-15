@@ -323,8 +323,8 @@ ouragan_attack: 'Twister'
 ouragan_attack_description: 'Deals special damage to every enemy.'
 abattage_attack: 'Breaking Swipe'
 abattage_attack_description: 'Deals physical damage to every enemy and lowers their Power for 2 turns.'
-dracacophonie: 'Clangorous Soul'
-dracacophonie_description: "The caster deals mixed damage to themselves, but increases their Strength, Power, Speed and Coordination for 3 turns."
+dracacophonie_attack: 'Clangorous Soul'
+dracacophonie_attack_description: "The caster deals mixed damage to themselves, but increases their Strength, Power, Speed and Coordination for 3 turns."
 
 # - - - - Electric - - - - #
 
@@ -467,8 +467,8 @@ poudreuse_attack_description: 'Deals special damage to the target and decrease i
 eclats_glace_attack: 'Ice Shard'
 eclats_glace_attack_description: "Deals physical damage to the target and increase the caster's Speed for 3 turns"
 # -- #
-onde_boréale_attack: 'Aurora Beam'
-onde_boréale_attack_description: 'Deal special damage to the target, and decrease its Speed for 2 turns'
+onde_boreale_attack: 'Aurora Beam'
+onde_boreale_attack_description: 'Deal special damage to the target, and decrease its Speed for 2 turns'
 
 # - - - - Monster - - - - #
 
