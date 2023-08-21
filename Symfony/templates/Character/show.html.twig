@@ -117,7 +117,7 @@
                         <div id='presenceValue' class="profileCharacterCardStatValue">{{ character.Stats.presence }}</div>
                         {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('presence')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'presence'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
                     </div>
-                    <div class="profileCharacterCardStat Stat-Coordination" title="{{ 'statistiques'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStat Stat-Coordination" title="{{ 'coordination_description'|trans({}, 'app') }}">
                         <div class="profileCharacterCardStatInfo">
                             <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/coordination.png') }}"> 
                             <span class="profileCharacterCardStatName">{{ 'coordination'|trans({}, 'app') }}</span>

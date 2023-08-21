@@ -509,6 +509,7 @@
 
 .dungeonExplorationSecondRowContainer {
     min-height: 300px;
+    margin-bottom: 115px;
 }
 
 @media (max-width: 1850px) {

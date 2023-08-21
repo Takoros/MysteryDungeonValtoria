@@ -80,6 +80,10 @@ class RaidInstance
 
     public function addExplorer(Character $explorer): self
     {
+        if(count($this->Explorers) >= self::RAID_MAX_NUMBERS_OF_EXPLORERS || $this->status !== self::RAID_STATUS_PREPARATION){
+            return $this;
+        }
+
         if (!$this->Explorers->contains($explorer)) {
             $this->Explorers->add($explorer);
             $explorer->setCurrentExplorationRaidInstance($this);

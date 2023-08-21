@@ -314,6 +314,14 @@ class AppExtension extends AbstractExtension
     }
 
     public function translateSpeciesName($species){
-        return $this->translator->trans($species->getId().'_species_name', [], 'app');
+        
+        if(is_array($species)){
+            $speciesId = $species['id'];
+        }
+        else {
+            $speciesId = $species->getId();
+        }
+
+        return $this->translator->trans($speciesId.'_species_name', [], 'app');
     }
 }

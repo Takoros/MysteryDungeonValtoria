@@ -128,7 +128,7 @@ class DungeonInstance
 
     public function addExplorer(Character $explorer): self
     {
-        if(count($this->Explorers) >= self::MAX_NUMBERS_OF_EXPLORERS){
+        if(count($this->Explorers) >= self::MAX_NUMBERS_OF_EXPLORERS || $this->status === self::DUNGEON_STATUS_PREPARATION){
             return $this;
         }
 

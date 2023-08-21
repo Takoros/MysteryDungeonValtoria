@@ -123,12 +123,12 @@
 
                         {% if LogLine.type is same as('type_control_status_received') %}
                             <td class='combatLogTableTdIcon'><div class='statusReceived'></div></td>
-                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_received'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_received'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.controlType | control}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_control_status_loss') %}
                             <td class='combatLogTableTdIcon'><div class='statusLoss'></div></td>
-                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_loss'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.damagingType | damaging}, 'app') }}</td>
+                            <td class='combatLogTableTdText'>{{ 'log_type_control_status_loss'|trans({'%fighterName%': LogLine.data.fighterName, '%statusType%': LogLine.data.controlType | control}, 'app') }}</td>
                         {% endif %}
 
                         {% if LogLine.type is same as('type_control_status_activate') %}

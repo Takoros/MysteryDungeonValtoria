@@ -6,7 +6,7 @@
                 <div><span class="character-card-infos-name character-card-infos-name-name">{{ 'nom'|trans({}, 'app') }} : </span>{{ character.name }}{% if dungeonInstance is defined and character == dungeonInstance.leader or raidInstance is defined and character == raidInstance.leader %}<span class="character-card-dungeon-leader-icon"> 👑</span>{% endif %}</div>
                 <div><span class="character-card-infos-name">{{ 'age'|trans({}, 'app') }} : </span>{{ character.age }}</div>
                 <div><span class="character-card-infos-name">{{ 'niveau'|trans({}, 'app') }} : </span>{{ character.level }}</div>
-                <div><span class="character-card-infos-name character-card-infos-name-species">{{ 'espece'|trans({}, 'app') }} : </span>{{ character.Species.name }}</div>
+                <div><span class="character-card-infos-name character-card-infos-name-species">{{ 'espece'|trans({}, 'app') }} : </span>{{ character.Species|transSpecies }}</div>
             </div>
         </div>
     </div>
