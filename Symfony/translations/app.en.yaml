@@ -178,6 +178,9 @@ victoire: "Victory"
 defaite: "Defeat"
 vous_avez_pas_encore_de_combat: "You dont have any fight"
 voir: "See"
+primaires: 'Primary'
+secondaires: 'Secondary'
+autres: 'Others'
 
 # modify_rotation.html.twig
 
@@ -219,7 +222,6 @@ age_du_personnage: "Age of Character"
 description_du_personnage: "Resume of Character"
 genre_male: 'Male'
 genre_female: 'Female'
-
 
 # ---------------------------------------------------------------------------- #
 #                                    COMBAT                                    #
@@ -297,10 +299,13 @@ log_display_damaging_status_bad_poison: 'Bad Poison'
 
 secretion_attack: 'String Shot'
 secretion_attack_description: "Lowers the target's speed for 2 turns."
+# -- #
 piqure_attack: 'Bug Bite'
 piqure_attack_description: 'Deals physical damage to the target.'
+# -- #
 survinsecte_attack: 'Struggle Bug'
 survinsecte_attack_description: 'Deals special damage to every enemy, and lowers their Power for 2 turns.'
+# -- #
 papillodanse_attack: 'Quiver Dance'
 papillodanse_attack_description: 'Increases the Power, Bravery and Speed of the caster for 3 turns.'
 
@@ -308,10 +313,13 @@ papillodanse_attack_description: 'Increases the Power, Bravery and Speed of the 
 
 fumee_protectrice_attack : 'Protective Smoke'
 fumee_protectrice_attack_description: 'Increases the Stamina, Bravery and Vitality of the caster for 3 turns.'
+# -- #
 morsure_attack: 'Bite'
 morsure_attack_description: 'Deals physical damage to the target, with a 30% chance to Petrify them.'
+# -- #
 aboiement_attack: 'Snarl'
 aboiement_attack_description: 'Deals special damage to every enemy, and lowers their Power for 2 turns.'
+# -- #
 feinte_attack: 'Feint Attack'
 feinte_attack_description: 'Deals mixed damage to the target. Cannot be dodged.'
 
@@ -319,10 +327,13 @@ feinte_attack_description: 'Deals mixed damage to the target. Cannot be dodged.'
 
 danse_draco_attack: 'Dragon Dance'
 danse_draco_attack_description: "Increases the caster's Speed and Strength for 3 turns."
+# -- #
 ouragan_attack: 'Twister'
 ouragan_attack_description: 'Deals special damage to every enemy.'
+# -- #
 abattage_attack: 'Breaking Swipe'
 abattage_attack_description: 'Deals physical damage to every enemy and lowers their Power for 2 turns.'
+# -- #
 dracacophonie_attack: 'Clangorous Soul'
 dracacophonie_attack_description: "The caster deals mixed damage to themselves, but increases their Strength, Power, Speed and Coordination for 3 turns."
 
@@ -330,10 +341,13 @@ dracacophonie_attack_description: "The caster deals mixed damage to themselves, 
 
 chargeur_attack: 'Charge'
 chargeur_attack_description: "Increases the user's Speed and Agility for 3 turns"
+# -- #
 eclair_attack: 'Thunder Shock'
 eclair_attack_description: 'Deals special damage to the target, and has a 30% chance to Paralyse them.'
+# -- #
 crocs_eclair_attack: 'Thunder Fang'
 crocs_eclair_attack_description: 'Deals physical damage to the target, and lowers their Stamina.'
+# -- #
 parabochaines_attack: 'Parabolic Chains'
 parabochaines_attack_description: 'Deals special damage to the target, and lowers their Speed, Agility and Coordination for 3 turns.'
 
@@ -341,20 +355,28 @@ parabochaines_attack_description: 'Deals special damage to the target, and lower
 
 lutte_attack: 'Struggle'
 lutte_attack_description: 'Deals mixed damage to the target.'
+# -- #
 tranche_attack: 'Slash'
 tranche_attack_description: 'Deals physical damage to the target.'
+# -- #
 reflet_attack: 'Double Team'
 reflet_attack_description: "Increases the user's Agility for 3 turns."
+# -- #
 regard_touchant_attack: 'Baby-Doll Eyes'
 regard_touchant_attack_description: 'Lowers the Strength and Power of the target for 2 turns.'
+# -- #
 encouragement_attack: 'Cheer Up'
 encouragement_attack_description: "Increases your team's speed (including the user) for 3 turns."
+# -- #
 lechouille_attack: 'Lick'
 lechouille_attack_description: 'Deals physical damage to the target, with a 30% chance to Paralyse them.'
+# -- #
 equilibre_attack: 'Balance'
 equilibre_attack_description: 'Heals up to 3 status conditions (1 : 45%, 2 : 35%, 3 : 20%). '
+# -- #
 coup_double_attack: 'Double Hit'
 coup_double_attack_description: 'Deals physical damage to the target, twice.'
+# -- #
 pansement_attack: 'Bandage'
 pansement_attack_description: 'Heals the ally with the least health.' 
 
@@ -564,24 +586,31 @@ repli_attack_description: 'Increase the Stamina of the caster for 3 turns'
 # ---------------------------------------------------------------------------- #
 
 vitalite: 'Vitality'
+vitality: 'Vitality'
 vitalite_description: "Vitality represents your Pokémon's tanking capacity before fainting. A Pokémon faints in combat when their vitality drops to 0."
 # -- #
 endurance: 'Stamina'
+stamina: 'Stamina'
 endurance_description: "Stamina is the ability of your Pokémon to take physical attacks, so the higher the value, the more physical damage will be reduced."
 # -- #
 courage: 'Bravery'
+bravery: 'Bravery'
 courage_description: "Bravery is the ability of your Pokémon to take special attacks, so the higher the value, the more special damage will be reduced."
 # -- #
 agilite: 'Agility'
+agility: 'Agility'
 agilite_description: "Agility increases the Pokémon’s chances of dodging, the higher its value, the higher the chances."
 # -- #
 impassibilite: 'Impassiveness'
+impassiveness: 'Impassiveness'
 impassibilite_description: "Impassiveness allows a Pokémon to resist the negative effects inflicted on them (Control Status, stat malus.). The higher the value, the higher the chances of not undergoing a control status will be & the less stat malus will be effective on it."
 # -- #
 force: 'Strength'
+strength: 'Strength'
 force_description: "Strength represents your Pokémon's ability to perform powerful physical attacks. The higher the value, the more physical damage the Pokémon deals."
 # -- #
 pouvoir: 'Power'
+power: 'Power'
 pouvoir_description: "Power represents your Pokémon's ability to perform powerful special attacks. The higher the value, the more special damage the Pokémon deals."
 # -- #
 presence: "Presence"
@@ -591,12 +620,15 @@ coordination: 'Coordination'
 coordination_description: "Coordination is used to determine how often a Pokémon will deal critical hits. The higher the value, the greater the chance of making critical attacks. Coordination also reduces the chance of dodging when attacking an opposing pokémon."
 # -- #
 vitesse: 'Speed'
+speed: 'Speed'
 vitesse_description: "Speed allows you to attack faster and more often during a fight."
 # -- #
 points_action: "Action Points"
 points_action_description: "Set the maximum number of Action Points to spend in rotations."
 # -- #
 points_de_stat: "Stat Points"
+points_de_stat_primaire: "Primary Points"
+points_de_stat_secondaire: "Secondary Points"
 points_de_stat_description: "Points earned when leveling up, to spend in order to increase the stats of your character."
 # -- #
 
@@ -705,3 +737,14 @@ psy_type: 'Psy'
 roche_type: 'Rock'
 acier_type: 'Steel'
 eau_type: 'Water'
+
+# ---------------------------------------------------------------------------- #
+#                                    ERRORS                                    #
+# ---------------------------------------------------------------------------- #
+
+vous_possedez_deja_un_personnage: "You already own a character."
+le_nom_choisi_est_incorrect: "Name chosen is incorrect."
+l_age_choisi_est_incorrect: "Age chosen is incorrect."
+pas_assez_de_points_de_stat_primaire: "You dont have enough primary stat point."
+pas_assez_de_points_de_stat_secondaire: "You dont have enough primary stat point"
+deja_au_max_pour_votre_niveau: '%statName% is already increased at max for this level'

@@ -21,10 +21,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    App\Service\APIService:
-        arguments:
-            $discordBotToken: '%app.discordbot_token%'
-
     App\Service\DiscordApiService:
         arguments:
             $clientId: '%env(CLIENT_ID)%'

@@ -1,0 +1,136 @@
+<div class="profileCharacterCardStats">
+    <div class="profileCharacterCardStatsSection PrimarySection">
+        <div class="profileCharacterCardStatsSectionTitle">{{ 'primaires'|trans({}, 'app') }}</div>
+        <div class="primarySectionContent">
+            <!-- -------------------------------- Vitality ------------------------------------- -->
+            <div class="profileCharacterCardStat Stat-Vitality" title="{{ 'vitalite_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/vitality.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'vitalite'|trans({}, 'app') }}</span>
+                </div>
+                <div id='vitalityValue' class="profileCharacterCardStatValue">{{ character.Stats.vitality }}</div>
+                {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('vitality', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'vitalite'|trans({}, 'app'), '%NumberStat%':3}, 'app') }}"></div>{% endif %}
+            </div>
+            <!-- ------------------------------ Defense Stats ----------------------------- -->
+            <div class="primarySectionContentOffense">
+                <!-- -------------------------------- Strength ------------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Strength" title="{{ 'force_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/strength.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'force'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='strengthValue' class="profileCharacterCardStatValue">{{ character.Stats.strength }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('strength', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'force'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+                <!-- -------------------------------- Power ---------------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Power" title="{{ 'pouvoir_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/power.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'pouvoir'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='powerValue' class="profileCharacterCardStatValue">{{ character.Stats.power }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('power', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'power'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+                <!-- -------------------------------- Presence ------------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Presence" title="{{ 'presence_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/presence.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'presence'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='presenceValue' class="profileCharacterCardStatValue">{{ character.Stats.presence }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('presence', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'presence'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+            </div>
+            <div class="primarySectionContentDefense">
+                <!-- -------------------------------- Stamina ------------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Stamina" title="{{ 'endurance_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/stamina.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'endurance'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='staminaValue' class="profileCharacterCardStatValue">{{ character.Stats.stamina }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('stamina', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'endurance'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+                <!-- -------------------------------- Bravery -------------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Bravery" title="{{ 'courage_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/bravery.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'courage'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='braveryValue' class="profileCharacterCardStatValue">{{ character.Stats.bravery }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('bravery', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'courage'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+                <!-- -------------------------------- Impassiveness -------------------------------- -->
+                <div class="profileCharacterCardStat Stat-Impassiveness" title="{{ 'impassibilite_description'|trans({}, 'app') }}">
+                    <div class="profileCharacterCardStatInfo">
+                        <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/impassiveness.png') }}"> 
+                        <span class="profileCharacterCardStatName">{{ 'impassibilite'|trans({}, 'app') }}</span>
+                    </div>
+                    <div id='impassivenessValue' class="profileCharacterCardStatValue">{{ character.Stats.impassiveness }}</div>
+                    {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('impassiveness', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'impassibilite'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="profileCharacterCardStatsSection SecondarySection">
+        <div class="profileCharacterCardStatsSectionTitle">{{ 'secondaires'|trans({}, 'app') }}</div>
+        <div class="secondarySectionContent">
+            <!-- ------------------------------ Coordination ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-Coordination" title="{{ 'statistiques'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/coordination.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'coordination'|trans({}, 'app') }}</span>
+                </div>
+                <div id='coordinationValue' class="profileCharacterCardStatValue">{{ character.Stats.coordination }}</div>
+                {% if isSelfCharacter %}<div class="spendSecondaryPointButton" onClick="spendPoints('coordination', 'secondary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'coordination'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+            </div>
+            <!-- ------------------------------ Speed ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-Speed" title="{{ 'vitesse_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/speed.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'vitesse'|trans({}, 'app') }}</span>
+                </div>
+                <div id='speedValue' class="profileCharacterCardStatValue">{{ character.Stats.speed }}</div>
+                {% if isSelfCharacter %}<div class="spendSecondaryPointButton" onClick="spendPoints('speed', 'secondary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'vitesse'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+            </div>
+            <!-- ------------------------------ Agility ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-Agility" title="{{ 'agilite_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/agility.svg') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'agilite'|trans({}, 'app') }}</span>
+                </div>
+                <div id='agilityValue' class="profileCharacterCardStatValue">{{ character.Stats.agility }}</div>
+                {% if isSelfCharacter %}<div class="spendSecondaryPointButton" onClick="spendPoints('agility', 'secondary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'agilite'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
+            </div>
+        </div>
+    </div>
+    <div class="profileCharacterCardStatsSection othersSection">
+        <div class="profileCharacterCardStatsSectionTitle">{{ 'autres'|trans({}, 'app') }}</div>
+        <div class="othersSectionContent">
+            <!-- ------------------------------ Action Points ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-ActionPoint" title="{{ 'points_action_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'points_action'|trans({}, 'app') }}</span>
+                </div>
+                <div class="profileCharacterCardStatValue">{{ character.Stats.actionPoint }}</div>
+            </div>
+            <!-- ------------------------------ Primary Points ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-StatPoints" title="{{ 'points_de_stat_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/statPoints.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'points_de_stat_primaire'|trans({}, 'app') }}</span>
+                </div>
+                <div id='primaryStatPointValue' class="profileCharacterCardStatValue">{{ character.Stats.primaryStatPoint }}</div>
+            </div>
+            <!-- ------------------------------ Secondary Points ----------------------------- -->
+            <div class="profileCharacterCardStat Stat-StatPoints" title="{{ 'points_de_stat_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStatInfo">
+                    <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/statPoints.png') }}"> 
+                    <span class="profileCharacterCardStatName">{{ 'points_de_stat_secondaire'|trans({}, 'app') }}</span>
+                </div>
+                <div id='secondaryStatPointValue' class="profileCharacterCardStatValue">{{ character.Stats.secondaryStatPoint }}</div>
+            </div>
+        </div>
+    </div>
+</div>

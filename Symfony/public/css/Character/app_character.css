@@ -4,8 +4,6 @@
     font-size: 28px;
 }
 
-* {box-sizing:border-box}
-
 .xpBar {
     width: 100%; /* Full width */
     background-color: #ddd; /* Grey background */
@@ -223,7 +221,71 @@
     margin-bottom: 15px;
 }
 
-.profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+.profileCharacterCardStatsSection {
+    margin-top: 8px;
+    margin-bottom: 12px;
+}
+
+.profileCharacterCardStatsSectionTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 18px;
+}
+
+.sectionSeparator {
+    width: 60%;
+    background-color: black;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+}
+
+.Stat-Vitality {
+    width: 128px;
+    height: 68px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.primarySectionContentDefense, .primarySectionContentOffense {
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 140px 140px 140px;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    column-gap: 10px;
+    justify-content: center;
+    height: 80px;
+}
+
+.secondarySectionContent {
+    display: grid;
+    grid-template-columns: 140px 140px 140px;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    column-gap: 10px;
+    justify-content: center;
+    height: 80px;
+}
+
+.othersSectionContent {
+    display: grid;
+    grid-template-columns: 160px 160px 160px;
+    grid-template-rows: auto;
+    margin-left: auto;
+    margin-right: auto;
+    width: 850px;
+    column-gap: 10px;
+    justify-content: center;
+    height: 80px;
+}
+
+/*.profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
     display: grid;
     grid-template-columns: 140px 140px 140px 140px 140px;
     grid-template-rows: auto;
@@ -241,7 +303,7 @@
 
 .profileCharacterCardStats3rdRow {
     display: grid;
-    grid-template-columns: 140px 140px;
+    grid-template-columns: 140px 160px 160px;
     grid-template-rows: auto;
     margin-left: auto;
     margin-right: auto;
@@ -250,7 +312,7 @@
     justify-content: center;
     margin-top: 10px;
     height: 80px;
-}
+}*/
 
 .profileCharacterCardStat {
     display: flex;
@@ -278,7 +340,7 @@
     text-align: center;
 }
 
-.spendPointButton {
+.spendPrimaryPointButton,.spendSecondaryPointButton  {
     height: 25px;
     width: 25px;
     position: relative;
@@ -293,7 +355,7 @@
     background-size:60%;
 }
 
-.spendPointButton:hover {
+.spendPrimaryPointButton:hover, .spendSecondaryPointButton:hover {
     cursor: pointer;
 }
 

@@ -49,108 +49,7 @@
         <div class="profileCharacterCardLower">
             <div class="profileCharacterCardLowerTitle">{{ 'statistiques'|trans({}, 'app') }} :</div>
 
-            <div class="profileCharacterCardStats">
-                <div class="profileCharacterCardStats1stRow">
-                    <div class="profileCharacterCardStat Stat-Vitality" title="{{ 'vitalite_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/vitality.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'vitalite'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='vitalityValue' class="profileCharacterCardStatValue">{{ character.Stats.vitality }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('vitality')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'vitalite'|trans({}, 'app'), '%NumberStat%':3}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Stamina" title="{{ 'endurance_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/stamina.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'endurance'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='staminaValue' class="profileCharacterCardStatValue">{{ character.Stats.stamina }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('stamina')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'endurance'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Bravery" title="{{ 'courage_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/bravery.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'courage'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='braveryValue' class="profileCharacterCardStatValue">{{ character.Stats.bravery }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('bravery')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'courage'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Agility" title="{{ 'agilite_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/agility.svg') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'agilite'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='agilityValue' class="profileCharacterCardStatValue">{{ character.Stats.agility }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('agility')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'agilite'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Impassiveness" title="{{ 'impassibilite_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/impassiveness.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'impassibilite'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='impassivenessValue' class="profileCharacterCardStatValue">{{ character.Stats.impassiveness }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('impassiveness')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'impassibilite'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                </div>
-                <div class="profileCharacterCardStats2ndRow">
-                    <div class="profileCharacterCardStat Stat-Strength" title="{{ 'force_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/strength.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'force'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='strengthValue' class="profileCharacterCardStatValue">{{ character.Stats.strength }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('strength')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'force'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Power" title="{{ 'pouvoir_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/power.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'pouvoir'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='powerValue' class="profileCharacterCardStatValue">{{ character.Stats.power }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('power')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'power'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Presence" title="{{ 'presence_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/presence.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'presence'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='presenceValue' class="profileCharacterCardStatValue">{{ character.Stats.presence }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('presence')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'presence'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Coordination" title="{{ 'statistiques'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/coordination.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'coordination'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='coordinationValue' class="profileCharacterCardStatValue">{{ character.Stats.coordination }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('coordination')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'coordination'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                    <div class="profileCharacterCardStat Stat-Speed" title="{{ 'vitesse_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/speed.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'vitesse'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='speedValue' class="profileCharacterCardStatValue">{{ character.Stats.speed }}</div>
-                        {% if isSelfCharacter %}<div class="spendPointButton" onClick="spendPoints('speed')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'vitesse'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
-                    </div>
-                </div>
-                <div class="profileCharacterCardStats3rdRow">
-                    <div class="profileCharacterCardStat Stat-ActionPoint" title="{{ 'points_action_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'points_action'|trans({}, 'app') }}</span>
-                        </div>
-                        <div class="profileCharacterCardStatValue">{{ character.Stats.actionPoint }}</div>
-                    </div>
-                    <div class="profileCharacterCardStat Stat-StatPoints" title="{{ 'points_de_stat_description'|trans({}, 'app') }}">
-                        <div class="profileCharacterCardStatInfo">
-                            <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/statPoints.png') }}"> 
-                            <span class="profileCharacterCardStatName">{{ 'points_de_stat'|trans({}, 'app') }}</span>
-                        </div>
-                        <div id='statPointValue' class="profileCharacterCardStatValue">{{ character.statPoints }}</div>
-                    </div>
-                </div>
-            </div>
+            {% include "Character/show_stats.html.twig" %}
         </div>
         <div class="profileCharacterCardSeparator"></div>
         <div class="profileCharacterCardBottom">
@@ -220,18 +119,27 @@
 
 {% block javascripts %}
     <script>
-        var spendPointButtons = document.getElementsByClassName('spendPointButton');
-        spendPointButtons = Array.prototype.slice.call(spendPointButtons);
+        var spendPrimaryPointButtons = document.getElementsByClassName('spendPrimaryPointButton');
+        var spendSecondaryPointButtons = document.getElementsByClassName('spendSecondaryPointButton');
+        spendPrimaryPointButtons = Array.prototype.slice.call(spendPrimaryPointButtons);
+        spendSecondaryPointButtons = Array.prototype.slice.call(spendSecondaryPointButtons);
 
-        var showButton = {% if character.statPoints == 0 %} false {% else %} true {% endif %};
+        var showPrimaryButton = {% if character.Stats.primaryStatPoint == 0 %} false {% else %} true {% endif %};
+        var showSecondaryButton = {% if character.Stats.secondaryStatPoint == 0 %} false {% else %} true {% endif %};
 
-        if(showButton === false){
-            spendPointButtons.forEach((spendPointButton) => {
+        if(showPrimaryButton === false){
+            spendPrimaryPointButtons.forEach((spendPointButton) => {
                 spendPointButton.classList.add("spendPointButtonHide");
             });
         }
 
-        function spendPoints(stat){
+        if(showSecondaryButton === false){
+            spendSecondaryPointButtons.forEach((spendPointButton) => {
+                spendPointButton.classList.add("spendPointButtonHide");
+            });
+        }
+
+        function spendPoints(stat, type){
             fetch(`{{ path('app_character_spend_point') }}`, {
                 method: 'POST',
                 body: JSON.stringify({
@@ -245,16 +153,36 @@
                 }
             }).then((result) => {
                 result = result.json().then((result) => {
-                    valueDiv = document.getElementById(stat+'Value')
-                    statPointValueDiv = document.getElementById('statPointValue');
-                    valueDiv.innerText = result.newStatValue;
-                    statPointValueDiv.innerText = result.newStatPointsValue;
+                    if(result.statusCode === 200){
+                        valueDiv = document.getElementById(stat+'Value')
 
-                    if(result.newStatPointsValue === 0){
-                        spendPointButtons.forEach((spendPointButton) => {
-                            spendPointButton.classList.add("spendPointButtonHide");
-                        });
+                        if(type === 'primary'){
+                            statPointValueDiv = document.getElementById('primaryStatPointValue');
+                            valueDiv.innerText = result.newStatValue;
+                            statPointValueDiv.innerText = result.newPrimaryStatPointsValue;
+
+                            if(result.newPrimaryStatPointsValue === 0){
+                                spendPrimaryPointButtons.forEach((spendPointButton) => {
+                                    spendPointButton.classList.add("spendPointButtonHide");
+                                });
+                            }
+                        }
+                        else if (type === 'secondary'){
+                            statPointValueDiv = document.getElementById('secondaryStatPointValue');
+                            valueDiv.innerText = result.newStatValue;
+                            statPointValueDiv.innerText = result.newSecondaryStatPointsValue;
+
+                            if(result.newSecondaryStatPointsValue === 0){
+                                spendSecondaryPointButtons.forEach((spendPointButton) => {
+                                    spendPointButton.classList.add("spendPointButtonHide");
+                                });
+                            }
+                        }
                     }
+                    else {
+                        newFlashMessage(result.message, 'flashWarning');
+                    }
+                    
                 });
             });
         }

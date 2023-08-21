@@ -135,12 +135,21 @@ class CharacterController extends AbstractController
     /* -------------------------------------------------------------------------- */
 
     #[Route('/jeu/personnage/spendPoint', name: 'app_character_spend_point', priority:1)]
-    public function spendPoint(Request $request, CharacterService $characterService): JsonResponse
+    public function spendPoint(Request $request, TranslatorInterface $translator, EntityManagerInterface $em): JsonResponse
     {
         $post = json_decode($request->getContent());
         $user = $this->getUser();
 
-        $results = $characterService->spendStatPoint($user->getCharacter(), $post->data->statToIncrease, 1);
+        try {
+            $user->getCharacter()->getStats()->translator = $translator;
+            $results = $user->getCharacter()->getStats()->spendStatPoint($post->data->statToIncrease);
+            $em->flush();
+        } catch (\Exception $e) {
+            $results = [
+                'statusCode' => $e->getCode(),
+                'message' => $e->getMessage()
+            ];
+        }
 
         return new JsonResponse($results);
     }

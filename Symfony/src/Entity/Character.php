@@ -2,24 +2,27 @@
 
 namespace App\Entity;
 
+use App\Repository\AttackRepository;
 use App\Repository\CharacterRepository;
 use App\Repository\DungeonRepository;
 use App\Repository\RaidRepository;
-use DateTime;
+use App\Repository\TypeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\Table;
+use Exception;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[ORM\Entity(repositoryClass: CharacterRepository::class)]
 #[Table(name: '`character`')]
 class Character
 {
-    const MAX_LEVEL = 10;
-    const GENDER_MALE = 'Mâle';
-    const GENDER_FEMALE = 'Femelle';
+    public const GENDER_MALE = 'Mâle';
+    public const GENDER_FEMALE = 'Femelle';
+    public const MIN_AGE = 18;
+    public const MAX_AGE = 44;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -39,16 +42,10 @@ class Character
     private ?string $description = null;
 
     #[ORM\Column(name: '`level`')]
-    private ?int $level = null;
+    public ?int $level = null;
 
     #[ORM\Column(name: '`xp`')]
-    private ?int $xp = null;
-
-    #[ORM\Column(name: '`stat_points`')]
-    private ?int $statPoints = null;
-
-    #[ORM\Column(name: '`rank`')]
-    private ?int $rank = null;
+    public ?int $xp = null;
 
     #[ORM\OneToOne(mappedBy: 'Character', cascade: ['persist', 'remove'])]
     private ?User $userI = null;
@@ -60,17 +57,8 @@ class Character
     #[ORM\JoinColumn(nullable: false)]
     private ?Species $Species = null;
 
-    #[ORM\ManyToMany(targetEntity: Attack::class, inversedBy: 'Characters')]
-    private Collection $Attacks;
-
     #[ORM\ManyToMany(targetEntity: CombatLog::class, mappedBy: 'Characters')]
     private Collection $CombatLogs;
-
-    #[ORM\ManyToMany(targetEntity: Guild::class, inversedBy: 'Characters')]
-    private Collection $Guild;
-
-    #[ORM\OneToMany(mappedBy: 'Character', targetEntity: MissionHistory::class)]
-    private Collection $MissionHistories;
 
     #[ORM\OneToMany(mappedBy: 'Character', targetEntity: Rotation::class)]
     private Collection $rotations;
@@ -90,10 +78,7 @@ class Character
 
     public function __construct()
     {
-        $this->Attacks = new ArrayCollection();
         $this->CombatLogs = new ArrayCollection();
-        $this->Guild = new ArrayCollection();
-        $this->MissionHistories = new ArrayCollection();
         $this->rotations = new ArrayCollection();
     }
 
@@ -150,61 +135,6 @@ class Character
         return $this;
     }
 
-    public function getLevel(): ?int
-    {
-        return $this->level;
-    }
-
-    public function setLevel(int $level): self
-    {
-        $this->level = $level;
-
-        return $this;
-    }
-
-    public function getXp(): ?int
-    {
-        return $this->xp;
-    }
-
-    public function setXp(int $xp): self
-    {
-        $this->xp = $xp;
-
-        return $this;
-    }
-
-    public function getStatPoints(): ?int
-    {
-        return $this->statPoints;
-    }
-
-    public function setStatPoints(int $statPoints): self
-    {
-        $this->statPoints = $statPoints;
-
-        return $this;
-    }
-
-    public function getRank(): ?int
-    {
-        return $this->rank;
-    }
-
-    public function setRank(int $rank): self
-    {
-        $this->rank = $rank;
-
-        return $this;
-    }
-
-    public function getTypes(): array
-    {
-        $speciesType = $this->getSpecies()->getType();
-
-        return $speciesType->toArray();
-    }
-
     public function getUserI(): ?User
     {
         return $this->userI;
@@ -252,30 +182,6 @@ class Character
     }
 
     /**
-     * @return Collection<int, Attack>
-     */
-    public function getAttacks(): Collection
-    {
-        return $this->Attacks;
-    }
-
-    public function addAttack(Attack $attack): self
-    {
-        if (!$this->Attacks->contains($attack)) {
-            $this->Attacks->add($attack);
-        }
-
-        return $this;
-    }
-
-    public function removeAttack(Attack $attack): self
-    {
-        $this->Attacks->removeElement($attack);
-
-        return $this;
-    }
-
-    /**
      * @return Collection<int, CombatLog>
      */
     public function getCombatLogs(): Collection
@@ -308,60 +214,6 @@ class Character
     {
         if ($this->CombatLogs->removeElement($combatLog)) {
             $combatLog->removeCharacter($this);
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Guild>
-     */
-    public function getGuild(): Collection
-    {
-        return $this->Guild;
-    }
-
-    public function addGuild(Guild $guild): self
-    {
-        if (!$this->Guild->contains($guild)) {
-            $this->Guild->add($guild);
-        }
-
-        return $this;
-    }
-
-    public function removeGuild(Guild $guild): self
-    {
-        $this->Guild->removeElement($guild);
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, MissionHistory>
-     */
-    public function getMissionHistories(): Collection
-    {
-        return $this->MissionHistories;
-    }
-
-    public function addMissionHistory(MissionHistory $missionHistory): self
-    {
-        if (!$this->MissionHistories->contains($missionHistory)) {
-            $this->MissionHistories->add($missionHistory);
-            $missionHistory->setCharacter($this);
-        }
-
-        return $this;
-    }
-
-    public function removeMissionHistory(MissionHistory $missionHistory): self
-    {
-        if ($this->MissionHistories->removeElement($missionHistory)) {
-            // set the owning side to null (unless already changed)
-            if ($missionHistory->getCharacter() === $this) {
-                $missionHistory->setCharacter(null);
-            }
         }
 
         return $this;
@@ -403,43 +255,64 @@ class Character
         return $this;
     }
 
-    // ///
-    // Services Functions
-    // ///
+    public function getCurrentExplorationRaidInstance(): ?RaidInstance
+    {
+        return $this->currentExplorationRaidInstance;
+    }
+
+    public function setCurrentExplorationRaidInstance(?RaidInstance $currentExplorationRaidInstance): self
+    {
+        $this->currentExplorationRaidInstance = $currentExplorationRaidInstance;
+
+        return $this;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                  SHORTCUTS                                 */
+    /* -------------------------------------------------------------------------- */
+
+    public function getLevel(): ?int
+    {
+        return $this->Stats->getLevel();
+    }
+
+    public function getXp(): ?int
+    {
+        
+        return $this->Stats->getXp();
+    }
+
+    public function getTypes(): array
+    {
+        $speciesType = $this->getSpecies()->getType();
+
+        return $speciesType->toArray();
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                                 XP & LEVELS                                */
+    /* -------------------------------------------------------------------------- */
 
     public function gainXp($xpAmount): void
     {
-        $this->xp += $xpAmount;
-
-        if($this->hasEnoughXP()){
-            $this->setXp($this->getXp() - $this->getXPCeil())
-            ->setStatPoints($this->getStatPoints() + 5)
-            ->setLevel($this->getLevel() + 1)
-            ->getStats()->increaseBaseStat(1);
-
-        }
+        $this->Stats->gainXp($xpAmount);
     }
 
     public function getXPCeil(): int
     {
-        return intval(round(10.1 * pow($this->getLevel(), 2.83)));
+        return $this->Stats->getXPCeil();
     }
 
     public function getXPPercentage(): int
     {
-        return ceil($this->getXp() * 100 / $this->getXPCeil());
+        return $this->Stats->getXPPercentage();
     }
 
-    public function hasEnoughXP(): bool
-    {
-        if($this->getXp() >= $this->getXPCeil()){
-            return true;
-        }
+    /* -------------------------------------------------------------------------- */
+    /*                             Rotations & Opener                             */
+    /* -------------------------------------------------------------------------- */
 
-        return false;
-    }
-
- /**
+    /**
      * @return Collection<int, Rotation>
      */
     public function getRotations(): Collection
@@ -475,6 +348,33 @@ class Character
         return null;
     }
 
+    /**
+     * Returns in a array all the Attacks available for a character
+     */
+    public function getAvailableAttacks(TypeRepository $typeRepository, AttackRepository $attackRepository): array
+    {
+        $adventurerType = $typeRepository->findOneBy(['name' => 'Aventurier']);
+
+        $allCharacterAttackTypes = [$adventurerType];
+
+        foreach ($this->getTypes() as $type) {
+            $allCharacterAttackTypes[] = $type;
+        }
+
+        $attackList = [];
+        foreach ($allCharacterAttackTypes as $type) {
+            foreach ($attackRepository->findAvailableAttacksForLevelAndType($this->getLevel(), $type) as $attack) {
+                $attackList[] = $attack;
+            }
+        }
+        
+        return $attackList;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                     Exploration & Available Activities                     */
+    /* -------------------------------------------------------------------------- */
+
     public function getAvailableDungeons(DungeonRepository $dungeonRepository): array
     {
         // Does not require exploration
@@ -497,14 +397,62 @@ class Character
         return [$RAID_ONE];
     }
 
-    public function getCurrentExplorationRaidInstance(): ?RaidInstance
-    {
-        return $this->currentExplorationRaidInstance;
-    }
+    /* -------------------------------------------------------------------------- */
+    /*                             CHARACTER CREATION                             */
+    /* -------------------------------------------------------------------------- */
 
-    public function setCurrentExplorationRaidInstance(?RaidInstance $currentExplorationRaidInstance): self
+    /**
+     * Verify data of the new Character
+     */
+    public function createNewCharacter(User $user, AttackRepository $attackRepository, EntityManagerInterface $em, TranslatorInterface $translator): self
     {
-        $this->currentExplorationRaidInstance = $currentExplorationRaidInstance;
+        /**
+         * Verify that user does not already have a character
+         */
+        if($user->getCharacter() !== null){
+            throw new Exception($translator->trans('vous_possedez_deja_un_personnage', [], 'app'), 400);
+        }
+
+        /**
+         * Verify that the name is correct
+         */
+        if(preg_match('~[0-9]+~', $this->name)){
+            throw new Exception($translator->trans('le_nom_choisi_est_incorrect', [], 'app'), 400);
+        }
+
+        /**
+         * Verify that the age is correct
+         */
+        if($this->age < self::MIN_AGE || $this->age > self::MAX_AGE){
+            throw new Exception($translator->trans('l_age_choisi_est_incorrect', [], 'app'), 400);
+        }
+
+        $OpenerRotation = new Rotation();
+        $OpenerRotation->initNewRotation(Rotation::TYPE_OPENER,$this, $attackRepository);
+
+        $Rotation = new Rotation();
+        $Rotation->initNewRotation(Rotation::TYPE_ROTATION, $this, $attackRepository);
+
+        $Stats = new Stats();
+        $Stats->initNewCharacterStats();
+
+        $Timers = new Timers();
+        $Timers->initNewTimers();
+
+        $this->setUserI($user)
+             ->setStats($Stats)
+             ->setTimers($Timers)
+             ->setIsShiny(false);
+
+        $em->persist($OpenerRotation);
+        $em->persist($Rotation);
+        $em->persist($Stats);
+        $em->persist($Timers);
+        $em->persist($this);
+
+        $user->addRoles(['ROLE_CHARACTER']);
+
+        $em->flush();
 
         return $this;
     }

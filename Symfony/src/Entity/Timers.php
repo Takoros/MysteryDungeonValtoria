@@ -129,4 +129,14 @@ class Timers
 
         return DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $date);
     }
+
+    /* -------------------------------------------------------------------------- */
+    /*                               TIMERS CREATION                              */
+    /* -------------------------------------------------------------------------- */
+
+    public function initNewTimers(): void
+    {
+        $this->raidCharges = 1;
+        $this->dungeonCharges = 1;
+    }
 }

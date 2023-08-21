@@ -11,6 +11,11 @@
     </head>
     <body>
         {% include '_shared/_navbar.html.twig' %}
+
+        <div class="flashMessagesContainer">
+
+        </div>
+
         {% if app.user %}
             {% if app.user.character == null %}
                 <a class="playButton" href="{{ path('app_character_create') }}">{{ 'jouer'|trans({}, 'app') }}</a>
@@ -21,8 +26,8 @@
         <div id='content'>
             {% block body %}{% endblock %}
         </div>
+        {% include "_shared/_flash-message.html.twig" %}
         {% block javascripts %}{% endblock %}
-        
         <footer>
             <p>{{ 'footer_description'|trans({}, 'app') }}</p>
         </footer>

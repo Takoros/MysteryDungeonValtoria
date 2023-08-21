@@ -1,0 +1,21 @@
+<script>
+    var flashMessagesContainer = document.getElementsByClassName('flashMessagesContainer')[0];
+    var flashMessageCounter = 0;
+
+    // Maximum 120 characters
+    function newFlashMessage(content, type){
+        newFlashMessageDiv = document.createElement('div');
+        newFlashMessageDiv.classList.add('flashMessage');
+        newFlashMessageDiv.classList.add(type);
+        newFlashMessageDiv.id = 'js-flash-'+ flashMessageCounter;
+        newFlashMessageDiv.innerHTML = `<div class="flashMessageCloseButton"><div onClick="closeFlashMessage('${newFlashMessageDiv.id}')">X</div></div>`
+        newFlashMessageDiv.innerHTML += `<span class="flashMessageContent">`+content+`</span>`;
+
+        flashMessagesContainer.appendChild(newFlashMessageDiv);
+    }
+
+    function closeFlashMessage(id){
+        flashMessage = document.getElementById(id);
+        flashMessage.remove();
+    }
+</script>

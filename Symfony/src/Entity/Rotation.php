@@ -2,8 +2,10 @@
 
 namespace App\Entity;
 
+use App\Repository\AttackRepository;
 use App\Repository\RotationRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Component\Routing\Exception\InvalidParameterException;
 
 #[ORM\Entity(repositoryClass: RotationRepository::class)]
@@ -212,25 +214,6 @@ class Rotation
     }
 
     /**
-     * Returns true if an attack can fit into the slot (with ActionPoint costs)
-     */
-    public function canFitAttackIntoSlot(Attack $Attack, int $maximumOfActionPoint, int $slot): bool
-    {
-        $actionPointUsed = $this->getActionPointUsed();
-        $slotAttack = $this->getSlotAttack($slot);
-
-        $actionPointUsedWithoutSlotAttack = $actionPointUsed - $slotAttack->getActionPointCost();
-        $actionPointUsedWithNewAttack = $actionPointUsedWithoutSlotAttack + $Attack->getActionPointCost();
-
-        if($actionPointUsedWithNewAttack > $maximumOfActionPoint){
-            return false;
-        }
-        else {
-            return true;
-        }
-    }
-
-    /**
      * Returns the number of action point used by the Rotation
      */
     public function getActionPointUsed(): int
@@ -242,5 +225,31 @@ class Rotation
         }
 
         return $actionPointUsed;
+    }
+
+    /* -------------------------------------------------------------------------- */
+    /*                              ROTATION CREATION                             */
+    /* -------------------------------------------------------------------------- */
+
+    public function initNewRotation(string $type, Character $character, AttackRepository $attackRepository): void
+    {
+        if($type === self::TYPE_OPENER){
+            $this->type = self::TYPE_OPENER;
+        }
+        else if ($type === self::TYPE_ROTATION){
+            $this->type = self::TYPE_ROTATION;
+        }
+        else {
+            throw new Exception("Wrong Rotation Type", 500);
+        }
+
+        $lutte = $attackRepository->find("ATTACK_EXPLORER_BASE");
+
+        $this->setCharacter($character)
+             ->setAttackOne($lutte)
+             ->setAttackTwo($lutte)
+             ->setAttackThree($lutte)
+             ->setAttackFour($lutte)
+             ->setAttackFive($lutte);
     }
 }

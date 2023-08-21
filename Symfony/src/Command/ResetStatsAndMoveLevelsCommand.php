@@ -2,7 +2,7 @@
 
 namespace App\Command;
 
-use App\Repository\UserRepository;
+use App\Repository\CharacterRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Console\Attribute\AsCommand;
@@ -14,30 +14,33 @@ use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
 #[AsCommand(
-    name: 'app:add_character_roles',
-    description: 'Gives Character Role to users that have a character',
+    name: 'app:reset_stats_and_move_levels',
+    description: 'Add a short description for your command',
 )]
-class AddCharacterRoleToUsersCommand extends Command
+class ResetStatsAndMoveLevelsCommand extends Command
 {
     private EntityManagerInterface $entityManager;
-    private UserRepository $userRepository;
+    private CharacterRepository $characterRepository;
 
-    public function __construct(ManagerRegistry $doctrine, UserRepository $userRepository)
+    public function __construct(ManagerRegistry $doctrine, CharacterRepository $characterRepository)
     {
         $this->entityManager = $doctrine->getManager();
-        $this->userRepository = $userRepository;
+        $this->characterRepository = $characterRepository;
 
         parent::__construct();
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $allUsers = $this->userRepository->findAll();
+        $allExplorers = $this->characterRepository->findAll();
+        
+        foreach ($allExplorers as $explorer) {
+            $Stats = $explorer->getStats();
 
-        foreach ($allUsers as $user) {
-            if($user->getCharacter() !== null){
-                $user->addRoles(['ROLE_CHARACTER']);
-            }
+            $Stats->setLevel($explorer->level);
+            $Stats->setXp($explorer->xp);
+
+            $Stats->initStatsForLevel();
         }
 
         $this->entityManager->flush();

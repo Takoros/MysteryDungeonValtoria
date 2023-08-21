@@ -178,6 +178,9 @@ victoire: "Victoire"
 defaite: "Défaite"
 vous_avez_pas_encore_de_combat: "Vous n'avez pas encore de combat"
 voir: "Voir"
+primaires: 'Primaires'
+secondaires: 'Secondaires'
+autres: 'Autres'
 
 # modify_rotation.html.twig
 
@@ -583,24 +586,31 @@ repli_attack_description: "Augmente l'Endurance du lanceur pendant 3 tours."
 # ---------------------------------------------------------------------------- #
 
 vitalite: 'Vitalité'
+vitality: 'Vitalité'
 vitalite_description: "La Vitalité représente la capacité de votre pokémon à encaisser des coups sans tomber K.O. Un pokémon tombe K.O en combat lorsque sa vitalité atteint 0."
 # -- #
 endurance: 'Endurance'
+stamina: 'Endurance'
 endurance_description: "L'Endurance représente la capacité de votre Pokémon à encaisser les attaques physiques, plus la valeur est élevée, plus les dégâts physiques subits seront réduits."
 # -- #
 courage: 'Courage'
+bravery: 'Courage'
 courage_description: "Le Courage représente la capacité de votre Pokémon à encaisser les attaques spéciales, plus la valeur est élevée, plus les dégâts spéciaux subits seront réduits."
 # -- #
 agilite: 'Agilité'
+agility: 'Agilité'
 agilite_description: "L'Agilité permet d'augmenter les chances d'esquive du Pokémon, plus sa valeur est élevée, plus les chances sont haute."
 # -- #
 impassibilite: 'Impassibilité'
+impassiveness: 'Impassibilité'
 impassibilite_description: "L'Impassibilité permet à un Pokémon de résister aux effets négatifs qui lui sont infligés (Status de controle, malus de stat..). Plus la valeur est élevée, plus les chances de ne pas subir un status de controle seront élevée & moins les malus de stat seront efficaces sur lui."
 # -- #
 force: 'Force'
+strength: 'Force'
 force_description: "La Force représente la capacité de votre pokémon à effectuer des attaques physiques puissante, plus la valeur est élevée, plus les dégâts physiques infligés par le pokémon seront augmentés."
 # -- #
 pouvoir: 'Pouvoir'
+power: 'Pouvoir'
 pouvoir_description: "Le Pouvoir représente la capacité de votre pokémon à effectuer des attaques spéciales puissante, plus la valeur est élevée, plus les dégâts spéciaux infligés par le pokémon seront augmentés."
 # -- #
 presence: "Présence"
@@ -610,12 +620,15 @@ coordination: 'Coordination'
 coordination_description: "La Coordination permet de déterminer la fréquence à laquelle un Pokémon infligera des coups critiques, plus la valeur est élevée, plus les chances de rendre ses attaques critiques sont augmentés. De plus, la Coordination permet de réduire les chances d'esquive lors d'une attaque sur un pokémon adverse."
 # -- #
 vitesse: 'Vitesse'
+speed: 'Vitesse'
 vitesse_description: "La Vitesse permet d'attaquer plus rapidement et plus souvent durant un combat."
 # -- #
 points_action: "Points d'Action"
 points_action_description: "Nombre de points d'action maximum par Rotation"
 # -- #
 points_de_stat: "Points de Stat"
+points_de_stat_primaire: "Points Primaire"
+points_de_stat_secondaire: "Points Secondaire"
 points_de_stat_description: "Points à dépenser pour augmenter les statistiques de votre personnage. Obtenu en montant de niveau."
 # -- #
 
@@ -724,3 +737,14 @@ psy_type: 'Psy'
 roche_type: 'Roche'
 acier_type: 'Acier'
 eau_type: 'Eau'
+
+# ---------------------------------------------------------------------------- #
+#                                    ERRORS                                    #
+# ---------------------------------------------------------------------------- #
+
+vous_possedez_deja_un_personnage: "Vous possédez déjà un Personnage."
+le_nom_choisi_est_incorrect: "Le nom choisi est incorrect."
+l_age_choisi_est_incorrect: "L'âge choisi est incorrect"
+pas_assez_de_points_de_stat_primaire: "Vous n'avez pas assez de points de stats primaire."
+pas_assez_de_points_de_stat_secondaire: "Vous n'avez pas assez de points de stats secondaire."
+deja_au_max_pour_votre_niveau: '%statName% est déjà augmentée au max pour votre niveau'
