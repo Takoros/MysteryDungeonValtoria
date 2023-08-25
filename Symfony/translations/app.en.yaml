@@ -223,6 +223,14 @@ description_du_personnage: "Resume of Character"
 genre_male: 'Male'
 genre_female: 'Female'
 
+# show_stats_tooltip.html.twig
+
+details: "Details"
+base: "Base"
+points: "Points"
+equipement: "Gear"
+valeur: "Value"
+
 # ---------------------------------------------------------------------------- #
 #                                    COMBAT                                    #
 # ---------------------------------------------------------------------------- #
@@ -737,6 +745,22 @@ psy_type: 'Psy'
 roche_type: 'Rock'
 acier_type: 'Steel'
 eau_type: 'Water'
+
+# ---------------------------------------------------------------------------- #
+#                                  GEAR NAMES                                  #
+# ---------------------------------------------------------------------------- #
+
+# ---------------------------------- Swords ---------------------------------- #
+weapon_epee_en_bois: 'Wooden Sword'
+weapon_epee_en_bois_description: "This wooden sword was given to you during your registration at the Fort-Écorce explorer's guild, it seems a bit used, but it will make the job for now."
+
+# ---------------------------------- Scarfs ---------------------------------- #
+scarf_foulard_du_debutant: "Beginner's Scarf"
+scarf_foulard_du_debutant_description: ''
+
+# -------------------------------- Accessories ------------------------------- #
+accessory_badge_explorateur_debutant: "Beginner Explorer's Badge"
+accessory_badge_explorateur_debutant_description: ''
 
 # ---------------------------------------------------------------------------- #
 #                                    ERRORS                                    #

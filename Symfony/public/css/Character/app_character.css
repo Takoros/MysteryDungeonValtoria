@@ -5,16 +5,22 @@
 }
 
 .xpBar {
-    width: 100%; /* Full width */
-    background-color: #ddd; /* Grey background */
+    width: 100%;
+    /* Full width */
+    background-color: #ddd;
+    /* Grey background */
 }
 
 .xpBarFill {
-    text-align: right; /* Right-align text */
-    padding-top: 2px; /* Add top padding */
-    padding-bottom: 5px; /* Add bottom padding */
-    color: white; /* White text color */
-    background-color: 	#71de04;
+    text-align: right;
+    /* Right-align text */
+    padding-top: 2px;
+    /* Add top padding */
+    padding-bottom: 5px;
+    /* Add bottom padding */
+    color: white;
+    /* White text color */
+    background-color: #71de04;
 }
 
 .genderIcon {
@@ -40,7 +46,8 @@
     padding: 10px;
 }
 
-.cardUpperRight, .cardUpperLeft {
+.cardUpperRight,
+.cardUpperLeft {
     height: 160px;
 }
 
@@ -206,6 +213,180 @@
 .modifyDescriptionValidationButtonSubmit:hover {
     cursor: pointer;
 }
+
+/* -------------------------------------------------------------------------- */
+/*                          ProfileCharacterCardGear                          */
+/* -------------------------------------------------------------------------- */
+
+.profileCharacterCardGearTitle {
+    font-size: 20px;
+    font-family: 'Eagle Lake', cursive;
+    text-align: center;
+}
+
+.profileCharacterCardGearContent {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    height: 250px;
+}
+
+.profileCharacterCardGearContentItemContainer {
+    width: 175px;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 16px;
+}
+
+.profileCharacterCardGearItemTitle {
+    text-align: center;
+}
+
+.profileCharacterCardGearItemIcon {
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.profileCharacterCardGearItemIcon:hover .itemTooltip {
+    visibility: visible;
+}
+
+.profileCharacterCardGearItemIcon img {
+    border: 3px solid grey;
+}
+
+.profileCharacterCardGearItemName {
+    font-size: 13px;
+    text-align: center;
+    margin-top: 4px;
+    height: 40px;
+}
+
+.profileCharacterCardGearUnequip {
+    margin-top: 10px;
+    border: 1px solid black;
+    background-color: rgba(255, 0, 0, 0.405);
+    text-align: center;
+    width: 125px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.profileCharacterCardGearUnequip:hover {
+    cursor: pointer;
+}
+
+.profileCharacterCardGearUnequipLink {
+    display: block;
+    text-decoration: none;
+    width: 125px;
+    margin-left: auto;
+    margin-right: auto;
+    color: black;
+}
+
+.itemTooltip {
+    border: 4px solid white;
+    border-radius: 5px;
+    width: 350px;
+    height: 190px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin-bottom: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+}
+
+.itemTooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.itemTooltipInfos {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+
+.itemTooltipTextInfos {
+    width: 265px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemTooltipName {
+    font-size: 14px;
+}
+
+.itemTooltipIcon {
+    padding-left: 5px;
+}
+
+.itemTooltipBonuses {
+    display: grid;
+    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-rows: 20px 20px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 265px;
+    column-gap: 10px;
+    row-gap: 5px;
+    justify-content: center;
+    height: 71px;
+}
+
+.itemTooltipBonus {
+    display: flex;
+}
+
+.itemTooltipBonus span {
+    margin-left: 4px;
+    font-size: 13px;
+    line-height: 15px;
+}
+
+.itemTooltipBonus img {
+    width: 17.5px;
+    border: none;
+}
+
+.itemTooltip-sep {
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+    width: 80%;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.itemTooltipDescription {
+    color: rgba(232, 232, 232, 0.89);
+    font-size: 11px;
+    font-style: italic;
+    padding: 5px;
+}
+
 /* -------------------------------------------------------------------------- */
 /*                          ProfileCharacterCardLower                         */
 /* -------------------------------------------------------------------------- */
@@ -217,7 +398,6 @@
 }
 
 .profileCharacterCardStats {
-    margin-top: 15px;
     margin-bottom: 15px;
 }
 
@@ -248,7 +428,8 @@
     margin-right: auto;
 }
 
-.primarySectionContentDefense, .primarySectionContentOffense {
+.primarySectionContentDefense,
+.primarySectionContentOffense {
     margin-top: 10px;
     display: grid;
     grid-template-columns: 140px 140px 140px;
@@ -285,35 +466,6 @@
     height: 80px;
 }
 
-/*.profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
-    display: grid;
-    grid-template-columns: 140px 140px 140px 140px 140px;
-    grid-template-rows: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 850px;
-    column-gap: 10px;
-    justify-content: center;
-    height: 80px;
-}
-
-.profileCharacterCardStats2ndRow {
-    margin-top: 10px;
-}
-
-.profileCharacterCardStats3rdRow {
-    display: grid;
-    grid-template-columns: 140px 160px 160px;
-    grid-template-rows: auto;
-    margin-left: auto;
-    margin-right: auto;
-    width: 850px;
-    column-gap: 10px;
-    justify-content: center;
-    margin-top: 10px;
-    height: 80px;
-}*/
-
 .profileCharacterCardStat {
     display: flex;
     flex-direction: column;
@@ -322,7 +474,92 @@
     border: 1px solid black;
     border-radius: 5px;
     padding: 5px;
-    overflow: hidden;
+    overflow: visible;
+    position: relative;
+}
+
+.statTooltip {
+    visibility: hidden;
+    border: 4px solid white;
+    border-radius: 5px;
+    width: 350px;
+    height: 190px;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    margin-bottom: 6px;
+
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    background-color: rgba(0, 0, 0, 0.85);
+    color: #fff;
+}
+
+.statTooltip::after {
+    content: " ";
+    position: absolute;
+    top: 100%;
+    /* At the bottom of the tooltip */
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.statTooltip .tooltip-description {
+    display: flex;
+    padding: 5px;
+    font-size: 11px;
+    min-height: 90px;
+    justify-content: center;
+    align-items: center;
+}
+
+.statTooltip .tooltip-mini-title {
+    font-size: 12.5px;
+}
+
+.statTooltip .tooltip-sep {
+    background-color: rgba(255, 255, 255, 0.3);
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: block;
+    width: 80%;
+    height: 1px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.tooltip-sep-small {
+    width: 40% !important;
+}
+
+.tooltip-detailsContent {
+    display: grid;
+    grid-template-columns: 110px 110px 110px;
+    grid-column-gap: 10px;
+    grid-row-gap: 3px;
+
+    font-size: 11.5px;
+}
+
+.tooltip-detailsContent-sm {
+    display: grid;
+    grid-template-columns: 110px;
+    grid-column-gap: 10px;
+    grid-row-gap: 3px;
+    justify-content: center;
+    font-size: 11.5px;
+}
+
+.profileCharacterCardStat:hover .statTooltip {
+    visibility: visible;
 }
 
 .profileCharacterCardStatInfo {
@@ -340,7 +577,8 @@
     text-align: center;
 }
 
-.spendPrimaryPointButton,.spendSecondaryPointButton  {
+.spendPrimaryPointButton,
+.spendSecondaryPointButton {
     height: 25px;
     width: 25px;
     position: relative;
@@ -352,10 +590,11 @@
     background-image: url('../../icons/arrow_up_upgrade.png');
     background-position: center 6px;
     background-repeat: no-repeat;
-    background-size:60%;
+    background-size: 60%;
 }
 
-.spendPrimaryPointButton:hover, .spendSecondaryPointButton:hover {
+.spendPrimaryPointButton:hover,
+.spendSecondaryPointButton:hover {
     cursor: pointer;
 }
 
@@ -417,7 +656,7 @@
     padding-top: 0px;
     padding-bottom: 0px;
     width: 75px;
-    
+
 }
 
 .valueTr td:nth-child(2) {
@@ -622,7 +861,8 @@
         width: 701px;
     }
 
-    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+    .profileCharacterCardStats1stRow,
+    .profileCharacterCardStats2ndRow {
         width: 700px;
         grid-template-columns: 130px 130px 130px 130px 130px;
     }
@@ -631,7 +871,9 @@
         width: 700px;
     }
 
-    .cardUpperRight, .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+    .cardUpperRight,
+    .cardUpperRightNameLevelGender,
+    .cardUpperRightSpeciesAgeRank {
         font-size: 17px;
     }
 
@@ -671,7 +913,9 @@
         width: 500px;
     }
 
-    .cardUpperLeft, .speciesIcon, .speciesIcon img {
+    .cardUpperLeft,
+    .speciesIcon,
+    .speciesIcon img {
         height: 120px;
         width: 120px;
     }
@@ -681,7 +925,9 @@
         height: 125px;
     }
 
-    .cardUpperRight, .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+    .cardUpperRight,
+    .cardUpperRightNameLevelGender,
+    .cardUpperRightSpeciesAgeRank {
         font-size: 13px;
     }
 
@@ -696,7 +942,8 @@
         font-size: 11.5px;
     }
 
-    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+    .profileCharacterCardStats1stRow,
+    .profileCharacterCardStats2ndRow {
         width: 499px;
         grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
         column-gap: 5px;
@@ -809,7 +1056,9 @@
         margin-bottom: 10px;
     }
 
-    .speciesIcon, .speciesIcon img, .cardUpperLeft {
+    .speciesIcon,
+    .speciesIcon img,
+    .cardUpperLeft {
         width: 100px;
         height: 100px;
     }
@@ -825,7 +1074,8 @@
         text-align: center;
     }
 
-    .cardUpperRightNameLevelGender, .cardUpperRightSpeciesAgeRank {
+    .cardUpperRightNameLevelGender,
+    .cardUpperRightSpeciesAgeRank {
         font-size: 11px;
         justify-content: center;
     }
@@ -834,7 +1084,8 @@
         font-size: 10px;
     }
 
-    .profileCharacterCardStats1stRow, .profileCharacterCardStats2ndRow {
+    .profileCharacterCardStats1stRow,
+    .profileCharacterCardStats2ndRow {
         width: 340px;
         grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
         column-gap: 5px;
@@ -848,7 +1099,8 @@
         grid-template-columns: 120px 120px;
     }
 
-    .rotationItem, .openerItem {
+    .rotationItem,
+    .openerItem {
         display: none;
     }
 

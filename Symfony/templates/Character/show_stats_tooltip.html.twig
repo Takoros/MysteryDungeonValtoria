@@ -1,0 +1,21 @@
+<span class="statTooltip">
+    <div class="tooltip-description">{{ description }}</div>
+    <span class="tooltip-sep"></span>
+    <span class="tooltip-mini-title">{{'details'|trans({}, 'app')}}</span>
+    <span class="tooltip-sep tooltip-sep-small"></span>
+    {% if isOtherStat is not defined %}
+        <div class="tooltip-detailsContent">
+            <span>{{'base'|trans({}, 'app')}}</span>
+            <span>{{'points'|trans({}, 'app')}}</span>
+            <span>{{'equipement'|trans({}, 'app')}}</span>
+            <span>{{ baseStat }}</span>
+            <span>{{ spentPoints }} / {{ maxPoints }}</span>
+            <span>{{ gearPoints }}</span>
+        </div>
+    {% else %}
+        <div class="tooltip-detailsContent-sm">
+            <span>{{'valeur'|trans({}, 'app')}}</span>
+            <span>{{ baseStat }}</span>
+        </div>
+    {% endif %}
+</span>

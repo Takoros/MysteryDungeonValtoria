@@ -3,7 +3,8 @@
         <div class="profileCharacterCardStatsSectionTitle">{{ 'primaires'|trans({}, 'app') }}</div>
         <div class="primarySectionContent">
             <!-- -------------------------------- Vitality ------------------------------------- -->
-            <div class="profileCharacterCardStat Stat-Vitality" title="{{ 'vitalite_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-Vitality">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseVitality, 'spentPoints' : character.Stats.vitalitySpentPoints, 'gearPoints': character.Stats.GearVitality, 'maxPoints': character.Stats.getMaxPoints(true), 'description': 'vitalite_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/vitality.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'vitalite'|trans({}, 'app') }}</span>
@@ -14,7 +15,8 @@
             <!-- ------------------------------ Defense Stats ----------------------------- -->
             <div class="primarySectionContentOffense">
                 <!-- -------------------------------- Strength ------------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Strength" title="{{ 'force_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Strength">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseStrength, 'spentPoints' : character.Stats.strengthSpentPoints, 'gearPoints': character.Stats.GearStrength, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'force_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/strength.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'force'|trans({}, 'app') }}</span>
@@ -23,7 +25,8 @@
                     {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('strength', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'force'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
                 </div>
                 <!-- -------------------------------- Power ---------------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Power" title="{{ 'pouvoir_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Power">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.basePower, 'spentPoints' : character.Stats.powerSpentPoints, 'gearPoints': character.Stats.GearPower, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'pouvoir_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/power.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'pouvoir'|trans({}, 'app') }}</span>
@@ -32,7 +35,8 @@
                     {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('power', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'power'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
                 </div>
                 <!-- -------------------------------- Presence ------------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Presence" title="{{ 'presence_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Presence">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.basePresence, 'spentPoints' : character.Stats.presenceSpentPoints, 'gearPoints': character.Stats.GearPresence, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'presence_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/presence.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'presence'|trans({}, 'app') }}</span>
@@ -43,7 +47,8 @@
             </div>
             <div class="primarySectionContentDefense">
                 <!-- -------------------------------- Stamina ------------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Stamina" title="{{ 'endurance_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Stamina">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseStamina, 'spentPoints' : character.Stats.staminaSpentPoints, 'gearPoints': character.Stats.GearStamina, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'endurance_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/stamina.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'endurance'|trans({}, 'app') }}</span>
@@ -52,7 +57,8 @@
                     {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('stamina', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'endurance'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
                 </div>
                 <!-- -------------------------------- Bravery -------------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Bravery" title="{{ 'courage_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Bravery">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseBravery, 'spentPoints' : character.Stats.braverySpentPoints, 'gearPoints': character.Stats.GearBravery, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'courage_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/bravery.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'courage'|trans({}, 'app') }}</span>
@@ -61,7 +67,8 @@
                     {% if isSelfCharacter %}<div class="spendPrimaryPointButton" onClick="spendPoints('bravery', 'primary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'courage'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
                 </div>
                 <!-- -------------------------------- Impassiveness -------------------------------- -->
-                <div class="profileCharacterCardStat Stat-Impassiveness" title="{{ 'impassibilite_description'|trans({}, 'app') }}">
+                <div class="profileCharacterCardStat Stat-Impassiveness">
+                    {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseImpassiveness, 'spentPoints' : character.Stats.impassivenessSpentPoints, 'gearPoints': character.Stats.GearImpassiveness, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'impassibilite_description'|trans({}, 'app')} only %}
                     <div class="profileCharacterCardStatInfo">
                         <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/impassiveness.png') }}"> 
                         <span class="profileCharacterCardStatName">{{ 'impassibilite'|trans({}, 'app') }}</span>
@@ -76,7 +83,8 @@
         <div class="profileCharacterCardStatsSectionTitle">{{ 'secondaires'|trans({}, 'app') }}</div>
         <div class="secondarySectionContent">
             <!-- ------------------------------ Coordination ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-Coordination" title="{{ 'statistiques'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-Coordination">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseCoordination, 'spentPoints' : character.Stats.coordinationSpentPoints, 'gearPoints': character.Stats.GearCoordination, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'coordination_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/coordination.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'coordination'|trans({}, 'app') }}</span>
@@ -85,7 +93,8 @@
                 {% if isSelfCharacter %}<div class="spendSecondaryPointButton" onClick="spendPoints('coordination', 'secondary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'coordination'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
             </div>
             <!-- ------------------------------ Speed ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-Speed" title="{{ 'vitesse_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-Speed">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseSpeed, 'spentPoints' : character.Stats.speedSpentPoints, 'gearPoints': character.Stats.GearSpeed, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'vitesse_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/speed.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'vitesse'|trans({}, 'app') }}</span>
@@ -94,7 +103,8 @@
                 {% if isSelfCharacter %}<div class="spendSecondaryPointButton" onClick="spendPoints('speed', 'secondary')" title="{{ 'depenser_N_points_de_stat_pour_gagner_N_Stat'|trans({'%NumberPointsStat%': 1, '%StatName%': 'vitesse'|trans({}, 'app'), '%NumberStat%':1}, 'app') }}"></div>{% endif %}
             </div>
             <!-- ------------------------------ Agility ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-Agility" title="{{ 'agilite_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-Agility">
+            {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.baseAgility, 'spentPoints' : character.Stats.agilitySpentPoints, 'gearPoints': character.Stats.GearAgility, 'maxPoints': character.Stats.getMaxPoints(), 'description': 'agilite_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/agility.svg') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'agilite'|trans({}, 'app') }}</span>
@@ -108,7 +118,8 @@
         <div class="profileCharacterCardStatsSectionTitle">{{ 'autres'|trans({}, 'app') }}</div>
         <div class="othersSectionContent">
             <!-- ------------------------------ Action Points ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-ActionPoint" title="{{ 'points_action_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-ActionPoint">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.actionPoint, 'isOtherStat': true, 'description': 'points_action_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/actionPoint.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'points_action'|trans({}, 'app') }}</span>
@@ -116,7 +127,8 @@
                 <div class="profileCharacterCardStatValue">{{ character.Stats.actionPoint }}</div>
             </div>
             <!-- ------------------------------ Primary Points ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-StatPoints" title="{{ 'points_de_stat_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-StatPoints">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.primaryStatPoint, 'isOtherStat': true, 'description': 'points_de_stat_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/statPoints.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'points_de_stat_primaire'|trans({}, 'app') }}</span>
@@ -124,7 +136,8 @@
                 <div id='primaryStatPointValue' class="profileCharacterCardStatValue">{{ character.Stats.primaryStatPoint }}</div>
             </div>
             <!-- ------------------------------ Secondary Points ----------------------------- -->
-            <div class="profileCharacterCardStat Stat-StatPoints" title="{{ 'points_de_stat_description'|trans({}, 'app') }}">
+            <div class="profileCharacterCardStat Stat-StatPoints">
+                {% include "character/show_stats_tooltip.html.twig" with {'baseStat' : character.Stats.secondaryStatPoint, 'isOtherStat': true, 'description': 'points_de_stat_description'|trans({}, 'app')} only %}
                 <div class="profileCharacterCardStatInfo">
                     <img class="profileCharacterCardStatIcon" src="{{ asset('icons/stats/statPoints.png') }}"> 
                     <span class="profileCharacterCardStatName">{{ 'points_de_stat_secondaire'|trans({}, 'app') }}</span>

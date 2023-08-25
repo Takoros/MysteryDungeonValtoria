@@ -223,6 +223,14 @@ description_du_personnage: "Description du Personnage"
 genre_male: 'Mâle'
 genre_female: 'Femelle'
 
+# show_stats_tooltip.html.twig
+
+details: "Détails"
+base: "Base"
+points: "Points"
+equipement: "Équipement"
+valeur: "Valeur"
+
 # ---------------------------------------------------------------------------- #
 #                                    COMBAT                                    #
 # ---------------------------------------------------------------------------- #
@@ -603,7 +611,7 @@ agilite_description: "L'Agilité permet d'augmenter les chances d'esquive du Pok
 # -- #
 impassibilite: 'Impassibilité'
 impassiveness: 'Impassibilité'
-impassibilite_description: "L'Impassibilité permet à un Pokémon de résister aux effets négatifs qui lui sont infligés (Status de controle, malus de stat..). Plus la valeur est élevée, plus les chances de ne pas subir un status de controle seront élevée & moins les malus de stat seront efficaces sur lui."
+impassibilite_description: "L'Impassibilité permet à un Pokémon de résister aux effets négatifs qui lui sont infligés (Status de controle, malus de stat..), plus la valeur est élevée, plus la résistance aux status augmente."
 # -- #
 force: 'Force'
 strength: 'Force'
@@ -617,7 +625,7 @@ presence: "Présence"
 presence_description: "La Présence représente la capacité de votre Pokémon à infliger des status (positifs ou négatifs) & octroyer des soins. Plus la Présence d'un pokémon est elevée, plus ses soins et ses status seront efficaces."
 # -- #
 coordination: 'Coordination'
-coordination_description: "La Coordination permet de déterminer la fréquence à laquelle un Pokémon infligera des coups critiques, plus la valeur est élevée, plus les chances de rendre ses attaques critiques sont augmentés. De plus, la Coordination permet de réduire les chances d'esquive lors d'une attaque sur un pokémon adverse."
+coordination_description: "La Coordination permet de déterminer la fréquence à laquelle un Pokémon infligera des coups critiques, plus la valeur est élevée, plus les chances de rendre ses attaques critiques sont augmentés."
 # -- #
 vitesse: 'Vitesse'
 speed: 'Vitesse'
@@ -737,6 +745,22 @@ psy_type: 'Psy'
 roche_type: 'Roche'
 acier_type: 'Acier'
 eau_type: 'Eau'
+
+# ---------------------------------------------------------------------------- #
+#                                  GEAR NAMES                                  #
+# ---------------------------------------------------------------------------- #
+
+# ---------------------------------- Swords ---------------------------------- #
+weapon_epee_en_bois: 'Épée en bois'
+weapon_epee_en_bois_description: "Cette épée courte en bois vous à été donnée lors de votre inscription en tant qu'aventurier dans la guilde de Fort-Écorce, elle semble un peu usée, mais elle fera l'affaire pour le moment"
+
+# ---------------------------------- Scarfs ---------------------------------- #
+scarf_foulard_du_debutant: 'Foulard du débutant'
+scarf_foulard_du_debutant_description: ''
+
+# -------------------------------- Accessories ------------------------------- #
+accessory_badge_explorateur_debutant: "Badge d'explorateur débutant"
+accessory_badge_explorateur_debutant_description: ''
 
 # ---------------------------------------------------------------------------- #
 #                                    ERRORS                                    #

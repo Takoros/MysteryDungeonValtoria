@@ -42,16 +42,22 @@ class Character
     private ?string $description = null;
 
     #[ORM\Column(name: '`level`')]
-    public ?int $level = null;
+    public ?int $level = 0;
 
     #[ORM\Column(name: '`xp`')]
-    public ?int $xp = null;
+    public ?int $xp = 0;
 
     #[ORM\OneToOne(mappedBy: 'Character', cascade: ['persist', 'remove'])]
     private ?User $userI = null;
 
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Stats $Stats = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Gear $Gear = null;
+
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    private ?Inventory $Inventory = null;
 
     #[ORM\ManyToOne(inversedBy: 'Characters')]
     #[ORM\JoinColumn(nullable: false)]
@@ -63,15 +69,15 @@ class Character
     #[ORM\OneToMany(mappedBy: 'Character', targetEntity: Rotation::class)]
     private Collection $rotations;
 
-    #[ORM\ManyToOne(inversedBy: 'Explorers')]
-    private ?DungeonInstance $currentExplorationDungeonInstance = null;
-
     #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
     private ?Timers $Timers = null;
 
     #[ORM\Column]
     private ?bool $isShiny = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Explorers')]
+    private ?DungeonInstance $currentExplorationDungeonInstance = null;
 
     #[ORM\ManyToOne(inversedBy: 'Explorers')]
     private ?RaidInstance $currentExplorationRaidInstance = null;
@@ -165,6 +171,30 @@ class Character
     public function setStats(?Stats $Stats): self
     {
         $this->Stats = $Stats;
+
+        return $this;
+    }
+
+    public function getGear(): ?Gear
+    {
+        return $this->Gear;
+    }
+
+    public function setGear(?Gear $Gear): self
+    {
+        $this->Gear = $Gear;
+
+        return $this;
+    }
+
+    public function getInventory(): ?Inventory
+    {
+        return $this->Inventory;
+    }
+
+    public function setInventory(?Inventory $Inventory): self
+    {
+        $this->Inventory = $Inventory;
 
         return $this;
     }
@@ -439,15 +469,25 @@ class Character
         $Timers = new Timers();
         $Timers->initNewTimers();
 
+        $Gear = new Gear();
+        $Gear->initNewGear($em);
+
+        $Inventory = new Inventory();
+        $Inventory->initNewInventory();
+
         $this->setUserI($user)
              ->setStats($Stats)
              ->setTimers($Timers)
+             ->setGear($Gear)
+             ->setInventory($Inventory)
              ->setIsShiny(false);
 
         $em->persist($OpenerRotation);
         $em->persist($Rotation);
         $em->persist($Stats);
         $em->persist($Timers);
+        $em->persist($Gear);
+        $em->persist($Inventory);
         $em->persist($this);
 
         $user->addRoles(['ROLE_CHARACTER']);

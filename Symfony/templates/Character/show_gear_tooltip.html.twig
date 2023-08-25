@@ -1,0 +1,16 @@
+<div class="itemTooltip">
+    <div class="itemTooltipInfos">
+        <div class="itemTooltipIcon"><img src="http://dummyimage.com/65x65"></div>
+        <div class="itemTooltipTextInfos">
+            <div class="itemTooltipBonuses">
+                {% if item.type == constant('App\\Entity\\ItemTypeEnum::ITEM_TYPE_WEAPON') %}
+                    <div class="itemTooltipBonus"><img src="{{ asset('icons/stats/vitality.png') }}"><span> {{ item.properties.weaponPower }}</span></div>
+                {% endif %}
+                <div class="itemTooltipBonus"><img src="{{ asset('icons/stats/vitality.png') }}"><span>+ {{ item.properties.vitality }}</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="itemTooltip-sep"></div>
+    <div class="itemTooltipName">{{ item.name | trans({}, 'app') }}</div>
+    <div class="itemTooltipDescription">{{ (item.name ~ '_description') | trans({}, 'app') }}</div>
+</div>

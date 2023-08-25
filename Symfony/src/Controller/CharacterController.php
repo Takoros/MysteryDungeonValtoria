@@ -22,7 +22,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 class CharacterController extends AbstractController
 {
     #[Route('/personnage/creation', name: 'app_character_create')]
-    public function create(Request $request, SpeciesRepository $speciesRepository, TranslatorInterface $translator, CharacterService $characterService): Response
+    public function create(Request $request, SpeciesRepository $speciesRepository, AttackRepository $attackRepository, EntityManagerInterface $em, TranslatorInterface $translator): Response
     {
         $createCharacterForm = $this->createForm(CreateCharacterType::class, null, [
             'speciesRepository' => $speciesRepository,
@@ -33,7 +33,7 @@ class CharacterController extends AbstractController
 
         if($createCharacterForm->isSubmitted() && $createCharacterForm->isValid()){
             $user = $this->getUser();
-            $characterService->persistNewCharacter($createCharacterForm->getData(), $user);
+            $createCharacterForm->getData()->createNewCharacter($user, $attackRepository, $em, $translator);
 
             return $this->redirectToRoute('app_home');
         }
@@ -141,8 +141,8 @@ class CharacterController extends AbstractController
         $user = $this->getUser();
 
         try {
-            $user->getCharacter()->getStats()->translator = $translator;
-            $results = $user->getCharacter()->getStats()->spendStatPoint($post->data->statToIncrease);
+            $results = $user->getCharacter()->getStats()->spendStatPoint($post->data->statToIncrease, $translator);
+
             $em->flush();
         } catch (\Exception $e) {
             $results = [

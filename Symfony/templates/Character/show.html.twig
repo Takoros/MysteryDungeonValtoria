@@ -47,13 +47,15 @@
         </div>
         <div class="profileCharacterCardSeparator"></div>
         <div class="profileCharacterCardLower">
-            <div class="profileCharacterCardLowerTitle">{{ 'statistiques'|trans({}, 'app') }} :</div>
-
             {% include "Character/show_stats.html.twig" %}
         </div>
         <div class="profileCharacterCardSeparator"></div>
+        <div class="profileCharacterCardGear">
+            {% include "Character/show_gear.html.twig" %}
+        </div>
+        <div class="profileCharacterCardSeparator"></div>
         <div class="profileCharacterCardBottom">
-            <div class="profileCharacterCardBottomTitle">{{ 'rotations'|trans({}, 'app') }} :</div>
+            <div class="profileCharacterCardBottomTitle">{{ 'rotations'|trans({}, 'app') }}</div>
 
             <div id="mobileSwapShowButton" class="mobileSwapShow" onClick="mobileSwapRotationShow()">{{ 'voir_rotation'|trans({}, 'app') }}</div>
 

@@ -78,11 +78,10 @@ class Stats
     #[ORM\Column]
     private ?int $secondaryStatPoint = null;
 
+    #[ORM\OneToOne(mappedBy: 'Stats', cascade: ['persist', 'remove'])]
+    private ?Character $character = null;
+
     /* ---------------------------------- Utils --------------------------------- */
-
-    public TranslatorInterface $translator;
-
-    /* ----------------------------------- -- ----------------------------------- */
 
     public function getId(): ?int
     {
@@ -117,7 +116,7 @@ class Stats
 
     public function getVitality(): ?int
     {
-        return $this->getBaseStatForLevel(true) + $this->vitality;
+        return $this->getBaseStatForLevel(true) + $this->vitality + $this->getGearVitality();
     }
 
     public function getVitalitySpentPoints(): ?int {
@@ -128,11 +127,17 @@ class Stats
         return $this->getBaseStatForLevel(true);
     }
 
+    public function getGearVitality(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('vitality');
+    }
+
     /* -------------------------------- STRENGTH -------------------------------- */
 
     public function getStrength(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->strength;
+        return $this->getBaseStatForLevel() + $this->strength + $this->getGearStrength();
     }
 
     public function getStrengthSpentPoints(): ?int 
@@ -145,11 +150,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearStrength(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('strength');
+    }
+
     /* --------------------------------- STAMINA -------------------------------- */
 
     public function getStamina(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->stamina;
+        return $this->getBaseStatForLevel() + $this->stamina + $this->getGearStamina();
     }
 
     public function getStaminaSpentPoints(): ?int
@@ -162,11 +173,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearStamina(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('stamina');
+    }
+
     /* ---------------------------------- POWER --------------------------------- */
 
     public function getPower(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->power;
+        return $this->getBaseStatForLevel() + $this->power + $this->getGearPower();
     }
 
     public function getPowerSpentPoints(): ?int
@@ -179,12 +196,18 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearPower(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('power');
+    }
+
     /* --------------------------------- BRAVERY -------------------------------- */
 
 
     public function getBravery(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->bravery;
+        return $this->getBaseStatForLevel() + $this->bravery + $this->getGearBravery();
     }
 
     public function getBraverySpentPoints(): ?int
@@ -197,11 +220,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearBravery(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('bravery');
+    }
+
     /* -------------------------------- PRESENCE -------------------------------- */
 
     public function getPresence(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->presence;
+        return $this->getBaseStatForLevel() + $this->presence + $this->getGearPresence();
     }
 
     public function getPresenceSpentPoints(): ?int
@@ -214,11 +243,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearPresence(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('presence');
+    }
+
     /* ------------------------------ IMPASSIVENESS ----------------------------- */
 
     public function getImpassiveness(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->impassiveness;
+        return $this->getBaseStatForLevel() + $this->impassiveness + $this->getGearImpassiveness();
     }
 
     public function getImpassivenessSpentPoints(): ?int
@@ -231,11 +266,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearImpassiveness(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('impassiveness');
+    }
+
     /* --------------------------------- AGILITY -------------------------------- */
 
     public function getAgility(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->agility;
+        return $this->getBaseStatForLevel() + $this->agility + $this->getGearAgility();
     }
 
     public function getAgilitySpentPoints(): ?int
@@ -248,11 +289,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearAgility(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('agility');
+    }
+
     /* ------------------------------ COORDINATION ------------------------------ */
 
     public function getCoordination(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->coordination;
+        return $this->getBaseStatForLevel() + $this->coordination + $this->getGearCoordination();
     }
 
     public function getCoordinationSpentPoints(): ?int
@@ -265,11 +312,17 @@ class Stats
         return $this->getBaseStatForLevel();
     }
 
+    public function getGearCoordination(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('coordination');
+    }
+
     /* ---------------------------------- SPEED --------------------------------- */
 
     public function getSpeed(): ?int
     {
-        return $this->getBaseStatForLevel() + $this->speed;
+        return $this->getBaseStatForLevel() + $this->speed + $this->getGearSpeed();
     }
 
     public function getSpeedSpentPoints(): ?int
@@ -280,6 +333,12 @@ class Stats
     public function getBaseSpeed(): ?int
     {
         return $this->getBaseStatForLevel();
+    }
+
+    public function getGearSpeed(): ?int {
+        $Gear = $this->character->getGear();
+
+        return $Gear->getStatBonuses('speed');
     }
 
     /* --------------------------------- OTHERS --------------------------------- */
@@ -297,6 +356,16 @@ class Stats
     public function getSecondaryStatPoint(): ?int
     {
         return $this->secondaryStatPoint;
+    }
+
+    public function getMaxPoints(bool $isHP = false): int
+    {
+        if($isHP){
+            return $this->level * self::SPEND_STAT_POINT_MAX_PER_LEVEL_HP;
+        }
+        else {
+            return $this->level * self::SPEND_STAT_POINT_MAX_PER_LEVEL;
+        }
     }
 
     /**
@@ -410,11 +479,11 @@ class Stats
     /**
      * Makes a Stat Increase by spending a corresponding Stat Point
      */
-    public function spendStatPoint($statName): array
+    public function spendStatPoint($statName, TranslatorInterface $translator): array
     {
         if(in_array($statName, self::PRIMARY_STATS)){
             if($this->primaryStatPoint > 0){
-                $this->spendStatPointIncreaseStat($statName);
+                $this->spendStatPointIncreaseStat($statName, $translator);
                 $this->primaryStatPoint--;
 
                 $callable = 'get'.ucfirst($statName);
@@ -425,12 +494,12 @@ class Stats
                 ];
             }
             else {
-                throw new Exception($this->translator->trans("pas_assez_de_points_de_stat_primaire",[], 'app'), 400);
+                throw new Exception($translator->trans("pas_assez_de_points_de_stat_primaire",[], 'app'), 400);
             }
         }
         else if(in_array($statName, self::SECONDARY_STATS)){
             if($this->secondaryStatPoint > 0){
-                $this->spendStatPointIncreaseStat($statName);
+                $this->spendStatPointIncreaseStat($statName, $translator);
                 $this->secondaryStatPoint--;
                 
                 $callable = 'get'.ucfirst($statName);
@@ -441,7 +510,7 @@ class Stats
                 ];
             }
             else {
-                throw new Exception($this->translator->trans("pas_assez_de_points_de_stat_secondaire", [], 'app'), 400);
+                throw new Exception($translator->trans("pas_assez_de_points_de_stat_secondaire", [], 'app'), 400);
             }
         }
         else {
@@ -452,13 +521,13 @@ class Stats
     /**
      * Increase the stat asked by one state
      */
-    private function spendStatPointIncreaseStat($statName): void
+    private function spendStatPointIncreaseStat($statName, TranslatorInterface $translator): void
     {
-        $translatedStat = $this->translator->trans($statName, [], 'app');
+        $translatedStat = $translator->trans($statName, [], 'app');
 
         if($statName === 'vitality'){
             if($this->$statName === (self::SPEND_STAT_POINT_MAX_PER_LEVEL_HP * $this->level)){
-                throw new Exception($this->translator->trans('deja_au_max_pour_votre_niveau', ['%statName%' => ucfirst($translatedStat)], 'app'), 400);
+                throw new Exception($translator->trans('deja_au_max_pour_votre_niveau', ['%statName%' => ucfirst($translatedStat)], 'app'), 400);
             }
             else {
                 $this->$statName += self::SPEND_STAT_POINT_INCREASE_AMOUNT_HP;
@@ -466,7 +535,7 @@ class Stats
         }
         else {
             if($this->$statName === (self::SPEND_STAT_POINT_MAX_PER_LEVEL * $this->level)){
-                throw new Exception($this->translator->trans('deja_au_max_pour_votre_niveau', ['%statName%' => ucfirst($translatedStat)], 'app'), 400);
+                throw new Exception($translator->trans('deja_au_max_pour_votre_niveau', ['%statName%' => ucfirst($translatedStat)], 'app'), 400);
             }
             else {
                 $this->$statName += self::SPEND_STAT_POINT_INCREASE_AMOUNT;
