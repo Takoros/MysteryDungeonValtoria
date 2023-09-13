@@ -24,6 +24,9 @@ class Gear
     #[ORM\OneToOne(inversedBy: 'equipedAsAccessoryGear', cascade: ['persist', 'remove'])]
     private ?Item $Accessory = null;
 
+    #[ORM\OneToOne(mappedBy: 'Gear', cascade: ['persist', 'remove'])]
+    private ?Character $Character = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -32,6 +35,13 @@ class Gear
     public function getWeapon(): ?Item
     {
         return $this->Weapon;
+    }
+
+    public function setWeapon(Item $weapon): self
+    {
+        $this->Weapon = $weapon;
+        
+        return $this;
     }
 
     public function getScarf(): ?Item
@@ -44,15 +54,59 @@ class Gear
         return $this->Accessory;
     }
 
-    public function equip(Item $item): self
+    public function equip(Item $item): bool
     {
-        match($item->getType()){
-            ItemTypeEnum::ITEM_TYPE_WEAPON => $this->Weapon = $item,
-            ItemTypeEnum::ITEM_TYPE_SCARF => $this->Scarf = $item,
-            ItemTypeEnum::ITEM_TYPE_ACCESSORY => $this->Accessory = $item,
-        };
+        if($this->Character->getLevel() < $item->getLevelRequired()){
+            return false;
+        }
 
-        return $this;
+        $inventory = $this->Character->getInventory();
+
+        if($item->getType() === ItemTypeEnum::ITEM_TYPE_WEAPON){
+            if($this->Weapon !== null){
+                $inventory->addItem($this->Weapon);
+                $this->Weapon = null;
+            }
+
+            $this->Weapon = $item;
+        }
+        else if($item->getType() === ItemTypeEnum::ITEM_TYPE_SCARF){
+            if($this->Scarf !== null){
+                $inventory->addItem($this->Scarf);
+                $this->Scarf = null;
+            }
+
+            $this->Scarf = $item;
+        }
+        else if($item->getType() === ItemTypeEnum::ITEM_TYPE_ACCESSORY){
+            if($this->Accessory !== null){
+                $inventory->addItem($this->Accessory);
+                $this->Accessory = null;
+            }
+
+            $this->Accessory = $item;
+        }
+
+        return true;
+    }
+
+    public function unequip(ItemTypeEnum $type): void
+    {
+        $inventory = $this->Character->getInventory();
+
+        if($inventory)
+
+        match($type){
+            ItemTypeEnum::ITEM_TYPE_WEAPON => $this->transferToInventory($inventory, 'Weapon'),
+            ItemTypeEnum::ITEM_TYPE_SCARF => $this->transferToInventory($inventory, 'Scarf'),
+            ItemTypeEnum::ITEM_TYPE_ACCESSORY => $this->transferToInventory($inventory, 'Accessory'),
+        };
+    }
+
+    private function transferToInventory(Inventory $inventory, string $type): void
+    {
+        $inventory->addItem($this->$type);
+        $this->$type = null;
     }
 
     /**

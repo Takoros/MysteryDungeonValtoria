@@ -1,31 +1,9 @@
-<div class="profileCharacterCardGearTitle">Équipements</div>
+<div class="profileCharacterCardGearTitle">{{'equipement' | trans({}, 'app')}}</div>
 
 <div class="profileCharacterCardGearContent">
-    <ldiv class="profileCharacterCardGearContentItemContainer">
-        <div class="profileCharacterCardGearItemTitle">Arme</div>
-        <div class="profileCharacterCardGearItemIcon">
-            {% include "Character/show_gear_tooltip.html.twig" with {'item': character.Gear.Weapon} only %}
-            <img src="http://dummyimage.com/125x125">
-        </div>
-        <div class="profileCharacterCardGearItemName">{{character.Gear.Weapon.name | trans({}, 'app')}}</div>
-        <a class="profileCharacterCardGearUnequipLink" href=""><div class="profileCharacterCardGearUnequip">Déséquiper</div></a>
-    </ldiv>
-    <div class="profileCharacterCardGearContentItemContainer">
-        <div class="profileCharacterCardGearItemTitle">Foulard</div>
-        <div class="profileCharacterCardGearItemIcon">
-            <!--{% include "Character/show_gear_tooltip.html.twig" with {'item': character.Gear.Scarf} only %}-->
-            <img src="http://dummyimage.com/125x125">
-        </div>
-        <div class="profileCharacterCardGearItemName">{{character.Gear.Scarf.name | trans({}, 'app')}}</div>
-        <a class="profileCharacterCardGearUnequipLink" href=""><div class="profileCharacterCardGearUnequip">Déséquiper</div></a>
-    </div>
-    <div class="profileCharacterCardGearContentItemContainer">
-        <div class="profileCharacterCardGearItemTitle">Accessoire</div>
-        <div class="profileCharacterCardGearItemIcon">
-            <!--{% include "Character/show_gear_tooltip.html.twig" with {'item': character.Gear.Accessory} only %}-->
-            <img src="http://dummyimage.com/125x125">
-        </div>
-        <div class="profileCharacterCardGearItemName">{{character.Gear.Accessory.name | trans({}, 'app')}}</div>
-        <a class="profileCharacterCardGearUnequipLink" href=""><div class="profileCharacterCardGearUnequip">Déséquiper</div></a>
-    </div>
+    {% include "Character/show_gear_container.html.twig" with {'item' : character.Gear.Weapon, 'type': 'item_type_weapon', 'type_trans':'arme'} only %}
+    <div class="profileCharacterCardGearSeparatorMobile"></div>
+    {% include "Character/show_gear_container.html.twig" with {'item' : character.Gear.Scarf, 'type': 'item_type_scarf', 'type_trans':'foulard'} only %}
+    <div class="profileCharacterCardGearSeparatorMobile"></div>
+    {% include "Character/show_gear_container.html.twig" with {'item' : character.Gear.Accessory, 'type': 'item_type_accessory', 'type_trans':'accessoire'} only %}
 </div>

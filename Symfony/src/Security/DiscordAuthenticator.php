@@ -62,7 +62,6 @@ class DiscordAuthenticator extends AbstractAuthenticator
         /** @var Session $session */
         $session = $request->getSession();
         $session->remove(self::DISCORD_AUTH_KEY);
-        $session->getFlashBag()->set('success', 'Connexion effectuée avec succès');
 
         return new RedirectResponse($this->routerInterface->generate('app_home'));
     }

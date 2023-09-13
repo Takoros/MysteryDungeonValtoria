@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\StatsRepository;
+use App\Service\Dungeon\MonsterCharacter;
+use App\Service\Raid\MonsterRaidCharacter;
 use Doctrine\ORM\Mapping as ORM;
 use Exception;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -81,6 +83,8 @@ class Stats
     #[ORM\OneToOne(mappedBy: 'Stats', cascade: ['persist', 'remove'])]
     private ?Character $character = null;
 
+    public MonsterCharacter|MonsterRaidCharacter|null $monsterCharacter = null;
+
     /* ---------------------------------- Utils --------------------------------- */
 
     public function getId(): ?int
@@ -112,6 +116,24 @@ class Stats
         return $this;
     }
 
+    /* ------------------------------ WEAPON POWER ------------------------------ */
+
+    public function getWeaponPower(): ?float
+    {
+        if($this->monsterCharacter){
+            $Weapon = $this->monsterCharacter->getGear()->getWeapon();
+        }
+        else {
+            $Weapon = $this->character->getGear()->getWeapon();
+        }
+
+        if($Weapon !== null){
+            return $Weapon->getProperties()['weaponPower'];
+        }
+
+        return 1.80;
+    }
+
     /* -------------------------------- VITALITY -------------------------------- */
 
     public function getVitality(): ?int
@@ -128,9 +150,21 @@ class Stats
     }
 
     public function getGearVitality(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('vitality');
+    }
+
+    public function setVitality(int $value): self
+    {
+        $this->vitality = $value;
+
+        return $this;
     }
 
     /* -------------------------------- STRENGTH -------------------------------- */
@@ -151,9 +185,21 @@ class Stats
     }
 
     public function getGearStrength(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('strength');
+    }
+
+    public function setStrength(int $value): self
+    {
+        $this->strength = $value;
+
+        return $this;
     }
 
     /* --------------------------------- STAMINA -------------------------------- */
@@ -174,9 +220,21 @@ class Stats
     }
 
     public function getGearStamina(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('stamina');
+    }
+
+    public function setStamina(int $value): self
+    {
+        $this->stamina = $value;
+
+        return $this;
     }
 
     /* ---------------------------------- POWER --------------------------------- */
@@ -197,9 +255,21 @@ class Stats
     }
 
     public function getGearPower(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('power');
+    }
+
+    public function setPower(int $value): self
+    {
+        $this->power = $value;
+
+        return $this;
     }
 
     /* --------------------------------- BRAVERY -------------------------------- */
@@ -221,9 +291,21 @@ class Stats
     }
 
     public function getGearBravery(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('bravery');
+    }
+
+    public function setBravery(int $value): self
+    {
+        $this->bravery = $value;
+
+        return $this;
     }
 
     /* -------------------------------- PRESENCE -------------------------------- */
@@ -244,9 +326,21 @@ class Stats
     }
 
     public function getGearPresence(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('presence');
+    }
+
+    public function setPresence(int $value): self
+    {
+        $this->presence = $value;
+
+        return $this;
     }
 
     /* ------------------------------ IMPASSIVENESS ----------------------------- */
@@ -267,9 +361,21 @@ class Stats
     }
 
     public function getGearImpassiveness(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('impassiveness');
+    }
+
+    public function setImpassiveness(int $value): self
+    {
+        $this->impassiveness = $value;
+
+        return $this;
     }
 
     /* --------------------------------- AGILITY -------------------------------- */
@@ -290,9 +396,21 @@ class Stats
     }
 
     public function getGearAgility(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('agility');
+    }
+
+    public function setAgility(int $value): self
+    {
+        $this->agility = $value;
+
+        return $this;
     }
 
     /* ------------------------------ COORDINATION ------------------------------ */
@@ -313,9 +431,21 @@ class Stats
     }
 
     public function getGearCoordination(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('coordination');
+    }
+
+    public function setCoordination(int $value): self
+    {
+        $this->coordination = $value;
+
+        return $this;
     }
 
     /* ---------------------------------- SPEED --------------------------------- */
@@ -336,9 +466,21 @@ class Stats
     }
 
     public function getGearSpeed(): ?int {
-        $Gear = $this->character->getGear();
+        if($this->monsterCharacter){
+            $Gear = $this->monsterCharacter->getGear();
+        }
+        else {
+            $Gear = $this->character->getGear();
+        }
 
         return $Gear->getStatBonuses('speed');
+    }
+
+    public function setSpeed(int $value): self
+    {
+        $this->speed = $value;
+
+        return $this;
     }
 
     /* --------------------------------- OTHERS --------------------------------- */
@@ -346,6 +488,13 @@ class Stats
     public function getActionPoint(): ?int
     {
         return $this->actionPoint;
+    }
+
+    public function setActionPoint(int $value): self
+    {
+        $this->actionPoint = $value;
+
+        return $this;
     }
 
     public function getPrimaryStatPoint(): ?int
@@ -452,7 +601,6 @@ class Stats
     {
         $this->level = 1;
         $this->xp = 0;
-        $this->actionPoint = 0;
         $this->initStatsForLevel(1);
     }
 
@@ -471,6 +619,7 @@ class Stats
         $this->agility = 0;
         $this->coordination = 0;
         $this->speed = 0;
+        $this->actionPoint = 6;
 
         $this->primaryStatPoint = self::PRIMARY_STAT_POINT_PER_LEVEL * $this->level;
         $this->secondaryStatPoint = self::SECONDARY_STAT_POINT_PER_LEVEL * $this->level;

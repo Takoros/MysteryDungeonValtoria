@@ -7,6 +7,8 @@ class Weapon {
     public const WEAPON_TYPE_STAFF = 'weapon_type_staff';
     public const WEAPON_TYPE_GAUNTELETS = 'weapon_type_gauntelets';
     public const WEAPON_TYPE_DAGGERS = 'weapon_type_daggers';
+    public const WEAPON_TYPE_HAMMER = 'weapon_type_hammer';
+    public const WEAPON_TYPE_CROSSBOW = 'weapon_type_crossbow';
 
     public float $weaponPower;
     public string $type;

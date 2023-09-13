@@ -19,7 +19,7 @@
             <div class="cardUpperRight">
                 <div class="cardUpperRightNameLevelGender">
                     <div class="cardUpperRightName">{{ 'nom'|trans({}, 'app') }} : {{ character.name }}</div>
-                    | <div class="cardUpperRightLevel">{{ 'niveau'|trans({}, 'app') }} : {{ character.level }} ({{ 'exp'|trans({}, 'app') }} : {{ character.xp }} / {{ character.getXPCeil() }})</div>
+                    | <div class="cardUpperRightLevel">{{ 'niveau'|trans({}, 'app') }} : {{ character.getLevel() }} ({{ 'exp'|trans({}, 'app') }} : {{ character.getXP() }} / {{ character.getXPCeil() }})</div>
                     {% if character.gender == 'Mâle' %}
                         <img class="genderIcon" src="{{ asset('icons/male.png') }}"  width='25px' height="25px" style="margin-right: 5px">
                     {% else %}
@@ -87,6 +87,36 @@
             </table>
 
         </div>
+        <div class="profileCharacterCardSeparator"></div>
+        <div class="profileCharacterCardInventory">
+            <div class="profileCharacterCardInventoryTitle">{{ 'inventaire' | trans({}, 'app') }}</div>
+            <div title='Oracées' class="profileCharacterCardOracee"><span class="oraceeAmount">{{ character.inventory.oracee }}</span><img src="{{ asset('icons/coin.png') }}" alt=""></div>
+            <div class="profileCharacterCardInventoryContainer">
+                {% set SlotsToDisplay = character.inventory.getDisplayableInventorySlots %}
+                {% set currentSlotIndex = 1 %}
+
+                {% for i in 1 .. character.inventory.getPagesNumberToDisplay() %}
+                    <div id='inventory-pannel-{{i}}' class="profileCharacterCardInventoryPannel">
+                        <div class="profileCharacterCardInventoryPannelTitle">Page {{i}}</div>
+                        <div class="profileCharacterCardInventoryPannelContainer">
+                            {% for i in 1 .. 8 %}
+                                {% if SlotsToDisplay[currentSlotIndex] is defined %}
+                                    {% include "Character/show_inventory_item_container.html.twig" with {'item': SlotsToDisplay[currentSlotIndex], 'slot': currentSlotIndex} only %}
+                                {% endif %}
+                                {% set currentSlotIndex = currentSlotIndex + 1  %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="profileCharacterCardInventoryNavigationButtons">
+                {% for i in 1 .. character.inventory.getPagesNumberToDisplay() %}
+                    <div class="profileCharacterCardInventoryNavigationButton" onClick="DisplayInventoryPage({{i}})">
+                        {{ i }}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
     </div>
 
     {% if isSelfCharacter %}
@@ -121,6 +151,9 @@
 
 {% block javascripts %}
     <script>
+
+        /* ------------------------------ Spend Points ------------------------------ */
+
         var spendPrimaryPointButtons = document.getElementsByClassName('spendPrimaryPointButton');
         var spendSecondaryPointButtons = document.getElementsByClassName('spendSecondaryPointButton');
         spendPrimaryPointButtons = Array.prototype.slice.call(spendPrimaryPointButtons);
@@ -189,6 +222,8 @@
             });
         }
 
+        /* ---------------------- Mobile Swap Rotations Display --------------------- */
+
         let mobileRotationShowStates = ['Opener','Rotation']
         let currentMobileRotationShow = 0;
         
@@ -233,6 +268,8 @@
             }
         }
 
+        /* ------------------------ Modify Description Toggle ----------------------- */
+
         function modifyDescriptionToggle(){
             var modifyDescriptionToggleButton = document.getElementById('modifyDescriptionFormToggle');
             var modifyDescriptionTextArea = document.querySelectorAll("[data-id='modifyDescriptionTextArea']")[0];
@@ -245,5 +282,52 @@
         function OnCLickCancel(){
             location.reload();
         }
+
+        /* ---------------------------- Inventory Display --------------------------- */
+
+        var pannels = Array.prototype.slice.call(document.getElementsByClassName('profileCharacterCardInventoryPannel'));
+        var firstPannel = document.getElementById('inventory-pannel-1');
+
+        firstPannel.classList.add('inventoryPannelActive');
+
+        function DisplayInventoryPage(number){
+            researchedId = 'inventory-pannel-' + number;
+
+            pannels.forEach((pannel) => {
+                if(pannel.id === researchedId){
+                    pannel.classList.add('inventoryPannelActive');
+                }
+                else {
+                    pannel.classList.remove('inventoryPannelActive');
+                }
+            });
+        }
+
+        /* ------------------------- Display Manage Dropdown ------------------------ */
+
+        function displayManageDropdown(number){
+            researchedId = 'manage-dropdown-' + number;
+            dropdown = document.getElementById(researchedId);
+            
+            dropdown.classList.add('manageDropdownActive');
+        }
+
+        window.onclick = function(event) {
+            if (!event.target.matches('.profileCharacterCardInventoryManage')) {
+                var dropdowns = document.getElementsByClassName("profileCharacterCardInventoryManageDropdownContent");
+                var i;
+                for (i = 0; i < dropdowns.length; i++) {
+                    var openDropdown = dropdowns[i];
+
+                    if (openDropdown.classList.contains('manageDropdownActive')) {
+                        openDropdown.classList.remove('manageDropdownActive');
+                    }
+                }
+            }
+        }
+
+        /* ----------------------------- Tooltip Saving ----------------------------- */
+
+        
     </script>
 {% endblock %}

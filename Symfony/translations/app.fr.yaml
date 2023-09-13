@@ -181,6 +181,9 @@ voir: "Voir"
 primaires: 'Primaires'
 secondaires: 'Secondaires'
 autres: 'Autres'
+inventaire: 'Inventaire'
+niv: 'Niv'
+
 
 # modify_rotation.html.twig
 
@@ -639,6 +642,8 @@ points_de_stat_primaire: "Points Primaire"
 points_de_stat_secondaire: "Points Secondaire"
 points_de_stat_description: "Points à dépenser pour augmenter les statistiques de votre personnage. Obtenu en montant de niveau."
 # -- #
+puissance_arme: "Puissance d'arme"
+puissance_arme_description: "La puissance d'arme afflu sur les dégâts infligés/soins prodigués/buffs & debuffs octroyés par les attaques."
 
 # ---------------------------------------------------------------------------- #
 #                                    SPECIES                                   #
@@ -750,17 +755,26 @@ eau_type: 'Eau'
 #                                  GEAR NAMES                                  #
 # ---------------------------------------------------------------------------- #
 
+arme: "Arme"
+foulard: "Foulard"
+accessoire: "Accessoire"
+gerer: 'Gérer'
+jeter: "Jeter"
+equiper: "Équiper"
+desequiper: "Déséquiper"
+vide : 'Vide'
+
 # ---------------------------------- Swords ---------------------------------- #
 weapon_epee_en_bois: 'Épée en bois'
 weapon_epee_en_bois_description: "Cette épée courte en bois vous à été donnée lors de votre inscription en tant qu'aventurier dans la guilde de Fort-Écorce, elle semble un peu usée, mais elle fera l'affaire pour le moment"
 
 # ---------------------------------- Scarfs ---------------------------------- #
 scarf_foulard_du_debutant: 'Foulard du débutant'
-scarf_foulard_du_debutant_description: ''
+scarf_foulard_du_debutant_description: "Ce foulard légèrement abimé vous a été donné lors de votre inscription en tant qu'aventurier dans la guilde de Fort-Écorce."
 
 # -------------------------------- Accessories ------------------------------- #
 accessory_badge_explorateur_debutant: "Badge d'explorateur débutant"
-accessory_badge_explorateur_debutant_description: ''
+accessory_badge_explorateur_debutant_description: 'Ce badge de la guilde de Fort-Écorce montre à tous votre allégeance envers la guilde.'
 
 # ---------------------------------------------------------------------------- #
 #                                    ERRORS                                    #
@@ -772,3 +786,4 @@ l_age_choisi_est_incorrect: "L'âge choisi est incorrect"
 pas_assez_de_points_de_stat_primaire: "Vous n'avez pas assez de points de stats primaire."
 pas_assez_de_points_de_stat_secondaire: "Vous n'avez pas assez de points de stats secondaire."
 deja_au_max_pour_votre_niveau: '%statName% est déjà augmentée au max pour votre niveau'
+vous_ne_remplissez_pas_les_conditions_pour_equiper_cet_objet: 'Vous ne remplissez pas les conditions pour équiper cet objet'

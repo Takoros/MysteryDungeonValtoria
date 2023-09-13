@@ -3,11 +3,15 @@
 namespace App\Service\Dungeon;
 
 use App\Entity\Character;
+use App\Entity\Gear;
+use App\Entity\Item;
+use App\Entity\ItemRarityEnum;
 use App\Entity\Rotation;
 use App\Entity\Species;
 use App\Entity\Stats;
 use App\Repository\AttackRepository;
 use App\Repository\TypeRepository;
+use App\Service\Items\Weapon;
 
 class MonsterCharacter
 {
@@ -28,6 +32,7 @@ class MonsterCharacter
     private ?Species $Species = null;
     private array $rotations;
     private ?bool $isShiny = null;
+    private ?Gear $gear = null;
 
     public function __construct($minLevel, $maxLevel)
     {
@@ -51,6 +56,14 @@ class MonsterCharacter
         else {
             $this->isShiny = false;
         }
+
+        $this->gear = new Gear();
+        $weapon = new Item();
+
+        $weaponPower = 2 + $this->level * 0.17 - 0.17;
+        $weapon->makeWeapon('Griffes', ItemRarityEnum::ITEM_RARITY_COMMON, Weapon::WEAPON_TYPE_GAUNTELETS, $weaponPower, 1, 1, []);
+
+        $this->gear->setWeapon($weapon);
     }
 
     public function getId(): ?string
@@ -176,6 +189,18 @@ class MonsterCharacter
     public function setStats(?Stats $Stats): self
     {
         $this->Stats = $Stats;
+
+        return $this;
+    }
+
+    public function getGear(): ?Gear
+    {
+        return $this->gear;
+    }
+
+    public function setGear(?Gear $Gear): self
+    {
+        $this->gear = $Gear;
 
         return $this;
     }

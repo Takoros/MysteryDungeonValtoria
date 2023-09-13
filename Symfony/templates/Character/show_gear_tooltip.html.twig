@@ -4,13 +4,42 @@
         <div class="itemTooltipTextInfos">
             <div class="itemTooltipBonuses">
                 {% if item.type == constant('App\\Entity\\ItemTypeEnum::ITEM_TYPE_WEAPON') %}
-                    <div class="itemTooltipBonus"><img src="{{ asset('icons/stats/vitality.png') }}"><span> {{ item.properties.weaponPower }}</span></div>
+                    <div title="{{ 'puissance_arme' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/dual-swords.svg') }}"><span> {{ item.properties.weaponPower }}</span></div>
                 {% endif %}
-                <div class="itemTooltipBonus"><img src="{{ asset('icons/stats/vitality.png') }}"><span>+ {{ item.properties.vitality }}</span></div>
+                {% if item.properties.vitality > 0 %}
+                    <div title="{{ 'vitalite' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/vitality.png') }}"><span>+ {{ item.properties.vitality }}</span></div>
+                {% endif %}
+                {% if item.properties.strength > 0 %}
+                    <div title="{{ 'force' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/strength.png') }}"><span>+ {{ item.properties.strength }}</span></div>
+                {% endif %}
+                {% if item.properties.power > 0 %}
+                    <div title="{{ 'pouvoir' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/power.png') }}"><span>+ {{ item.properties.power }}</span></div>
+                {% endif %}
+                {% if item.properties.presence > 0 %}
+                    <div title="{{ 'presence' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/presence.png') }}"><span>+ {{ item.properties.presence }}</span></div>
+                {% endif %}
+                {% if item.properties.stamina > 0 %}
+                    <div title="{{ 'endurance' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/stamina.png') }}"><span>+ {{ item.properties.stamina }}</span></div>
+                {% endif %}
+                {% if item.properties.bravery > 0 %}
+                    <div title="{{ 'courage' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/bravery.png') }}"><span>+ {{ item.properties.bravery }}</span></div>
+                {% endif %}
+                {% if item.properties.impassiveness > 0 %}
+                    <div title="{{ 'impassibilite' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/impassiveness.png') }}"><span>+ {{ item.properties.impassiveness }}</span></div>
+                {% endif %}
+                {% if item.properties.coordination > 0 %}
+                    <div title="{{ 'coordination' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/coordination.png') }}"><span>+ {{ item.properties.coordination }}</span></div>
+                {% endif %}
+                {% if item.properties.speed > 0 %}
+                    <div title="{{ 'vitesse' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/stats/speed.png') }}"><span>+ {{ item.properties.speed }}</span></div>
+                {% endif %}
+                {% if item.properties.agility > 0 %}
+                    <div title="{{ 'agilite' | trans({}, 'app') }}" class="itemTooltipBonus"><img src="{{ asset('icons/player-dodge.svg') }}"><span>+ {{ item.properties.agility }}</span></div>
+                {% endif %}
             </div>
         </div>
     </div>
     <div class="itemTooltip-sep"></div>
-    <div class="itemTooltipName">{{ item.name | trans({}, 'app') }}</div>
+    <div class="itemTooltipName">{{ item.name | trans({}, 'app') }} ({{'niv'| trans({}, 'app')}} {{item.levelRequired}}) (<span style="font-size:18px">{{item.value}}</span> <img src="{{ asset('icons/coin.png') }}" style="height: 20px; border:none">)</div>
     <div class="itemTooltipDescription">{{ (item.name ~ '_description') | trans({}, 'app') }}</div>
 </div>

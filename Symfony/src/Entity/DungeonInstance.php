@@ -17,6 +17,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpKernel\KernelInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[ORM\Entity(repositoryClass: DungeonInstanceRepository::class)]
 class DungeonInstance
@@ -213,13 +214,13 @@ class DungeonInstance
         return true;
     }
 
-    public function fightCurrentPositionMonsters(SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository, EntityManager $em)
+    public function fightCurrentPositionMonsters(SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository, TranslatorInterface $translator, EntityManager $em)
     {
         if(!$this->tilehasMonsters($this->currentExplorersPosition)){
             return false;
         }
 
-        $monsterCharacterGenerationService = new MonsterCharacterGenerationService($speciesRepository, $typeRepository, $attackRepository);
+        $monsterCharacterGenerationService = new MonsterCharacterGenerationService($speciesRepository, $typeRepository, $attackRepository, $translator);
         $monsters = $monsterCharacterGenerationService->generateMonstersForTile($this->getTileMonsters($this->currentExplorersPosition), $this->getDungeon());
 
         $arena = new Arena($this->getExplorers(), $monsters, Arena::TYPE_PVP, $attackRepository);

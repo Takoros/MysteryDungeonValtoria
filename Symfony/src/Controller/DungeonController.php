@@ -148,7 +148,7 @@ class DungeonController extends AbstractController
 
     #[IsGranted('ROLE_USER')]
     #[Route('/jeu/donjon/instance/{id}/fight', name: 'app_dungeon_instance_fight')]
-    public function fightMonsters($id, DungeonInstanceRepository $dungeonInstanceRepository, SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository, EntityManagerInterface $em): JsonResponse
+    public function fightMonsters($id, DungeonInstanceRepository $dungeonInstanceRepository, SpeciesRepository $speciesRepository, TypeRepository $typeRepository, TranslatorInterface $translator, AttackRepository $attackRepository, EntityManagerInterface $em): JsonResponse
     {
         $dungeonInstance = $dungeonInstanceRepository->find($id);
     
@@ -172,7 +172,7 @@ class DungeonController extends AbstractController
             ], 400);
         }
 
-        $message = $dungeonInstance->fightCurrentPositionMonsters($speciesRepository, $typeRepository, $attackRepository, $em);
+        $message = $dungeonInstance->fightCurrentPositionMonsters($speciesRepository, $typeRepository, $attackRepository, $translator, $em);
 
         return new JsonResponse([
             $message

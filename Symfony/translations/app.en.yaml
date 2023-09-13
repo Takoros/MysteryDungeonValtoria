@@ -181,6 +181,8 @@ voir: "See"
 primaires: 'Primary'
 secondaires: 'Secondary'
 autres: 'Others'
+inventaire: 'Inventory'
+niv: 'Lvl'
 
 # modify_rotation.html.twig
 
@@ -639,6 +641,8 @@ points_de_stat_primaire: "Primary Points"
 points_de_stat_secondaire: "Secondary Points"
 points_de_stat_description: "Points earned when leveling up, to spend in order to increase the stats of your character."
 # -- #
+puissance_arme: "Weapon Power"
+puissance_arme_description: "The weapon power modifies the damage dealt/Heals done/ buff & nerfs given by the attacks."
 
 # ---------------------------------------------------------------------------- #
 #                                    SPECIES                                   #
@@ -750,17 +754,26 @@ eau_type: 'Water'
 #                                  GEAR NAMES                                  #
 # ---------------------------------------------------------------------------- #
 
+arme: "Weapon"
+foulard: "Scarf"
+accessoire: "Accessory"
+gerer: 'Manage'
+jeter: "Throw"
+equiper: "Equip"
+desequiper: "Unequip"
+vide : 'Empty'
+
 # ---------------------------------- Swords ---------------------------------- #
 weapon_epee_en_bois: 'Wooden Sword'
 weapon_epee_en_bois_description: "This wooden sword was given to you during your registration at the Fort-Écorce explorer's guild, it seems a bit used, but it will make the job for now."
 
 # ---------------------------------- Scarfs ---------------------------------- #
 scarf_foulard_du_debutant: "Beginner's Scarf"
-scarf_foulard_du_debutant_description: ''
+scarf_foulard_du_debutant_description: "This slightly spoilt scarf has been given to you during your registration at the Fort-Écorce explorer's guild"
 
 # -------------------------------- Accessories ------------------------------- #
 accessory_badge_explorateur_debutant: "Beginner Explorer's Badge"
-accessory_badge_explorateur_debutant_description: ''
+accessory_badge_explorateur_debutant_description: "This badge shows to all your allegiance to the guild"
 
 # ---------------------------------------------------------------------------- #
 #                                    ERRORS                                    #
@@ -772,3 +785,4 @@ l_age_choisi_est_incorrect: "Age chosen is incorrect."
 pas_assez_de_points_de_stat_primaire: "You dont have enough primary stat point."
 pas_assez_de_points_de_stat_secondaire: "You dont have enough primary stat point"
 deja_au_max_pour_votre_niveau: '%statName% is already increased at max for this level'
+vous_ne_remplissez_pas_les_conditions_pour_equiper_cet_objet: 'You dont meet the requirements to equip this item'

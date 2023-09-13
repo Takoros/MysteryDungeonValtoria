@@ -23,50 +23,50 @@ class ModifyRotationType extends AbstractType
             throw new ParameterNotFoundException('Paramètre character nécessaire au formulaire');
         }
 
-        if(!array_key_exists('characterService', $options) || $options['characterService'] === null){
-            throw new ParameterNotFoundException('Paramètre characterService nécessaire au formulaire');
-        }
-
         if(!array_key_exists('translator', $options) || $options['translator'] === null){
             throw new ParameterNotFoundException('Paramètre translator nécessaire au formulaire');
         }
 
+        if(!array_key_exists('availableAttacks', $options) || $options['availableAttacks'] === null){
+            throw new ParameterNotFoundException('Paramètre availableAttacks nécessaire au formulaire');
+        }
+
         $character = $options['character'];
-        $characterService = $options['characterService'];
+        $availableAttacks = $options['availableAttacks'];
         $this->translator = $options['translator'];
 
         $builder
             ->add('attackOne', EntityType::class, [
                 'class' => Attack::class,
-                'choices' => $characterService->getAvailableAttacks($character),
+                'choices' => $availableAttacks,
                 'choice_label' => function (?Attack $attack): string {
                     return $this->translateAttackName($attack->getName()) .' ('.$this->translateTypeName($attack->getType()->getName()).') ';
                 },
             ])
             ->add('attackTwo', EntityType::class, [
                 'class' => Attack::class,
-                'choices' => $characterService->getAvailableAttacks($character),
+                'choices' => $availableAttacks,
                 'choice_label' => function (?Attack $attack): string {
                     return $this->translateAttackName($attack->getName()) .' ('.$this->translateTypeName($attack->getType()->getName()).') ';
                 },
             ])
             ->add('attackThree', EntityType::class, [
                 'class' => Attack::class,
-                'choices' => $characterService->getAvailableAttacks($character),
+                'choices' => $availableAttacks,
                 'choice_label' => function (?Attack $attack): string {
                     return $this->translateAttackName($attack->getName()) .' ('.$this->translateTypeName($attack->getType()->getName()).') ';
                 },
             ])
             ->add('attackFour', EntityType::class, [
                 'class' => Attack::class,
-                'choices' => $characterService->getAvailableAttacks($character),
+                'choices' => $availableAttacks,
                 'choice_label' => function (?Attack $attack): string {
                     return $this->translateAttackName($attack->getName()) .' ('.$this->translateTypeName($attack->getType()->getName()).') ';
                 },
             ])
             ->add('attackFive', EntityType::class, [
                 'class' => Attack::class,
-                'choices' => $characterService->getAvailableAttacks($character),
+                'choices' => $availableAttacks,
                 'choice_label' => function (?Attack $attack): string {
                     return $this->translateAttackName($attack->getName()) .' ('.$this->translateTypeName($attack->getType()->getName()).') ';
                 },
@@ -82,7 +82,7 @@ class ModifyRotationType extends AbstractType
         $resolver->setDefaults([
             'data_class' => Rotation::class,
             'character' => null,
-            'characterService' => null,
+            'availableAttacks' => null,
             'translator' => null
         ]);
     }

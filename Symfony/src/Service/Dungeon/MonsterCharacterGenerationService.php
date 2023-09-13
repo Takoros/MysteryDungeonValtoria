@@ -9,17 +9,20 @@ use App\Entity\Stats;
 use App\Repository\AttackRepository;
 use App\Repository\SpeciesRepository;
 use App\Repository\TypeRepository;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 class MonsterCharacterGenerationService
 {
     private $speciesRepository;
     private $typeRepository;
     private $attackRepository;
-
-    public function __construct(SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository) {
+    private $translator;
+ 
+    public function __construct(SpeciesRepository $speciesRepository, TypeRepository $typeRepository, AttackRepository $attackRepository, TranslatorInterface $translator) {
         $this->speciesRepository = $speciesRepository;
         $this->typeRepository = $typeRepository;
         $this->attackRepository = $attackRepository;
+        $this->translator = $translator;
     }
 
     public function generateMonstersForTile(array $monstersList, Dungeon $dungeon): array
@@ -47,7 +50,7 @@ class MonsterCharacterGenerationService
             $monsterSpecies = $this->speciesRepository->findOneBy(['name' => $monsterSpeciesName]);
             
             $monster = new MonsterCharacter($dungeon->getMinMonsterLevel(), $dungeon->getMaxMonsterLevel());
-            $monsterStats = $this->generateStatsForLevel($monster->getLevel(), $monster->monsterType);
+            $monsterStats = $this->generateStatsForLevel($monster->getLevel(), $monster->monsterType, $monster);
             
             $monster->setId('MONSTER_'.$monsterIdCount)
             ->setName($monsterName)
@@ -64,56 +67,45 @@ class MonsterCharacterGenerationService
     /**
      * Generates Stats for a certain level and monsterType
      */
-    private function generateStatsForLevel(int $level, string $monsterType)
+    private function generateStatsForLevel(int $level, string $monsterType, MonsterCharacter $monster)
     {
         $stats = new Stats();
-        $stats->setVitality(25)
-              ->setStrength(7)
-              ->setStamina(7)
-              ->setPower(7)
-              ->setBravery(7)
-              ->setPresence(7)
-              ->setImpassiveness(7)
-              ->setAgility(7)
-              ->setCoordination(7)
-              ->setSpeed(7)
-              ->setActionPoint(5);
+        $stats->monsterCharacter = $monster;
 
-        $statsPoints = $level * 4;
+        $stats->setLevel($level)
+              ->initStatsForLevel();
 
-        if($level > 1){
-            $stats->increaseBaseStat($level-1);
+        if($monsterType === MonsterCharacter::MONSTER_TYPE_DAMAGE_DEALER){
+            $statTypeChoice = ['Defensif'];
+            $this->weightArray($statTypeChoice, 'Offensif', 3);
+        }
+        else if($monsterType === MonsterCharacter::MONSTER_TYPE_TANK){
+            $statTypeChoice = ['Offensif'];
+            $this->weightArray($statTypeChoice, 'Defensif', 3);
         }
 
-        for ($i=0; $i < $statsPoints; $i++) { 
-            if($monsterType === MonsterCharacter::MONSTER_TYPE_DAMAGE_DEALER){
-                $statTypeChoice = ['Defensif'];
-                $this->weightArray($statTypeChoice, 'Offensif', 3);
-            }
-            else if($monsterType === MonsterCharacter::MONSTER_TYPE_TANK){
-                $statTypeChoice = ['Offensif'];
-                $this->weightArray($statTypeChoice, 'Defensif', 3);
-            }
-
+        // Primary Stats
+        while ($stats->getPrimaryStatPoint() > 0) {
             $statTypeKey = array_rand($statTypeChoice);
             $statTypeChoosen = $statTypeChoice[$statTypeKey];
 
             if($statTypeChoosen === 'Offensif'){
-                $statsChoice = ['coordination'];
+                $statsChoice = [];
                 $this->weightArray($statsChoice, 'strength', 4);
                 $this->weightArray($statsChoice, 'power', 4);
-                $this->weightArray($statsChoice, 'speed', 2);
             }
             else if($statTypeChoosen === 'Defensif'){
                 $statsChoice = ['impassiveness'];
                 $this->weightArray($statsChoice, 'stamina', 4);
                 $this->weightArray($statsChoice, 'bravery', 4);
-                $this->weightArray($statsChoice, 'agility', 2);
                 $this->weightArray($statsChoice, 'speed', 2);
             }
-            
+
             $statKey = array_rand($statsChoice);
-            $stats->increaseStat($statsChoice[$statKey]);
+
+            try {
+                $stats->spendStatPoint($statsChoice[$statKey], $this->translator);
+            } catch (\Throwable $th) {}
         }
 
         return $stats;

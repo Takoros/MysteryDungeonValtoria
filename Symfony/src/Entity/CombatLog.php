@@ -359,7 +359,6 @@ class CombatLog
             'age' => $character->getAge(),
             'description' => $character->getDescription(),
             'level' => $character->getLevel(),
-            'rank' => $character->getRank(),
             'userI' => $character->getUserI(),
             'isShiny' => $character->isShiny(),
             'Stats' => [
@@ -378,8 +377,7 @@ class CombatLog
             'Species' => [
                 'id' => $character->getSpecies()->getId(),
                 'name' => $character->getSpecies()->getName()
-            ],
-            'Guild' => $character->getGuild()
+            ]
         ];
     }
 

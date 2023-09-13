@@ -10,6 +10,8 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: InventoryRepository::class)]
 class Inventory
 {
+    public const NUMBER_OF_ITEM_PER_PAGE = 8;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -86,6 +88,33 @@ class Inventory
         }
 
         return $this;
+    }
+
+    public function getPagesNumberToDisplay(): int
+    {
+        return intval(ceil($this->inventorySize / self::NUMBER_OF_ITEM_PER_PAGE));
+    }
+
+    public function getDisplayableInventorySlots(): array
+    {
+        $slots = [];
+        $currentSlotId = 1;
+
+        foreach ($this->Items as $item) {
+            $slots[$currentSlotId] = $item;            
+
+            $currentSlotId++;
+        }
+
+        $slotsToFill = $this->inventorySize - count($slots);
+
+        for ($i=0; $i < $slotsToFill; $i++) { 
+            $slots[$currentSlotId] = null;
+
+            $currentSlotId++;
+        }
+
+        return $slots;
     }
 
     /* -------------------------------------------------------------------------- */

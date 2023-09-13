@@ -289,6 +289,7 @@
 }
 
 .itemTooltip {
+    visibility: hidden;
     border: 4px solid white;
     border-radius: 5px;
     width: 350px;
@@ -343,12 +344,12 @@
 
 .itemTooltipBonuses {
     display: grid;
-    grid-template-columns: 50px 50px 50px 50px;
+    grid-template-columns: 62px 62px 62px 62px;
     grid-template-rows: 20px 20px 20px;
     margin-left: auto;
     margin-right: auto;
     width: 265px;
-    column-gap: 10px;
+    column-gap: 5px;
     row-gap: 5px;
     justify-content: center;
     height: 71px;
@@ -356,12 +357,16 @@
 
 .itemTooltipBonus {
     display: flex;
+    justify-content: center;
 }
 
 .itemTooltipBonus span {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin-left: 4px;
-    font-size: 13px;
-    line-height: 15px;
+    font-size: 12.5px;
+    line-height: 20px;
 }
 
 .itemTooltipBonus img {
@@ -721,6 +726,148 @@
     display: none;
 }
 
+.profileCharacterCardInventory {
+    height: 600px;
+}
+
+.profileCharacterCardInventoryTitle {
+    text-align: center;
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+}
+
+.profileCharacterCardOracee {
+    font-family: 'Eagle Lake', cursive;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.profileCharacterCardOracee span {
+    height: 30px;
+    display: block;
+    margin-right: 5px;
+}
+
+.profileCharacterCardOracee img {
+    width: 30px;
+}
+
+.profileCharacterCardInventoryContainer {
+    width: 90%;
+    height: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border: solid black 1px;
+    border-radius: 8px;
+}
+
+.profileCharacterCardInventoryPannel {
+    font-family: 'Eagle Lake', cursive;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: none;
+}
+
+.inventoryPannelActive {
+    display: block;
+}
+
+.profileCharacterCardInventoryNavigationButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.profileCharacterCardInventoryNavigationButton {
+    border: solid 1px black;
+    border-radius: 5px;
+    width: 25px;
+    height: 35px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-left: 2.5px;
+    margin-right: 2.5px;
+}
+
+.profileCharacterCardInventoryNavigationButton:hover {
+    cursor: pointer;
+}
+
+.profileCharacterCardInventoryPannelContainer {
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    height: 385px;
+    
+    display: grid;
+    grid-template-columns: 125px 125px 125px 125px;
+    grid-column-gap: 25px;
+    grid-row-gap: 10px;
+    justify-content: center;
+}
+
+.profileCharacterCardInventoryPannelItemContainer {
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+}
+
+.profileCharacterCardInventoryManageDropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.profileCharacterCardInventoryManage {
+    margin-top: 10px;
+    border: 1px solid black;
+    background-color: rgba(143, 153, 146, 0.77);
+    text-align: center;
+    width: 70px;
+    border-radius: 5px;
+    font-size: 14px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.profileCharacterCardInventoryManage:hover {
+    cursor: pointer;
+}
+
+.profileCharacterCardInventoryManageDropdownContent {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    width: 100px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.manageDropdownActive {
+    display: block;
+}
+
+.profileCharacterCardInventoryManageDropdownContent a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.profileCharacterCardInventoryManageDropdownContent a:hover {background-color: #ddd;}
+
 /* -------------------------------------------------------------------------- */
 /*                                  combatlog                                 */
 /* -------------------------------------------------------------------------- */
@@ -861,16 +1008,6 @@
         width: 701px;
     }
 
-    .profileCharacterCardStats1stRow,
-    .profileCharacterCardStats2ndRow {
-        width: 700px;
-        grid-template-columns: 130px 130px 130px 130px 130px;
-    }
-
-    .profileCharacterCardStats3rdRow {
-        width: 700px;
-    }
-
     .cardUpperRight,
     .cardUpperRightNameLevelGender,
     .cardUpperRightSpeciesAgeRank {
@@ -906,6 +1043,14 @@
         display: grid;
         grid-template-columns: 330px 330px;
     }
+
+    .primarySectionContentOffense, .primarySectionContentDefense, .secondarySectionContent, .othersSectionContent {
+        width: 701px;
+    }
+
+    .profileCharacterCardGearContent {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 740px) {
@@ -940,29 +1085,6 @@
     .cardUpperRightDescription {
         margin-top: 1px;
         font-size: 11.5px;
-    }
-
-    .profileCharacterCardStats1stRow,
-    .profileCharacterCardStats2ndRow {
-        width: 499px;
-        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
-        column-gap: 5px;
-        row-gap: 5px;
-        height: 140px;
-    }
-
-    .profileCharacterCardStats3rdRow {
-        width: 499px;
-        height: 65px;
-        grid-template-columns: 120px 120px;
-    }
-
-    .profileCharacterCardStat {
-        font-size: 11.5px;
-    }
-
-    .profileCharacterCardStatIcon {
-        height: 15px;
     }
 
     .profileCharacterCardBottomTable {
@@ -1039,6 +1161,54 @@
         display: grid;
         grid-template-columns: 230px 230px;
     }
+
+    .primarySectionContentOffense, .primarySectionContentDefense, .secondarySectionContent, .othersSectionContent {
+        width: 500px;
+    }
+
+    .othersSectionContent {
+        grid-template-columns: 155px 155px 155px;
+    }
+
+    .profileCharacterCardGearContent {
+        margin-top: 0px;
+        flex-direction: column;
+        align-items: center;
+        height: 760px;
+    }
+
+    .profileCharacterCardGearContentItemContainer {
+        height: 240px;
+        margin-bottom: 10px;
+    }
+
+    .profileCharacterCardGearSeparatorMobile {
+        width: 300px;
+        height: 1px;
+        background-color: black;
+    }
+
+    .profileCharacterCardInventory {
+        height: 940px;
+    }
+
+    .profileCharacterCardInventoryContainer {
+        height: 785px;
+    }
+
+    .profileCharacterCardInventoryPannelContainer {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5px;
+        height: 500px;
+        
+        display: grid;
+        grid-template-columns: 125px 125px;
+        grid-column-gap: 25px;
+        grid-row-gap: 10px;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 530px) {
@@ -1082,21 +1252,6 @@
 
     .cardUpperRightDescription {
         font-size: 10px;
-    }
-
-    .profileCharacterCardStats1stRow,
-    .profileCharacterCardStats2ndRow {
-        width: 340px;
-        grid-template-columns: repeat(auto-fit, minmax(100px, max-content));
-        column-gap: 5px;
-        row-gap: 5px;
-        height: 140px;
-    }
-
-    .profileCharacterCardStats3rdRow {
-        width: 340px;
-        height: 65px;
-        grid-template-columns: 120px 120px;
     }
 
     .rotationItem,
@@ -1184,5 +1339,43 @@
         margin-top: 10px;
         display: grid;
         grid-template-columns: 230px;
+    }
+
+    .primarySectionContentOffense, .primarySectionContentDefense, .secondarySectionContent, .othersSectionContent {
+        width: 340px;
+    }
+
+    .primarySectionContentOffense, .primarySectionContentDefense, .secondarySectionContent {
+        grid-template-columns: 140px;
+        grid-row-gap: 5px;
+        height: 250px;
+    }
+
+    .othersSectionContent {
+        grid-template-columns: 155px;
+        grid-row-gap: 5px;
+        height: 250px;
+    }
+
+    .profileCharacterCardInventory {
+        height: 1695px;
+    }
+
+    .profileCharacterCardInventoryContainer {
+        height: 1545px;
+    }
+
+    .profileCharacterCardInventoryPannelContainer {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 5px;
+        height: 500px;
+        
+        display: grid;
+        grid-template-columns: 125px;
+        grid-column-gap: 25px;
+        grid-row-gap: 10px;
+        justify-content: center;
     }
 }

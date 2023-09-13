@@ -1,0 +1,23 @@
+{% if item != null %}
+    <div class="profileCharacterCardInventoryPannelItemContainer">
+        <div class="profileCharacterCardGearItemIcon inventoryItemIcon">
+            {% include "Character/show_gear_tooltip.html.twig" with {'item': item} only %}
+            <img src="{{ asset('icons/items/' ~ item.name ~ '.png') }}" style="width: 90px; height: 90px;">
+        </div>
+        <div class="profileCharacterCardGearItemName">{{item.name | trans({}, 'app') |u.truncate(22,'...')}}</div>
+        <div class="profileCharacterCardInventoryManageDropdown">
+            <div class="profileCharacterCardInventoryManage" onClick='displayManageDropdown({{slot}})'>{{'gerer' | trans({}, 'app')}}</div>
+            <div id="manage-dropdown-{{slot}}" class="profileCharacterCardInventoryManageDropdownContent">
+                <a href="{{ path('app_character_equip', {'id': item.id}) }}">{{'equiper' | trans({}, 'app')}}</a>
+                <a href="#about">{{'jeter' | trans({}, 'app')}}</a>
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="profileCharacterCardInventoryPannelItemContainer">
+        <div class="profileCharacterCardGearItemIcon">
+            <img src="{{ asset('icons/items/empty_item.png') }}" style="width: 90px; height: 90px;">
+        </div>
+        <div class="profileCharacterCardGearItemName">{{'vide' | trans({}, 'app')}}</div>
+    </div>
+{% endif %}

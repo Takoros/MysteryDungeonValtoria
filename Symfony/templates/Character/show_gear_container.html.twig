@@ -1,0 +1,19 @@
+{% if item %}
+    <div class="profileCharacterCardGearContentItemContainer">
+        <div class="profileCharacterCardGearItemTitle">{{ type_trans | trans({}, 'app') }}</div>
+        <div class="profileCharacterCardGearItemIcon">
+            {% include "Character/show_gear_tooltip.html.twig" with {'item': item} only %}
+            <img src="{{ asset('icons/items/' ~ item.name ~ '.png') }}" style="width: 125px; height: 125px;">
+        </div>
+        <div class="profileCharacterCardGearItemName">{{item.name | trans({}, 'app') | u.truncate(22,'...') }}</div>
+        <a class="profileCharacterCardGearUnequipLink" href="{{ path('app_character_unequip', {'type': type}) }}"><div class="profileCharacterCardGearUnequip">{{'desequiper' | trans({}, 'app')}}</div></a>
+    </div>
+{% else %}
+    <div class="profileCharacterCardGearContentItemContainer">
+        <div class="profileCharacterCardGearItemTitle">{{ type_trans | trans({}, 'app') }}</div>
+        <div class="profileCharacterCardGearItemIcon">
+            <img src="{{ asset('icons/items/empty_item.png') }}" style="width: 125px; height: 125px;">
+        </div>
+        <div class="profileCharacterCardGearItemName">{{ 'vide' | trans({}, 'app')}}</div>
+    </div>
+{% endif %}

@@ -2,12 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\ItemTypeEnum;
 use App\Form\CreateCharacterType;
 use App\Form\ModifyDescriptionType;
 use App\Form\ModifyRotationType;
 use App\Repository\AttackRepository;
 use App\Repository\CharacterRepository;
 use App\Repository\SpeciesRepository;
+use App\Repository\TypeRepository;
 use App\Service\CharacterService;
 use Doctrine\ORM\EntityManagerInterface;
 use Exception;
@@ -78,7 +80,7 @@ class CharacterController extends AbstractController
     }
 
     #[Route('/jeu/personnage/modification/rotation/{type}', name: 'app_character_modify_rotation')]
-    public function modify_rotation(String $type, Request $request, CharacterService $characterService, TranslatorInterface $translator, EntityManagerInterface $em): Response
+    public function modify_rotation(String $type, Request $request, TranslatorInterface $translator, TypeRepository $typeRepository, AttackRepository $attackRepository, EntityManagerInterface $em): Response
     {
         $user = $this->getUser();
 
@@ -94,7 +96,7 @@ class CharacterController extends AbstractController
 
         $modifyRotationForm = $this->createForm(ModifyRotationType::class, $rotationToModify, [
             'character' => $user->getCharacter(),
-            'characterService' => $characterService,
+            'availableAttacks' => $user->getCharacter()->getAvailableAttacks($typeRepository, $attackRepository),
             'translator' => $translator
         ]);
 
@@ -128,6 +130,51 @@ class CharacterController extends AbstractController
         return $this->render('Character/attacks.html.twig', [
             'allAttacks' => $attackRepository->findAll()
         ]);
+    }
+
+    #[Route('/jeu/personnage/unequip/{type}', name: 'app_character_unequip', priority:1)]
+    public function unequip(string $type, EntityManagerInterface $em): Response
+    {
+        $character = $this->getUser()->getCharacter();
+        $gear = $character->getGear();
+        $type = ItemTypeEnum::from($type);
+
+        match($type){
+            ItemTypeEnum::ITEM_TYPE_WEAPON => $item = $gear->getWeapon(),
+            ItemTypeEnum::ITEM_TYPE_SCARF => $item = $gear->getScarf(),
+            ItemTypeEnum::ITEM_TYPE_ACCESSORY => $item = $gear->getAccessory(),
+        };
+
+        if($item !== null){
+            $gear->unequip($type);
+            $em->flush();
+        }
+
+        return $this->redirectToRoute('app_character');
+    }
+
+    #[Route('/jeu/personnage/equip/{id}', name: 'app_character_equip', priority:1)]
+    public function equip(int $id, TranslatorInterface $translator, EntityManagerInterface $em): Response
+    {
+        $character = $this->getUser()->getCharacter();
+        $inventory = $character->getInventory();
+        $gear = $character->getGear();
+        $items = $inventory->getItems();
+
+        foreach ($items as $item) {
+            if($item->getId() === $id){
+                $success = $gear->equip($item);
+                if($success){
+                    $inventory->removeItem($item);
+                    $em->flush();
+                }
+                else {
+                    $this->addFlash('danger', $translator->trans('vous_ne_remplissez_pas_les_conditions_pour_equiper_cet_objet', [], 'app'));
+                }
+            }
+        }
+
+        return $this->redirectToRoute('app_character');
     }
 
     /* -------------------------------------------------------------------------- */

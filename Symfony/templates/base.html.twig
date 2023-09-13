@@ -13,7 +13,25 @@
         {% include '_shared/_navbar.html.twig' %}
 
         <div class="flashMessagesContainer">
-
+            {% set flashMessagesCounter = 0 %}
+            {% for message in app.flashes('success') %}
+                <div id='js-flash-{{flashMessagesCounter}}' class="flashMessage flashSuccess">
+                    <div class="flashMessageCloseButton">
+                        <div onClick="closeFlashMessage('js-flash-{{flashMessagesCounter}}')">X</div>
+                    </div>
+                    <span class="flashMessageContent">{{ message }}</span>
+                </div>
+                {% set flashMessagesCounter = flashMessagesCounter + 1 %}
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+                <div id='js-flash-{{flashMessagesCounter}}' class="flashMessage flashWarning">
+                    <div class="flashMessageCloseButton">
+                        <div onClick="closeFlashMessage('js-flash-{{flashMessagesCounter}}')">X</div>
+                    </div>
+                    <span class="flashMessageContent">{{ message }}</span>
+                </div>
+                {% set flashMessagesCounter = flashMessagesCounter + 1 %}
+            {% endfor %}
         </div>
 
         {% if app.user %}
